@@ -1,0 +1,25 @@
+body{
+  background-color: #eee;
+  color: #444;
+  font-family: "Helvetica Neue", Helvetica;
+  font-size: 15px;
+  line-height: 150%;
+  text-shadow: 0px 1px 0px #fff;
+}
+
+#wrapper{
+  margin: 50px auto;
+  text-align:center;
+  width: 550px;
+}
+
+h1{
+  font-size: 36px;
+  line-height: 150%;
+  margin:0px;
+  padding:0px;
+}
+
+a{
+  text-decoration:none;
+}
