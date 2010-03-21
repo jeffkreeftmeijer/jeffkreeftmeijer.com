@@ -1,74 +1,83 @@
-body{
-  background-color: #eee;
-  background-image: url('../images/background.gif');
-  background-repeat:repeat-x;
-  color: #444;
-  font-family: "Helvetica Neue", Helvetica, Airal, sans-serif;
-  font-size: 15px;
-  line-height: 150%;
-  text-shadow: 0px 1px 0px #fff;
+body
+{
+  background-color: #222;
+  background-image: url('../images/background.jpg');
+  background-size: 100%;
+  background-attachment: fixed;
+  background-position: center;
 }
 
-div#wrapper{
-  min-width:380px;
-  max-width: 580px;
-  margin: 50px auto;
-  padding:0px 10px;
+div#wrapper
+{
+	color:#222;
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size:15px;
+	line-height:150%;
+	margin:50px auto;
+	text-shadow:0 1px 0 #fff;
+	width:450px;
+	padding: 20px;
+	background-color:#eee;
+	opacity: 0.9;
+	-webkit-border-radius:5px;
+	-webkit-box-shadow:0 1px 0 #fff;
 }
 
 div#header{
-  font-size: 13px;
-}
-
-ul{
-  float: right;
-}
-
-li{
-  float: left;
-  margin: 0px 0px 0px 10px;
-}
-
-li a{
-  background-color: #ddd;
-}
-
-li a:hover{
-  background-color: #ccc;
+  margin:0px 0px 45px 0px;
 }
 
 h1{
-  background-color: #444;
-  color: #eee;
-  text-shadow: 0px 1px 0px #000;
+  -webkit-border-radius:5px;
+	-webkit-box-shadow:0 1px 0 #fff;
+	background-color:#222;
+	color:#fff;
+	font-size:13px;
+	font-weight:normal;
+	line-height:150%;
+	text-shadow:0 1px 0 #000;
+	display:inline;
+	padding: 10px;
+	float:left;
 }
 
-h1, li a{
-  display: inline;                                    
-  padding: 3px 5px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  
-  -moz-box-shadow: 0px 1px 0px #fff;
-  -webkit-box-shadow: 0px 1px 0px #fff;
-  box-shadow: 0px 1px 0px #fff;
+ul{
+  float:right;
+}
+
+li{
+  margin: 0px 0px 0px 20px;
+  float:left;
 }
 
 h2{
-  font-weight: 900;
-  font-size: 26px;
-  line-height: 125%;
+  font-size:34px;
 }
 
-a{
-  color: #222;
-  text-decoration: none;
+h2,h3,h4,h5,h6
+{
+	line-height:100%;
+	font-weight:900;
+}
+
+p,h2,h3,h4,h5,h6
+{
+	margin:20px 0;
+}
+
+a
+{
+	color:#000;
+	font-weight:900;
+	text-decoration:none;
+}
+
+a:hover
+{
+	color:#444;
 }
 
 hr{
-  margin: 25px 0px;
-  border: none;
-  border-top:1px solid;
-  border-color: #ddd;
+  clear:both;
+  visibility: hidden;
 }
