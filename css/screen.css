@@ -1,83 +1,99 @@
 body
 {
-  background-color: #222;
-  background-image: url('../images/background.jpg');
-  background-size: 100%;
-  background-attachment: fixed;
-  background-position: center;
+  -moz-background-size:100% auto;
+  -webkit-background-size:100% auto;
+  background-attachment:fixed;
+  background-color:#222;
+  background-image:url('../images/background.jpg');
+  background-position:center;
+  background-size:100% auto;
 }
 
 div#wrapper
 {
-	color:#222;
-	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size:15px;
-	line-height:150%;
-	margin:50px auto;
-	text-shadow:0 1px 0 #fff;
-	width:450px;
-	padding: 20px;
-	background-color:#eee;
-	opacity: 0.9;
-	-webkit-border-radius:5px;
-	-webkit-box-shadow:0 1px 0 #fff;
-}
-
-div#header{
-  margin:0px 0px 45px 0px;
-}
-
-h1{
+  -moz-border-radius:5px;
+  -moz-box-shadow:0 1px 0 #fff;
   -webkit-border-radius:5px;
-	-webkit-box-shadow:0 1px 0 #fff;
-	background-color:#222;
-	color:#fff;
-	font-size:13px;
-	font-weight:normal;
-	line-height:150%;
-	text-shadow:0 1px 0 #000;
-	display:inline;
-	padding: 10px;
-	float:left;
+  -webkit-box-shadow:0 1px 0 #fff;
+  background-color:#eee;
+  border-radius:5px;
+  box-shadow:0 1px 0 #fff;
+  color:#222;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:15px;
+  line-height:150%;
+  margin:50px auto;
+  opacity:0.9px;
+  padding:20px;
+  text-shadow:0 1px 0 #fff;
+  width:450px;
 }
 
-ul{
+div#header
+{
+  margin:0 0 45px;
+}
+
+h1
+{
+  -moz-border-radius:5px;
+  -moz-box-shadow:0 1px 0 #fff;
+  -webkit-border-radius:5px;
+  -webkit-box-shadow:0 1px 0 #fff;
+  background-color:#222;
+  border-radius:5px;
+  box-shadow:0 1px 0 #fff;
+  color:#fff;
+  display:inline;
+  float:left;
+  font-size:13px;
+  font-weight:400;
+  line-height:150%;
+  padding:10px;
+  text-shadow:0 1px 0 #000;
+}
+
+ul
+{
   float:right;
 }
 
-li{
-  margin: 0px 0px 0px 20px;
+li
+{
   float:left;
+  margin:0 0 0 20px;
 }
 
-h2{
+h2
+{
   font-size:34px;
 }
 
 h2,h3,h4,h5,h6
 {
-	line-height:100%;
-	font-weight:900;
+  font-weight:900;
+  line-height:100%;
 }
 
 p,h2,h3,h4,h5,h6
 {
-	margin:20px 0;
+  margin:20px 0;
 }
 
 a
 {
-	color:#000;
-	font-weight:900;
-	text-decoration:none;
+  color:#000;
+  font-weight:900;
+  text-decoration:none;
 }
 
 a:hover
 {
-	color:#444;
+  color:#444;
 }
 
-hr{
+hr
+{
   clear:both;
-  visibility: hidden;
+  visibility:hidden;
 }
