@@ -4,14 +4,23 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=510; user-scalable=no;">
   <title>Jeff Kreeftmeijer</title>
-  <link rel="stylesheet" href="css/reset.css" type="text/css" />
-  <link rel="stylesheet" href="css/screen.css" type="text/css" />
+  <link rel="stylesheet" href="/css/reset.css" type="text/css" />
+  <link rel="stylesheet" href="/css/screen.css" type="text/css" />
 </head>
 <body>
   <div id="wrapper">
     <div id="header">
-      <h1>Jeff Kreeftmeijer</h1>
+      <h1>
+        {% if page.home %}
+         Jeff Kreeftmeijer
+        {% else %}
+          <a href="/">&larr; Jeff Kreeftmeijer</a>
+        {% endif %}
+      </h1>
       <ul>
+        <li>
+          <a href="/navvy">Navvy</a>
+        </li>
         <li>
           <a href="http://github.com/jeffkreeftmeijer">Github &rarr;</a>
         </li>
