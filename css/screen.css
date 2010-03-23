@@ -94,6 +94,17 @@ h1 a
   font-weight:400;
 }
 
+h2
+{
+  font-size:34px;
+}
+
+h2,h3,h4,h5,h6
+{
+  font-weight:900;
+  line-height:100%;
+}
+
 ul.columns
 {
   -moz-column-gap:20px;
@@ -104,15 +115,8 @@ ul.columns
   column-width:215px;
 }
 
-h2
-{
-  font-size:34px;
-}
-
-h2,h3,h4,h5,h6
-{
-  font-weight:900;
-  line-height:100%;
+p.date{
+  color: #888;
 }
 
 img
