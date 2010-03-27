@@ -128,7 +128,7 @@ ul.columns
   column-width:215px;
 }
 
-p.date
+p.date, del, del a
 {
   color: #888;
 }

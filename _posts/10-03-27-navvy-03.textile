@@ -1,0 +1,11 @@
+---
+layout: post
+title: Navvy 0.3
+published: false
+---
+                                                                                                             
+"Navvy":http://github.com/jeffkreeftmeijer/navvy is an ORM agnostic background job processor I released in January, initially with two database adapters; ActiveRecord and MongoMapper. "@antekpiechnik":http://twitter.com/antekpiechnik later added Sequel and Datamapper.
+
+It got picked up by "Ruby5":http://ruby5.envylabs.com/episodes/45-episode-43-january-19-2010/stories/350-navvy-database-agnostic-background-jobs and "the Changelog":http://thechangelog.com/post/356754061/navvy-simple-database-agnostic-ruby-background-job-proce, people started using it and I got a lot of help from some great "contributors":http://wiki.github.com/jeffkreeftmeijer/navvy/contributors.
+
+But after a while, maintaining four adapters became a little too much, so I decided to rip out the adapters and put them in separate gems. That way I could maintain the MongoMapper adapter and let the rest be maintained by others.
