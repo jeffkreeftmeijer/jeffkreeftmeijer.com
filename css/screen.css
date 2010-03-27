@@ -70,6 +70,14 @@ div#header li
   margin:0 0 0 20px;
 }
 
+div.post{
+  margin: 50px 0px 0px 0px;
+}
+
+div.post h3, div.post p{
+  margin: 5px 0px;
+}
+
 h1
 {
   -moz-border-radius:5px;
@@ -99,6 +107,11 @@ h2
   font-size:34px;
 }
 
+h3{
+  font-size:24px;
+}
+
+
 h2,h3,h4,h5,h6
 {
   font-weight:900;
@@ -115,7 +128,8 @@ ul.columns
   column-width:215px;
 }
 
-p.date{
+p.date
+{
   color: #888;
 }
 
