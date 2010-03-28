@@ -128,9 +128,13 @@ ul.columns
   column-width:215px;
 }
 
-p.date, del, del a
+p.date, p#footnote, p#footnote a, del, del a
 {
   color: #888;
+}
+
+p#footnote{
+  font-size: 13px;
 }
 
 img
