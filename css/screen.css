@@ -146,3 +146,18 @@ hr
   clear:both;
   visibility:hidden;
 }
+
+code{
+  font-family: "Courier New", monospace;
+}
+
+pre{
+  background-color: #222;
+  color: #fff;
+  padding: 10px;
+  text-shadow:0 1px 0 #000;
+  -moz-border-radius:5px;
+  -moz-box-shadow:0 1px 0 #fff;
+  -webkit-border-radius:5px;
+  -webkit-box-shadow:0 1px 0 #fff;
+}
