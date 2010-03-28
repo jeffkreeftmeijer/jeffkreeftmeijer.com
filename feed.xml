@@ -16,7 +16,7 @@ layout: none
   {% for post in site.posts %}
   <entry>
     <title>http://jeffkreeftmeijer.com{{ post.url }}</title>
-    <link href="{{ post.url }}"/>
+    <link href="http://jeffkreeftmeijer.com{{ post.url }}"/>
     <id>http://jeffkreeftmeijer.com{{ post.url }}</id>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <content type="html">{{ post.content | xml_escape }}</content>
