@@ -2,6 +2,7 @@
 layout: post
 title: Navvy 0.3
 published: false
+categories: navvy
 ---
 
 "Navvy":http://github.com/jeffkreeftmeijer/navvy is an ORM agnostic Ruby background job processor I released in January, initially with database adapters for ActiveRecord and MongoMapper.
