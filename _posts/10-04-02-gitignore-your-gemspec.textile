@@ -18,4 +18,4 @@ Still, lots of people -- even the cool kids -- can't kill their old habits. Lets
                      
 bc. *.gemspec
 
-Then, @rm [yourgem].gemspec@ from your repo and tell all your friends read this post and do the same. Let's do this. Who's with me?
+Then, @rm [yourgem].gemspec@ from your repo and tell all your friends to read this post and do the same. Let's do this. Who's with me?
