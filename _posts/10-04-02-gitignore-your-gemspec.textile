@@ -14,7 +14,7 @@ Right now you're probably using "Jeweler":http://github.com/technicalpickles/jew
 
 So, why are you pushing your gemspec to your repo? The only time you ever need one is when installing your gem locally or releasing it. You always generate a new gemspec when you do that, right? That's my point.
 
-Still, lots of people -- even the cool kids -- can't kill their old habits. Lets get overly dramatic about this and try to stop this madness. Add this to our @.gitignore@ file;
+Still, lots of people -- even the cool kids -- can't kill their old habits. Lets get overly dramatic about this and try to stop this madness. Add this to your @.gitignore@ file;
                      
 bc. *.gemspec
 
