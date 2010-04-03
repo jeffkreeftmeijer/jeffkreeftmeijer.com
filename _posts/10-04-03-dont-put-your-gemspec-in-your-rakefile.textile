@@ -60,4 +60,4 @@ $ gem push gem-0.0.1.gem
 
 This solves the issue of having your gem information in your repository twice -- in your Rakefile and in your .gemspec -- and will probably keep people from updating it unintentionally when patching your gem. 
 
-So, In my previous article I didn't consider installing gems from git or a local path. Right now, you _do_ need your .gemspec in your repository when you want your users to be able to do that. The problem of people touching your .gemspecs can -- to a certain extent -- be solved by not generating your .gemspec, but writing it yourself.
+So, In my previous article I didn't consider installing gems from git or a local path. Right now, you _do_ need your .gemspec in your repository when you want your users to be able to do that.
