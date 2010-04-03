@@ -158,6 +158,7 @@ code{
 pre{
   background-color: #222;
   color: #fff;
+  font-size:12px;
   padding: 10px;
   text-shadow:0 1px 0 #000;
   -moz-border-radius:5px;
