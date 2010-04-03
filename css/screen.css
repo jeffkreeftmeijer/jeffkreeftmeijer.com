@@ -167,7 +167,8 @@ pre
 	-webkit-box-shadow:0 1px 0 #fff;
 	background-color:#222;
 	color:#fff;
-	padding:10px;
+	font-size: 13px;
+	padding: 10px;
 	text-shadow:0 1px 0 #000;
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;

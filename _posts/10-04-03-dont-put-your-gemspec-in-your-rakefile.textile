@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Don't put your *.gemspec in your Rakefile
-excerpt: Why *.gemspecs in repositories aren't as stupid as I thought, why Rakefiles don't have anything to do with anything, Jeweler and mg.
+excerpt: Why *.gemspecs in repositories aren't as stupid as I thought and why Rakefiles don't have anything to do with anything.
 ---
 
 Yesterday I wrote "&ldquo;.gitignore your *.gemspec&rdquo;":http://jeffkreeftmeijer.com/2010/gitignore-your-gemspec/, an article about how annoying it is to have your .gemspec in your repository.
@@ -12,7 +12,7 @@ The problem I found with this was people unnecessarily updating the .gemspec fil
 
 I think I started a "discussion":http://search.twitter.com/search?q=gemspec&since=2010-04-02&rpp=50.
 
-"@rbates made a comment":http://twitter.com/rbates/status/11487541301 about five minutes after I posted. Here's the deal; "Bundler":http://gembundler.com/ has the ability to install a gem from it's git repository or from a local path by doing this in your Gemfile;
+"@rbates made a comment":http://twitter.com/rbates/status/11487541301 about five minutes after I posted. Here's the deal; "Bundler":http://gembundler.com/ has the ability bundle a library from its git repository or from a local path by specifying this in your Gemfile:
 
 <pre>
 # from git
@@ -22,23 +22,42 @@ gem 'yourgem', :git => 'git://github.com/user/yourgem.git'
 gem 'yourgem', :path => '~/code/yourgem.git'
 </pre>
 
-This will fetch the gem from the git repository or local path and _does_ need the .gemspec. This means you won't be able to do this with gems that don't have a .gemspec in their git repository.
+If you load a library like this, it _does_ need to have a .gemspec in its code if it has any dependencies, otherwise Bundler will be unable to resolve and include these dependencies in the bundle.
 
-"@joshpeek's idea":http://twitter.com/joshpeek/statuses/11489775203 is great when talking about precific gem releases, but installing gems from git or a local path has its charms as well. "@wycats eventually wrote a blogpost":http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended/ about adding .gemspecs to your repositories &ldquo;as intended&rdquo;. Be sure to read it.
+"@joshpeek suggests":http://twitter.com/joshpeek/statuses/11489775203 that Jeweler shouldn't even have to write a .gemspec file, but "@wycats eventually wrote a blogpost":http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended/ about adding .gemspecs to your repositories &ldquo;as intended&rdquo;. Be sure to read it.
 
-I started thinking about other solutions to the initial problem of people updating .gemspecs and wondered; &ldquo;Why are we putting our .gemspecs in our Rakefiles?&rdquo;. Like I said; &ldquo;When using Jeweler, you put your gem information in your Rakefile and generate your .gemspec when you need it.&rdquo;, that seems strange since the Rakefile isn't really a place for gem information. Right? 
+I started thinking about other solutions to the initial problem of people updating .gemspecs and wondered; &ldquo;Why are we putting our .gemspecs in our Rakefiles? Is the Rakefile really a place for gem information?
 
-I went out and did my research. From the replies to my blogpost, a lot of people were just updating their .gemspecs themselves. I opened one of my .gemspec files and didn't remember why I had to generate all this.
+From the replies to my blogpost, a lot of people were just updating their .gemspecs themselves. I opened one of my .gemspec files and didn't remember why I had to generate all this.
 
-So I went looking for a more minimal way to build and release my gems and found "mg(minimal gem)":http://github.com/sr/mg, which simply builds gems and publishes them to "Rubygems":http://rubygems.org/ using Rake. All you have to do is throw this into your Rakefile;
+You dont _need_ a tool to generate a .gemspec for you, it's as simple as:
 
-bc. require "mg"
-MG.new("yourgem.gemspec")
+<pre>
+Gem::Specification.new do |gem|
+  gem.name    = 'gem'
+  gem.version = '0.0.1'
+  gem.date    = Date.today.to_s
+  
+  gem.summary = "an awesome gem"
+  gem.description = "extended description"
+  
+  gem.authors  = ['Me Myself', 'One Other']
+  gem.email    = 'me@example.com'
+  gem.homepage = 'http://github.com/user/mylib'
+  
+  # ensure the gem is built out of versioned files
+  gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
+                  'README*', 'LICENSE*'] & `git ls-files -z`.split("\0")
+end
+</pre>
 
-Now, you write the .gemspec yourself without having to put anything in your Rakefile and use the Rake tasks mg provides to push, install and package your gem.
+The file is easy to read and easy to update. To release a gem, do:
 
-This solves the issue of having your gem information in your repository twice -- in your Rakefile and in your .gemspec -- and will probably keep people from updating it unintentionally when patching your gem. After all, it's not as simple as running @rake .gemspec@ anymore.
+<pre>
+$ gem build gem.gemspec
+$ gem push gem-0.0.1.gem
+</pre>
+
+This solves the issue of having your gem information in your repository twice -- in your Rakefile and in your .gemspec -- and will probably keep people from updating it unintentionally when patching your gem. 
 
 So, In my previous article I didn't consider installing gems from git or a local path. Right now, you _do_ need your .gemspec in your repository when you want your users to be able to do that. The problem of people touching your .gemspecs can -- to a certain extent -- be solved by not generating your .gemspec, but writing it yourself.
-
-So, what do you think? Thanks a lot to everyone who commented on yesterday's article, it made me think about the whole thing in a completely different way. 
