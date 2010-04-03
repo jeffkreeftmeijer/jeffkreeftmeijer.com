@@ -19,3 +19,6 @@ Still, lots of people -- even the cool kids -- can't kill their old habits. Lets
 bc. *.gemspec
 
 Then, @rm [yourgem].gemspec@ from your repo and tell all your friends to read this post and do the same. Let's do this. Who's with me?
+
+<em>Update (03 Apr)</em>: This post has a follow-up. Be sure to read "&ldquo;Don't put your *.gemspec in your Rakefile&rdquo;":http://jeffkreeftmeijer.com/2010/dont-put-your-gemspec-in-your-rakefile/ too.
+  
