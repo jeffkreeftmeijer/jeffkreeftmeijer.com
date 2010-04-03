@@ -26,7 +26,7 @@ If you load a library like this, it _does_ need to have a .gemspec in its code i
 
 "@joshpeek suggests":http://twitter.com/joshpeek/statuses/11489775203 that Jeweler shouldn't even have to write a .gemspec file, but "@wycats eventually wrote a blogpost":http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended/ about adding .gemspecs to your repositories &ldquo;as intended&rdquo;. Be sure to read it.
 
-I started thinking about other solutions to the initial problem of people updating .gemspecs and wondered; &ldquo;Why are we putting our .gemspecs in our Rakefiles? Is the Rakefile really a place for gem information?
+I started thinking about other solutions to the initial problem of people updating .gemspecs and wondered; Why are we putting our .gemspecs in our Rakefiles? Is the Rakefile really a place for gem information?
 
 From the replies to my blogpost, a lot of people were just updating their .gemspecs themselves. I opened one of my .gemspec files and didn't remember why I had to generate all this.
 
