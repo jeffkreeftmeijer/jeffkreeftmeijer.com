@@ -39,6 +39,6 @@ Now, you write the .gemspec yourself without having to put anything in your Rake
 
 This solves the issue of having your gem information in your repository twice -- in your Rakefile and in your .gemspec -- and will probably keep people from updating it unintentionally when patching your gem. After all, it's not as simple as running @rake .gemspec@ anymore.
 
-So, In my previous article I didn't consider installing gems from git or a local path. Right now, you _do_ need your .gemspec in your repository when you want your users to be able to do that. The problem of people touching your .gemspecs can -- to a certain extend -- be solved by not generating your .gemspec, but writing it yourself.
+So, In my previous article I didn't consider installing gems from git or a local path. Right now, you _do_ need your .gemspec in your repository when you want your users to be able to do that. The problem of people touching your .gemspecs can -- to a certain extent -- be solved by not generating your .gemspec, but writing it yourself.
 
 So, what do you think? Thanks a lot to everyone who commented on yesterday's article, it made me think about the whole thing in a completely different way. 
