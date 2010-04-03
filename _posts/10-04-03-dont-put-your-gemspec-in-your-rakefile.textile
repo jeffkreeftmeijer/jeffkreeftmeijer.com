@@ -1,8 +1,7 @@
 ---
 layout: post
-title: Don't put your .gemspec in your Rakefile
+title: Don't put your *.gemspec in your Rakefile
 excerpt: Why .gemspecs in repositories aren't as stupid as I thought, Jeweler and mg.
-published: false
 ---
 
 Yesterday I wrote "&ldquo;.gitignore your *.gemspec&rdquo;":http://jeffkreeftmeijer.com/2010/gitignore-your-gemspec/, an article about how annoying it is to have your .gemspec in your repository.
@@ -25,20 +24,20 @@ gem 'yourgem', :path => '~/code/yourgem.git'
 
 This will fetch the gem from the git repository or local path and _does_ need the .gemspec. This means you won't be able to do this with gems that don't have a .gemspec in their git repository.
 
-"@joshpeek's idea":http://twitter.com/joshpeek/statuses/11489775203 is great when talking about precific gem releases, but installing gems from git or a local path has its charms as well. "@wycats eventually wrote a blogpost":http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended/ about adding .gemspecs to your repositories &ldquo;as intended&rdquo;.
+"@joshpeek's idea":http://twitter.com/joshpeek/statuses/11489775203 is great when talking about precific gem releases, but installing gems from git or a local path has its charms as well. "@wycats eventually wrote a blogpost":http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended/ about adding .gemspecs to your repositories &ldquo;as intended&rdquo;. Be sure to read it.
 
-I started thinking about other solutions to the initial problem of people updating .gemspecs and wondered; &ldquo;Why are we putting our .gemspecs in our Rakefiles?&rdquo;. Like I said; &ldquo;When using Jeweler, you put your gem information in your Rakefile and generate your .gemspec when you need it.&rdquo;, that seems strange since the .gemspec should hold the gem information. Right? 
+I started thinking about other solutions to the initial problem of people updating .gemspecs and wondered; &ldquo;Why are we putting our .gemspecs in our Rakefiles?&rdquo;. Like I said; &ldquo;When using Jeweler, you put your gem information in your Rakefile and generate your .gemspec when you need it.&rdquo;, that seems strange since the Rakefile isn't really a place for gem information. Right? 
 
-I went out and did my research. From the replies to my blogpost, a lot of people were just updating their .gemspecs themselves. I opened my .gemspec and didn't remember why I had to generate all this.
+I went out and did my research. From the replies to my blogpost, a lot of people were just updating their .gemspecs themselves. I opened one of my .gemspec files and didn't remember why I had to generate all this.
 
 So I went looking for a more minimal way to build and release my gems and found "mg(minimal gem)":http://github.com/sr/mg, which simply builds gems and publishes them to "Rubygems":http://rubygems.org/ using Rake. All you have to do is throw this into your Rakefile;
 
 bc. require "mg"
 MG.new("yourgem.gemspec")
 
-Now, you write your .gemspec yourself without having to put anything in your Rakefile and use the Rake tasks mg provides to push, install and package your gem.
+Now, you write the .gemspec yourself without having to put anything in your Rakefile and use the Rake tasks mg provides to push, install and package your gem.
 
-This solves the issue of having your gem information in your repository twice -- in your Rakefile and in your .gemspec -- and will probably keep people from updating it unintentionally when patching your .gemspec. After all, it's not as simple as running @rake .gemspec@ anymore.
+This solves the issue of having your gem information in your repository twice -- in your Rakefile and in your .gemspec -- and will probably keep people from updating it unintentionally when patching your gem. After all, it's not as simple as running @rake .gemspec@ anymore.
 
 So, In my previous article I didn't consider installing gems from git or a local path. Right now, you _do_ need your .gemspec in your repository when you want your users to be able to do that. The problem of people touching your .gemspecs can -- until certain extend -- be solved by not generating your .gemspec, but writing it yourself.
 
