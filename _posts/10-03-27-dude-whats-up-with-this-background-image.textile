@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "&ldquo;Dude, what's up with this background image?&rdquo;"
-excerpt: About the mobypicture auto website background image fetcher.
+excerpt: About the mobypicture-auto-website-background-image-fetcher.
 ---
                                                                                                              
 I've always quite liked the scaling background image on "the Fronteers website":http://fronteers.nl/, so I stole their idea to give my website some pizazz. 

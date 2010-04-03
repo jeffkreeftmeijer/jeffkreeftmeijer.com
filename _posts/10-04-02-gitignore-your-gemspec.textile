@@ -1,7 +1,7 @@
 ---
 layout: post
 title: .gitignore your *.gemspec
-excerpt: Being overly dramatic about putting the gemspec in your gitignore file
+excerpt: Being overly dramatic about putting the *.gemspec in your gitignore file to keep people from patching it.
 ---
 
 I read "@pengwynn's tweet":http://twitter.com/pengwynn/status/11321765532 asking people to stop touching his gemspec and I totally agreed, it's pretty annoying that people keep sending patches for your gems with updated gemspecs, right? Updating the gemspec is the gem owners job. Stop it.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Don't put your *.gemspec in your Rakefile
-excerpt: Why .gemspecs in repositories aren't as stupid as I thought, Jeweler and mg.
+excerpt: Why *.gemspecs in repositories aren't as stupid as I thought, why Rakefiles don't have anything to do with anything, Jeweler and mg.
 ---
 
 Yesterday I wrote "&ldquo;.gitignore your *.gemspec&rdquo;":http://jeffkreeftmeijer.com/2010/gitignore-your-gemspec/, an article about how annoying it is to have your .gemspec in your repository.
