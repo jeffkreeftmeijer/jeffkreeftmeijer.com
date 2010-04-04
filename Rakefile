@@ -22,4 +22,9 @@ namespace :moby do
   task :fetch do
     Moby.fetch
   end
+
+  desc 'fetch the newest image every fifteen minutes'
+  task :loop do
+    loop { Moby.fetch; sleep 900 }
+  end
 end
