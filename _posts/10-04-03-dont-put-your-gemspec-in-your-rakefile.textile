@@ -34,7 +34,7 @@ You dont _need_ a tool to generate a .gemspec for you, it's as simple as:
 
 <pre>
 Gem::Specification.new do |gem|
-  gem.name    = 'gem'
+  gem.name    = 'yourgem'
   gem.version = '0.0.1'
   gem.date    = Date.today.to_s
   
@@ -43,7 +43,7 @@ Gem::Specification.new do |gem|
   
   gem.authors  = ['Me Myself', 'One Other']
   gem.email    = 'me@example.com'
-  gem.homepage = 'http://github.com/user/mylib'
+  gem.homepage = 'http://github.com/user/yourgem'
   
   # ensure the gem is built out of versioned files
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
