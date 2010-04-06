@@ -51,7 +51,7 @@ Gem::Specification.new do |gem|
 end
 </pre>
 
-If you're extremely lazy, check out "@mislav's TextMate snippet":http://gist.github.com/356455 that generates a new gemspec just by typing &ldquo;gemspec&rdquo;.
+If you're extremely lazy, check out "@mislav's TextMate snippet":http://gist.github.com/356455 that generates a new gemspec just by typing @gemspec@.
 
 The file is easy to read and easy to update. To release a gem, do:
 
