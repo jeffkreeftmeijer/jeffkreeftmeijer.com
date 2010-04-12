@@ -2,12 +2,10 @@
 layout: post
 title: Warden
 excerpt: 
-published: false
+published: true
 ---
 
 There are a lot of authentication libraries out there, which can do about everything like sending confirmation emails and resetting passwords. I didn't really want that. My plan was to write a little application that could authenticate using "Github":http://github.com credentials.
-
-So, when a user logs in with his Github credentials, the application calls to "their API":http://develop.github.com/ to fetch the user's data. We'll store it, together with the user's token -- encrypted, of course -- so we don't have to call out every time a user tries to log in.
 
 This meant I didn't need email confirmations, password reset functionality or even registration. Also, I didn't want to log in using an email address and password or check my own database if the user exists. So, no "Authlogic":http://github.com/binarylogic/authlogic or "Clearance":http://github.com/thoughtbot/clearance for me. I had to go find a more low-level solution.
 
@@ -17,15 +15,13 @@ It didn't take long before I found "Warden":http://github.com/hassox/warden, a &
 
 bq. &ldquo; Warden is rack based middleware, designed to provide a mechanism for authentication in Ruby web applications. It is a common mechanism that fits into the Rack Machinery to offer powerful options for authentication. &rdquo;
 
-Remember: it does _not_ do registration, confirmation and the like. If you want anything like that, use "Devise":http://github.com/plataformatec/devise, a Rails authentication system _based on_ Warden.
-
-I used "rails_warden":http://github.com/hassox/rails_warden, but there's a pretty good "setup page in the Warden wiki":http://wiki.github.com/hassox/warden/setup, so you should be fine if you're not using Rails.
+Remember: it does _not_ do registration, confirmation and the like. If you want anything like that, use "Devise":http://github.com/plataformatec/devise, a Rails authentication system _based on_ Warden. "@rbates":http://twitter.com/rbates also did a "great Railscast on Devise":http://media.railscasts.com/ipod_videos/209_introducing_devise.m4v.
 
 bq. &ldquo; Warden uses the concept of cascading strategies to determine if a request should be authenticated.  Warden will try strategies one after another until either one succeeds, no Strategies are found relevant or a strategy fails. &rdquo;
 
 An example of a "strategy":http://wiki.github.com/hassox/warden/strategies would be a user logging in with his username and password:
 
-<pre><code>Warden::Strategies.add(:password) do
+<pre><code>Warden::Strategies.add(:my_strategy) do
   
   def valid?
     params[:username] && params[:password]
@@ -45,5 +41,4 @@ The @valid?@ method checks if the strategy is valid. In the example above it wil
 
 @authenticate!@ calls @fail!@ with a message when the authentication failed. If the authentication passes, it'll pass the @User@ instance to @success!@. Pretty simple.
 
-
-"rails_warden_mongoid_example":http://github.com/HP/rails_warden_mongoid_example
+I'm not going into any specific stuff here, but if you're using Rails you might want to check out "rails_warden_mongoid_example":http://github.com/HP/rails_warden_mongoid_example. It's a pretty simple and understandable app that shows you how to use Warden. Also, be sure to read the "wiki":http://wiki.github.com/hassox/warde, it has pretty good "setup":http://wiki.github.com/hassox/warden/setup and "example":http://wiki.github.com/hassox/warden/examples pages and there's a lot more cool stuff in there.
