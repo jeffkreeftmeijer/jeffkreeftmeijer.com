@@ -15,7 +15,7 @@ It didn't take long before I found "Warden":http://github.com/hassox/warden, a &
 
 bq. &ldquo;Warden is rack based middleware, designed to provide a mechanism for authentication in Ruby web applications. It is a common mechanism that fits into the Rack Machinery to offer powerful options for authentication.&rdquo;
 
-Remember: it does _not_ do registration, confirmation and the like. If you want anything like that, use "Devise":http://github.com/plataformatec/devise, a Rails authentication system _based on_ Warden. "@rbates":http://twitter.com/rbates also did a "great Railscast on Devise":http://media.railscasts.com/ipod_videos/209_introducing_devise.m4v.
+Remember: it does _not_ do registration, confirmation and the like. If you want anything like that, use "Devise":http://github.com/plataformatec/devise, a Rails authentication system _based on_ Warden. "@rbates":http://twitter.com/rbates also did a "great Railscast on Devise":http://railscasts.com/episodes/209-introducing-devise.
 
 bq. &ldquo;Warden uses the concept of cascading strategies to determine if a request should be authenticated.  Warden will try strategies one after another until either one succeeds, no Strategies are found relevant or a strategy fails.&rdquo;
 
