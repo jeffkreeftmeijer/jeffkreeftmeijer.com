@@ -11,7 +11,7 @@ This meant I didn't need email confirmations, password reset functionality or ev
 
 It didn't take long before I found "Warden":http://github.com/hassox/warden, a &ldquo;General Rack Authentication Framework&rdquo;.
 
-<img src="/images/jail.jpg" alt="Warden, General Rack Authentication Framework"/>
+<img src="http://jeffkreeftmeijer.com/images/jail.jpg" alt="Warden, General Rack Authentication Framework"/>
 
 bq. &ldquo;Warden is rack based middleware, designed to provide a mechanism for authentication in Ruby web applications. It is a common mechanism that fits into the Rack Machinery to offer powerful options for authentication.&rdquo;
 
