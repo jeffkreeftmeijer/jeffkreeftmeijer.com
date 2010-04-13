@@ -2,7 +2,7 @@
 layout: post
 title: Warden
 excerpt: 
-published: true
+published: false
 ---
 
 There are a lot of authentication libraries out there, which can do about everything like sending confirmation emails and resetting passwords. I didn't really want that. My plan was to write a little application that could authenticate using "Github":http://github.com credentials.
