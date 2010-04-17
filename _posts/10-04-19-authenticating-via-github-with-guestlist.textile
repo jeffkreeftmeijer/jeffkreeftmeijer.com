@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Authenticating via Github with Guestlist
-excerpt: 
+excerpt: "Introducing Guestlist: a Rubygem for authentication using Github credentials."
 published: false
 ---
 
 In last week's article -- "Simple authentication with Warden":http://jeffkreeftmeijer.com/2010/simple-authentication-with-warden/ -- I explained that I wanted to allow users to login with their "Github":http://github.com credentials in a little application I'm working on.
 
-The idea is that everyone with a Github account can simply log in into the application by entering their Github username and token and we'll automatically create an account with information fetched from the "Github API":http://develop.github.com. If the user already exists in our database, we won't try to fetch anything. We already stored it.
+The idea is that everyone with a Github account can simply log into the application by entering their Github username and token and we'll automatically create an account with information fetched from the "Github API":http://develop.github.com. If the user already exists in our database, we won't try to fetch anything. We already stored it.
 
 I started working on it and realized that this may also come in handy for somebody else sometime, so  I named it "Guestlist":http://github.com/jeffkreeftmeijer/guestlist and released it.
 
@@ -27,7 +27,7 @@ And run:
 
 bc. rake gems:install
 
-Include Guestlist in your user model (mine is called @User@):
+Include @Guestlist@ in your user model (mine is called @User@):
 
 <pre><code>class User
   # It works with ActiveRecord too. ;)
