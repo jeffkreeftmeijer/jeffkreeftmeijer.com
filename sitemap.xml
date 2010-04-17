@@ -18,7 +18,7 @@ layout: none
 {% for post in site.posts %}
    <url>
       <loc>http://jeffkreeftmeijer.com{{ post.url }}</loc>
-      <lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod>
+      <lastmod>{{ post.date | date: '%Y-%m-%d' }}</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
    </url>
