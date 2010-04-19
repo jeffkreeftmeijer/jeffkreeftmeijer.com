@@ -45,12 +45,21 @@ div#wrapper
 	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size:15px;
 	line-height:150%;
-	margin:50px auto;
+	margin:50px auto 0px auto;
 	opacity:0.9px;
 	padding:20px;
 	text-shadow:0 1px 0 #fff;
 	width:450px;
 }
+
+div#wrapper img
+{
+	-moz-border-radius:5px;
+	-moz-box-shadow:0 1px 0 #fff;
+	-webkit-border-radius:5px;
+	-webkit-box-shadow:0 1px 0 #fff;
+}
+
 
 div#header
 {
@@ -68,6 +77,13 @@ div#header li
 {
 	float:left;
 	margin:0 0 0 20px;
+}
+
+div#footer
+{
+  margin: 10px auto 50px auto;
+  width: 490px;
+  text-align: right;
 }
 
 div.post
@@ -143,14 +159,6 @@ p.date,p#footnote,p#footnote a,del,del a
 p#footnote
 {
 	font-size:13px;
-}
-
-img
-{
-	-moz-border-radius:5px;
-	-moz-box-shadow:0 1px 0 #fff;
-	-webkit-border-radius:5px;
-	-webkit-box-shadow:0 1px 0 #fff;
 }
 
 hr
