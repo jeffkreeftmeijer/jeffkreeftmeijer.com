@@ -6,7 +6,7 @@ layout: none
    <url>
       <loc>http://jeffkreeftmeijer.com/</loc>
       <lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod>
-      <changefreq>weekly</changefreq>
+      <changefreq>daily</changefreq>
       <priority>1</priority>
    </url>
    <url>
@@ -19,7 +19,7 @@ layout: none
    <url>
       <loc>http://jeffkreeftmeijer.com{{ post.url }}</loc>
       <lastmod>{{ post.date | date: '%Y-%m-%d' }}</lastmod>
-      <changefreq>daily</changefreq>
+      <changefreq>weekly</changefreq>
       <priority>0.8</priority>
    </url>
 {% endfor %}
