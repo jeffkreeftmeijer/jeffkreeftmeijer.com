@@ -5,7 +5,7 @@ excerpt: No registration or confirmation. Authentication middleware that gets th
 published: true
 ---
 
-There are a lot of Ruby authentication libraries out there, which can do about everything like sending confirmation emails and resetting passwords. I didn't really want that. My plan was to write a little application that could authenticate using "Github":http://github.com credentials (more on Github authentication in "&ldquo;Authenticating via Github with Guestlist&rdquo;":http://jeffkreeftmeijer.com/2010/authenticating-via-github-with-guestlist/).
+There are a lot of Ruby authentication libraries out there, which can do about everything like sending confirmation emails and resetting passwords. I didn't really want that. My plan was to write a little application that could authenticate using "Github":http://github.com credentials (more on Github authentication in "&ldquo;Authenticating via Github with Guestlist&rdquo;":http://jeffkreeftmeijer.com/2010/authenticating-via-github-with-guestlist).
 
 This meant I didn't need email confirmations, password reset functionality or even registration. Also, I didn't want to log in using an email address and password or check my own database to see if the user exists. So, no "Authlogic":http://github.com/binarylogic/authlogic or "Clearance":http://github.com/thoughtbot/clearance for me. I had to go find a more low-level solution.
 

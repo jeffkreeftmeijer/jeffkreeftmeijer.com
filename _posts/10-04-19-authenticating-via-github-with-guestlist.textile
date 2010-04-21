@@ -5,7 +5,7 @@ excerpt: "Introducing Guestlist: a Rubygem for user authentication using Github 
 published: true
 ---
 
-In last week's article -- "&ldquo;Simple authentication with Warden&rdquo;":http://jeffkreeftmeijer.com/2010/simple-authentication-with-warden/ -- I explained that I wanted to allow users to log in with their "Github":http://github.com credentials in a little application I'm working on.
+In last week's article -- "&ldquo;Simple authentication with Warden&rdquo;":http://jeffkreeftmeijer.com/2010/simple-authentication-with-warden -- I explained that I wanted to allow users to log in with their "Github":http://github.com credentials in a little application I'm working on.
 
 The idea is that everyone with a Github account can simply log into the application by entering their  username and token and we'll automatically create an account with information fetched from the "Github API":http://develop.github.com. If the user already exists in our database, we won't try to fetch anything. We already stored it.
 
@@ -46,7 +46,7 @@ bc. User.authenticate 'github_login', 'github_token'
 
 Guestlist will automatically create a new @User@ for you and return that, or false if you've entered a wrong login or token. The user's token is stored -- yes, encrypted -- , so next time you log in, it'll just authenticate you via the database. If the token changes for some strange reason, Guestlist will update your user record when you log in with your new token.
 
-Also, it works great with "Warden":http://jeffkreeftmeijer.com/2010/simple-authentication-with-warden/. Here's a strategy you can use:
+Also, it works great with "Warden":http://jeffkreeftmeijer.com/2010/simple-authentication-with-warden. Here's a strategy you can use:
 
 bc. def authenticate!
   u = User.authenticate(
@@ -56,4 +56,4 @@ bc. def authenticate!
   u.nil? ? fail!("Couldn't log in") : success!(u)
 end
 
-Have fun and don't forget to "submit your issues":github.com/jeffkreeftmeijer/guestlist/issues or "fork the project":http://github.com/jeffkreeftmeijer/guestlist if you have a great idea.
+Have fun and don't forget to "submit your issues":http://github.com/jeffkreeftmeijer/guestlist/issues or "fork the project":http://github.com/jeffkreeftmeijer/guestlist if you have a great idea.

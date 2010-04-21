@@ -8,7 +8,7 @@ I read "@pengwynn's tweet":http://twitter.com/pengwynn/status/11321765532 asking
 
 It didn't occur to me until I read "@qrush's response":http://twitter.com/qrush/status/11323012967.
 
-In the past, we had to push gemspecs to our repos to make github build gems. Newsflash; "Github stopped doing that":http://gems.github.com/.
+In the past, we had to push gemspecs to our repos to make github build gems. Newsflash; "Github stopped doing that":http://gems.github.com.
 
 Right now you're probably using "Jeweler":http://github.com/technicalpickles/jeweler to quickly generate a gemspec and release your gem.
 
@@ -20,5 +20,5 @@ bc. *.gemspec
 
 Then, @rm [yourgem].gemspec@ from your repo and tell all your friends to read this post and do the same. Let's do this. Who's with me?
 
-<em>Update (03 Apr)</em>: This post has a follow-up. Be sure to read "&ldquo;Don't put your *.gemspec in your Rakefile&rdquo;":http://jeffkreeftmeijer.com/2010/dont-put-your-gemspec-in-your-rakefile/ too.
+<em>Update (03 Apr)</em>: This post has a follow-up. Be sure to read "&ldquo;Don't put your *.gemspec in your Rakefile&rdquo;":http://jeffkreeftmeijer.com/2010/dont-put-your-gemspec-in-your-rakefile too.
   

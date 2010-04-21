@@ -4,7 +4,7 @@ title: Don't put your *.gemspec in your Rakefile
 excerpt: Why *.gemspecs in repositories aren't as stupid as I thought and why Rakefiles don't have anything to do with anything.
 ---
 
-Yesterday I wrote "&ldquo;.gitignore your *.gemspec&rdquo;":http://jeffkreeftmeijer.com/2010/gitignore-your-gemspec/, an article about how annoying it is to have your .gemspec in your repository.
+Yesterday I wrote "&ldquo;.gitignore your *.gemspec&rdquo;":http://jeffkreeftmeijer.com/2010/gitignore-your-gemspec, an article about how annoying it is to have your .gemspec in your repository.
 
 Just to be clear; I was _not_ talking about completely removing .gemspecs from gems and I was _not_ talking to people writing their .gemspecs themselves. My previous post was about using "Jeweler":http://github.com/technicalpickles/jeweler. When using Jeweler, you put your gem information in your Rakefile and generate your .gemspec when you need it. 
 
@@ -12,7 +12,7 @@ The problem I found with this was people unnecessarily updating the .gemspec fil
 
 I think I started a "discussion":http://search.twitter.com/search?q=gemspec&since=2010-04-02&rpp=50.
 
-"@rbates made a comment":http://twitter.com/rbates/status/11487541301 about five minutes after I posted. Here's the deal; "Bundler":http://gembundler.com/ has the ability bundle a library from its git repository or from a local path by specifying this in your Gemfile:
+"@rbates made a comment":http://twitter.com/rbates/status/11487541301 about five minutes after I posted. Here's the deal; "Bundler":http://gembundler.com has the ability bundle a library from its git repository or from a local path by specifying this in your Gemfile:
 
 <pre>
 # from git
@@ -24,7 +24,7 @@ gem 'yourgem', :path => '~/code/yourgem.git'
 
 If you load a library like this, it _does_ need to have a .gemspec in its code if it has any dependencies, otherwise Bundler will be unable to resolve and include these dependencies in the bundle.
 
-"@joshpeek suggests":http://twitter.com/joshpeek/statuses/11489775203 that Jeweler shouldn't even have to write a .gemspec file, but "@wycats eventually wrote a blogpost":http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended/ about adding .gemspecs to your repositories &ldquo;as intended&rdquo;. Be sure to read it.
+"@joshpeek suggests":http://twitter.com/joshpeek/statuses/11489775203 that Jeweler shouldn't even have to write a .gemspec file, but "@wycats eventually wrote a blogpost":http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended about adding .gemspecs to your repositories &ldquo;as intended&rdquo;. Be sure to read it.
 
 I started thinking about other solutions to the initial problem of people updating .gemspecs and wondered; Why are we putting our .gemspecs in our Rakefiles? Is the Rakefile really a place for gem information?
 
