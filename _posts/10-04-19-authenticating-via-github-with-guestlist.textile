@@ -56,4 +56,4 @@ bc. def authenticate!
   u.nil? ? fail!("Couldn't log in") : success!(u)
 end
 
-Have fun and don't forget to "submit your issues":github.com/jeffkreeftmeijer/guestlist/issues or "fork the project":http://github.com/jeffkreeftmeijer/guestlist/fork if you have a great idea.
+Have fun and don't forget to "submit your issues":github.com/jeffkreeftmeijer/guestlist/issues or "fork the project":http://github.com/jeffkreeftmeijer/guestlist if you have a great idea.
