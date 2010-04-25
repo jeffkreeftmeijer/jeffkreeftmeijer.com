@@ -6,7 +6,7 @@ excerpt: About the mobypicture-auto-website-background-image-fetcher.
                                                                                                              
 I've always quite liked the scaling background image on "the Fronteers website":http://fronteers.nl, so I stole their idea to give my website some pizazz. 
 
-Since I didn't have a great background -- nor am I graphically sane enough to think of something -- I decided to do something fun and fetch my latest "Mobypicture":http://mobypicture.com photo. That's why there's always a completely irrelevant image as my website's background, like "@roy ordering plane tickets":http://www.mobypicture.com/user/jkreeftmeijer/view/6221055 or "@antekpiechink getting us stroopwafel McFlurries":http://www.mobypicture.com/user/jkreeftmeijer/view/6204421. 
+Since I didn't have a great background -- nor am I graphically sane enough to think of something -- I decided to do something fun and fetch my latest "Mobypicture":http://mobypicture.com photo. That's why there's always a completely irrelevant image as my website's background, like "@roy ordering plane tickets":http://www.mobypicture.com/user/jkreeftmeijer/view/6221055 or "@antekpiechink getting us stroopwafel McFlurry's":http://www.mobypicture.com/user/jkreeftmeijer/view/6204421. 
 
 <img src="http://jeffkreeftmeijer.com/images/homepage_screenshot.jpg" alt="latest Mobypicture photo on the background"/>
 

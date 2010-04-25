@@ -30,7 +30,7 @@ I started thinking about other solutions to the initial problem of people updati
 
 From the replies to my blogpost, a lot of people were just updating their .gemspecs themselves. I opened one of my .gemspec files and didn't remember why I had to generate all this.
 
-You dont _need_ a tool to generate a .gemspec for you, it's as simple as:
+You don't _need_ a tool to generate a .gemspec for you, it's as simple as:
 
 <pre>
 Gem::Specification.new do |gem|
