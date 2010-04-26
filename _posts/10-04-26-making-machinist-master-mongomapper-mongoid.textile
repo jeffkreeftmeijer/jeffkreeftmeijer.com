@@ -2,10 +2,10 @@
 layout: post
 title: Making Machinist master MongoMapper & Mongoid
 excerpt: Using machinist_mongo to use Machinist with mongoDB ORMs.
-published: false
+published: true
 ---
 
-A couple of months back, I wrote a minimal "install guide":http://github.com/nmerouze/machinist_mongo/commit/dad976b321881657753d50d37bd151b268ab91bd for "machinist_mongomapper":http://github.com/nmerouze/machinist_mongo by "@nmerouze":http://twitter.com/nmerouze and "@shingara":http://twitter.com/shingara. Back then it was called machinist_mongomapper, it didn't support "Mongoid":http://mongoid.com yet and the rails beta hadn't even been released yet, so I think it's about time for an update.
+A couple of months back, I wrote a minimal "install guide":http://github.com/nmerouze/machinist_mongo/commit/dad976b321881657753d50d37bd151b268ab91bd for "machinist_mongo":http://github.com/nmerouze/machinist_mongo by "@nmerouze":http://twitter.com/nmerouze and "@shingara":http://twitter.com/shingara. Back then it was called machinist_mongomapper, it didn't support "Mongoid":http://mongoid.com yet and the Rails beta hadn't even been released yet, so I think it's about time for an update.
 
 You know "Machinist":http://github.com/notahat/machinist, right? Here's the short explanation:
 
@@ -31,15 +31,15 @@ And run:
 
 bc. rake gems:install
 
-Now create your @blueprints.rb@ file as you normally would, only "Mongoid":http://mongoid.com or "MongoMapper":http://mongomapper.com instead of ActiveRecord:
+Now create your @spec/blueprints.rb@ or @test/blueprints.rb@ file as you normally would, only using "Mongoid":http://mongoid.com or "MongoMapper":http://mongomapper.com instead of ActiveRecord:
 
 bc. require 'machinist/mongo_mapper' # or mongoid
 require 'sham'
 
-Don't forget to require your new blueprints file in your @spec_helper@ (or @test_helper@):
+Don't forget to require the new @blueprints.rb@ file in your @spec_helper@ (or @test_helper@):
 
 bc. require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 
 And you're all set. Again, be sure read "Machinist's README":http://github.com/notahat/machinist to find out how to create your objects and get this thing running.
 
-If you're using some other mongoDB ORM, please be sure to write a adapter for that too. Also, can anyone tell me why this isn't merged into Machinist itself? Because I think it should.
+machinist_mongo aims to support _all_ "mongoDB":http://www.mongodb.org/ ORMs, so If you're using something other than MongoMapper or Mongoid, please be sure to write a adapter for that too. Also, can anyone tell me why this isn't merged into Machinist itself? Because I think it should.
