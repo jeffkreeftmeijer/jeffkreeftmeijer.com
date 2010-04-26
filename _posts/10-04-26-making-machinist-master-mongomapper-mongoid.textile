@@ -42,4 +42,4 @@ bc. require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 
 And you're all set. Again, be sure read "Machinist's README":http://github.com/notahat/machinist to find out how to create your objects and get this thing running.
 
-machinist_mongo aims to support _all_ "mongoDB":http://www.mongodb.org/ ORMs, so If you're using something other than MongoMapper or Mongoid, please be sure to write a adapter for that too. Also, can anyone tell me why this isn't merged into Machinist itself? Because I think it should.
+machinist_mongo aims to support _all_ "mongoDB":http://www.mongodb.org/ ORMs, so If you're using something other than MongoMapper or Mongoid, please be sure to write a adapter for it. Also, can anyone tell me why this isn't merged into Machinist itself? Because I think it should.
