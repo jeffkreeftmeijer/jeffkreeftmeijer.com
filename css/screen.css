@@ -15,6 +15,11 @@ body
 	background-size:100% auto;
 }
 
+h2,h3,h4,h5,h6
+{
+  color: #333;
+}
+
 p,h2,h3,h4,h5,h6,ul
 {
 	margin:20px 0;
@@ -27,7 +32,15 @@ a
 	text-decoration:none;
 }
 
-a:hover
+span#eighty{
+  color:#007236;
+}
+
+span#beans{
+  color:#72bf44;
+}
+
+a:hover, a:hover span#eighty, a:hover span#beans
 {
 	color:#444;
 }
