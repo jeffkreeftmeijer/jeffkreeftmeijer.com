@@ -1,0 +1,16 @@
+---
+layout: post
+title: "Steak: because Cucumber is for vegetarians!"
+excerpt: 
+published: true
+---
+
+I'm not going to tell you "why you should write integration tests":http://robots.thoughtbot.com/post/543043259/unit-and-functional-tests-are-as-useful-as-100-code, but you should. I used "Cucumber":http://cukes.info/ for a while now and I love it, but I think writing my tests in a &ldquo; business-readable domain-specific language&rdquo; and translating them into Ruby using step definitions is a bit of a hassle. And I'm not a vegetarian.
+
+"@cavalle(Luismi Cavallé)":http://twitter.com/cavalle recently released "Steak":http://github.com/cavalle/steak:
+
+<img src="http://www.faqs.org/photo-dict/photofiles/list/1110/3610raw_steak.jpg" style="width:450px"/>
+
+bq. &ldquo;Steak is like Cucumber but in plain Ruby. No explicit givens, whens or thens. No steps, no english, just Ruby: RSpec and Steak. That’s all.&rdquo;
+
+Right now the stable version of Steak only works with Rails 2.x and "RSpec":http://rspec.info/ 1.x, but there's a "Rails 3 branch":http://github.com/cavalle/steak/tree/rails3 where some work is being done to support Rails 3.x and RSpec 2.x. I've been using that one and had no problems whatsoever.

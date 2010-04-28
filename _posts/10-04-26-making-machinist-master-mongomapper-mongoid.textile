@@ -9,9 +9,9 @@ A couple of months back, I wrote a minimal "install guide":http://github.com/nme
 
 You know "Machinist":http://github.com/notahat/machinist, right? Here's the short explanation:
 
-<blockquote>Fixtures aren't fun. Machinist is.
+<blockquote>&ldquo;Fixtures aren't fun. Machinist is.
 
-Machinist makes it easy to create test data within your tests. It generates data for the fields you don't care about, and constructs any necessary associated objects, leaving you to only specify the fields you do care about in your tests.</blockquote>
+Machinist makes it easy to create test data within your tests. It generates data for the fields you don't care about, and constructs any necessary associated objects, leaving you to only specify the fields you do care about in your tests.&rdquo;</blockquote>
 
 I'm not going to go into Machinist itself here, so be sure to read the "README":http://github.com/notahat/machinist.
 
