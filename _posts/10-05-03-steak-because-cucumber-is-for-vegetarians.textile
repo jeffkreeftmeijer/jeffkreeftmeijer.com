@@ -5,7 +5,7 @@ excerpt:
 published: true
 ---
 
-I'm not going to tell you "why you should write integration tests":http://robots.thoughtbot.com/post/543043259/unit-and-functional-tests-are-as-useful-as-100-code, but you should. I used "Cucumber":http://cukes.info/ for a while now and I love it, but I think writing my tests in a &ldquo; business-readable domain-specific language&rdquo; and translating them into Ruby using step definitions is a bit of a hassle. And I'm not a vegetarian.
+I'm not going to tell you "why you should write acceptance tests":http://robots.thoughtbot.com/post/543043259/unit-and-functional-tests-are-as-useful-as-100-code, but you should. I used "Cucumber":http://cukes.info/ for a while now and I love it, but I think writing my tests in a &ldquo;business-readable domain-specific language&rdquo; and translating them into Ruby using step definitions is a bit of a hassle. And I'm not a vegetarian.
 
 "@cavalle(Luismi Cavallé)":http://twitter.com/cavalle recently released "Steak":http://github.com/cavalle/steak:
 
@@ -13,4 +13,36 @@ I'm not going to tell you "why you should write integration tests":http://robots
 
 bq. &ldquo;Steak is like Cucumber but in plain Ruby. No explicit givens, whens or thens. No steps, no english, just Ruby: RSpec and Steak. That’s all.&rdquo;
 
-Right now the stable version of Steak only works with Rails 2.x and "RSpec":http://rspec.info/ 1.x, but there's a "Rails 3 branch":http://github.com/cavalle/steak/tree/rails3 where some work is being done to support Rails 3.x and RSpec 2.x.
+Right now the stable version of Steak only works with Rails 2.x and "RSpec":http://rspec.info/ 1.x, but there's a "Rails 3 branch":http://github.com/cavalle/steak/tree/rails3 where some work is being done to support Rails 3.x and RSpec 2.x. I've been using that one, but this tutorial should also be fine for you when you're on Rails 2.x.
+
+h3. Installation
+
+Ok, throw this into your @Gemfile@ (I'm specifying the @0.4.0.a3@ version, that's the most recent unstable Rails 3.x alpha release):
+
+bc. gem 'steak', '0.4.0.a3'
+
+And install your bundle:
+
+bc. $ bundle install
+
+Or — if you’re using Rails 2.x — put this in @config/environment.rb@:
+
+bc. config.gem 'steak'
+
+And run:
+
+bc. $ rake gems:install RAILS_ENV=test
+
+Now you can use the Steak generators. To set everything up, just run:
+
+bc. $ rails generate steak
+
+Please remember to use @script/generate@ instead of @rails generate@ when on Rails 2.x.
+
+The generator created the @spec/acceptance@ directory in your project, in which you can find @acceptance_helper.rb@ and the @support@ directory. The @support@ directory holds @paths.rb@ -- which should be familiar if you've used Cucumber before -- and @helpers.rb@.
+
+h3. Acceptance specs
+
+Now, let's write our first acceptance spec -- no, we're not calling it a &ldquo;feature&rdquo;. It's a spec. -- by using another generator (I'm creating a users spec here):
+
+bc. $ rails generate acceptance_spec users
