@@ -5,7 +5,7 @@ excerpt:
 published: true
 ---
 
-I'm not going to tell you "why you should write acceptance (or integration) tests":http://robots.thoughtbot.com/post/543043259/unit-and-functional-tests-are-as-useful-as-100-code, but you should. I used "Cucumber":http://cukes.info/ for a while now and I love it, but I think writing my tests in a &ldquo;business-readable domain-specific language&rdquo; and translating them into Ruby using step definitions is a bit too much sometimes. And I'm not a vegetarian.
+I'm not going to tell you "why you should write acceptance (or integration) tests":http://robots.thoughtbot.com/post/543043259/unit-and-functional-tests-are-as-useful-as-100-code, but you should. I used "Cucumber":http://cukes.info/ for a while now and I love it, but I think writing my tests in a &ldquo;"business-readable domain-specific language":http://www.martinfowler.com/bliki/BusinessReadableDSL.html&rdquo; and translating them into Ruby using step definitions is a bit too much sometimes. And I'm not a vegetarian.
 
 Luckily, we have "Steak":http://github.com/cavalle/steak by "@cavalle(Luismi Cavallé)":http://twitter.com/cavalle:
 
@@ -106,3 +106,11 @@ h3. Running your spec
 You might have guessed, but running your acceptance specs is exactly the same as running any other spec. After all, it's just a minimal layer on top of RSpec:
 
 bc. $ spec spec/acceptance/articles_spec.rb
+
+h3. Cucumber vs Steak?
+
+Cucumber is highly focussed on creating a business-readable DSL, and does so perfectly. I understand the thought behind making stakeholders able to read what's going on in their projects, but I wonder how many people actually do this. Also, one might argue that -- from a Ruby programmer's perspective -- Steak's specs are in fact more readable than Cucumber's.
+
+Steak takes away the extra step of translating everything from English to Ruby and is incredibly easy to learn (especially when you have some RSpec experience). It's completely incomparable to Cucumber though and which one to choose is simply a matter of opinion.
+
+I think I'll have mine medium rare.
