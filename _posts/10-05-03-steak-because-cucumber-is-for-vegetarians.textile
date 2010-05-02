@@ -19,10 +19,12 @@ h3. Installation
 
 Ok, throw this into your @Gemfile@ (I'm specifying the @0.4.0.a3@ version for Steak, that's the most recent alpha release from the @rails3@ branch). Also, I'll be using "Capybara":http://github.com/jnicklas/capybara for this example:
 
-bc. group :test do
+{% highlight ruby %}
+group :test do
   gem 'steak', '0.4.0.a3'
   gem 'capybara'
 end
+{% endhighlight %}
 
 And install your bundle:
 
@@ -30,8 +32,10 @@ bc. $ bundle install
 
 Or — if you’re using Rails 2.x — put this in @config/environment.rb@:
 
-bc. config.gem 'steak'
+{% highlight ruby %}
+config.gem 'steak'
 config.gem 'capybara'
+{% endhighlight %}
 
 And run:
 
@@ -53,7 +57,8 @@ bc. $ rails generate acceptance_spec articles
 
 Steak generated @spec/acceptance/articles_spec.rb@, which looks like this:
 
-<pre><code>require File.dirname(__FILE__) + '/acceptance_helper'
+{% highlight ruby %}
+require File.dirname(__FILE__) + '/acceptance_helper'
 
 feature "Feature name", %q{
   In order to ...
@@ -65,26 +70,30 @@ feature "Feature name", %q{
     true.should == true
   end
   
-end</code></pre>
+end
+{% endhighlight %}
 
 If you're a Cucumber user, the feature description should look familiar. I'll try to describe what I'm doing like this:
 
-bc. feature "Articles", %q{
+{% highlight ruby %}
+feature "Articles", %q{
   In order to have an awesome blog
   As an author
   I want to create and manage articles
 } do
+{% endhighlight %}
 
 Great. On to our first scenario. In the articles index we want to show all articles in a list.
 
-<pre><code>scenario "Article index" do
+{% highlight ruby %}
+scenario "Article index" do
   Article.create!(:title => 'One')
   Article.create!(:title => 'Two')
   visit '/articles'
   page.should have_content('One')
   page.should have_content('Two')
 end
-</code></pre>
+{% endhighlight %}
 
 First, I create two articles called &ldquo;One&rdquo; and &ldquo;Two&rdquo; (please, use a tool like "Machinist":http://github.com/notahat/machinist for that). Then I visit the articles index and check if the article titles show up. Really simple.
 
@@ -92,14 +101,16 @@ h3. Minimalist acceptance testing
 
 Steak just provides some aliases (like @scenario@ and @feature@) for RSpec's methods &ldquo;providing you with the language of acceptance testing&rdquo;. Here's a snippet from  "Steak's library":http://github.com/cavalle/steak/blob/master/lib/steak.rb:
 
-<pre><code>module Spec::Example::ExampleGroupMethods
+{% highlight ruby %}
+module Spec::Example::ExampleGroupMethods
   alias scenario example
   alias background before
 end
 
 module Spec::DSL::Main
   alias feature describe
-end</code></pre>
+end
+{% endhighlight %}
 
 So, if you know your RSpec, the only thing you'll have to do is dive into "Capybara":http://github.com/jnicklas/capybara (or "Webrat":http://github.com/brynary/webrat) for a bit and you'll be writing acceptance specs in no time.
 
