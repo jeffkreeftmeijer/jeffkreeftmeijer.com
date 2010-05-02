@@ -12,7 +12,7 @@ task :update do
    ssh.exec(
     "rm -rf #{repo} && " <<
     "git clone -q git://github.com/#{user}/#{repo}.git && " <<
-    "jekyll #{repo} _site && " <<
+    "jekyll #{repo} _site --pygments && " <<
     "rake -f #{repo}/Rakefile moby:fetch")
   end
 end
