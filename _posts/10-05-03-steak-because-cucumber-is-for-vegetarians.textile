@@ -17,10 +17,10 @@ Right now the stable version of Steak only works with Rails 2.x and "RSpec":http
 
 h3. Installation
 
-Ok, throw this into your @Gemfile@ (I'm specifying the @0.4.0.a3@ version for Steak, that's the most recent alpha release from the rails3 branch). Also, I'll be using "Webrat":http://github.com/brynary/webrat to keep it simple (Steak only generates files for Webrat):
+Ok, throw this into your @Gemfile@ (I'm specifying the @0.4.0.a3@ version for Steak, that's the most recent alpha release from the rails3 branch). Also, I'll be using "Capybara":http://github.com/jnicklas/capybara for this example:
 
 bc. gem 'steak', '0.4.0.a3'
-gem 'webrat'
+gem 'capybara'
 
 And install your bundle:
 
@@ -29,15 +29,15 @@ bc. $ bundle install
 Or — if you’re using Rails 2.x — put this in @config/environment.rb@:
 
 bc. config.gem 'steak'
-config.gem 'webrat'
+config.gem 'capybara'
 
 And run:
 
 bc. $ rake gems:install RAILS_ENV=test
 
-Now you can use the Steak generators. To set everything up, just run:
+Now you can use the Steak generators to set everything up. You have to specify which driver you're using (Steak also has a generator for "Webrat":http://github.com/brynary/webrat):
 
-bc. $ rails generate steak
+bc. $ rails generate steak --capybara
 
 Please remember to use @script/generate@ instead of @rails generate@ when on Rails 2.x.
 
@@ -79,8 +79,8 @@ Great. On to our first scenario. In the articles index we want to show all artic
   Article.create!(:title => 'One')
   Article.create!(:title => 'Two')
   visit '/articles'
-  response.should contain('One')
-  response.should contain('Two')
+  page.should have_content('One')
+  page.should have_content('Two')
 end
 </code></pre>
 
@@ -99,7 +99,7 @@ module Spec::DSL::Main
   alias feature describe
 end</code></pre>
 
-So, if you know your RSpec, the only thing you'll have to do is dive into "Webrat":http://github.com/brynary/webrat (or "Capybara":http://github.com/jnicklas/capybara) for a bit and you'll be writing acceptance specs in no time.
+So, if you know your RSpec, the only thing you'll have to do is dive into "Capybara":http://github.com/jnicklas/capybara (or "Webrat":http://github.com/brynary/webrat) for a bit and you'll be writing acceptance specs in no time.
 
 h3. Running your spec
 
