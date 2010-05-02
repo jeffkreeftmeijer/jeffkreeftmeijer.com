@@ -14,13 +14,13 @@ I think I started a "discussion":http://search.twitter.com/search?q=gemspec&sinc
 
 "@rbates made a comment":http://twitter.com/rbates/status/11487541301 about five minutes after I posted. Here's the deal; "Bundler":http://gembundler.com has the ability bundle a library from its git repository or from a local path by specifying this in your Gemfile:
 
-<pre>
+{% highlight ruby %}
 # from git
 gem 'yourgem', :git => 'git://github.com/user/yourgem.git'
 
 # from a local path
 gem 'yourgem', :path => '~/code/yourgem.git'
-</pre>
+{% endhighlight %}
 
 If you load a library like this, it _does_ need to have a .gemspec in its code if it has any dependencies, otherwise Bundler will be unable to resolve and include these dependencies in the bundle.
 
@@ -32,7 +32,7 @@ From the replies to my blogpost, a lot of people were just updating their .gemsp
 
 You don't _need_ a tool to generate a .gemspec for you, it's as simple as:
 
-<pre>
+{% highlight ruby %}
 Gem::Specification.new do |gem|
   gem.name    = 'yourgem'
   gem.version = '0.0.1'
@@ -49,7 +49,7 @@ Gem::Specification.new do |gem|
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
                   'README*', 'LICENSE*'] & `git ls-files -z`.split("\0")
 end
-</pre>
+{% endhighlight %}
 
 If you're extremely lazy, check out "@mislav's TextMate snippet":http://gist.github.com/356455 that generates a new gemspec just by typing @gemspec@.
 

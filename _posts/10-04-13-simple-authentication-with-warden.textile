@@ -21,7 +21,8 @@ bq. &ldquo;Warden uses the concept of cascading strategies to determine if a req
 
 An example of a "strategy":http://wiki.github.com/hassox/warden/strategies would be a user logging in with his username and password:
 
-<pre><code>Warden::Strategies.add(:my_strategy) do
+{% highlight ruby %}
+Warden::Strategies.add(:my_strategy) do
   
   def valid?
     params[:username] && params[:password]
@@ -35,7 +36,8 @@ An example of a "strategy":http://wiki.github.com/hassox/warden/strategies would
     
     u.nil? ? fail!("Couldn't log in") : success!(u)
   end
-end</code></pre>
+end
+{% endhighlight %}
 
 The @valid?@ method checks if the strategy is valid. In the example above it will return false when the username and password aren't both in the params. In that case it will fail without even having to try and find the user.
 
