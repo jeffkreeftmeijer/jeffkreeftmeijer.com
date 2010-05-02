@@ -17,10 +17,12 @@ Right now the stable version of Steak only works with Rails 2.x and "RSpec":http
 
 h3. Installation
 
-Ok, throw this into your @Gemfile@ (I'm specifying the @0.4.0.a3@ version for Steak, that's the most recent alpha release from the rails3 branch). Also, I'll be using "Capybara":http://github.com/jnicklas/capybara for this example:
+Ok, throw this into your @Gemfile@ (I'm specifying the @0.4.0.a3@ version for Steak, that's the most recent alpha release from the @rails3@ branch). Also, I'll be using "Capybara":http://github.com/jnicklas/capybara for this example:
 
-bc. gem 'steak', '0.4.0.a3'
-gem 'capybara'
+bc. group :test do
+  gem 'steak', '0.4.0.a3'
+  gem 'capybara'
+end
 
 And install your bundle:
 
