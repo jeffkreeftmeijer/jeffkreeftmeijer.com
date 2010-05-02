@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Steak: because Cucumber is for vegetarians!"
-excerpt:
+excerpt: Minimalist acceptance testing using pure Ruby with Rspec, Steak and Webrat or Capybara.
 published: true
 ---
 
@@ -124,6 +124,6 @@ h3. Cucumber vs Steak?
 
 Cucumber is highly focussed on creating a business-readable DSL, and does so perfectly. I understand the thought behind making stakeholders able to read what's going on in their projects, but I wonder how many people actually do this. Also, one might argue that -- from a Ruby programmer's perspective -- Steak's specs are in fact more readable than Cucumber's.
 
-Steak takes away the extra step of translating everything from English to Ruby and is incredibly easy to learn (especially when you have some RSpec experience). It's completely incomparable to Cucumber though and which one to choose is simply a matter of opinion.
+Steak takes away the extra step of translating everything from English to Ruby and is incredibly easy to learn (especially when you have some RSpec experience). It's completely incomparable to Cucumber though and which one to choose is simply a matter of taste.
 
 I think I'll have mine medium rare.
