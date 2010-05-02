@@ -13,47 +13,57 @@ I started working on it and realized that this may also come in handy for somebo
 
 The installation is really simple, just throw this in your @Gemfile@:
 
-bc. gem 'guestlist'
+{% highlight ruby %}
+gem 'guestlist'
+{% endhighlight %}
 
 And run:
 
-bc. bundle install
+bc. $ bundle install
 
 Or -- if you're using Rails 2.x -- put this in @config/environment.rb@:
 
-bc. config.gem 'guestlist'
+{% highlight ruby %}
+config.gem 'guestlist'
+{% endhighlight %}
 
 And run:
 
-bc. rake gems:install
+bc. $ rake gems:install
 
 Include @Guestlist@ in your user model (mine is called @User@):
 
-<pre><code>class User
+{% highlight ruby %}
+class User
   # It works with ActiveRecord too. ;)
   include MongoMapper::Document
   include Guestlist
 
   key :login,           String
   key :encrypted_token, String
-end</code></pre>
+end
+{% endhighlight %}
 
 Make sure you have both @login@ and @encrypted_token@ fields in your database if you're using ActiveRecord ("here's a migration":http://gist.github.com/369610), or if you're using  "MongoMapper":http://mongomapper.com, add some <code>key</code>s to your model like in the example above.
 
 Believe it or not, you're all set. Let's try it (you can find your token on the "Github account page":https://github.com/account):
 
-bc. User.authenticate 'github_login', 'github_token'
+{% highlight ruby %}
+User.authenticate 'github_login', 'github_token'
+{% endhighlight %}
 
 Guestlist will automatically create a new @User@ for you and return that, or false if you've entered a wrong login or token. The user's token is stored -- yes, encrypted -- , so next time you log in, it'll just authenticate you via the database. If the token changes for some strange reason, Guestlist will update your user record when you log in with your new token.
 
 Also, it works great with "Warden":http://jeffkreeftmeijer.com/2010/simple-authentication-with-warden. Here's a strategy you can use:
 
-bc. def authenticate!
+{% highlight ruby %}
+def authenticate!
   u = User.authenticate(
     params[:login],
     params[:token]
   )
   u.nil? ? fail!("Couldn't log in") : success!(u)
 end
+{% endhighlight %}
 
 Have fun and don't forget to "submit your issues":http://github.com/jeffkreeftmeijer/guestlist/issues or "fork the project":http://github.com/jeffkreeftmeijer/guestlist if you have a great idea.

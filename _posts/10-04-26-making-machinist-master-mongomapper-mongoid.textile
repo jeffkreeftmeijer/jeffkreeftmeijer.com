@@ -17,28 +17,36 @@ I'm not going to go into Machinist itself here, so be sure to read the "README":
 
 On to installing machinist_mongo. Put this in your @Gemfile@:
 
-bc. gem 'machinist_mongo'
+{% highlight ruby %}
+gem 'machinist_mongo'
+{% endhighlight %}
 
 And run:
 
-bc. bundle install
+bc. $ bundle install
 
 Or — if you’re using Rails 2.x — put this in @config/environment.rb@:
 
-bc. config.gem 'machinist_mongo'
+{% highlight ruby %}
+config.gem 'machinist_mongo'
+{% endhighlight %}
 
 And run:
 
-bc. rake gems:install
+bc. $ rake gems:install
 
 Now create your @spec/blueprints.rb@ or @test/blueprints.rb@ file as you normally would, only using "Mongoid":http://mongoid.com or "MongoMapper":http://mongomapper.com instead of ActiveRecord:
 
-bc. require 'machinist/mongo_mapper' # or mongoid
+{% highlight ruby %}
+require 'machinist/mongo_mapper' # or mongoid
 require 'sham'
+{% endhighlight %}
 
 Don't forget to require the new @blueprints.rb@ file in your @spec_helper@ (or @test_helper@):
 
-bc. require File.expand_path(File.dirname(__FILE__) + "/blueprints")
+{% highlight ruby %}
+require File.expand_path(File.dirname(__FILE__) + "/blueprints")
+{% endhighlight %}
 
 And you're all set. Again, be sure read "Machinist's README":http://github.com/notahat/machinist to find out how to create your objects and get this thing running.
 
