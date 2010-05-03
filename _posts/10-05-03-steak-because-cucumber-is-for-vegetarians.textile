@@ -9,7 +9,7 @@ I'm not going to tell you "why you should write acceptance (or integration) test
 
 Luckily, we have "Steak":http://github.com/cavalle/steak by "@cavalle(Luismi Cavallé)":http://twitter.com/cavalle:
 
-<img src="/images/steak.jpg"/>
+<img src="http://jeffkreeftmeijer.com/images/steak.jpg"/>
 
 bq. &ldquo;Steak is like Cucumber but in plain Ruby. No explicit givens, whens or thens. No steps, no English, just Ruby: RSpec and Steak. That’s all.&rdquo;
 
