@@ -17,13 +17,11 @@ Right now the stable version of Steak only works with Rails 2.x and "RSpec":http
 
 h3. Installation
 
-OK, throw this into your @Gemfile@ (I'm specifying my own fork of the @rails3@ branch here, since I'm still waiting for it to get some improvements to the generators merged in and released). Also, I'll be using "Capybara":http://github.com/jnicklas/capybara for this example:
+OK, throw this into your @Gemfile@ (I'm specifying the @0.4.0.a4@ release here, that's the most recent alpha release from the @rails3@ branch). Also, I'll be using "Capybara":http://github.com/jnicklas/capybara for this example:
 
 {% highlight ruby %}
 group :test do
-  gem 'steak',
-    :git => 'git://github.com/jeffkreeftmeijer/steak.git',
-    :branch => 'rails3'
+  gem 'steak', '0.4.0.a4'
   gem 'capybara'
 end
 {% endhighlight %}
