@@ -10,7 +10,7 @@ Just to be clear; I was _not_ talking about completely removing .gemspecs from g
 
 The problem I found with this was people unnecessarily updating the .gemspec file -- it's as easy as running @rake .gemspec@ -- in patches, so I suggested to stop putting .gemspecs in gem repositories.
 
-I think I started a "discussion":http://search.twitter.com/search?q=gemspec&since=2010-04-02&rpp=50.
+I think I started a discussion.
 
 "@rbates made a comment":http://twitter.com/rbates/status/11487541301 about five minutes after I posted. Here's the deal; "Bundler":http://gembundler.com has the ability bundle a library from its git repository or from a local path by specifying this in your Gemfile:
 
