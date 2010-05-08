@@ -2,7 +2,7 @@
 layout: post
 title: Testing your Machinist blueprints
 excerpt: A little spec I wrote to ensure my blueprints stay in shape.
-published: true
+published: false
 ---
 
 At "80beans":http://80beans.com we had an old Rails project still on fixtures, so we decided to start switching it over to blueprints using "Machinist":http://github.com/notahat/machinist. Nothing extreme, except that the project had over 60 models and a couple of fixtures were broken, fixed, broken and fixed again.
