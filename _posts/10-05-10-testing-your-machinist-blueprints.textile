@@ -7,7 +7,7 @@ published: false
 
 At "80beans":http://80beans.com we had an old Rails project still on fixtures, so we decided to start switching it over to blueprints using "Machinist":http://github.com/notahat/machinist. Nothing extreme, except that the project had over 60 models and a couple of fixtures were broken, fixed, broken and fixed again.
 
-<img src="http://tammyamorton.com/wp-content/uploads/2009/12/attraction_marketing_blueprint.jpg" width="450"/>
+<img src="http://jeffkreeftmeijer.com/images/blueprint.jpg"/>
 
 As I started writing blueprints, I realized that it would be nice to have some specs to make sure the bare minimum  (@Model.make@ without any arguments) keeps working at all time and we don't have to dive in to realize that the problem was one of the new blueprints, not the application.
 
