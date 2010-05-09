@@ -1,9 +1,17 @@
 ---
 layout: default
 ---
+
+{% if page.author %}
+  This is a guest post written by <a href="http://twitter.com/{{ page.author.twitter }}" title="{{ page.author.full}}">@{{ page.author.twitter }}</a>. {{ page.author.description }}
+{% endif %}
+
 <p class="date">{{page.date | date_to_string}}</p>
 {{ content }}
 
 <p id="footnote">
   No comments here, feel free to reply via <a href="http://twitter.com/jkreeftmeijer">Twitter</a>.
+  {% if page.author %}Or reply directly to this guest post's author, <a href="http://twitter.com/{{ page.author.twitter }}" title="{{ page.author.full}}">@{{ page.author.twitter }}</a>.
+  {% endif %}
 </p>
+

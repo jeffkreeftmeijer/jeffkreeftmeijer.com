@@ -2,7 +2,7 @@
 layout: post
 title: Testing your Machinist blueprints
 excerpt: A little spec I wrote to ensure my blueprints stay in shape.
-published: false
+published: true
 ---
 
 At "80beans":http://80beans.com we had an old Rails project still on fixtures, so we decided to start switching it over to blueprints using "Machinist":http://github.com/notahat/machinist. Nothing extreme, except that the project had over 60 models and a couple of fixtures were broken, fixed, broken and fixed again.
@@ -15,4 +15,4 @@ So I whipped up @machinist_spec.rb@ -- it's a "Gist":http://gist.github.com/3919
 
 Also, our application used a mailer -- in the @models@ directory -- which, of cource, didn't need any blueprints. I've excluded it from the spec by extracting it from the array on line 5.
 
-Want it? Just put "this":http://gist.github.com/391949 into @spec/machinist_spec.rb@. If you have anything to add or improve please "fork":http://gist.github.com/fork/391949. 
+Want it? Just put "this":http://gist.github.com/391949 into @spec/machinist_spec.rb@. If you have anything to add or improve please "fork the Gist":http://gist.github.com/fork/391949. 
