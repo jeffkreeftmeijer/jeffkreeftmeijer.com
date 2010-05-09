@@ -11,8 +11,8 @@ At "80beans":http://80beans.com we had an old Rails project still on fixtures, s
 
 As I started writing blueprints, I realized that it would be nice to have some specs to make sure the bare minimum  (@Model.make@ without any arguments) keeps working at all time and we don't have to dive in to realize that the problem was one of the new blueprints, not the application.
 
-So I whipped up @machinist_spec.rb@ -- it's a "Gist":http://gist.github.com/391949 -- that goes through your @app/models@ directory, does some nasty @eval@, runs @.make@ for everything it finds and expects it to work. Simple.
+So I whipped up @machinist_spec.rb@ -- it's a "Gist":http://gist.github.com/391949 -- that goes through your @app/models@ directory, runs @.make@ for everything it finds and expects it to work. Simple.
 
 Also, our application used a mailer -- in the @models@ directory -- which, of cource, didn't need any blueprints. I've excluded it from the spec by extracting it from the array on line 5.
 
-Want it? Just put "this":http://gist.github.com/391949 into @spec/machinist_spec.rb@. If you have anything to add or improve -- like some way to get rid of the nasty @eval@ -- please "fork it":http://gist.github.com/fork/391949. 
+Want it? Just put "this":http://gist.github.com/391949 into @spec/machinist_spec.rb@. If you have anything to add or improve please "fork":http://gist.github.com/fork/391949. 
