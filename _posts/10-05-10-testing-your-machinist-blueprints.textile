@@ -13,6 +13,6 @@ As I started writing blueprints, I realized that it would be nice to have some s
 
 So I whipped up -- and "Gisted":http://gist.github.com/391949 --  @machinist_spec.rb@ that goes through your @app/models@ directory, runs @.make@ for everything it finds and expects it to work. Simple.
 
-Also, our application used a mailer -- in the @models@ directory -- which, of cource, didn't need any blueprints. I've excluded it from the spec by extracting it from the array on line 5.
+Also, our application used a mailer -- in the @models@ directory -- which, of course, didn't need any blueprints. I've excluded it from the spec by extracting it from the array on line 5.
 
 Want it? Just put "this":http://gist.github.com/391949 into @spec/machinist_spec.rb@. If you have anything to add or improve, please fork.
