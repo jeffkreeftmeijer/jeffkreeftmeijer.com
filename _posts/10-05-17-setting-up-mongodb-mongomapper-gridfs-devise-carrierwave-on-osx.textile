@@ -1,23 +1,27 @@
 ---
 layout: post
-title: Setting up MongoDB, mongomapper, gridfs, devise and carrierwave on osx
-excerpt: Would have saved me a lot of trouble if i knew what i know now.
+title: Setting up MongoDB, MongoMapper, GridFS, Devise & Carrierwave on OSX
+excerpt: This would have saved me a lot of trouble.
 published: true
+author: 
+  full: Robert Beekman
+  twitter: matsimitsu
+  description: Robert is a Ruby programmer at <a href="http://80beans.com">80beans</a> and a serious MongoDB fanatic.
 ---
 
-
-For a little side project i wanted to experiment with MongoDB and GridFS, but it took me a while to get everything up and running. 
+For a little side project I wanted to experiment with MongoDB and GridFS, but it took me a while to get everything up and running. 
 It wasn't really a problem with Mongrel, but as soon as Apache/Passenger came in the picture the problems began.
 
 h3. The gems
 
 Development setup:
+
 {% highlight ruby %}
-	config.gem 'carrierwave'
-	config.gem 'devise'
-	config.gem 'mongo_mapper', :version => '0.7.0'
-	config.gem 'mongomapper_ext'
-	config.gem 'will_paginate'
+config.gem 'carrierwave'
+config.gem 'devise'
+config.gem 'mongo_mapper', :version => '0.7.0'
+config.gem 'mongomapper_ext'
+config.gem 'will_paginate'
 {% endhighlight %}
 
 If you want to use gridFS with Mongo, make sure you use mongomapper 0.7.0, because later versions cause:
@@ -26,19 +30,18 @@ bc. mongo/gridfs not found
 
 
 Test setup:
-{% highlight ruby %}
 
-	config.gem 'rspec', :lib => 'spec'
-	config.gem 'rspec-rails', :lib => 'spec/rails'
+{% highlight ruby %}
+config.gem 'rspec', :lib => 'spec'
+config.gem 'rspec-rails', :lib => 'spec/rails'
+
+config.gem 'machinist_mongo', 
+	:version => '1.1.0', 
+	:lib => 'machinist/mongo_mapper'
 	
-	config.gem 'machinist_mongo', 
-		:version => '1.1.0', 
-		:lib => 'machinist/mongo_mapper'
-		
-	config.gem 'faker'
-	config.gem 'steak'
-	config.gem 'capybara'
-	
+config.gem 'faker'
+config.gem 'steak'
+config.gem 'capybara'
 {% endhighlight %}
 
 
@@ -47,7 +50,6 @@ h3. MongoMapper
 To use "MongoMapper":http://github.com/jnunemaker/mongomapper add the following to your initializers.
 
 {% highlight ruby %}
-
 # config/initializers/mongo_mapper.rb
 
 # load YAML and connect
@@ -72,14 +74,12 @@ If you do plan to run it, make sure this is in your config. It will make sure ne
 You can now setup your database.yml config (example:)
 
 {% highlight ruby %}
-
 # config/database.yml
 
 development:
   adapter: MongoDB
   database: mysnaplog_development
   host: localhost
-
 {% endhighlight %}
 
 
@@ -214,8 +214,8 @@ the gridfs in the regex is the same as in your carrierwave config!
 
 h3. OSX and open files
 
-At some point when i began stresstesting MongoDB by requesting a LOT of files from GridFS mongo would become unresponsive and eventually crash the rails app.
-After a deep dive into the logs i found out that MongoDB has a lot of files open. More then the 256 that OSX wil allow by default. 
+At some point when I began stresstesting MongoDB by requesting a LOT of files from GridFS mongo would become unresponsive and eventually crash the rails app.
+After a deep dive into the logs I found out that MongoDB has a lot of files open. More then the 256 that OSX wil allow by default. 
 
 To fix this use the "following from serverfault":http://serverfault.com/questions/15564/where-are-the-default-ulimits-specified-on-os-x-10-5, it will basically set the open files limit a lot higher for OSX.
 
