@@ -10,5 +10,5 @@ layout: default
 {{ content }}
 
 <p id="footnote">
-  No comments here, feel free to reply via <a href="http://twitter.com/jkreeftmeijer">Twitter</a>{% if page.hackernews %} or join the discussion on <a href="http://news.ycombinator.com/item?id={{ page.hackernews }}">Hacker News</a>{% endif %}.
+  No comments here, feel free to reply via <a href="http://twitter.com/{% if page.author.twitter %}{{ page.author.twitter}}{% else %}jkreeftmeijer{% endif %}">Twitter</a>{% if page.hackernews %} or join the discussion on <a href="http://news.ycombinator.com/item?id={{ page.hackernews }}">Hacker News</a>{% endif %}.
 </p>
