@@ -9,7 +9,8 @@ author:
   description: Robert is a Ruby programmer at <a href="http://80beans.com">80beans</a> and a serious <a href="http://www.mongodb.org/">MongoDB</a> fanatic.
 ---
 
-For a little side project I wanted to experiment with "MongoDB":http://www.mongodb.org/ and "GridFS":http://www.mongodb.org/display/DOCS/GridFS, but it took me a while to get everything up and running.
+For a little side project I wanted to experiment with "MongoDB":http://www.mongodb.org/ and "GridFS":http://www.mongodb.org/display/DOCS/GridFS on Rails 2.3.5, but it took me a while to get everything up and running.
+
 It wasn't really a problem with Mongrel, but as soon as Apache and "Passenger":http://www.modrails.com/ came in the picture the problems began.
 
 h3. The gems
@@ -27,7 +28,6 @@ config.gem 'will_paginate'
 If you want to use GridFS with MongoDB, make sure you use "MongoMapper":http://github.com/jnunemaker/mongomapper 0.7.0, because later versions cause:
 
 bc. mongo/GridFS not found
-
 
 Test setup:
 
@@ -47,7 +47,7 @@ config.gem 'capybara'
 
 h3. MongoMapper
 
-To use "MongoMapper":http://github.com/jnunemaker/mongomapper add the following to your initializers.
+To use "MongoMapper":http://github.com/jnunemaker/mongomapper add the following to your @config/initializers@:
 
 {% highlight ruby %}
 # config/initializers/mongo_mapper.rb
@@ -68,25 +68,25 @@ end
 {% endhighlight %}
 
 
-The @PusionPassenger@ section could be removed if you are not planning to run this on Apache and Passenger.
+The @PusionPassenger@ section can be removed if you are not planning to run this on Apache and Passenger.
 
-If you do plan to run it, make sure this is in your config. It will make sure new spawned Apache children still have a MongoDB database connection and prevent you from pulling out all your hair because of this.
+If you _do_ plan to run it, make sure this is in your config. It will make sure new spawned Apache children still have a MongoDB database connection and prevent you from pulling out all your hair.
 
-You can now setup your @database.yml@ config (example:)
+You can now setup your @config/database.yml@ config. Example:
 
 {% highlight ruby %}
 # config/database.yml
 
 development:
-  adapter: MongoDB
-  database: mysnaplog_development
+  adapter: mongodb
+  database: mmyapp_development
   host: localhost
 {% endhighlight %}
 
 
 h3. Devise
 
-Setting up "Devise":http://github.com/plataformatec/devise is pretty easy, just use the following snippet
+Setting up "Devise":http://github.com/plataformatec/devise is pretty easy, just use the following snippet:
 
 {% highlight ruby %}
 # config/initializers/devise.rb
@@ -112,7 +112,7 @@ Since we are on MongDB you can skip the migrations!
 
 h3. Carrierwave
 
-Next up is image uploading, I used "Carrierwave":http://github.com/jnicklas/carrierwave
+Next up is image uploading, I used "Carrierwave":http://github.com/jnicklas/carrierwave.
 
 Again some configuration, this time make sure that the @application_#{Rails.env}@ is consistent with your @database.yml@ file.
 
@@ -163,10 +163,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :small_thumb do
     process :resize_to_fill => [100,100]
   end
+end
 {% endhighlight %}
 
 
 A couple of things are important here, first the @storage :grid_fs@. It will tell Carrierwave to store the files in GridFS.
+
 Next is the @def store_dir@. This is used to generate the path to the images.
 
 bc. /GridFS/files/[ID]/[filename].[ext]
@@ -210,7 +212,7 @@ An important thing to note is the regex part:
 
 bc. if env["PATH_INFO"] =~ /^\/GridFS\/(.+)$/
 
-The GridFS in the regex is the same as in your carrierwave config!
+The GridFS in the regex is the same as in your Carrierwave config!
 
 h3. OSX and open files
 
@@ -228,4 +230,4 @@ However @launchd@ has already started your login shell, so the simplest way to m
 
 h3. That's it!
 
-Well that's it! you should now have a working Rails stack with MongoMapper, files served from GridFS, authentication from Devise and image uploading with Carrierwave.
+Well that's it! you should now have a working Rails 2.3.5 stack with MongoMapper, files served from GridFS, authentication from Devise and image uploading with Carrierwave.
