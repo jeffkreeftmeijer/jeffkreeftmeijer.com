@@ -21,7 +21,7 @@ layout: none
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <content type="html">
       {% if post.author %}
-        &lt;p&gt;This is a guest post written by <a href="http://twitter.com/{{ post.author.twitter }}" title="{{ post.author.full}}">@{{ post.author.twitter }}</a>. {{ post.author.description }}&lt;/p&gt;
+        &lt;p&gt;This is a guest post written by &lt;a href=&quot;http://twitter.com/{{ post.author.twitter }}&quot; title=&quot;{{ post.author.full}}&quot;&gt;@{{ post.author.twitter }}&lt;/a&gt;. {{ post.author.description | xml_escape }}
       {% endif %}{{ post.content | xml_escape }}
     </content>
   </entry>
