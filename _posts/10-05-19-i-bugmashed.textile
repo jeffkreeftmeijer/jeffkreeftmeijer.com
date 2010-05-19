@@ -1,7 +1,7 @@
 ---
 layout: post
-title: My first Rails 3 Bugmash
-excerpt: 
+title: I Bugmashed
+excerpt: My experiences in the May 15 & 16 Rails 3 Bugmash.
 published: true
 ---
 
@@ -15,7 +15,7 @@ Something that also made everything a little easier was "rails_test_box":http://
 
 It installs "MySQL":http://www.mysql.com/ and "PostgreSQL":http://www.postgresql.org/ for you, together with "RVM":http://rvm.beginrescueend.com/, so you can test on multiple databases and in multiple Rubies. And yes, it'll even clone Rails in a shared directory, so you can develop on your Mac like you're used to. Also, be sure to read "Jeroen's article on the Cookiestack blog":http://blog.cookiestack.com/post/571168451/testing-rails-for-the-masses.
 
-I've learned a lot during the Bugmash and I highly recommend every Rails programmer to give it a shot next time. Thanks "RailsBridge":http://railsbridge.org/, "@josevalim":http://twitter.com/josevalim, "@spastorino":http://twitter.com/spastorino, "@rizwanreza":http://twitter.com/rizwanreza, "jeroenvandijk":http://github.com/jeroenvandijk and everyone else who participated and helped out. You're awesome.
+I've learned a lot during the Bugmash and I highly recommend every Rails developer to give it a shot next time. Thanks "RailsBridge":http://railsbridge.org/, "@josevalim":http://twitter.com/josevalim, "@spastorino":http://twitter.com/spastorino, "@rizwanreza":http://twitter.com/rizwanreza, "jeroenvandijk":http://github.com/jeroenvandijk and everyone else who participated and helped out. You're awesome.
 
 h3. Now what?
 
