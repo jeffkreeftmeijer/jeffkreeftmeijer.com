@@ -7,7 +7,7 @@ published: true
 
 I participated in the "May 15 & 16 Rails 3 Bugmash":http://railsbridge.org/news_items/12 last weekend. This was my first Bugmash (if you don't count getting "Navvy":http://jeffkreeftmeijer.com/navvy up to speed with Rails 3 in "the last one":http://railsbridge.org/news_items/11). I had lots of fun, resolved two tickets that applied to the Rails @master@ and the @2-3-stable@ branch, reviewed some patches by others, got five commits into Rails, "finished in fourth place":http://bugmash.com/,  and got on "the contributor list":http://contributors.rubyonrails.org/contributors/jeff-kreeftmeijer/commits.
 
-<img src="/images/flytrap.jpg" />
+<img src="http://jeffkreeftmeijer.com/images/flytrap.jpg" />
 
 All Saturday (I couldn't make it on Sunday), experienced Rails contributors and core team members were available for questions in the #railsbridge IRC channel. Everybody was very helpful and friendly, which  made it a lot easier to dive in and debug in the Rails source. 
 
