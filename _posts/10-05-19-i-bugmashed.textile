@@ -5,7 +5,7 @@ excerpt: My experiences in the May 15 & 16 Rails 3 Bugmash.
 published: true
 ---
 
-I participated in the "May 15 & 16 Rails 3 Bugmash":http://railsbridge.org/news_items/12 last weekend. This was my first Bugmash (if you don't count getting "Navvy":http://jeffkreeftmeijer.com/navvy up to speed with Rails 3 in "the last one":http://railsbridge.org/news_items/11). I had lots of fun, resolved two tickets that applied to the Rails @master@ and the @2-3-stable@ branch, reviewed some patches by others, got five commits into Rails, "finished in fourth place":http://bugmash.com/,  and got on "the contributor list":http://contributors.rubyonrails.org/contributors/jeff-kreeftmeijer/commits.
+I participated in the "May 15 & 16 Rails 3 Bugmash":http://railsbridge.org/news_items/12 last weekend. This was my first Bugmash (if you don't count getting "Navvy":http://jeffkreeftmeijer.com/navvy up to speed with Rails 3 in "the last one":http://railsbridge.org/news_items/11). I had lots of fun, resolved two tickets that applied to the Rails @master@ and the @2-3-stable@ branch, reviewed some patches by others, got five commits into Rails, "finished in second place":http://bugmash.com/,  and got on "the contributor list":http://contributors.rubyonrails.org/contributors/jeff-kreeftmeijer/commits.
 
 <img src="http://jeffkreeftmeijer.com/images/flytrap.jpg" />
 
