@@ -5,7 +5,7 @@ excerpt:
 published: false
 ---
 
-It all started on a cold winters day in December of 2009 as I decided to start a personal project using "MongoMapper":http://mongomapper.com, which needed to run background jobs.
+It all started on a cold winter's day in December of 2009 as I decided to start a personal project using "MongoMapper":http://mongomapper.com, which needed to run background jobs.
 
 Back then, ["@collectiveidea(Collective Idea)":http://twitter.com/collectiveidea]'s "delayed_job fork":http://github.com/collectiveidea/delayed_job was still tightly mingled with ActiveRecord, so I couldn't just pop that in as I normally would. After failing to find good alternatives I stumbled upon ["@zbelzer(Zach Belzer)":http://twitter.com/zbelzer]'s "fork":http://github.com/zbelzer/delayed_job in which he did an "&ldquo;initial attempt at MongoDB support&rdquo;":http://github.com/zbelzer/delayed_job/commit/1ad8eab91786f262f4d4bfeab0a76c1517c06e7e. I decided to go with that.
 
