@@ -10,7 +10,7 @@ task :update do
 
  Net::SSH.start('208.88.125.96', 'jeff') do |ssh|
    ssh.exec(
-    "rm -rf #{repo} && " <<
+    "rm -rf #{repo} _site && " <<
     "git clone -q git://github.com/#{user}/#{repo}.git && " <<
     "jekyll #{repo} _site --pygments && " <<
     "rake -f #{repo}/Rakefile moby:fetch")
