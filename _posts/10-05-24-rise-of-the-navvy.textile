@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Rise of the Navvy
-excerpt: "The what, why and how of Navvy, the database agnostic Ruby background job processor."
+excerpt: "The what, why and how of the database agnostic Ruby background job processor."
 published: true
 category: navvy
 ---
