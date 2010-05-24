@@ -2,7 +2,8 @@
 layout: post
 title: Navvy
 excerpt:
-published: true
+published: false
+category: navvy
 ---
 
 It all started on a cold winter's day in December of 2009 as I decided to start a personal project using "MongoMapper":http://mongomapper.com, which needed to run background jobs.
