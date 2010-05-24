@@ -29,7 +29,7 @@ h3. &ldquo;Aren't you the guy who built Navvy?&rdquo;
 
 After "announcing":http://www.rubyflow.com/items/3280 it, it didn't take long before "Ruby5":http://ruby5.envylabs.com/episodes/45-episode-43-january-19-2010/stories/350-navvy-database-agnostic-background-jobs picked it up and people started actually using it. It was great to hear that "@jnunemaker(John Nunemaker)":http://twitter.com/jnunemaker/status/7996463096 decided to use Navvy in "Harmony":http://harmonyapp.com.
 
-"The Changelog":http://thechangelog.com/post/356754061/navvy-simple-database-agnostic-ruby-background-job-proce did a post on Navvy, which meant it became a featured repo on "Github Explore":http://github.com/explore for about a week, John gave another hat tip on "Episode 0.1.0 of the Changelog":http://thechangelog.com/post/360070705/episode-0-1-1-john-nunemaker-from-mongomapper and more and more people started "contributing":http://wiki.github.com/jeffkreeftmeijer/navvy/contributors.
+"The Changelog":http://thechangelog.com/post/356754061/navvy-simple-database-agnostic-ruby-background-job-proce did a post on Navvy, which meant it became a featured repo on "Github Explore":http://github.com/explore for about a week, John gave another hat tip on "Episode 0.1.1 of the Changelog":http://thechangelog.com/post/360070705/episode-0-1-1-john-nunemaker-from-mongomapper and more and more people started "contributing":http://wiki.github.com/jeffkreeftmeijer/navvy/contributors.
 
 Thanks to everyone who helped build, fix bugs and get the word out about the project. It was a crazy ride and I can never get enough of the &ldquo;Aren't you the guy who built Navvy?&rdquo;-question. Feels good, thanks.
 
