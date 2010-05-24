@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Navvy
-excerpt:
-published: false
+title: Rise of the Navvy
+excerpt: "The what, why and how of Navvy, the database agnostic Ruby background job processor."
+published: true
 category: navvy
 ---
 
@@ -39,4 +39,4 @@ h3. Future
 
 Today, Navvy has a "DataMapper":http://datamapper.org/ adapter, job priorities, the ability to retry failed jobs and it's own daemon. It's been a bit quiet around Navvy for the last couple of weeks, but I've been working on a "Mongoid adapter":http://github.com/jeffkreeftmeijer/navvy/commits/feature/mongoid with "@TomK32(Thomas R. Koll)":http://twitter.com/tomk32, together with some other stuff that I hope to release soon.
 
-I'm excited to continue working on Navvy and I hope you are too. Stay tuned!
+I'm excited to continue working on Navvy. Stay tuned!
