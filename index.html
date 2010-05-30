@@ -5,7 +5,7 @@ title: Open source enthusiast and Ruby (on Rails) programmer @ <a href="http://8
 excerpt: Jeff Kreeftmeijer; Open source enthusiast and Ruby (on Rails) programmer @ 80beans, Amsterdam.
 ---
 
-{% for post in site.posts %}
+{% for post in site.posts limit:10 %}
   <div class="post">
     <h3><a href="{{ post.url }}/">{{ post.title }}</a></h3>
     <p class="date">{{ post.date | date_to_string }}
@@ -16,3 +16,7 @@ excerpt: Jeff Kreeftmeijer; Open source enthusiast and Ruby (on Rails) programme
     <p>{{ post.excerpt }}</p>
   </div>
 {% endfor %}
+
+<p id="footnote">
+  Didn't find what you were looking for? There's more in the <a href="/archive">archive</a>.
+</p>
