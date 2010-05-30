@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700);
+
 html
 {
 	overflow-y:scroll;
@@ -17,6 +19,7 @@ body
 
 h2,h3,h4,h5,h6
 {
+  font-family: "Yanone Kaffeesatz", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
 }
 
@@ -135,17 +138,17 @@ h1 a
 
 h2
 {
-	font-size:34px;
+	font-size:43px;
 }
 
 h3
 {
-	font-size:24px;
+	font-size:28px;
 }
 
 h4
 {
-	font-size:18px;
+	font-size:21px;
 }
 
 h2,h3,h4,h5,h6
