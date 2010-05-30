@@ -2,7 +2,7 @@
 layout: post
 title: Daemonizing Navvy with God
 excerpt:
-published: true
+published: false
 category: navvy
 ---
 
