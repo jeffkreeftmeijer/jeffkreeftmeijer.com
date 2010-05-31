@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Daemonizing Navvy with God
-excerpt:
-published: false
+excerpt: Let's stop using the included daemon script and actually monitor our background process, shall we?
+published: true
 category: navvy
 ---
 
@@ -10,7 +10,7 @@ In "version 0.2.1":http://github.com/jeffkreeftmeijer/navvy/tree/v0.2.1,  "Navvy
 
 While some people asked for this, you might argue that running @rake navvy:work &@ would do the exact same thing. It runs the worker, like the rake task does. It only does it in the background, like rake's @&@ argument does.
 
-To try and get some more control over my Worker process, I decided to let "God":http://god.rubyforge.org/ daemonize it. This allowed me to monitor my process instead of just starting it and hoping it would do it's thing. Also, God allows you to set memory limits, automatically restart if the worker dies and notify you when your worker is down. 
+To try and get some more control over my Worker process, I decided to let "God":http://god.rubyforge.org/ daemonize it. This allowed me to monitor my process instead of just starting it and hoping it would do it's thing. Also, God allows you to set memory limits and automatically restart -- and notify me -- when the worker dies. 
 
 h3. God config
 
@@ -24,7 +24,7 @@ rescue LoadError
     abort "Couldn't find Navvy. " << 
       "Please run `gem install navvy` to use Navvy's tasks."
   end
-end
+endr
 {% endhighlight %}
 
 Now, we'll create a God configuration file called @navvy.god@ in the same directory as our @Rakefile@:
