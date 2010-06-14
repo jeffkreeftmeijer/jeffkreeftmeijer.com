@@ -7,7 +7,7 @@ published: true
 
 After an eight hour flight and a three hour train ride, "@roy(Roy Tomeij)":http://twitter.com/roy, "@thijsc(Thijs Cadier)":http://twitter.com/thijsc, "@roncadier(Ron Cadier)":http://twitter.com/roncadier, "@matsimitsu(Robert Beekman)":http://twitter.com/matsimitsu, "@antekpiechnik(Antek Piechnik)":http://twitter.com/antekpiechnik and I arrived in Baltimore for "Railsconf":http://en.oreilly.com/rails2010. In this article I'll talk about some of my personal highlights.
 
-<img src="http://jeffkreeftmeijer.com/images/baltimore.jpg" />
+!http://jeffkreeftmeijer.com/images/baltimore.jpg(Sunset in Baltimore by Antek Piechnik)!:http://www.flickr.com/photos/piechnik/4686817595/in/set-72157624235560242
 
 Since we didn't go to any "tutorial sessions":http://en.oreilly.com/rails2010/public/schedule/stype/3+hour+tutorial, our Railsconf started on Tuesday, which gave us the time to eat burgers, drink beers and go to Washington before the conference.
 
@@ -27,7 +27,7 @@ I was really looking forward to ["@defukt(Chris Wanstrath)":http://twitter.com/d
 
 On Wednesday evening, "@deadprogram(Ron Evans)":http://twitter.com/deadprogram organized the "Music Jam":http://en.oreilly.com/rails2010/public/schedule/detail/14604, which treated us to some musical awesomeness I wasn't really expecting from a bunch of programmers. Great show, I didn't know you guys are rockstars as well. 
 
-<img src="http://jeffkreeftmeijer.com/images/music_jam.jpg" />
+!http://jeffkreeftmeijer.com/images/music_jam.jpg(Joe Alba at the Railsconf Music Jam by Antek Piechnik)!:http://www.flickr.com/photos/piechnik/4686736677/in/set-72157624242706784/
 
 The last day, "@imf(Ian McFarland)":http://twitter.com/imf gave a talk called "Agile the Pivotal Way":http://en.oreilly.com/rails2010/public/schedule/detail/14554 bout the way they work at "Pivotal Labs":http://pivotallabs.com. Ian covered things like pair programming, having breakfast and playing ping pong at work and it was a great eye opener for all of us. We even made an appointment to come over to their New York office to have a look around. Expect a post about this on the "80beans":http://80beans.com blog soon.
 
