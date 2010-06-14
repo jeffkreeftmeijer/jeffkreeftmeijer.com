@@ -2,7 +2,7 @@
 layout: post
 title: Railsconf 2010
 excerpt: About some of my personal highlights from Railsconf 2010 in Baltimore.
-published: false
+published: true
 ---
 
 After an eight hour flight and a three hour train ride, "@roy(Roy Tomeij)":http://twitter.com/roy, "@thijsc(Thijs Cadier)":http://twitter.com/thijsc, "@roncadier(Ron Cadier)":http://twitter.com/roncadier, "@matsimitsu(Robert Beekman)":http://twitter.com/matsimitsu, "@antekpiechnik(Antek Piechnik)":http://twitter.com/antekpiechnik and I arrived in Baltimore for "Railsconf":http://en.oreilly.com/rails2010. In this article I'll talk about some of my personal highlights.
