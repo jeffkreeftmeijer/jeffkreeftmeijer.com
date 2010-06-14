@@ -24,7 +24,7 @@ rescue LoadError
     abort "Couldn't find Navvy. " << 
       "Please run `gem install navvy` to use Navvy's tasks."
   end
-endr
+end
 {% endhighlight %}
 
 Now, we'll create a God configuration file called @navvy.god@ in the same directory as our @Rakefile@:
