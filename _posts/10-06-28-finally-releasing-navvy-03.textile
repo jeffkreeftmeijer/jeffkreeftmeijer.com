@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Finally: Navvy 0.3"
+title: "Finally: Releasing Navvy 0.3"
 excerpt: Announcing a new version of Navvy, the database agnostic Ruby background job processor. 
 published: true
 category: navvy
@@ -14,7 +14,7 @@ Ok, no more Apple marketing techniques. Promise.
 
 h3. Mongoid
 
-In adition to the adapters for "ActiveRecord":http://api.rubyonrails.org/classes/ActiveRecord/Base.html, "DataMapper":http://datamapper.org/, "Sequel":http://sequel.rubyforge.org/ and "MongoMapper":http://mongomapper.com, Navvy 0.3 intoduces a "Mongoid":http://mongoid.org/ adapter that works exactly like the rest. Special thanks to "@TomK32":http://twitter.com/TomK32 and "@rubenfonseca":http://twitter.com/rubenfonseca for helping out.
+In addition to the adapters for "ActiveRecord":http://api.rubyonrails.org/classes/ActiveRecord/Base.html, "DataMapper":http://datamapper.org/, "Sequel":http://sequel.rubyforge.org/ and "MongoMapper":http://mongomapper.com, Navvy 0.3 intoduces a "Mongoid":http://mongoid.org/ adapter that works exactly like the rest. Special thanks to "@TomK32":http://twitter.com/TomK32 and "@rubenfonseca":http://twitter.com/rubenfonseca for helping out.
 
 h3. Navvy::Logger
 
