@@ -88,6 +88,6 @@ h3. What about Navvy's daemon script?
 
 What I've shown you does exactly what Navvy's included daemon script does, but keeps monitoring it. If you want more -- like email notifications and memory limits -- check out "God's website":http://god.rubyforge.org/.
 
-I'm thinking about completely removing the daemon script from Navvy in the next version and encouraging users to start using some kind of process monitor, since I believe handling background jobs is none of Navvy's business. Navvy is a job processor. I think we should focus on that. 
+I'm thinking about completely removing the daemon script from Navvy in the next version and encouraging users to start using some kind of process monitor, since I believe handling background processes is none of Navvy's business. Navvy is a job processor. I think we should focus on that. 
 
 What do you think? Your opinion is always welcome.
