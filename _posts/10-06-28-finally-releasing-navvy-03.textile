@@ -32,7 +32,7 @@ end
 
 h3. Daemons
 
-As I said in "my previous Navvy article":http://jeffkreeftmeijer.com/2010/daemonizing-navvy-with-god, I want to encourage users to use a process monitor (like "God":http://god.rubyforge.org/) since I believe handling background jobs is none of Navvy’s business. 
+As I said in "my previous Navvy article":http://jeffkreeftmeijer.com/2010/daemonizing-navvy-with-god, I want to encourage users to use a process monitor (like "God":http://god.rubyforge.org/) since I believe handling background processes is none of Navvy’s business. 
 
 That's why Navvy's generator doesn't create the @script/navvy@ file anymore. Also, the nasty @Navvy::Worker.daemonize@ is gone. If you want to daemonize your worker process, you should set it up yourself now.
 
