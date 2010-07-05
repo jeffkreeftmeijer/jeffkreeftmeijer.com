@@ -4,7 +4,6 @@ title: My first steps into the world of Vim
 excerpt: After using Textmate for everything In the last few years, I checked out Vim last week. Here's what happened.
 published: false
 ---
-                                                                                                             
 I’ve been using Textmate since I switched to the Mac. It worked properly and I was fine with it. I never looked into "Vim":http://www.vim.org until a few months after "@antekpiechinik":http://twitter.com/antekpiechnik told me I should.
 
 To be honest, I thought Vim was for people that felt too cool to go out of the terminal and that it didn’t really add anything other than “I’m in the terminal”-awesomeness. Needless to say, I was wrong.
@@ -13,7 +12,7 @@ After I got excited by this &ldquo;["Welcome to Vim":http://vimeo.com/6999927]&r
 
 After finishing that, I felt quite confident about myself. Until I tried to edit an actual Ruby file and I realized I forgot half of what I'd learned.
 
-!/images/vim.jpg(MacVim with the Railscasts color scheme and NERDTree)!
+!http://jeffkreeftmeijer.com/images/vim.jpg(MacVim with the Railscasts color scheme and NERDTree)!
 
 Although I'm still struggling, it seems obvious to me that Vim adds a lot of speed in comparison to Textmate when you get used to it.
 
