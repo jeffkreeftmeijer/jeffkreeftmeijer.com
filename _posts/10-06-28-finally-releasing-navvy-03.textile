@@ -8,7 +8,7 @@ category: navvy
 
 It's been a while since the last proper release of "Navvy":http://jeffkreeftmeijer.com/navvy -- the database agnostic Ruby background job processor -- but like I "promised a while back":http://jeffkreeftmeijer.com/2010/rise-of-the-navvy/, I've been working on a new version whenever I could find the time.
 
-!/images/steam_navvy.jpg(Navvy 0.3)!
+!http://jeffkreeftmeijer.com/images/steam_navvy.jpg(Navvy 0.3)!
 
 I'm really excited to release "Navvy 0.3":http://rubygems.org/gems/navvy/versions/0.3.0 and I think you're going to love it. It's "great, fantastic, amazing and magical":http://www.youtube.com/watch?v=Nx7v815bYUw and I'd like to highlight four &ldquo;tent poles&rdquo; for you today.
 
