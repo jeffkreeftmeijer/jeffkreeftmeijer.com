@@ -85,4 +85,6 @@ end
 
 I didn't know Timecop existed when I started building Navvy, but I didn't search for it either. Instead, I wrote ugly and brittle tests that happened to do the job.
 
-My point is: If you run into a problem like this, find a solution. Somebody out there probably had the same problem before. If not, think of a great solution yourself and release it. Somebody might run into the same problem in the future.
+My point is: If you run into a problem like this, find a solution. Somebody out there probably had the same problem before. If not, think of a great solution yourself and release it. Somebody might run into the same problem in the future and thank you for the amazing work you did to make their life easier:
+
+Thanks John, Timecop is awesome!
