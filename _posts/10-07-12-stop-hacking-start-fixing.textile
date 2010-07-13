@@ -71,6 +71,10 @@ I did "this commit":http://github.com/jeffkreeftmeijer/navvy/commit/6bde639b13ff
 before do
   Timecop.freeze(Time.local(2010, 1, 1))
 end
+
+after do
+  Timecop.return
+end
 {% endhighlight %}
 
 Since Timecop froze @Time.now@, it'll always return January 1[^st^] 2010, midnight. This means the first code snippet I showed you can be changed to this:
