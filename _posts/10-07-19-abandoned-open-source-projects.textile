@@ -5,13 +5,15 @@ excerpt:
 published: false
 ---
 
-The first time I tried to create my own blog, I wanted to use ["Tumblr":http://www.tumblr.com/]'s "API":http://www.tumblr.com/docs/en/api to be able to write articles using their back end and fetch them to my website. I know that sounds stupid now, but bear with me for a minute.
+The first time I tried to create my own blog -- yes, it took me a couple of tries before I found ["Jekyll":http://github.com/mojombo/jekyll] -- I wanted to use ["Tumblr":http://www.tumblr.com/]'s "API":http://www.tumblr.com/docs/en/api to be able to write articles using their back end and fetch them to my website. I know that sounds stupid now, but bear with me for a minute.
+
+!http://jeffkreeftmeijer.com/images/abandoned.jpg(I found myself abandoning the whole project)!
 
 Because I couldn't find a Ruby API wrapper and felt like it would be wicked cool to write one myself, I created my first open source project. I couldn't think of a witty and clever name, so I just went with &ldquo;["Tumblr":http://github.com/jeffkreeftmeijer/tumblr]&rdquo;.
 
-I had a lot of fun writing it and I even stopped working on the blog I wanted to build in the first place. It didn't have any tests and I didn't take the time to add any. I released it as a gem, some people used it. Great.
+I had a lot of fun writing it and I even stopped working on the blog I wanted to build in the first place. The API wrapper didn't have any tests and I didn't take the time to add any. I released it as a gem, some people used it. Great.
 
-At the end of the day, I realized I never used it myself and I wasn't planning to. I decided to keep supporting it, though That worked until I got a full-time job at "80beans":http://80beans.com and found myself abandoning the whole thing.
+At the end of the day, I realized I never used it myself and I wasn't planning to. I decided to keep supporting it, though. That worked until I got a full-time job at "80beans":http://80beans.com and found myself abandoning the whole thing.
 
 Today, it seems like the project is more popular then when I still worked on it. People are creating "issues":http://github.com/jeffkreeftmeijer/tumblr/issues I can't fix because I never really used Tumblr's API, nor am I planning to.
 
