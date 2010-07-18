@@ -1,0 +1,34 @@
+---
+layout: post
+title: Abandoned open source projects
+excerpt:
+published: true
+---
+
+The first time I tried to create my own blog, I wanted to use ["Tumblr":http://www.tumblr.com/]'s "API":http://www.tumblr.com/docs/en/api to be able to write articles using their backend and fetch them to my website. I know that sounds stupid now, but bear with me for a minute.
+
+Because I couldn't find a Ruby API wrapper and felt like it would be wicked cool to write one myself, I created my first open source project. I couldn't think of a witty and clever name, so I just went with &ldquo;["Tumblr":http://github.com/jeffkreeftmeijer/tumblr]&rdquo;.
+
+I had a lot of fun writing it and I even stopped working on the blog I wanted to build in the first place. It didn't have any tests and I didn't take the time to add any. I released it as a gem, some people used it. Great.
+
+At the end of the day, I realized I never used it myself and I wasn't planning to. I decided to keep supporting it, though That worked untill I got a fulltime job at "80beans":http://80beans.com and found myself abandoning the whole thing.
+
+Today, it seems like the project is more popular then when I still worked on it. People are creating "issues":http://github.com/jeffkreeftmeijer/tumblr/issues I can't fix because I never really used Tumblr's API, nor am I planning to.
+
+h3. Fix bugs yourself
+
+I could add a nasty banner to my @README@ file telling people the project is abandoned and you should fix bugs yourself, but that's not what I think a @README@ is for. I could even remove the issues page so people can't report issues anymore, but there's some helpful information in there.
+
+Instead, I would love to see a feature in "Github":http://github.com to mark a project as abandoned. Here's the idea:
+
+The project owner would have a checkbox in to mark the project as abandoned. Maybe the repository can get the abandoned state after not being updated for a certain amount of time automatically too, but I'm not sure how long that's supposed to take.
+
+When abandoned, the repository page shows a message telling everyone that the project isn't being worked on anymore, you should fix bugs yourself and maybe contact the project owner if you want to start maintaining it.
+
+The project would have an &ldquo;abandoned&rdquo; tag next to its name when it gets displayed in the search results, so you don't have to compare last commit dates anymore. The abandoned projects could even be pushed down in the search results.
+
+!/images/github_search_abandoned.jpg(The project would have an &ldquo;abandoned&rdquo; tag next to its name when it gets displayed in the search results)!
+
+I don't think the issue tracker should be disbled for abandoned projects, since users can solve problems in there without needing the project owner. But when creating issues, you should see a message again saying the project is abandoned and it could take a while for anyone to respond.
+
+I've created a "feature request in Github's support forums":http://support.github.com/discussions/feature-requests/xxx to see what they think. I would love to hear your opinion too, so please don't hesitate to drop me a line about this.
