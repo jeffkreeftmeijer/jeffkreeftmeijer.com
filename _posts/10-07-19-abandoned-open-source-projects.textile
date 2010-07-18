@@ -2,10 +2,10 @@
 layout: post
 title: Abandoned open source projects
 excerpt:
-published: false
+published: true
 ---
 
-The first time I tried to create my own blog -- yes, it took me a couple of tries before I found ["Jekyll":http://github.com/mojombo/jekyll] -- I wanted to use ["Tumblr":http://www.tumblr.com/]'s "API":http://www.tumblr.com/docs/en/api to be able to write articles using their back end and fetch them to my website. I know that sounds stupid now, but bear with me for a minute.
+The first time I tried to create my own blog -- yes, it took me a couple of tries before I found ["Jekyll":http://github.com/mojombo/jekyll] -- I wanted to use ["Tumblr":http://www.tumblr.com/]'s "API":http://www.tumblr.com/docs/en/api to write articles using their back end to fetch and display them to my website. I know that sounds stupid now, but bear with me for a minute.
 
 !http://jeffkreeftmeijer.com/images/abandoned.jpg(I found myself abandoning the whole project)!
 
@@ -33,4 +33,8 @@ The project would have an &ldquo;abandoned&rdquo; tag next to its name when it g
 
 I don't think the issue tracker should be disabled for abandoned projects, since users can solve problems in there without needing the project owner. But when creating issues, you should see a message again saying the project is abandoned and it could take a while for anyone to respond.
 
-I've created a "feature request in Github's support forums":http://support.github.com/discussions/feature-requests/xxx to see what they think. I would love to hear your opinion too, so please don't hesitate to drop me a line about this.
+h3. What do you think?
+
+This would be a good way for project owners to notify people they stopped supporting the project and will probably help them finding somebody that wants to start maintaining it. Also, it would become easier for users to find active projects instead of using code that nobody has worked on for months.
+
+I've created a "feature request in Github's support forums":http://support.github.com/discussions/feature-requests/xxx to see if they would be willing to start implementing this. I would love to hear your opinion too, so what do you think?
