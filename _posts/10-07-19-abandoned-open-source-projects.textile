@@ -2,7 +2,7 @@
 layout: post
 title: Abandoned open source projects
 excerpt:
-published: true
+published: false
 ---
 
 The first time I tried to create my own blog, I wanted to use ["Tumblr":http://www.tumblr.com/]'s "API":http://www.tumblr.com/docs/en/api to be able to write articles using their back end and fetch them to my website. I know that sounds stupid now, but bear with me for a minute.
