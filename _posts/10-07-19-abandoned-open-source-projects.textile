@@ -37,4 +37,4 @@ h3. What do you think?
 
 This would be a good way for project owners to notify people they stopped supporting the project and will probably help them to find somebody that wants to start maintaining it. Also, it would become easier for users to find active projects and prevent them from using code that nobody has worked on for months.
 
-I've created a feature request in Github's support forums to see if they're willing to start implementing something like this. I would love to hear your opinion too, so what do you think?
+I've created "a feature request in Github's support forums":http://support.github.com/discussions/feature-requests/987-abandoned-projects to see if they're willing to start implementing something like this. I would love to hear your opinion too, so what do you think?
