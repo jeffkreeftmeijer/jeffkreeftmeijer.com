@@ -196,7 +196,7 @@ code,pre
 pre
 {
   -moz-border-radius:5px;
-  -moz-box-shadow:0 1px 0 #fff;
+  -moz-box-shadow:0 -1px 0 #444;
   -webkit-border-radius:5px;
   -webkit-box-shadow:0 -1px 0 #444;
   background-color:#222;
@@ -212,6 +212,20 @@ pre
   width: 490px;
   margin: 0px 0px 0px -40px;
 }
+
+div.notice
+{
+  -moz-border-radius:5px;
+  -moz-box-shadow:0 -1px 0 #fffddd;
+  -webkit-border-radius:5px;
+  -webkit-box-shadow:0 -1px 0 #fffddd;
+  background-color:#fffbbb;
+  padding: 20px;
+  text-shadow:0 1px 0 #dddaaa;
+  width: 490px;
+  margin: 0px 0px 0px -40px;
+}
+
 
 em{
   font-style:italic;
