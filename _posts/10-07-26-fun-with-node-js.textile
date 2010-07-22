@@ -1,0 +1,15 @@
+---
+layout: post
+title: Fun with Node.js
+excerpt: 
+published: true
+head: <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"> </script><script src="/js/mice.js"></script> <link rel="stylesheet" href="/css/mice.css"/>
+---
+
+<div class="notice" id="no_web_sockets">
+  For this to blow your mind, you need a browser that supports web sockets. May I suggest a newer version of "Chrome":http://www.google.com/chrome/ or "Safari":http://www.apple.com/safari/?
+</div>
+
+<div class="notice" id="mouse_toggle">
+  If you see mice flying over your screen; don't worry, they're part of the demo. You can always <a href="#">disable</a> them if you want.
+</div>
