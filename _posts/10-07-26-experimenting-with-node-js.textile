@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Fun with Node.js
-excerpt:
+title: Experimenting with Node.js
+excerpt: Using Node.js and a bit of jQuery to annoy you.
 published: true
 head: <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script><script src="/js/mice.js"></script> <link rel="stylesheet" href="/css/mice.css"/>
 ---
@@ -43,11 +43,11 @@ server.listen(8000);
 
 After including the node-websocket-server library and creating the server, I add some listeners to know when clients disconnect or send a message and make sure messages get sent to the other clients. Whenever it receives a JSON message, it includes the connection's id before broadcasting it to the clients to make it possible to find out which cursor we need to move.
 
-Starting the server is as simple as running @node server.js@. To make sure it keeps running, I daemonized it with "God":http://god.rubyforge.org/, using the same config file I used in the "&ldquo;Daemonizing Navvy with God&rdquo; article":http://jeffkreeftmeijer.com/2010/daemonizing-navvy-with-god/.
+I saved it as @server.js@, so starting the server is as simple as running @node server.js@. To make sure it keeps running, I daemonized it with "God":http://god.rubyforge.org/, using the same config file I used in the &ldquo;["Daemonizing Navvy with God":http://jeffkreeftmeijer.com/2010/daemonizing-navvy-with-god]&rdquo; article.
 
 h3. Receiving messages
 
-Now, in a regular javascript file I included into the page, I connect to the web socket like this:
+Now, in a regular javascript file -- with some "jQuery":http://jquery.com -- I included into this page, I connect to the web socket like this:
 
 {% highlight javascript %}
 var conn;
@@ -72,7 +72,7 @@ As you can see, this connects to the server we just started. When a message is r
 
 h3. Sending messages
 
-Now we're able to receive messages, move and delete cursors. The last thing we need is the client to send out messages:
+Now we're able to receive messages, move and delete cursors. The last thing we need is the client to be able to send out messages:
 
 {% highlight javascript %}
 $(document).mousemove(
@@ -114,8 +114,8 @@ It creates a div for the new mouse if it doesn't exist yet and moves it to the r
 
 h3. Blew your mind?
 
-Tracking mouse movement and showing cursors to other clients is cool, but not useful in any way. What this example does show is that you can do pretty impressive things using web sockets and Node.js. And it was a great excuse to play around with it.
+Tracking mouse movement and showing cursors to other clients is cool, but not useful in any way (although you could think of some cool use-cases for this). What this example _does_ show is that you can do pretty impressive things using web sockets and Node.js. And it was a great excuse to play around with it.
 
-This was the first thing I did using Node.js, so the code is probably far from perfect. If you know a way to improve it, please "fork the Gist":http://gist.github.com/488562 and show me how it should be done.
+This was the first thing I did using Node.js, so the code is probably far from perfect. If you know a way to improve it, please "fork the Gist":http://gist.github.com/488562 and show me how it should be done. I'll update the article.
 
 I'm excited about Node.js and I'll probably write and play around with it some more in the future, so stay tuned.
