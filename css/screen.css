@@ -11,6 +11,7 @@ body
   -moz-background-size:100% auto;
   -o-background-size:100% auto;
   -webkit-background-size:100% auto;
+  -webkit-text-size-adjust: none;
   background-attachment:fixed;
   background-color:#222;
   background-image:url('../images/background.jpg');
