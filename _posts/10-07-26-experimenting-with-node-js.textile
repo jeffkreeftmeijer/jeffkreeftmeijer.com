@@ -7,10 +7,6 @@ head: <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js
 hackernews: 1548321
 ---
 
-<div class="notice" id="no_web_sockets">
-  For this to blow your mind, you need a browser that supports web sockets. May I suggest one of the newer versions of "Chrome":http://www.google.com/chrome/ or "Safari":http://www.apple.com/safari/?
-</div>
-
 <div class="notice" id="mouse_toggle">
   If you see extra mouse cursors moving around: don't worry, they're part of the demo. You can always <a href="#">disable</a> them if you want.
 </div>

@@ -52,9 +52,6 @@ var disabled = false,
     socket = new io.Socket('jeffkreeftmeijer.com', {port: 8000});
 
 if(socket.connect()){  
-  $('#mouse_toggle').show();
-  $('#no_web_sockets').hide();
-  
   socket.on('message', function(data){
     data = JSON.parse(data);
     if(data['action'] == 'close'){
