@@ -1,3 +1,5 @@
+io.setPath('/js/socket/');
+
 function ratelimit(fn, ms) {
   var last = (new Date()).getTime();
   return (function() {
@@ -21,7 +23,7 @@ function move(mouse){
   }
 }
 
-$(document).ready(function(){
+$(document).ready(function(){  
   $('#mouse_toggle a').toggle(function(){
     $('.mouse').hide();
     disabled = true;
@@ -35,33 +37,30 @@ $(document).ready(function(){
 
 $(document).mousemove(
   ratelimit(function(e){
-    if (conn) {
-      conn.send(JSON.stringify({
+      socket.send(JSON.stringify({
         'action': 'move',
         'x': e.pageX,
         'y': e.pageY,
         'w': $(window).width(),
         'h': $(window).height()
       }));
-    }
   }, 40)
 );
 
-var disabled = false;
-var conn;
-var connect = function() {
-  if (window["WebSocket"]) {
-    $('#mouse_toggle').show();
-    $('#no_web_sockets').hide();
-    conn = new WebSocket("ws://jeffkreeftmeijer.com:8000/test");
-    conn.onmessage = function(evt) {
-      data = JSON.parse(evt.data);
-      if(data['action'] == 'close'){
-        $('#mouse_'+data['id']).remove();
-      } else if(data['action'] == 'move'){
-        move(data);
-      };
+
+var disabled = false,
+    socket = new io.Socket('jeffkreeftmeijer.com', {port: 8000});
+
+if(socket.connect()){  
+  $('#mouse_toggle').show();
+  $('#no_web_sockets').hide();
+  
+  socket.on('message', function(data){
+    data = JSON.parse(data);
+    if(data['action'] == 'close'){
+      $('#mouse_'+data['id']).remove();
+    } else if(data['action'] == 'move'){
+      move(data);
     };
-  }
+  });
 };
-window.onload = connect;

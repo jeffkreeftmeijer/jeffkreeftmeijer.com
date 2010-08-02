@@ -3,7 +3,7 @@ layout: post
 title: Experimenting with Node.js
 excerpt: Using Node.js and a bit of jQuery to annoy you.
 published: true
-head: <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script><script src="/js/mice.js"></script> <link rel="stylesheet" href="/css/mice.css"/>
+head: <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script><script src="/js/json.js"></script><script src="/js/socket/socket.io.js"></script><script src="/js/mice.js"></script> <link rel="stylesheet" href="/css/mice.css"/>
 hackernews: 1548321
 ---
 
