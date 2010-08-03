@@ -11,6 +11,10 @@ hackernews: 1548321
   If you see extra mouse cursors moving around: don't worry, they're part of the demo. You can always <a href="#">disable</a> them if you want.
 </div>
 
+<div class="notice">
+  I've written a "follow-up":http://jeffkreeftmeijer.com/2010/things-i-learned-from-by-node.js-experiment/ on this article, in which I improved a lot of the code. Be sure to read that one too!
+</div>
+
 If you're using a browser that supports web sockets, you might see some extra mouse cursors moving around. These are actually other people also looking at this page right now, live, as we speak. If you don't see anything, try to open up this page in another browser window next to this one and move your mouse in it.
 
 This is an experiment I did to play around with "Node.js":http://nodejs.org and web sockets. I've put "everything in a Gist":http://gist.github.com/488562 in case you want to try it out yourself. I'll explain how it works in this article.
