@@ -22,7 +22,7 @@ Oh, and I've updated "the Gist":http://gist.github.com/488562, in case you want 
 
 h3. People love fancy tricks with web sockets
 
-After posting the article, it jumped to the "Hacker News":http://news.ycombinator.com/item?id=1548321 front page within minutes and stayed there for over 26 hours, it got "retweeted like crazy":http://tweetmeme.com/story/1782313910/experimenting-with-nodejs-jeff-kreeftmeijer and it got featured on "episode #17 of the Dev show":http://5by5.tv/devshow/17.
+After posting the article, it jumped to the "Hacker News":http://news.ycombinator.com/item?id=1548321 front page within minutes and stayed there for over 26 hours, got "retweeted like crazy":http://tweetmeme.com/story/1782313910/experimenting-with-nodejs-jeff-kreeftmeijer and got featured on "episode #17 of the Dev show":http://5by5.tv/devshow/17.
 
 A lot of people commented or sent me replies via twitter and it was fun to see how cursors chased each other around, felt the urge to "hump":http://twitter.com/jnunemaker/status/19599899506 or "bang":http://twitter.com/evilhackerdude/status/19687401793 other cursors, "draw shapes":http://www.reddit.com/r/programming/comments/ctvtz/experimenting_with_nodejs/c0v8243, or make sure nobody could read the text by constantly hovering over it.
 
@@ -30,17 +30,17 @@ Thanks for the enthusiasm everybody, it was a lot of fun.
 
 h3. Node.js handled everything perfectly
 
-Since this was my first experiment with Node.js, I expected cursors to start moving slow and the server eventually crashing. Especially because of this unexpected stream of visitors.
+Since this was my first experiment with Node.js, I expected cursors to start moving slow and the server to eventually crash. Especially because of this unexpected stream of visitors.
 
 I added a rate limit of forty milliseconds -- @mousemove()@ gets fired _a lot_ when you move your mouse -- to take some load off the server and I got "God":http://god.rubyforge.org/ to monitor it all and restart the server if it crashed.
 
-But, except for some mistakes I made which caused the server to crash when somebody injected some javascript, Node.js handled everything perfectly. On a 256 MB VPS. Amazing.
+However, except for some mistakes I made which caused the server to crash when somebody injected some javascript, Node.js handled everything perfectly. On a 256 MB VPS. Amazing.
                                      
 h3. You can fall back to flash
 
 I posted a big notice above my article telling everyone to use Safari or Chrome, since they have support for web sockets. I didn't know you could fall back to flash at the time.
 
-Right now, the example runs on ["@rauchg(Guillermo Rauch)":http://twitter.com/rauchg]'s "Socket.IO":http://github.com/LearnBoost/Socket.IO-node instead of "web-socket-server":http://github.com/miksago/node-websocket-server, which automatically falls back to flash when your browser doesn't support web sockets.
+Right now, the example runs on ["@rauchg(Guillermo Rauch)":http://twitter.com/rauchg]'s "Socket.IO":http://github.com/LearnBoost/Socket.IO-node instead of "web-socket-server":http://github.com/miksago/node-websocket-server, which automatically switches to flash when your browser doesn't support web sockets.
 
 When you do this for yourself, please start the server with @sudo@. I couldn't get it to work properly and eventually got help from Guillermo himself in the #node.js IRC channel.
 
@@ -50,7 +50,7 @@ h3. Injecting data into web sockets is easy
 
 Since I needed to send cursor locations on @mousemove()@, I had to create a connection to the web socket using Javascipt. This made it quite easy to send anything you want by injecting some Javascript into the page and calling @conn.send@. The web socket server would simply broadcast it to the other clients.
 
-I was amazed to see "@einaros(Einar Otto Stangvik)":http://twitter.com/einaros found himself able to inject multiple cursors into the page and rotate them in 3D space. He even made "a video":http://www.youtube.com/watch?v=jULOA7mSOac.
+I was amazed to see "@einaros(Einar Otto Stangvik)":http://twitter.com/einaros took the time to inject multiple cursors into the page and rotate them in 3D space. He even made "a video":http://www.youtube.com/watch?v=jULOA7mSOac.
 
 How would we prevent users from doing something like this? I haven't come up with a solution yet, since I think it's impossible to find out if the messages get sent on @mousemove()@ or if they're simply called using a javascript console. I'd love to hear your thoughts on this. 
 
