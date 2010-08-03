@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Things I learned from my Node.js experiment
-excerpt: After letting my Node.js and web sockets experiment run for a week, I learned a lot and improved the code. 
+excerpt: After letting my Node.js and web sockets experiment run for a week, I decided to improve the code a bit.
 published: true
 ---
 
