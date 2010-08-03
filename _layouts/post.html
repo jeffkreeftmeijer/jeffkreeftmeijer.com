@@ -7,7 +7,18 @@ layout: default
 {% endif %}
 
 <p class="date">{{page.date | date_to_string}}</p>
-{{ content }}
+<div id="content">
+	{{ content }}
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://jeffkreeftmeijer.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
 
 <p id="footnote">
   No comments here, feel free to reply via <a href="http://twitter.com/{% if page.author.twitter %}{{ page.author.twitter}}{% else %}jkreeftmeijer{% endif %}">Twitter</a>{% if page.hackernews %} or join the discussion on <a href="http://news.ycombinator.com/item?id={{ page.hackernews }}">Hacker News</a>{% endif %}.

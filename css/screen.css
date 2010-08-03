@@ -70,7 +70,7 @@ div#wrapper
   width:450px;
 }
 
-div#wrapper img
+div#content img, div#content embed
 {
   -moz-border-radius:5px;
   -moz-box-shadow:0 1px 0 #fff;
@@ -235,4 +235,12 @@ em{
 blockquote{
   padding: 0px 0px 0px 10px;
   font-style:italic;
+}
+
+div#disqus_thread{
+  margin: 50px 0px 0px 0px;
+}
+
+div.dsq-options, div.dsq-sharing-options, div.dsq-dc-logo{
+  display:none !important;
 }
