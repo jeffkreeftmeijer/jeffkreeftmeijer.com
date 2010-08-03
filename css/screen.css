@@ -17,6 +17,7 @@ body
   background-image:url('../images/background.jpg');
   background-position:center;
   background-size:100% auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h2,h3,h4,h5,h6
@@ -60,7 +61,6 @@ div#wrapper
   border-radius:5px;
   box-shadow:0 1px 0 #fff;
   color:#222;
-  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size:15px;
   line-height:150%;
   margin:50px auto 0px auto;
@@ -70,7 +70,7 @@ div#wrapper
   width:450px;
 }
 
-div#content img, div#content embed
+div#content img, div#content object
 {
   -moz-border-radius:5px;
   -moz-box-shadow:0 1px 0 #fff;
