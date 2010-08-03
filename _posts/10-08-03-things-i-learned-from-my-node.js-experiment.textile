@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Things I learned from my Node.js experiment
-excerpt: 
+excerpt: After letting my Node.js and web sockets experiment run for a week, I learned a lot and improved the code. 
 published: true
 ---
 
-  Last week, I published an article about "my very first experiment":http://jeffkreeftmeijer.com/2010/experimenting-with-node-js with "Node.js":http://nodejs.org. Being completely new to the whole thing, I decided to keep it simple and do something with web sockets.
+Last week, I published an article about "my very first experiment":http://jeffkreeftmeijer.com/2010/experimenting-with-node-js with "Node.js":http://nodejs.org. Being completely new to the whole thing, I decided to create a simple demo with web sockets.
 
-As you can read in last week's article, I created a page that checks your mouse cursor's location and sends it to the web socket. The web socket broadcasts your mouse location to every other user on the page, so everyone will see your cursor moving around. That means you will see everybody else's cursurs moving around on you r screen as well.
+As you can read in last week's article, I created a page that checks your mouse cursor's location and sends it to the web socket. The web socket broadcasts your mouse location to every other user on the page, so everyone will see your cursor moving around. That means you will see everybody else's cursor moving around on your screen as well.
 
 <object width="440" height="308">
   <param name="allowfullscreen" value="true" />
