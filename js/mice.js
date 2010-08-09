@@ -33,7 +33,7 @@ function speak(data){
   }
   
   $('#mouse_'+data['id']+' .chat').show().html(data['text']);   
-  timeouts[data['id']] = setTimeout("$('#mouse_"+data['id']+" .chat').hide()", 5000)
+  timeouts[data['id']] = setTimeout("$('#mouse_"+data['id']+" .chat').hide()", 30000)
 };
 
 function preview(data){
@@ -47,7 +47,7 @@ function preview(data){
   
   $('#preview').show();
   $('#preview .chat').show().html(data['text']);   
-  timeouts['preview'] = setTimeout("$('#preview').hide()", 5000)
+  timeouts['preview'] = setTimeout("$('#preview').hide()", 30000)
 };
 
 $(document).ready(function(){
