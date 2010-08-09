@@ -17,7 +17,7 @@ If you have no idea what this is all about, please start by reading &ldquo;["Exp
 This time, I've added the ability to chat with other cursors -- with "Gravatar":http://en.gravatar.com support! -- you can try it out by putting your e-mail address in the left input, your message in the right and hitting enter.
 
 <form id="chat">
-  <input class="placeholder" id="email" placeholder="E-mail address"/><input class="placeholder" id="text" maxlength="140" placeholder="Message"/>
+  <input class="placeholder" id="email" placeholder="E-mail address"/><input class="placeholder" id="text" maxlength="140" placeholder="Message"/><input type="submit" style="display:none;"/>
 </form>
 
 <p class="small">I'm only using your e-mail address to fetch your Gravatar. I'm not saving anything.</p>
