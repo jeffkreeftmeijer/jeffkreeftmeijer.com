@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Node.js, web sockets and talking mice
-excerpt: 
+excerpt: Wrapping up my Node.js web socket experiment with a mouse chat.
 published: true
 head: <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script><script src="/js/jquery.js"></script><script src="/js/json.js"></script><script src="/js/socket/socket.io.js"></script><script src="/js/mice.js"></script> <link rel="stylesheet" href="/css/mice.css"/>
 ---
