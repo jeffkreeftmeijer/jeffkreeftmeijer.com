@@ -171,12 +171,12 @@ ul.columns
   column-width:215px;
 }
 
-p.date,p#footnote,p#footnote a,del,del a
+.small, p.date,p#footnote,p#footnote a,del,del a
 {
   color:#888;
 }
 
-p#footnote
+.small, p#footnote
 {
   font-size:13px;
 }
