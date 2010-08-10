@@ -32,7 +32,7 @@ function speak(data){
     return $('#mouse_'+data['id']+' .chat').hide();
   }
   
-  $('#mouse_'+data['id']+' .chat').show().html(data['text']);   
+  $('#mouse_'+data['id']+' .chat').show().text(data['text']);   
   timeouts[data['id']] = setTimeout("$('#mouse_"+data['id']+" .chat').hide()", 30000)
 };
 
@@ -46,7 +46,7 @@ function preview(data){
   }
   
   $('#preview').show();
-  $('#preview .chat').show().html(data['text']);   
+  $('#preview .chat').show().text(data['text']);   
   timeouts['preview'] = setTimeout("$('#preview').hide()", 30000)
 };
 
@@ -54,11 +54,11 @@ $(document).ready(function(){
   $('#mouse_toggle a').toggle(function(){
     $('.mouse').hide();
     disabled = true;
-    $(this).html('enable');
+    $(this).text('enable');
   }, function(){
     $('.mouse').show();
     disabled = false;
-    $(this).html('disable');
+    $(this).text('disable');
   });
 
   $('form#chat input#email').focus();
