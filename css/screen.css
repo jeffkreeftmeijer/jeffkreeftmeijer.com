@@ -227,7 +227,6 @@ div.notice
   margin: 0px 0px 5px -40px;
 }
 
-
 em{
   font-style:italic;
 }
@@ -245,7 +244,7 @@ div.dsq-options, div.dsq-sharing-options, div.dsq-dc-logo, div#dsq-global-toolba
   display:none !important;
 }
 
-p.date{
+p.article_date{
   float:left;
 }
 
