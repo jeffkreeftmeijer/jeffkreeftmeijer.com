@@ -2,7 +2,7 @@
 layout: post
 title: Bundler, because your gems depend on gems too
 excerpt: 
-published: true
+published: false
 ---
 
 "Bundler":http://gembundler.com made gem dependencies in Rails projects a lot easier. It creates a &ldquo;bubble&rdquo; of gems you listed in your @Gemfile@, which means it only loads the ones you specified. While this might sound annoying, it keeps you from having incomplete gem dependency specifications like you did when you were still using @config.gem@. This makes it easier to keep your @Gemfile@  complete and your project simple to get up and running.
