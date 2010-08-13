@@ -244,3 +244,12 @@ div#disqus_thread{
 div.dsq-options, div.dsq-sharing-options, div.dsq-dc-logo, div#dsq-global-toolbar{
   display:none !important;
 }
+
+p.date{
+  float:left;
+}
+
+iframe.twitter-share-button{
+  margin:20px 0;
+  float:right;
+}
