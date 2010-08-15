@@ -1,13 +1,15 @@
 ---
 layout: post
 title: Bundler, because your gems depend on gems too
-excerpt: 
-published: false
+excerpt: Bundler made gem dependencies in Rails projects a lot easier, but what about gems themselves?
+published: true
 ---
 
 "Bundler":http://gembundler.com made gem dependencies in Rails projects a lot easier. It creates a &ldquo;bubble&rdquo; of gems you listed in your @Gemfile@, which means it only loads the ones you specified. While this might sound annoying, it keeps you from having incomplete gem dependency specifications like you did when you were still using @config.gem@. This makes it easier to keep your @Gemfile@  complete and your project simple to get up and running.
 
-But what about gems? We use the @.gemspec@ file to specify gem dependencies for our gems, which -- when complete -- makes installing and using gems a breeze since it installs all dependencies automatically. Great.
+!/images/bundler.jpg!
+
+But what about gems themselves? We use the @.gemspec@ file to specify gem dependencies for our gems, which -- when complete -- makes installing and using gems a breeze since it installs all dependencies automatically. Great.
 
 I'm not talking about _using_ gems, though. I'm talking about working _on_ and _contributing to_ gems. Your @.gemspec@ doesn't help contributors when they clone your project and want to get the tests running, they still have to read through it and install everything manually.
 
