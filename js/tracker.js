@@ -3,6 +3,14 @@ Tracker = function(hostname) {
 
   tracker.hostname = hostname || window.location.hostname;
   tracker.server = 'http://jeffkreeftmeijer.com:8080/';
+  tracker.idle = false;
+  tracker.idle_timeout = setTimeout(tracker.set_idle, 10000);
+
+  if(document.addEventListener){
+		document.addEventListener("mousemove", tracker.moved, false);
+	} else {
+		document.attachEvent("onmousemove", tracker.moved);
+	}
 };
 
 Tracker.prototype = {
@@ -11,15 +19,17 @@ Tracker.prototype = {
       id: tracker.cookie_id(),
       hostname: tracker.hostname,
       location: location.pathname,
-      referrer: (document.referrer.split('/')[2] != location.hostname) ? document.referrer : ''
+      referrer: (document.referrer.split('/')[2] != location.hostname) ? escape(document.referrer) : ''
     }));
   },
 
   ping: function(){
-    tracker.send('ping' + tracker.query({
-      id: tracker.cookie_id(),
-      hostname: tracker.hostname
-    }));
+    if(!tracker.idle || (new Date() - tracker.idle) < 60000) {
+      tracker.send('ping' + tracker.query({
+        id: tracker.cookie_id(),
+        hostname: tracker.hostname
+      }));
+    }
   },
 
   send: function(location) {
@@ -83,5 +93,15 @@ Tracker.prototype = {
       s += chars.substring(rnum, rnum + 1);
     }
     return s;
+  },
+
+  moved: function() {
+    tracker.idle = false;
+    clearTimeout(tracker.idle_timeout)
+    tracker.idle_timeout = setTimeout(tracker.set_idle, 10000);
+  },
+
+  set_idle: function() {
+    tracker.idle = new Date();
   }
 };
