@@ -246,7 +246,7 @@ div#disqus_thread{
   margin: 50px 0px 0px 0px;
 }
 
-div.dsq-options, div.dsq-sharing-options, div.dsq-dc-logo, div#dsq-global-toolbar{
+div.dsq-options, div.dsq-sharing-options, div.dsq-dc-logo, div#dsq-global-toolbar, div#dsq-pagination{
   display:none !important;
 }
 
