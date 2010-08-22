@@ -41,7 +41,7 @@ After some time and some commits, the client calls you and asks you to undo the 
 
 You can't @git revert 32faa25585e162f82206b8ce791ec098d6e34677@, because that will bring back the bugs you fixed in that commit too. You'll have to manually check what the original hue of green was and change it back.
 
-Seriously. Just commit all the time. Don't wait until you go home, don't fix three _really_ simple bugs before committing, commit _every single change separately_.
+Seriously. Just commit one thing at a time. Don't wait until you go home, don't fix three _really_ simple bugs before committing, commit _every single change separately_.
 
 h3. Rebase & --amend to get rid of &ldquo;oops&rdquo;-commits
 
