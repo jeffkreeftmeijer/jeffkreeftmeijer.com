@@ -103,7 +103,14 @@ div#footer
 {
   margin: 10px auto 50px auto;
   width: 490px;
-  text-align: right;
+}
+
+div#footer a#feed{
+  float: right;
+}
+
+div#footer img{
+  vertical-align: middle;
 }
 
 div.post
