@@ -38,6 +38,10 @@ a
   text-decoration:none;
 }
 
+a img{
+  vertical-align: middle;
+}
+
 span#eighty{
   color:#007236;
 }
@@ -63,7 +67,7 @@ div#wrapper
   color:#222;
   font-size:15px;
   line-height:150%;
-  margin:50px auto 0px auto;
+  margin:50px auto;
   opacity:0.9px;
   padding:20px;
   text-shadow:0 1px 0 #fff;
@@ -101,16 +105,11 @@ div#header li
 
 div#footer
 {
-  margin: 10px auto 50px auto;
-  width: 490px;
+  margin: 50px 0 0 0;
 }
 
 div#footer a#feed{
   float: right;
-}
-
-div#footer img{
-  vertical-align: middle;
 }
 
 div.post
@@ -255,7 +254,32 @@ p.article_date{
   float:left;
 }
 
-iframe.twitter-share-button{
+span#article_buttons{
   margin:20px 0;
   float:right;
+  text-align: right;
+}
+
+span#article_buttons a{
+  display:block;
+}
+
+a:hover span.balloon{
+  display: inline;
+}
+
+span.balloon{
+  background-color: #222;
+  color: #fff;
+  font-size: 10px;
+  padding:3px 5px;
+  -moz-border-radius:5px;
+  -moz-box-shadow:0 -1px 0 #444;
+  -webkit-border-radius:5px;
+  -webkit-box-shadow:0 -1px 0 #444;
+  text-shadow:0 1px 0 #000;
+  font-weight: 500;
+  margin: 0 5px;
+  display:none;
+  line-height: 16px;
 }

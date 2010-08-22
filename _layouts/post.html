@@ -6,9 +6,18 @@ layout: default
   This is a guest post written by <a href="http://twitter.com/{{ page.author.twitter }}" title="{{ page.author.full}}">@{{ page.author.twitter }}</a>. {{ page.author.description }}
 {% endif %}
 
-<p class="article_date date">{{page.date | date_to_string}}</p>
+<p class="article_date date">
+  {{page.date | date_to_string}}
+</p>
 
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="jkreeftmeijer">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<span id="article_buttons">
+  <a id="tweet" target="_blank">
+    <span class="balloon">tweet!</span> <img src="/images/tweet.png"/>
+  </a>
+  <a href="http://feeds.feedburner.com/jeffkreeftmeijer">
+    <span class="balloon">subscribe!</span> <img src="/images/feed.png"/> 
+  </a>
+</span>
 
 <hr/>
 
