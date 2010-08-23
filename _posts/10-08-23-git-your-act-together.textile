@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Git your act together
-excerpt:
+excerpt: Explaining some things that I think would make using Git a bit more enjoyable when working in a team.
 published: true
 ---
 
@@ -21,7 +21,7 @@ Check out "whatthecommit.com":http://whatthecommit.com for more bad examples.
 
 I don't want to know how you feel, what you ate, what time it is or who fucked up in the first place. Please tell me what you did and _how_ you did it. Don't try to be clever, witty or funny. Document your change as good as you can and nothing else.
 
-"A note about Git commit messages":http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html by "@tpope(Tim Pope)":http://twitter.com/tpope/ might be a good read if you think you need some guidelines.
+&ldquo;["A note about Git commit messages":http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html]&rdquo; by "@tpope(Tim Pope)":http://twitter.com/tpope/ might be a good read if you think you need some guidelines.
 
 h3. Commit all the fucking time
 
@@ -107,7 +107,7 @@ pick b3ff462 Oops! Forgot the closing parenthesis in Task#start.
 
 If you replce the second occurance of &ldquo;pick&rdquo; with &ldquo;squash&rdquo; and save, another text editor pops up asking you to write a new commit message. After you saved that one, your commits will be merged into one, making your repository cleaner and allowing you to @git revert@ the whole thing at once.
 
-If you want more information about rebasing, be sure to read "Squashing commits with Rebase":http://www.gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html on "Git Ready":http://www.gitready.com.
+If you want more information about rebasing, be sure to read &ldquo;["Squashing commits with Rebase":http://www.gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html]&rdquo; on "Git Ready":http://www.gitready.com.
 
 If the commit you want to squash into is the last commit, you can even directly add new changes to it by using the @--amend@ flag when committing:
 
