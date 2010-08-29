@@ -12,45 +12,55 @@
   {{ page.head }}
   <link rel="stylesheet" href="/css/screen.css" type="text/css" />
   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css" />
   <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="/css/ipad.css" type="text/css" />
   <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/jeffkreeftmeijer" />
 </head>
 <body>
   <div id="wrapper">
-    <div id="header">
-      <h1>
-        {% if page.home %}
-         Jeff Kreeftmeijer <span title="krayft&bull;migh&bull;er">/kre&#618;ft&bull;ma&#618;&bull;&#604;r/</span>
-        {% else %}
-          <a href="/">&larr; Jeff Kreeftmeijer</a>
-        {% endif %}
-      </h1>
-      <ul>
-        <li>
-          <a href="/navvy">Navvy</a>
-        </li>
-        <li>
-          <a href="/archive">Archive</a>
-        </li>
-        <li>
-          <a href="http://github.com/jeffkreeftmeijer">Github &rarr;</a>
-        </li>
-        <li>
-          <a href="http://twitter.com/jkreeftmeijer">Twitter &rarr;</a>
-        </li>
-      </ul>
-      <hr/>
-    </div>
-    <h2>{{ page.title }}</h2>
-    {{ content }}
-    <div id="footer">
-      <a id="webbynode" href="http://webbynode.com">
-        <img src="/images/webbynode.png"/> <span class="balloon">awesome hosting.</span>
-      </a>
-      <a id="feed" href="http://feeds.feedburner.com/jeffkreeftmeijer">
-        <span class="balloon">subscribe!</span> <img src="/images/feed.png"/>
-      </a>
-      <hr/>
+    <div id="container">
+      <div id="header">
+        <h1>
+          {% if page.home %}
+           Jeff Kreeftmeijer <span title="krayft&bull;migh&bull;er">/kre&#618;ft&bull;ma&#618;&bull;&#604;r/</span>
+          {% else %}
+            <a href="/">&larr; Jeff Kreeftmeijer</a>
+          {% endif %}
+        </h1>
+        <ul>
+          <li>
+            <a href="/navvy">Navvy</a>
+          </li>
+          <li>
+            <a href="/archive">Archive</a>
+          </li>
+          <li>
+            <a href="http://github.com/jeffkreeftmeijer">Github &rarr;</a>
+          </li>
+          <li>
+            <a href="http://twitter.com/jkreeftmeijer">Twitter &rarr;</a>
+          </li>
+        </ul>
+        <hr/>
+      </div>
+      <h2>{{ page.title }}</h2>
+      {{ content }}
+      <div id="footer">
+        <a id="webbynode" href="http://webbynode.com">
+          <img src="/images/webbynode.png"/> <span class="balloon">awesome hosting.</span>
+        </a>
+        <a id="feed" href="http://feeds.feedburner.com/jeffkreeftmeijer">
+          <span class="balloon">subscribe!</span> <img src="/images/feed.png"/>
+        </a>
+        <hr/>
+      </div>
+      <div id="ad">
+        <a href="http://engine.rubyrow.net/redirect/0/2226/2289/132/fb80f3d43bc24a9db9df83f4c6c56fe1"><img src="http://static2.rubyrow.net/Advertisers/2226.png"/></a>
+
+        <p>Monitor Rails, MongoDB,Redis, Passenger, Delayed Job and more.</p>
+
+        <a href="http://engine.rubyrow.net/redirect/0/2226/2289/132/fb80f3d43bc24a9db9df83f4c6c56fe1" style="font-weight:bold">Free 30-Day Trial</a>
+      </div>
     </div>
   </div>
 
