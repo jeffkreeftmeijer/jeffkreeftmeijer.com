@@ -57,6 +57,12 @@ a:hover, a:hover span#eighty, a:hover span#beans
 
 div#wrapper
 {
+  min-width:490px;
+  overflow:hidden;
+}
+
+div#container
+{
   -moz-border-radius:5px;
   -moz-box-shadow:0 1px 0 #fff;
   -webkit-border-radius:5px;
@@ -67,11 +73,12 @@ div#wrapper
   color:#222;
   font-size:15px;
   line-height:150%;
-  margin:50px auto;
   opacity:0.9px;
   padding:20px;
   text-shadow:0 1px 0 #fff;
   width:450px;
+  margin:50px auto;
+  position:relative;
 }
 
 div#content img, div#content object
@@ -122,8 +129,42 @@ div.post h3,div.post p
   margin:5px 0;
 }
 
+div#ad{
+  width: 120px;
+  position:absolute;
+  background-color: #222;
+  top: 110px;
+  right: -140px;
+  padding: 10px;
+  -moz-border-radius-topright:5px;
+  -moz-border-radius-bottomright:5px;
+  -moz-box-shadow:0 -1px 0 #444;
+  -webkit-border-top-right-radius:5px;
+  -webkit-border-bottom-right-radius:5px;
+  -webkit-box-shadow:0 -1px 0 #444;
+  z-index: 20;
+}
+
+div#ad, div#ad a
+{
+  color:#fff;
+  font-size: 11px;
+  line-height: 130%;
+  text-shadow:0 1px 0 #000;
+}
+
+div#ad a:hover
+{
+  color: #ddd;
+}
+
+div#ad p
+{
+  margin:10px 0 0 0;
+}
+
 h1
-{ 
+{
   -moz-border-radius:5px;
   -moz-box-shadow:0 1px 0 #fff;
   -webkit-border-radius:5px;
@@ -241,6 +282,7 @@ div.notice
   text-shadow:0 1px 0 #dddaaa;
   width: 490px;
   margin: 0px 0px 5px -40px;
+  z-index: 10;
 }
 
 em{
