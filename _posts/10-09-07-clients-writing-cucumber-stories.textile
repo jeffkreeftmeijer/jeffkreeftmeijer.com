@@ -1,0 +1,30 @@
+---
+layout: post
+title: Clients writing Cucumber stories?
+excerpt: Trying to clear some misconceptions about Cucumber while telling you my reason for not using it.
+published: true
+---
+
+Although I told you "Cucumber is for vegetarians":http://jeffkreeftmeijer.com/2010/steak-because-cucumber-is-for-vegetarians a while back, I certainly don't think "it's redundant":http://afewgoodlines.com/post/1077316188/integration-testing-retrospective-part-i. Here are my two cents.
+
+!http://jeffkreeftmeijer.com/images/cucumber.jpg!
+
+From ["@ryandotsmith(Ryan Smith)":http://twitter.com/ryandotsmith]'s ["article":http://afewgoodlines.com/post/1077316188/integration-testing-retrospective-part-i]:
+
+bq. &ldquo;How wonderful! I will have the client write out cucumber features and I will copy and paste them into a features directory, then I will write a bunch of regular expressions that couple the client generated stories to my code. Yeah right! Perhaps I have the only clients in the world who suck at writing cucumber features, but in my experience cucumber stories are best written by developers.&rdquo;
+
+Nobody ever said you should let your client write cucumber stories on his own, copy and paste them into your @features@ directory and write regular expressions to translate this mess into clean Ruby code.
+
+Cucumber's "Business Readable DSL":http://www.martinfowler.com/bliki/BusinessReadableDSL.html allows your client to _read_ stories, not to _write_ them. He doesn't need to know "what to keep in mind to make it easily regexable":http://elabs.se/blog/15-you-re-cuking-it-wrong when writing stories, he shouldn't be writing anything by himself.
+
+The client and the programmer are, in this case, a perfect pair to write stories. The client knows -- for the most part -- what's supposed to be done, the programmer knows how to write stories and is able to give advice when the client proposes something wacky.
+
+Your client isn't stupid, but he probably doesn't know how to write Cucumber stories or build his own application. That's why he hired you, remember?
+
+h3. Why I don't use Cucumber
+
+At "80beans":http://80beans.com, we sit down with clients to create "Pivotal Tracker":http://pivotaltracker.com/ stories which we turn into acceptance tests later. We write these tests in "Steak":http://jeffkreeftmeijer.com/2010/steak-because-cucumber-is-for-vegetarians, which is a really simple acceptance testing library based on "RSpec":http://rspec.info.
+
+This way the client gets an overview of the features we're building, which ones we're currently working on or how many we've already delivered. The programmers write tests in Ruby, so they spend less time writing regular expressions and more time writing application code or playing ping-pong.
+
+Still, I understand that writing tests together with your client gives both the programmers and the client a better understanding of the project, because they went over every single link, form and button together. I would love to know how many of you use Cucumber and if you ever wrote tests while sitting down with a client, though.
