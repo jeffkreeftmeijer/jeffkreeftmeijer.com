@@ -103,7 +103,7 @@ div#content img, div#content object
 div#header
 {
   font-size:13px;
-  margin:0 0 45px;
+  margin:0 0 65px;
 }
 
 div#header ul
@@ -197,10 +197,12 @@ h1 a
 h1 span{
   display: none;
   text-align: right;
-  font-size: 11px;
+  font-size: 10px;
+  letter-spacing: 1px;
 }
 
-h1:hover span{
+h1:hover span
+{
   display: block;
 }
 
@@ -249,6 +251,11 @@ hr
 {
   clear:both;
   visibility:hidden;
+}
+
+hr.right
+{
+  clear:right;
 }
 
 code,pre
