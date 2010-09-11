@@ -118,15 +118,6 @@ div#header li
   margin:0 0 0 20px;
 }
 
-div#footer
-{
-  margin: 50px 0 0 0;
-}
-
-div#footer a#feed{
-  float: right;
-}
-
 div.post
 {
   margin:50px 0 0;
