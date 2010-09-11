@@ -137,12 +137,15 @@ div.post h3,div.post p
   margin:5px 0;
 }
 
-div#ad{
-  width: 120px;
+div#ads{
   position:absolute;
-  background-color: #222;
   top: 110px;
   right: -140px;
+}
+
+div#adzerk{
+  width: 120px;
+  background-color: #222;
   padding: 10px;
   -moz-border-radius-topright:5px;
   -moz-border-radius-bottomright:5px;
@@ -153,7 +156,7 @@ div#ad{
   z-index:0;
 }
 
-div#ad, div#ad a
+div#adzerk, div#adzerk a
 {
   color:#fff;
   font-size: 11px;
@@ -161,14 +164,19 @@ div#ad, div#ad a
   text-shadow:0 1px 0 #000;
 }
 
-div#ad a:hover
+div#adzerk a:hover
 {
   color: #ddd;
 }
 
-div#ad p
+div#adzerk p
 {
   margin:10px 0 0 0;
+}
+
+div#webbynode
+{
+  padding: 25px 5px;
 }
 
 h1
