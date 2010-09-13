@@ -1,0 +1,64 @@
+---
+layout: post
+title: Disabling ActiveModel callbacks
+excerpt: Trying to figure out how to temporarily disable callbacks. How would you solve this?
+published: true
+---
+
+Remember the last time you wanted to create, update, save or destroy a record or document and your @before_create@ or @after_update@ fired when you didn't want it to? Or are you using "Mongoid":http://mongoid.org and did you include @Mongoid::Timestamps@ but don't want your @updated_at@ attribute to change for a specific action?
+
+Think for a second. Adding callbacks to disable them later is nasty and will result in code that's more difficult to maintain. You probably made a wrong design decision here, so get back to the drawing board and rethink this part of your application if you can.
+
+If you can't or you're completely sure you have a valid reason to skip your callbacks, you probably tried something like "removing the callback method":http://intridea.com/2009/3/12/temporarily-disable-activerecord-callbacks but found out that didn't work anymore.
+
+The way callbacks are handled completely changed in Rails 3, breaking approaches like above. The new "@skip_callback@":http://apidock.com/rails/ActiveSupport/Callbacks/ClassMethods/skip_callback and "@set_callback@":http://apidock.com/rails/ActiveSupport/Callbacks/ClassMethods/set_callback can be of some help though:
+
+{% highlight ruby %}
+class User
+  # I'm using Mongoid, but this should work for anything based on 
+  # ActiveModel.
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  
+  def sneaky_update(attributes)
+    User.skip_callback(:save, :before, :set_updated_at)
+    User.update_attributes(attributes)
+    User.set_callback(:save, :before, :set_updated_at)
+  end
+  
+end
+{% endhighlight %}
+
+This will keep @Mongoid::Timestamps@ from calling @set_updated_at@ before saving the Document.
+
+Because I didn't like how this looked, I added a method called @without_callback@ to @ActiveSupport::Callbacks@ to allow you to temporarily disable callbacks in a block. Just throw this in @config/initializers/without_callback.rb@:
+
+{% highlight ruby %}
+module ActiveSupport::Callbacks::ClassMethods
+  def without_callback(*args, &block)
+    skip_callback(*args)
+    yield
+    set_callback(*args)
+  end
+end
+{% endhighlight %}
+
+And you'll be able to do stuff like this: 
+
+{% highlight ruby %}
+class User
+  # I'm using Mongoid, but this should work for anything based on 
+  # ActiveModel.
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  
+  def sneaky_update(attributes)
+    User.without_callback(:save, :before, :set_updated_at)
+      update_attributes(attributes)
+    end
+  end
+  
+end
+{% endhighlight %}
+
+At least, that's how I solved it. I'm not completely sure this is the prettiest way to do something like this. Do you know of a better way? Be sure to let me know in the comments.
