@@ -23,6 +23,8 @@ I don't want to know how you feel, what you ate, what time it is or who fucked u
 
 &ldquo;["A note about Git commit messages":http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html]&rdquo; by "@tpope(Tim Pope)":http://twitter.com/tpope/ might be a good read if you think you need some guidelines.
 
+<a name="commit-all-the-fucking-time"></a>
+
 h3. Commit all the fucking time
 
 You're at work and your client sends you an email saying he wants a couple of small bugs fixed and the header to be blue instead of green. Other than the rest of your clients, he's right: these are really small bugs and changing the header's color is just a one-line change.
@@ -34,7 +36,7 @@ commit 32faa25585e162f82206b8ce791ec098d6e34677
 Author: Jeff Kreeftmeijer
 Date:   Mon Aug 23 11:27:10 2010 +0200
 
-	Fix some bugs and make the header blue. 
+  Fix some bugs and make the header blue.
 {% endhighlight %}
 
 After some time and some commits, the client calls you and asks you to undo the header's background color back to green. What do you do now?
@@ -62,7 +64,7 @@ commit a5d8e964f6ac22809ffcd7d38ec503e36a27e00b
 Author: Jeff Kreeftmeijer
 Date:   Mon Aug 23 15:11:10 2010 +0200
 
-	Add Task#start to set the started_at attribute to the current time.
+  Add Task#start to set the started_at attribute to the current time.
 {% endhighlight %}
 
 After you committed, you find out that you missed the closing parenthesis on line four. You quickly fix it and commit the new version:
@@ -72,7 +74,7 @@ commit b3ff4620c2accd674427322cd1c10d634ab63d3a
 Author: Jeff Kreeftmeijer
 Date:   Mon Aug 23 15:14:48 2010 +0200
 
-	Oops! Forgot the closing parenthesis in Task#start.
+  Oops! Forgot the closing parenthesis in Task#start.
 {% endhighlight %}
 
 It might happen that the second commit didn't fix everything either and you have to commit a fix again. Maybe once more, because it's been a long day. You'd end up with a bunch of commits fixing problems caused by previous commits.
