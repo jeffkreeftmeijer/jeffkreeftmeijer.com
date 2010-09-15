@@ -258,14 +258,23 @@ hr.right
   clear:right;
 }
 
-code,pre
+#content code,pre
 {
   font-family:"Monaco", "Courier New", monospace;
   font-size: 12px;
   line-height: 150%;
 }
 
-pre
+pre{
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+
+div#content pre
 {
   -moz-border-radius:5px;
   -moz-box-shadow:0 -1px 0 #444;
@@ -276,11 +285,6 @@ pre
   font-size: 13px;
   padding: 20px;
   text-shadow:0 1px 0 #000;
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
   width: 490px;
   margin: 0px 0px 0px -40px;
 }
