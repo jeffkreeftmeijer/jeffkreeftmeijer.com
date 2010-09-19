@@ -26,7 +26,7 @@ This will open up three tabs in my terminal. The first one starts the "Jekyll":h
 
 To do all of the above, I simply run Terminitor's @start@ command:
 
-bc. terminitor start jeffkreeftmeijer
+bc. $ terminitor start jeffkreeftmeijer
 
 Pretty cool, right? Be sure to check out the "README":http://github.com/achiu/terminitor/blob/master/README.md, where all of this stuff gets explained more thoroughly.
 
@@ -40,7 +40,12 @@ Also, I want to be able to set up my _own_ workflow (I know using the @Termfile@
 
 Lastly, I'd love to keep using Terminitor an option, so people who choose not to use it shouldn't have to deal with extra, meaningless configuration files flying around.
 
-I would suggest _not_ checking it in and keeping it to yourself.
+I would suggest _not_ checking it in and keeping it to yourself right now. However, Arthur himself "commented":http://github.com/jeffkreeftmeijer/jeffkreeftmeijer.com/commit/1b7da3c7665c698972ad50f2cb2fcc8f8eb74a73#commitcomment-150393 and explained how the @Termfile@ feature could go one step furter in the future and give you the ability to do something like this on a remote repository that has a @Termfile@:
+
+bc. $ terminitor clone jeffkreeftmeijer navvy
+
+Making it possible to do a one-command setup so you can start hacking on the project immediately. Now _that_ sounds promising.
+
 
 h3. What do you think?
 
