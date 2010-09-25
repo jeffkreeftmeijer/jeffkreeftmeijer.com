@@ -3,6 +3,7 @@ layout: post
 title: "Terminitor: the Terminal automator from the future"
 excerpt: Automating your Terminal workflow to save you some keystrokes.
 published: true
+hackernews: 1709086
 ---
 
 "Terminitor":http://github.com/achiu/terminitor -- that's _not_ Termin[*a*]tor -- is a really simple Terminal workflow automation tool by "@arthur_chiu(Arthur Chiu)":http://twitter.com/arthur_chiu and the rest of the "Padrino":http://www.padrinorb.com/ "team":http://www.padrinorb.com/team. It aims to automate the terminal commands you do when you start working on a project so you don't have to start your database, web server and editor every time you want to continue your work.
