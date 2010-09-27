@@ -38,7 +38,7 @@ gemspec
 
 Please, let's start using that one now. It's prettier, it makes more sense and there's a reason @add_bundler_dependencies@ isn't mentioned on the Bundler website anymore.
 
-What do you think about a deprecation warning when still using @add_bundler_dependencies@? "@wycats(Yehuda Katz)":http://twitter.com/wycats? "@carllerche(Carl Lerche)":http://twitter.com/carllerche? Anyone?
+-What do you think about a deprecation warning when still using @add_bundler_dependencies@? "@wycats(Yehuda Katz)":http://twitter.com/wycats? "@carllerche(Carl Lerche)":http://twitter.com/carllerche? Anyone?- Oh, it'll "throw a deprecation warning":http://jeffkreeftmeijer.com/2010/lets-not-add_bundler_dependencies-anymore/#comment-81240290 too.
 
 
 
