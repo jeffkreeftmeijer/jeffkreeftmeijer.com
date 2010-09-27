@@ -9,7 +9,7 @@ The article I published about "using Bundler to manage your gem's gem dependenci
 
 So I went to Bundler's amazing little website to read up the nasty feature, but it was "gone":http://www.google.com/search?q=%22add_bundler_dependencies%22+site%3Agembundler.com. After looking around for a second, I found the new &ldquo;["Using Bundler with Rubygem gemspecs":http://gembundler.com/rubygems.html]&rdquo; page and realized a lot had changed since everybody got excited about @add_bundler_dependencies@ at Railsconf.
 
-I ended up writing a cheerful article about how awesome Bundler was, since my biggest annoyance had been destroyed. Now, a couple of weeks later, "this article about @add_bundler_dependencies@":http://andre.arko.net/2010/05/01/bundler-for-gem-development started to come up again. Please allow me to explain why I don't like it and why I think you should stop using it.
+I ended up writing a cheerful article about how awesome Bundler was, since my biggest annoyance had been destroyed. Now, a couple of weeks later, "this article about @add_bundler_dependencies@":http://andre.arko.net/2010/05/01/bundler-for-gem-development started to get mentioned again. Please allow me to explain why I think you should stop using it.
 
 h3. Why?
 
@@ -29,7 +29,7 @@ This feels totally backwards, since the @.gemspec@ file should be the one specif
 
 h3. Gemfiles reading .gemspecs
 
-The "new implementation":http://jeffkreeftmeijer.com/2010/bundler-because-your-gems-depend-on-gems-too/ turns this all around and allows you to let your @Gemfile@ read dependencies from your @.gemspec@, so you don't need Bundler to install it anymore:
+The "new implementation":http://jeffkreeftmeijer.com/2010/bundler-because-your-gems-depend-on-gems-too/ turns this all around and allows you to let your @Gemfile@ read dependencies from your @.gemspec@, so you don't need Bundler to install it anymore. It's a matter of simply throwing @gemspec@ into your @Gemfile@:
 
 {% highlight ruby %}
 # Gemfile
