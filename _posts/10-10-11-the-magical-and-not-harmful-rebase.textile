@@ -19,7 +19,7 @@ You _could_ simply "merge":http://www.kernel.org/pub/software/scm/git/docs/git-m
 
 Another option is to "cherry-pick":http://www.kernel.org/pub/software/scm/git/docs/git-cherry-pick.html the change you need into your branch. While -- history wise -- I don't see a real problem with this, it's a bit of a hassle because you need to find the commit you need to merge in first.
 
-Git's "ebase allows you to temporarily rewind the commits you did in this branch, pull in everything from another branch and apply your commits on top of that again:
+Git's "Rebase":http://www.kernel.org/pub/software/scm/git/docs/git-rebase.html allows you to temporarily rewind the commits you did in this branch, pull in everything from another branch and apply your commits on top of that again:
 
 {% highlight console %}
 $ git rebase develop
