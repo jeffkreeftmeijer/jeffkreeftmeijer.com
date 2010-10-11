@@ -45,6 +45,8 @@ You can't @git revert 32faa25585e162f82206b8ce791ec098d6e34677@, because that wi
 
 Seriously. Just commit one thing at a time. Don't wait until you go home, don't fix three _really_ simple bugs before committing, commit _every single change separately_.
 
+<a name="rebase-and-amend-to-get-rid-of-oops-commits"></a>
+
 h3. Rebase & --amend to get rid of &ldquo;oops&rdquo;-commits
 
 Let's say you wrote this:
