@@ -21,7 +21,7 @@ Another option is to "cherry-pick":http://www.kernel.org/pub/software/scm/git/do
 
 Git's "ebase allows you to temporarily rewind the commits you did in this branch, pull in everything from another branch and apply your commits on top of that again:
 
-{% highlight bash %}
+{% highlight console %}
 $ git rebase develop
 First, rewinding head to replay your work on top of it...
 Fast-forwarded feature/login to develop.
@@ -35,7 +35,7 @@ h3. Conflicts served in smaller chunks
 
 Besides keeping your history clean, rebase also has your back when you run into a merge conflict during the rebase:
 
-{% highlight bash %}
+{% highlight console %}
 $ git rebase develop
 First, rewinding head to replay your work on top of it...
 Applying: feature/login
@@ -52,8 +52,8 @@ To restore the original branch and stop rebasing run "git rebase --abort".
 {% endhighlight %}
 Because rebase merges every commit individually, conflicts will be served in smaller chunks making them easier to fix and understand. When you're done fixing a conflict, simply @git add@ the file and continue rebasing:
 
-{% highlight bash %}
-git rebase --continue
+{% highlight console %}
+$ git rebase --continue
 {% endhighlight %}
 
 h3. Rebase vs Merge
