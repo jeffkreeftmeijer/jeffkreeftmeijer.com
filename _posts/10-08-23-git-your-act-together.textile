@@ -31,7 +31,7 @@ You're at work and your client sends you an email saying he wants a couple of sm
 
 After getting yourself some coffee, you fix the bugs and change the header in about five minutes. You commit everything:
 
-{% highlight bash %}
+{% highlight console %}
 commit 32faa25585e162f82206b8ce791ec098d6e34677
 Author: Jeff Kreeftmeijer
 Date:   Mon Aug 23 11:27:10 2010 +0200
@@ -61,7 +61,7 @@ end
 
 And you committed it:
 
-{% highlight bash %}
+{% highlight console %}
 commit a5d8e964f6ac22809ffcd7d38ec503e36a27e00b
 Author: Jeff Kreeftmeijer
 Date:   Mon Aug 23 15:11:10 2010 +0200
@@ -71,7 +71,7 @@ Date:   Mon Aug 23 15:11:10 2010 +0200
 
 After you committed, you find out that you missed the closing parenthesis on line four. You quickly fix it and commit the new version:
 
-{% highlight bash %}
+{% highlight console %}
 commit b3ff4620c2accd674427322cd1c10d634ab63d3a
 Author: Jeff Kreeftmeijer
 Date:   Mon Aug 23 15:14:48 2010 +0200
@@ -91,7 +91,7 @@ bc. git rebase -i HEAD~2
 
 A text editor opens and shows you something like this:
 
-{% highlight bash %}
+{% highlight console %}
 pick a5d8e96 Add Task#start to set the started_at attribute to the current time.
 pick b3ff462 Oops! Forgot the closing parenthesis in Task#start.
 
@@ -115,7 +115,7 @@ If you want more information about rebasing, be sure to read &ldquo;["Squashing 
 
 If the commit you want to squash into is the last commit, you can even directly add new changes to it by using the @--amend@ flag when committing:
 
-{% highlight bash %}
+{% highlight console %}
   git commit --amend
 {% endhighlight %}
 
