@@ -105,7 +105,7 @@ div#content img, div#content object
 
 div#header
 {
-  font-size:13px;
+  font-size:12px;
   margin:0 0 65px;
 }
 
@@ -113,12 +113,13 @@ div#header ul
 {
   float:right;
   margin:0;
+  margin: 0 -20px 0 0;
 }
 
 div#header li
 {
   float:left;
-  margin:0 0 0 20px;
+  margin:0 20px 0 0;
 }
 
 div.post
