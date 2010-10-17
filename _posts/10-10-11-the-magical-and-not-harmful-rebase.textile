@@ -1,0 +1,65 @@
+---
+layout: post
+title: The magical (and not harmful) rebase
+excerpt: Why Git's rebase isn't evil and why I think you should use it more often.
+published: true
+---
+
+About a month ago, I published a series of articles on "Git":http://git-scm.org, starting with ["@nvie(Vincent Driessen)":http://twitter.com/nvie]'s awesome "git-flow":http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow and "asking you to write better commit messages":http://jeffkreeftmeijer.com/2010/git-your-act-together. The series ended with an article named &ldquo;["The mighty reflog and the amazing bisect":http://jeffkreeftmeijer.com/2010/the-mighty-reflog-and-the-amazing-bisect]&rdquo;. Guess what? I forgot the magical "rebase":http://www.kernel.org/pub/software/scm/git/docs/git-rebase.html.
+
+In general people seem to know rebase as "a tool to squash commits":http://jeffkreeftmeijer.com/2010/git-your-act-together#rebase-and-amend-to-get-rid-of-oops-commits, but that's not its general purpose. As the name implies, it can be used to rebase your changes. Oh, and forget about "that article that made you scared of rebase":http://changelog.complete.org/archives/586-rebase-considered-harmful, nothing bad will happen if you know what you're doing.
+
+Let's say you're working on a feature branch called @feature/login@ and somebody else implemented something and pushed it to the @develop@ branch. You need that change. What do you do?
+
+!http://jeffkreeftmeijer.com/images/rebase01.jpg(You need that change. What do you do?)!
+
+You _could_ simply "merge":http://www.kernel.org/pub/software/scm/git/docs/git-merge.html that into your feature branch, but that would result in one of those nasty merge commits:
+
+!http://jeffkreeftmeijer.com/images/rebase02.jpg(You could simply merge that into your feature branch, but that would result in one of those nasty merge commits)!
+
+Another option is to "cherry-pick":http://www.kernel.org/pub/software/scm/git/docs/git-cherry-pick.html the change you need into your branch. While -- history wise -- I don't see a real problem with this, it's a bit of a hassle because you need to find the commit you need to merge in first.
+
+Git's "Rebase":http://www.kernel.org/pub/software/scm/git/docs/git-rebase.html allows you to temporarily rewind the commits you did in this branch, pull in everything from another branch and apply your commits on top of that again:
+
+{% highlight console %}
+$ git rebase develop
+First, rewinding head to replay your work on top of it...
+Fast-forwarded feature/login to develop.
+{% endhighlight %}
+
+!http://jeffkreeftmeijer.com/images/rebase03.jpg(Git's rebase allows you to temporarily rewind the commits you did in this branch, pull in everything from another branch and apply your commits on top of that again)!
+
+It's as if you didn't start working in the @feature/login@ branch before the commits you pulled in were made. Nice, huh? You can also "pull with rebase":http://www.gitready.com/advanced/2009/02/11/pull-with-rebase.html so you don't have to switch out of your current branch.
+
+h3. Conflicts served in smaller chunks
+
+Besides keeping your history clean, rebase also has your back when you run into a merge conflict during the rebase:
+
+{% highlight console %}
+$ git rebase develop
+First, rewinding head to replay your work on top of it...
+Applying: feature/login
+Using index info to reconstruct a base tree...
+Falling back to patching base and 3-way merge...
+Auto-merging config/environment.rb
+CONFLICT (content): Merge conflict in config/environment.rb
+Failed to merge in the changes.
+Patch failed at 0001 feature/login
+
+When you have resolved this problem run "git rebase --continue".
+If you would prefer to skip this patch, instead run "git rebase --skip".
+To restore the original branch and stop rebasing run "git rebase --abort".
+{% endhighlight %}
+Because rebase merges every commit individually, conflicts will be served in smaller chunks making them easier to fix and understand. When you're done fixing a conflict, simply @git add@ the file and continue rebasing:
+
+{% highlight console %}
+$ git rebase --continue
+{% endhighlight %}
+
+h3. Rebase vs Merge
+
+When you're working on a feature branch and you need changes from the main development branch, I would suggest using rebase. Merge can be used when you want to merge a feature branch back into your development branch. That way, you'll be able to see when you merged in what in the future because you have that merge commit I called "nasty" before. It isn't, really.
+
+What I would like to ask you is to rebase your feature branch to the main development branch before merging it in. This way you make sure your branch applies cleanly to the branch you're merging into.
+
+Do you use rebase? When do you choose rebase over merge? Do you "rebase exclusively":http://darwinweb.net/articles/the-case-for-git-rebase? Are you still "scared of rebase":http://changelog.complete.org/archives/586-rebase-considered-harmful? Let me know in the comments.
