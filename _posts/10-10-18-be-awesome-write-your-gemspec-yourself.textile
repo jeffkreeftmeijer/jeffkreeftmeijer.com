@@ -34,6 +34,8 @@ h3. Time to move on
 While Jeweler and the like were wicked-cool back in the day, I think it's time to move on. Maintaining writing a @.gemspec@ yourself isn't difficult at all and you don't need a tool to generate one for you, look:
 
 {% highlight ruby %}
+require File.expand_path("../lib/your_gem/version", __FILE__)
+
 Gem::Specification.new do |gem|
   gem.name    = 'your_gem'
   gem.version = YourGem::VERSION
