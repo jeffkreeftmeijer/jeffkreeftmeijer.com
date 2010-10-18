@@ -11,7 +11,7 @@ I'm taking Jeweler as an example here. There are a lot of gem builders out there
 
 Half a year ago, the gems I released were all built and maintained using Jeweler, so I put my gem's information in a @Rakefile@ and  generated my @.gemspec@ -- the file used to build the actual gem -- from that. I published &ldquo;[".gitignore your *.gemspec":http://jeffkreeftmeijer.com/2010/gitignore-your-gemspec]&rdquo;, arguing that the @.gemspec@ shouldn't be checked into source control, since it was a generated file.
 
-After getting a lot of responses and reading "@wycats":http://twitter.com/wycats' "article":http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended, I realized that generating the @.gemspec@ file was silly, I completely changed my mind about the whole issue and wrote a follow up titled &ldquo;["Don't put your *.gemspec in your Rakefile":http://localhost:4000/2010/dont-put-your-gemspec-in-your-rakefile/]&rdquo;. I've been manually maintaining my @.gemspec@s ever since.
+After getting a lot of responses and reading "@wycats":http://twitter.com/wycats' "article":http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended, I realized that generating the @.gemspec@ file was silly, I completely changed my mind about the whole issue and wrote a follow up titled &ldquo;["Don't put your *.gemspec in your Rakefile":http://jeffkreeftmeijer.com/2010/dont-put-your-gemspec-in-your-rakefile/]&rdquo;. I've been manually maintaining my @.gemspec@s ever since.
 
 A lot of people are still using (tools like) Jeweler, which is fine. I would like to ask you to take a look at "a simple @.gemspec@":http://github.com/jeffkreeftmeijer/navvy/blob/develop/navvy.gemspec file sometime and ask yourself if this would more difficult to write and maintain than a @Rakefile@ specifying the exact same thing. I feel like a lot of people are using Jeweler because everyone did it when they started and haven't looked back since.
 
@@ -35,23 +35,22 @@ While Jeweler and the like were wicked-cool back in the day, I think it's time t
 
 {% highlight ruby %}
 Gem::Specification.new do |gem|
-gem.name    = 'yourgem'
-gem.version = '0.0.1'
-gem.date    = Date.today.to_s
+  gem.name    = 'your_gem'
+  gem.version = YourGem::VERSION
+  gem.date    = Date.today.to_s
 
-gem.summary = "an awesome gem"
-gem.description = "extended description"
+  gem.summary = "an awesome gem"
+  gem.description = "extended description"
 
-gem.authors  = ['Me Myself', 'One Other']
-gem.email    = 'me@example.com'
-gem.homepage = 'http://github.com/user/yourgem'
+  gem.authors  = ['Me Myself', 'One Other']
+  gem.email    = 'me@example.com'
+  gem.homepage = 'http://github.com/user/your_gem'
 
-gem.add_dependency('rake')
-gem.add_development_dependency('rspec', [">= 2.0.0"])
+  gem.add_dependency('rake')
+  gem.add_development_dependency('rspec', [">= 2.0.0"])
 
-# ensure the gem is built out of versioned files
-gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}//', 'README*', 'LICENSE*'] & `git ls-files -z`.split("\0")
-
+  # ensure the gem is built out of versioned files
+  gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*', 'README*', 'LICENSE*'] & `git ls-files -z`.split("\0")
 end
 {% endhighlight %}
 
