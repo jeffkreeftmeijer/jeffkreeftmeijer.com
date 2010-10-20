@@ -15,17 +15,17 @@ The way callbacks are handled completely changed in Rails 3, breaking approaches
 
 {% highlight ruby %}
 class User
-  # I'm using Mongoid, but this should work for anything based on 
+  # I'm using Mongoid, but this should work for anything based on
   # ActiveModel.
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+
   def sneaky_update(attributes)
     User.skip_callback(:save, :before, :set_updated_at)
     User.update_attributes(attributes)
     User.set_callback(:save, :before, :set_updated_at)
   end
-  
+
 end
 {% endhighlight %}
 
@@ -43,21 +43,21 @@ module ActiveSupport::Callbacks::ClassMethods
 end
 {% endhighlight %}
 
-And you'll be able to do stuff like this: 
+And you'll be able to do stuff like this:
 
 {% highlight ruby %}
 class User
-  # I'm using Mongoid, but this should work for anything based on 
+  # I'm using Mongoid, but this should work for anything based on
   # ActiveModel.
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+
   def sneaky_update(attributes)
-    User.without_callback(:save, :before, :set_updated_at)
+    User.without_callback(:save, :before, :set_updated_at) do
       update_attributes(attributes)
     end
   end
-  
+
 end
 {% endhighlight %}
 
