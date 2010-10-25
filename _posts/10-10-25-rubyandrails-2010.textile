@@ -1,7 +1,7 @@
 ---
 layout: post
 title: RubyAndRails 2010
-excerpt:
+excerpt: An overview of what inspired me the most attending RubyAndRails 2010 in Amsterdam
 published: true
 ---
 
@@ -15,7 +15,7 @@ I had a brief but very inspiring chat with Piotr during the Geek dinner and I'm 
 
 h3. Live music-hacking-jam-session
 
-"@rosejn(Jeff Rose)":http://twitter.com/rosejn and "@samaaron(Sam Aaron)":http://twitter.com/samaaron (the "@lambdatones(λ-tones)":http://twitter.com/lambdatones) gave a presentation on building audio synthesisers with "Overtone":http://project-overtone.org/ and playing music in Clojure. They even did an amazing "live music-hacking-jam-session":http://www.youtube.com/watch?v=WXovdAEV_mI&hd=1.
+"@rosejn(Jeff Rose)":http://twitter.com/rosejn and "@samaaron(Sam Aaron)":http://twitter.com/samaaron (the "@lambdatones(λ-tones)":http://twitter.com/lambdatones) gave a presentation on building audio synthesizers with "Overtone":http://project-overtone.org/ and playing music in Clojure. They even did an amazing "live music-hacking-jam-session":http://www.youtube.com/watch?v=WXovdAEV_mI&hd=1.
 
 !http://jeffkreeftmeijer.com/images/lambdatones.jpg!
 
@@ -39,6 +39,10 @@ Fancy was written for fun and it seems like an amazing way to learn about progra
 
 bq. &ldquo; We're very open to discussion on anything related to the language, its features or semantics. It's about the fun after all. &rdquo;
 
-h3. See you all next year
+h3. Mining for RubyGems
+
+"Fingertips":http://fngtps.com won this years "Rumble":http://rubyandrails.eu/rumble with "Miner":http://github.com/Fingertips/miner: a simple MacRuby application that displays interesting new projects in an App Store for Rubygems, complete with one-click installation. This application and its "online counterpart":http://minerapp.com were built in under eight hours. How's that for inspiring?
+
+h3. See you all next year!
 
 There were a lot more interesting talks, but these were some that inspired me to get my hands dirty again. I had a lot of fun and I talked to a lot of interesting people during the pre-party, the Github meetup and the Geek dinner. Thanks everyone, I hope to see you all again next year!
