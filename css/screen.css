@@ -138,7 +138,11 @@ div#ads{
   right: -140px;
 }
 
-div#adzerk{
+div.ad{
+  margin: 0px 0px 25px 0px;
+}
+
+div.box{
   width: 120px;
   background-color: #222;
   padding: 10px;
@@ -151,7 +155,7 @@ div#adzerk{
   z-index:0;
 }
 
-div#adzerk, div#adzerk a
+div.box, div.box a
 {
   color:#fff;
   font-size: 11px;
@@ -159,19 +163,19 @@ div#adzerk, div#adzerk a
   text-shadow:0 1px 0 #000;
 }
 
-div#adzerk a:hover
+div#box a:hover
 {
   color: #ddd;
 }
 
-div#adzerk p
+div.box p
 {
   margin:10px 0 0 0;
 }
 
 div#webbynode
 {
-  padding: 25px 5px;
+  padding: 0px 5px;
 }
 
 h1
