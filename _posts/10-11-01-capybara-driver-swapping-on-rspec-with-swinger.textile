@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Capybara driver swapping on RSpec with Swinger
-excerpt:
+excerpt: "Introducing Swinger: a really simple extension that allows your Capybara to have multiple partners in one session."
 published: true
 ---
 
