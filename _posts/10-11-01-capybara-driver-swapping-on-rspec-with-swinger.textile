@@ -16,7 +16,7 @@ If you're using "Cucumber":http://cukes.info/, "Capybara's got your back":http:/
 But since you like to think you're a rebel and rather test your application in pure Ruby, you're using plain "RSpec":http://github.com/rspec/rspec (maybe even with "Steak":http://github.com/cavalle/steak). So you need to do stuff like this when you want to switch drivers:
 
 {% highlight ruby %}
-# `scenerio` is an alias for `it`, provided by Steak
+# `scenario` is an alias for `it`, provided by Steak
 
 scenario 'get a nice greeting' do
   Capybara.current_driver = :selenium
@@ -31,8 +31,6 @@ h3. Swinger
 "Swinger":http://github.com/jeffkreeftmeijer/swinger is a really simple Capybara extension that aims to make this a bit less horrible to look at. Using "the new metadata feature in RSpec 2":http://blog.davidchelimsky.net/2010/06/14/filtering-examples-in-rspec-2, you can simply set your @:driver@ per scenario or context:
 
 {% highlight ruby %}
-# `context` is an alias for `describe`, provided by Steak
-
 scenario 'get a nice greeting', :driver => :selenium do
   visit homepage
   page.should have_content 'Welcome'
