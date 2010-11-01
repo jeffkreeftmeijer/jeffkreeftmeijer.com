@@ -9,7 +9,7 @@ If you've been doing the acceptance testing dance for a while, you probably know
 
 The javascript interaction in your application is minimal, but _can't_ be tested _without_ Selenium. The worst part is that it's only ten specs. Wouldn't it be awesome to only use Selenium for those instead of the whole suite?
 
-!/images/capybaras.jpg!
+!http://jeffkreeftmeijer.com/images/capybaras.jpg!
 
 If you're using "Cucumber":http://cukes.info/, "Capybara's got your back":http://github.com/jnicklas/capybara/blob/master/lib/capybara/cucumber.rb, making it possible to use "Cucumber's tagging feature":http://github.com/aslakhellesoy/cucumber/wiki/tags to simply specify which driver you want to use per example, effectively allowing your Capybara to have multiple partners in one session.
 
