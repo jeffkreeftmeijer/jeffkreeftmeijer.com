@@ -68,7 +68,7 @@ Installing Swinger is easy. Simply add it to your @Gemfile@ and require it in @s
 
 h3. A patch for Capybara?
 
-Let me know how you like it and be sure to create an "issue on Github":http://github.com/jeffkreeftmeijer/swinger/issues, send me a "Github message":https://github.com/inbox/new/jeffkreeftmeijer or an "email":http://jeffkreeftmeijer.com/contact/ if you have any ideas or run into any issues. Of course you can always fork the project and send me a pull request or send me a patch via email.
+Let me know how you like it and be sure to create an "issue on Github":http://github.com/jeffkreeftmeijer/swinger/issues, send me a "Github message":https://github.com/inbox/new/jeffkreeftmeijer or an "email":http://jeffkreeftmeijer.com/contact/ if you have any ideas or run into any issues. Of course you can always fork the project and send me a pull request or a patch via email.
 
 Oh, one last thing: I know this is a pretty minimal gem, but I wanted to just get it out there to use it myself and see if it needs any improvement before maybe turning it into a patch for Capybara. 
 
