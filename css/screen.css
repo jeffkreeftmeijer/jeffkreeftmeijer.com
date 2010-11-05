@@ -360,3 +360,11 @@ span.balloon{
   display:none;
   line-height: 16px;
 }
+
+img#mo{
+  margin: -10px 0px -45px -75px;
+}
+
+img#mo:hover{
+  margin: -12px 0px -43px -75px;
+}
