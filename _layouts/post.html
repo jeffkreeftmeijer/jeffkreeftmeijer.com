@@ -3,7 +3,9 @@ layout: default
 ---
 
 {% if page.author %}
-  This is a guest post written by <a href="http://twitter.com/{{ page.author.twitter }}" title="{{ page.author.full}}">@{{ page.author.twitter }}</a>. {{ page.author.description }}
+  <p>
+    This is a guest post written by <a href="http://twitter.com/{{ page.author.twitter }}" title="{{ page.author.full}}">@{{ page.author.twitter }}</a>. {{ page.author.description }}
+  </p>
 {% endif %}
 
 <p class="article_date date">
