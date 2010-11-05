@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "Giving back to the community: the start of The Social Charity Collective"
-excerpt:
+excerpt: Sometimes giving back to the community isn't just about open source contributions.
 published: true
 author:
   full: Josh Kalderimis
   twitter: joshkalderimis
   description: Josh is a Ruby programmer at <a href="http://www.tty.nl/">TTY</a> and an enthusiastic hacker, open source contributor and <a href="http://amsterdam-rb.org">Amsterdam.rb</a> organizer.
 ---
-
+<hr/>
 <div class="notice">
   Please show your support for Movember by going to "The Daily Mo":http://thedailymo.com and becoming a MO Poser!
 </div>
