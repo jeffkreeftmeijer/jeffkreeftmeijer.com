@@ -9,6 +9,10 @@ author:
   description: Robert is a Ruby programmer at <a href="http://80beans.com">80beans</a> and a serious <a href="http://www.mongodb.org/">MongoDB</a> fanatic.
 ---
 
+<div class="notice">
+  Sorry, this article is a bit outdated. Lucky for you, <a href="http://twitter.com/antekpiechnik">@antekpiechnik</a> wrote <a href="http://antekpiechnik.pl/posts/setting-up-carrierwave-file-uploads-using-gridfs-on-rails-3-and-mongoid">a really nice guide</a> in which he uses Mongoid and Rails 3. Be sure to check that out too!
+</div>
+
 For a little side project I wanted to experiment with "MongoDB":http://www.mongodb.org/ and "GridFS":http://www.mongodb.org/display/DOCS/GridFS on Rails 2.3.5, but it took me a while to get everything up and running.
 
 It wasn't really a problem with Mongrel, but as soon as Apache and "Passenger":http://www.modrails.com/ came in the picture the problems began.
@@ -36,8 +40,8 @@ config.gem 'rspec', :lib => 'spec'
 config.gem 'rspec-rails', :lib => 'spec/rails'
 
 config.gem 'machinist_mongo',
-	:version => '1.1.0',
-	:lib => 'machinist/mongo_mapper'
+  :version => '1.1.0',
+  :lib => 'machinist/mongo_mapper'
 
 config.gem 'faker'
 config.gem 'steak'
