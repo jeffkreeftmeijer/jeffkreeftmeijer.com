@@ -320,7 +320,7 @@ blockquote{
 }
 
 div#disqus_thread{
-  margin: 50px 0px 0px 0px;
+  margin: 20px 0px 0px 0px;
 }
 
 div.dsq-options, div.dsq-sharing-options, div.dsq-dc-logo, div#dsq-global-toolbar, div#dsq-pagination{
@@ -331,13 +331,13 @@ p.article_date{
   float:left;
 }
 
-span#article_buttons{
+span.article_buttons{
   margin:20px 0;
   float:right;
   text-align: right;
 }
 
-span#article_buttons a{
+span.article_buttons a{
   display:block;
 }
 

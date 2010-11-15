@@ -12,12 +12,12 @@ layout: default
   {{page.date | date_to_string}}
 </p>
 
-<span id="article_buttons">
-  <a id="tweet" target="_blank">
+<span class="article_buttons">
+  <a class="tweet" target="_blank">
     <span class="balloon">tweet!</span> <img src="/images/tweet.png"/>
   </a>
   <a href="http://feeds.feedburner.com/jeffkreeftmeijer">
-    <span class="balloon">subscribe!</span> <img src="/images/feed.png"/> 
+    <span class="balloon">subscribe!</span> <img src="/images/feed.png"/>
   </a>
 </span>
 
@@ -26,6 +26,17 @@ layout: default
 <div id="content">
 	{{ content }}
 </div>
+
+<span class="article_buttons">
+  <a class="tweet" target="_blank">
+    <span class="balloon">tweet!</span> <img src="/images/tweet.png"/>
+  </a>
+  <a href="http://feeds.feedburner.com/jeffkreeftmeijer">
+    <span class="balloon">subscribe!</span> <img src="/images/feed.png"/>
+  </a>
+</span>
+
+<hr/>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
