@@ -33,13 +33,12 @@ Here's a short video of Fuubar in action:
 Installing Fuubar is easy. Just put it in your @Gemfile@ and run your specs like this from now on:
 
 {% highlight console %}
-$ rspec --require fuubar --format Fuubar --color spec
+$ rspec --format Fuubar --color spec
 {% endhighlight %}
 
 If you want to use Fuubar as your default formatter, simply put the options in your @.rspec@ file:
 
-bc. --require fuubar
---format Fuubar
+bc. --format Fuubar
 --color
 
 After doing that you can simply run your specs like you're used to:
