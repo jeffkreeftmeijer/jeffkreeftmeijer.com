@@ -18,7 +18,7 @@ All we know now is that there's no "username" field on the page, which doesn't r
 
 h3. save_and_open_page
 
-When going through Capybara's source, I found the @save_and_open_page@ method last week, which does a great job at fixing this issue. As the name implies: it saves the page -- complete with styling and images -- and opens it in your favorite browser:
+When going through Capybara's source last week, I found the @save_and_open_page@ method which does a great job at fixing this issue. As the name implies: it saves the page -- complete with styling and images -- and opens it in your favorite browser:
 
 {% highlight ruby %}
 it 'should register successfully' do
