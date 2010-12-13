@@ -1,7 +1,7 @@
 ---
 layout: post
 title: StillMaintained is still being maintained
-excerpt:
+excerpt: Highlighting some of the new features added to StillMaintained and giving you a sneak peak of the new design.
 published: true
 ---
 
@@ -17,7 +17,7 @@ h3. Soon: New design
 
 Okay, this isn't really done yet, but we are too excited about it to keep it a secret. Over the last two weeks, "@ivanasetiawan(Ivana Setiawan)":http://twitter.com/ivanasetiawan has been doing some awesome work creating a proper design for StillMaintained. Here's a quick preview, we're doing our best to get it up soon.
 
-!/images/stillmaintained_design.jpg!
+"!http://jeffkreeftmeijer.com/images/stillmaintained_design.jpg!":http://stillmaintained.com
 
 h3. Organization support
 
@@ -38,13 +38,13 @@ $ curl http://stillmaintained.com/jeffkreeftmeijer/fuubar.json
 {"name":"fuubar","created_at":"2010/11/30 07:09:55 +0000","watchers":92,"updated_at":"2010/12/09 21:21:16 +0000","_id":"4cf3c2a6f9d9006a5d00000b","description":"The instafailing RSpec progress bar formatter","visible":true,"user":"jeffkreeftmeijer","state":"maintained"}
 {% endhighlight %}
 
-You can get any page in JSON by adding @.json@ after the url.
+You can get any page in JSON by adding @.json@ after the URL. Be sure to let me know if you create anything awesome with it.
 
 h3. Status buttons
 
 To be able to tell your users the state of your project while not on StillMaintained, Robert and I added nice self-updating status buttons you can embed in your project's @README@ on Github (or anywhere else you'd like).
 
-!/images/stillmaintained_status_buttons.jpg!
+"!http://jeffkreeftmeijer.com/images/stillmaintained_status_buttons.jpg!":http://stillmaintained.com
 
 If your project is listed on StillMaintained, you can simply embed the image like this:
 
@@ -60,4 +60,4 @@ h3. And more
 
 StillMaintained also has search and state filtering, project descriptions and the lists are ordered by project popularity to name a few more. Be sure to "check it out":http://stillmaintained.com and if you have any great ideas: it's "on Github":http://github.com/jeffkreeftmeijer/stillmaintained, so be sure to create "issues":http://github.com/jeffkreeftmeijer/stillmaintained/issues or even fork the project and get your hands dirty yourself.
 
-So, what do you think?
+So, what do you think? Do you like the new design and the new features?
