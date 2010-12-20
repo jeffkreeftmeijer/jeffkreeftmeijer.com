@@ -1,0 +1,30 @@
+---
+layout: project
+title: Swinger
+excerpt: "Swinger: Capybara driver swapping on RSpec"
+---
+<p>
+  <a href="https://github.com/jnicklas/capybara">Capybara</a> driver swapping on <a href="https://github.com/rspec">RSpec</a>
+  <a style="float:right;" href="http://stillmaintained.com/jeffkreeftmeijer/swinger">
+    <img src="http://stillmaintained.com/jeffkreeftmeijer/swinger.png" />
+  </a>
+</p>
+
+<ul class="columns">
+  <li><a href="http://github.com/jeffkreeftmeijer/swinger">Github &rarr; </a></li>
+  <li><a href="http://rubygems.org/gems/swinger">RubyGems &rarr; </a></li>
+  <li><a href="http://github.com/jeffkreeftmeijer/swinger/issues">Issue tracker &rarr; </a></li>
+  <li><a href="/projects/swinger">Articles about Swinger</a></li>
+</ul>
+
+{% for post in site.categories.swinger %}
+  <div class="post">
+    <h3><a href="{{ post.url }}/">{{ post.title }}</a></h3>
+    <p class="date">{{ post.date | date_to_string }}
+      {% if post.author %}
+        by <a href="http://twitter.com/{{ post.author.twitter }}" title="{{ post.author.full}}">@{{ post.author.twitter }}</a>
+      {% endif %}
+    </p>
+    <p>{{ post.excerpt }}</p>
+  </div>
+{% endfor %}

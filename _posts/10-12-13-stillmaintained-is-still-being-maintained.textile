@@ -3,6 +3,7 @@ layout: post
 title: StillMaintained is still being maintained
 excerpt: Highlighting some of the new features added to StillMaintained and giving you a sneak peak of the new design.
 published: true
+category: stillmaintained
 ---
 
 <span class="small">

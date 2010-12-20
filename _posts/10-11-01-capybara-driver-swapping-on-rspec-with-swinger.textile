@@ -3,6 +3,7 @@ layout: post
 title: Capybara driver swapping on RSpec with Swinger
 excerpt: "Introducing Swinger: a really simple extension that allows your Capybara to have multiple partners in one session."
 published: true
+category: swinger
 ---
 
 If you've been doing the acceptance testing dance for a while, you probably know it can get slow pretty fast. Not necessarily in every driver, but since you wanted awesome javascript stuff in your application you've equipped "Capybara":http://github.com/jnicklas/capybara with "Selenium":http://seleniumhq.org/ to actually run your tests in an actual browser. Ouch.
@@ -62,13 +63,12 @@ scenario 'get a nice greeting' do
 end
 {% endhighlight %}
 
-Installing Swinger is easy. Simply add it to your @Gemfile@ and require it in @spec_helper.rb@. 
+Installing Swinger is easy. Simply add it to your @Gemfile@ and require it in @spec_helper.rb@.
 
 h3. A patch for Capybara?
 
 Let me know how you like it and be sure to create an "issue on Github":http://github.com/jeffkreeftmeijer/swinger/issues, send me a "Github message":https://github.com/inbox/new/jeffkreeftmeijer or an "email":http://jeffkreeftmeijer.com/contact/ if you have any ideas or run into any issues. Of course you can always fork the project and send me a pull request or a patch via email.
 
-Oh, one last thing: I know this is a pretty minimal gem, but I wanted to just get it out there to use it myself and see if it needs any improvement before maybe turning it into a patch for Capybara. 
+Oh, one last thing: I know this is a pretty minimal gem, but I wanted to just get it out there to use it myself and see if it needs any improvement before maybe turning it into a patch for Capybara.
 
 Would you like this to be part of Capybara or do you prefer keeping this a separate gem? Please let me know!
- 

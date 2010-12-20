@@ -3,6 +3,7 @@ layout: post
 title: "Fuubar: the instafailing RSpec progress bar formatter"
 excerpt: Combining the work of Nick Evans and Michael Grosser in an attempt to create a better RSpec formatter
 published: true
+category: fuubar
 ---
 
 As you might have noticed, I've been spending some time trying to get running test suites with "RSpec":https://github.com/rspec a bit better and faster over the last weeks. This week I looked into RSpec's formatters.

@@ -1,0 +1,30 @@
+---
+layout: project
+title: StillMaintained
+excerpt: "StillMaintained: Finally a way to mark your Github project as abandoned"
+---
+<p>
+  Finally a place to mark your open source project as abandoned or looking for a new maintainer
+  <a style="float:right;" href="http://stillmaintained.com/jeffkreeftmeijer/stillmaintained">
+    <img src="http://stillmaintained.com/jeffkreeftmeijer/stillmaintained.png" />
+  </a>
+</p>
+
+<ul class="columns">
+  <li><a href="http://stillmaintained.com">Visit StillMaintained.com &rarr; </a></li>
+  <li><a href="http://github.com/jeffkreeftmeijer/stillmaintained">Github &rarr; </a></li>
+  <li><a href="http://github.com/jeffkreeftmeijer/stillmaintained/issues">Issue tracker &rarr; </a></li>
+  <li><a href="/projects/stillmaintained">Articles about StillMaintained</a></li>
+</ul>
+
+{% for post in site.categories.stillmaintained %}
+  <div class="post">
+    <h3><a href="{{ post.url }}/">{{ post.title }}</a></h3>
+    <p class="date">{{ post.date | date_to_string }}
+      {% if post.author %}
+        by <a href="http://twitter.com/{{ post.author.twitter }}" title="{{ post.author.full}}">@{{ post.author.twitter }}</a>
+      {% endif %}
+    </p>
+    <p>{{ post.excerpt }}</p>
+  </div>
+{% endfor %}

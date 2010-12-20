@@ -3,6 +3,7 @@ layout: post
 title: Finally a way to mark your Github project as abandoned
 excerpt: Announcing stillmaintained.com, a simple web application that keeps track of open source maintenance states.
 published: true
+category: stillmaintained
 ---
 
 <span class="small">
