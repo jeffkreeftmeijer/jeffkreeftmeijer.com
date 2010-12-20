@@ -6,7 +6,7 @@ published: true
 category: stillmaintained
 ---
 
-Ever since "StillMaintained":http://stillmaintained.com launched a couple of weeks ago, we've been working on ideas to get the gathered data back into Github's interface. The first step was the "embeddable status buttons":https://gist.github.com/731135 that got "released last week":http://jeffkreeftmeijer.com/2010/stillmaintained-is-still-being-maintained/ and have been popping up in a bunch of project @README@ files already.
+Ever since "StillMaintained":http://stillmaintained.com launched a couple of weeks ago, we've been working on ideas to get the gathered data back into ["Github":http://github.com]'s interface. The first step was the "embeddable status buttons":https://gist.github.com/731135 that got "released last week":http://jeffkreeftmeijer.com/2010/stillmaintained-is-still-being-maintained/ and have been popping up in a bunch of project @README@ files already.
 
 To take this even further, I've been working on a little userscript that shows these status buttons right in Github's search results so you can quickly see which project is still being maintained and which ones you probably shouldn't start using.
 
