@@ -10,7 +10,31 @@ layout: none
       <priority>1</priority>
    </url>
    <url>
-      <loc>http://jeffkreeftmeijer.com/navvy/</loc>
+      <loc>http://jeffkreeftmeijer.com/projects/</loc>
+      <lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
+   <url>
+      <loc>http://jeffkreeftmeijer.com/projects/navvy/</loc>
+      <lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
+   <url>
+      <loc>http://jeffkreeftmeijer.com/projects/swinger/</loc>
+      <lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
+   <url>
+      <loc>http://jeffkreeftmeijer.com/projects/fuubar/</loc>
+      <lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
+   <url>
+      <loc>http://jeffkreeftmeijer.com/projects/stillmaintained/</loc>
       <lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.9</priority>
