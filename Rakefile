@@ -8,11 +8,11 @@ task :update do
  user = 'jeffkreeftmeijer'
  repo = 'jeffkreeftmeijer.com'
 
- Net::SSH.start('208.88.125.96', 'jeff') do |ssh|
+ Net::SSH.start('67.23.79.117', 'jeff') do |ssh|
    ssh.exec(
     "rm -rf #{repo} && " <<
     "git clone -q git://github.com/#{user}/#{repo}.git && " <<
-    "jekyll #{repo} _new_site --pygments && " <<
+    "/opt/ruby-enterprise/bin/jekyll #{repo} _new_site --pygments && " <<
     "rm -rf _site && " <<
     "mv _new_site _site && " <<
     "rake -f #{repo}/Rakefile moby:fetch")
