@@ -26,8 +26,8 @@ Building that prototype helped you to figure out what needed to happen and what 
 
 After that you're quite proud of your work and there doesn't seem to be anything wrong with it. So, you decided to add some tests. More often than not, this leads to poorly tested code.
 
-Doing TDD, you would have written as little code as you needed to get your test to pass. When writing your implementation first, chances are you wrote more code than you actually needed. Even if you test completely test this extra code afterwards, it still adds bloat to your library. Besides that, unless you've seen your test fail, how do you know if it works?
+Doing TDD, you would have written as little code as you needed to get your test to pass. When writing your implementation first, chances are you wrote more code than you actually needed. Even if you completely test this extra code afterwards, it still adds bloat to your library. Besides that, unless you've seen your test fail, how do you know if it works?
 
 I believe you should've thrown the prototype out and started over using the new knowledge you gained from creating it. You probably learned enough about the existing code and your implementation to be able to write proper tests.
 
-So, instead of trowing tests on prototypes, let's try to throw our prototypes out and start over. Yes, this takes way longer, but I know your clean, stable and maintainable implementation will make up for that.
+So, instead of throwing tests on prototypes, let's try to throw our prototypes out and start over. Yes, this takes way longer, but I know your clean, stable and maintainable implementation will make up for that.
