@@ -9,12 +9,12 @@ I talked about this with a bunch of people at "RubyAndRails 2010":http://jeffkre
 
 In "TDD(Test Driven Development)":http://en.wikipedia.org/wiki/Test-driven_development, we use a very short development cycle to get something to work. We write a test, watch it fail, implement the feature and watch it pass. Then we move on to a new test. Simple.
 
-This methodology completely relies on you knowing your stuff. You have to know how you want everything to work, you have to understand the code you're working on and you have to know how you're going to implement your new feature. Most of the time, that's probably the case. You know your stuff good enough to be able to write tests _before_ doing anything else.
+But, to be able to write a test, we need some information to start out with. Most of the time, we probably have that information already. You know your stuff good enough to be able to write tests _before_ doing anything else.
 
 !http://jeffkreeftmeijer.com/images/trex.jpg!
 <span class="small">Seriously, stop it. Or TDD rex will eat you.</span>
 
-But sometimes you're working on something you don't have any experience with in a library you never worked on before. And you don't know what you're implementation will look like, meaning you can't write any tests for it. What now?
+But sometimes you're working on something you don't have any experience with in a library you never worked on before. And you don't know what code you need to write, meaning you can't write any tests for it. What now?
 
 You dive in and write a prototype. You don't worry about tests or clean code, you just hack until the thing works exactly how you like it. It probably won't take you long before you have something that does what you need. You show your friends and co-workers and they tell you you did an awesome job.
 
