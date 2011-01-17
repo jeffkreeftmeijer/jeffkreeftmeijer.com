@@ -18,7 +18,7 @@ But sometimes you're working on something you don't have any experience with in 
 
 You dive in and write a prototype. You don't worry about tests or clean code, you just hack until the thing works exactly how you like it. It probably won't take you long before you have something that does what you need. You show your friends and co-workers and they tell you you did an awesome job.
 
-You're eager to get your library out there, but you remember everybody screaming you should write tests "all the fucking time". So, for that reason, you dive in once again and slap some tests on your new library. Now it's tested and your work is done. The last thing you need to do is think of some fun, mildly sexual name before releasing it.
+You're eager to get your library out there, but you remember everybody screaming you should write tests "all the fucking time". So, for that reason, you dive in once again and slap some tests on your new library. Now it's tested and your work is done. The last thing you need to do is think of some fun, "mildly sexual":http://twitter.com/alloy/status/26996675729948672 name before releasing it.
 
 h3. No, no, no, no, no, no, no!
 
