@@ -6,6 +6,8 @@ published: true
 category: swinger
 ---
 
+<div class="notice">Swinger is not maintained anymore, since its functionality is built into Capybara. Check out "Capybara ate Swinger":http://jeffkreeftmeijer.com/2011/capybara-ate-swinger for more information.</div>
+
 If you've been doing the acceptance testing dance for a while, you probably know it can get slow pretty fast. Not necessarily in every driver, but since you wanted awesome javascript stuff in your application you've equipped "Capybara":http://github.com/jnicklas/capybara with "Selenium":http://seleniumhq.org/ to actually run your tests in an actual browser. Ouch.
 
 The javascript interaction in your application is minimal, but _can't_ be tested _without_ Selenium. The worst part is that it's only ten specs. Wouldn't it be awesome to only use Selenium for those instead of the whole suite?
