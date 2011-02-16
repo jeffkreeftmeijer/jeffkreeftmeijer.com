@@ -10,7 +10,7 @@ author:
 ---
 
 <div class="notice">
-  Sorry, this article is a bit outdated. Lucky for you, <a href="http://twitter.com/antekpiechnik">@antekpiechnik</a> wrote <a href="http://antekpiechnik.pl/posts/setting-up-carrierwave-file-uploads-using-gridfs-on-rails-3-and-mongoid">a really nice guide</a> in which he uses Mongoid and Rails 3. Be sure to check that out too!
+  Sorry, this article is a bit outdated. Lucky for you, <a href="http://twitter.com/antekpiechnik">@antekpiechnik</a> wrote <a href="http://antekpiechnik.com/posts/setting-up-carrierwave-file-uploads-using-gridfs-on-rails-3-and-mongoid">a really nice guide</a> in which he uses Mongoid and Rails 3. Be sure to check that out too!
 </div>
 
 For a little side project I wanted to experiment with "MongoDB":http://www.mongodb.org/ and "GridFS":http://www.mongodb.org/display/DOCS/GridFS on Rails 2.3.5, but it took me a while to get everything up and running.
