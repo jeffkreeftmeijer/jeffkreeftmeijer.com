@@ -40,14 +40,14 @@ $ rails g rspec:install
 Capybara doesn't have any generators for its new DSL, but that shouldn't be a problem. Setting it up is quite easy, just add a file named @spec/acceptance/acceptance_helper.rb@. In this file, we'll require @spec/spec_helper.rb@ to make RSpec available. We'll also require Capybara's RSpec helper file:
 
 {% highlight ruby %}
-require File.expand_path("../../spec_helper", __FILE__)
+require 'rspec'
 require 'capybara/rspec'
 {% endhighlight %}
 
 Capybara will now automatically hook into RSpec and allow you to write your first test. See? I told you we weren't going to need any generators. Let's write a spec named @spec/acceptance/articles_spec.rb@:
 
 {% highlight ruby %}
-require File.expand_path("../acceptance_helper", __FILE__)
+require 'acceptance/acceptance_helper'
 
 feature "Articles", %q{
   In order to have an awesome blog
