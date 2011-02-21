@@ -13,7 +13,7 @@ What a lot of people don't know is that Steak is nothing more than a bunch of al
 !http://jeffkreeftmeijer.com/images/carnivore_capybara.png!
 <span class="small">Carnivore Capybara!!!1 Roaargh!</span>
 
-Back when Steak was first released, Capybara didn't have any of the nice RSpec helpers it does now. A lot has changed since. Besides the helpers, "it got its own RSpec DSL":https://github.com/jnicklas/capybara/commit/f4897f890d8dd33215fef238902988e8823a6539 recently, essentially eating Steak's functionality and turning it into a complete acceptance testing solution (on top of RSpec).
+Back when Steak was first released, Capybara didn't have any of the nice RSpec helpers it does now. A lot has changed since. Besides the helpers, "it got its own RSpec acceptance testing DSL":https://github.com/jnicklas/capybara/commit/f4897f890d8dd33215fef238902988e8823a6539 recently, essentially eating Steak's functionality and turning it into a complete acceptance testing solution (on top of RSpec).
 
 h3. Acceptance testing with Capybara
 
