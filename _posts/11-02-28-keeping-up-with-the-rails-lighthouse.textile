@@ -13,8 +13,6 @@ Lighthouse provides an "RSS feed for project events":https://rails.lighthouseapp
 
 It didn't take me long unsubscribe from that fire hose and decide to change my strategy. I ended up watching tickets that seemed interesting and setting up email notifications. This way, Lighthouse sends me an email whenever one of my watched tickets get updated. I have a filter in Gmail to catch everything coming from Lighthouse, label it with &ldquo;rails&rdquo; and skip my inbox. Now and again, I'll go through the messages with this label and see if I can do anything to help out.
 
-Whenever you comment on a ticket, Lighthouse will automatically add you to the watch list so you'll receive email for everything you're involved with.
-
 The watched tickets don't automatically get un-watched when a they're closed. Most of the time this is not a problem because closed tickets don't get commented on anymore. Spammers sometimes do, so I usually mark that comment as spam and un-watch the ticket manually after receiving a spammy email.
 
 h3. Where do I find tickets to watch?
