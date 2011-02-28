@@ -5,7 +5,7 @@ excerpt: Keeping up with the Rails Lighthouse can be quite a task. Here's what I
 published: true
 ---
 
-"Lighthouse":http://lighthouseapp.com is the tracking solution that's being used for "the Ruby on Rails project":rails.lighthouseapp.com. While it works most of the time, sometimes it seems like it's not built for projects this big and the amount of tickets and updates can seem overwhelming. In this article I'll try to explain my way of keeping up, which has been working for me over the last few weeks.
+"Lighthouse":http://lighthouseapp.com is the issue tracker that's being used for "the Ruby on Rails project":rails.lighthouseapp.com. While it works most of the time, sometimes it seems like it's not built for projects this big and the amount of tickets and updates can seem overwhelming. In this article I'll try to explain my way of keeping up, which has been working for me over the last few weeks.
 
 !http://jeffkreeftmeijer.com/images/lighthouse.png!
 
