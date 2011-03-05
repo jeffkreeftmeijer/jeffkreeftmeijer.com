@@ -16,13 +16,24 @@ layout: none
   {% for post in site.posts %}
   <entry>
     <title type="html">{{ post.title | xml_escape }}</title>
-    <link href="http://jeffkreeftmeijer.com{{ post.url }}"/>
+    {% if post.elsewhere %}
+      <link href="{{ post.elsewhere.url }}"/>
+    {% else %}
+      <link href="http://jeffkreeftmeijer.com{{ post.url }}"/>
+    {% endif %}
     <id>http://jeffkreeftmeijer.com{{ post.url }}</id>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <content type="html">
-      {% if post.author %}
-        &lt;p&gt;This is a guest post written by &lt;a href=&quot;http://twitter.com/{{ post.author.twitter }}&quot; title=&quot;{{ post.author.full}}&quot;&gt;@{{ post.author.twitter }}&lt;/a&gt;. {{ post.author.description | xml_escape }}
-      {% endif %}{{ post.content | xml_escape }}
+      {% if post.elsewhere %}
+        {{ post.excerpt }}
+        {% if post.elsewhere %}
+          <span class="small">Published as a guest article for <a href="{{ post.elsewhere.main_url }}">{{ post.elsewhere.name}}</a>.</span>
+        {% endif %}
+      {% else %}
+        {% if post.author %}
+          &lt;p&gt;This is a guest post written by &lt;a href=&quot;http://twitter.com/{{ post.author.twitter }}&quot; title=&quot;{{ post.author.full}}&quot;&gt;@{{ post.author.twitter }}&lt;/a&gt;. {{ post.author.description | xml_escape }}
+        {% endif %}{{ post.content | xml_escape }}
+      {% endif %}
     </content>
   </entry>
   {% endfor %}

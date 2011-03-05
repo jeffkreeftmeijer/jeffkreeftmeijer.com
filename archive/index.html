@@ -6,12 +6,23 @@ excerpt: The complete archive of Jeff Kreeftmeijer's articles.
 
 {% for post in site.posts %}
   <div class="post">
-    <h3><a href="{{ post.url }}/">{{ post.title }}</a></h3>
+    <h3>
+    {% if post.elsewhere %}
+      <a href="{{ post.elsewhere.url }}/">{{ post.title }}</a>
+      {% else %}
+        <a href="{{ post.url }}/">{{ post.title }}</a>
+      {% endif %}
+    </h3>
     <p class="date">{{ post.date | date_to_string }}
       {% if post.author %}
         by <a href="http://twitter.com/{{ post.author.twitter }}" title="{{ post.author.full}}">@{{ post.author.twitter }}</a>
       {% endif %}
     </p>
-    <p>{{ post.excerpt }}</p>
+    <p>
+      {{ post.excerpt }}
+      {% if post.elsewhere %}
+        <span class="small">Published as a guest article for <a href="{{ post.elsewhere.main_url }}">{{ post.elsewhere.name}}</a>.</span>
+      {% endif %}
+    </p>
   </div>
 {% endfor %}

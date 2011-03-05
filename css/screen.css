@@ -245,7 +245,7 @@ ul.columns
   column-width:215px;
 }
 
-.small, p.date,p#footnote,p#footnote a,del,del a
+.small, .small a, p.date, p.date a, p#footnote, p#footnote a, del, del a
 {
   color:#888;
 }
