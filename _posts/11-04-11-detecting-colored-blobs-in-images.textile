@@ -1,17 +1,19 @@
 ---
 layout: post
-title: Detecting colored blobs in images
+title: Pure Ruby colored blob detection
 excerpt:
 published: true
 ---
 
 Over the last few weeks, I've become increasingly interested in computer vision. After finally getting OpenCV running, playing around with a little face detection in a MacRuby application and searching for solutions to weird problems that occurred, I decided to dive a bit deeper into computer vision to figure out how it actually works.
 
+!/images/nose_detector.png!
+
 I decided to start out with blob detection, which simply means detecting, locating and measuring an object in an image. A really simple way of doing something like that (without having to worry about object textures and creepy stuff like that), is to use color to identify blobs. In this article, we're going to build a clown's nose detector by finding the biggest red blob in an image. We won't use any computer vision libraries, the only thing we'll need is ChunkyPNG by @wvanbergen (but you can use any library that allows you to loop over a image's pixels).
 
-Meet Bassie.
-
 <img src="/images/bassie.png" style="width:100px; height:100px;"/>
+
+Here's the image we'll be working with. If you're interested, it's Bassie from the dutch circus duo "Bassie & Adriaan":http://en.wikipedia.org/wiki/Bassie_%26_Adriaan. The important thing about this image is that the nose is the biggest red object, since we won't really be _recognizing_ things as clowns' noses, we're just _detecting_ red objects.
 
 h3. Binary images
 
@@ -102,13 +104,17 @@ Note that the nose is the biggest colored area, so all we have to do to detect i
 area = areas.max { |result, area| result.length <=> area.length }
 {% endhighlight %}
 
-Now, @area@ holds an array of the pixels in the blob we're interested in.
+Now, @area@ holds an array of the pixels in the blob we're interested in. Since we want to put a bounding box around the blob we found, we get the highest and lowest x and y values, create a rectangle on the image using ChunkyPNG's drawing tools and save the image:
 
 {% highlight ruby %}
-xs = area.map{|xy| xy[0]}
-ys = area.map{|xy| xy[1]}
+x, y = area.map{ |xy| xy[0] }, area.map{ |xy| xy[1] }
+
+image.rect(x.min, y.min, x.max, y.max, ChunkyPNG::Color.rgb(0,255,0))
+image.save('bassie_detected.png')
 {% endhighlight %}
 
-h3. Bounding box
+And there you go! We successfully detected, located and measured the biggest red blob in the image:
 
+<img src="/images/bassie_detected.png" style="width:100px; height:100px;"/>
 
+Of course, this method isn't fool proof, but it's a really simple first step into computer vision. As always, if you used this idea to build something yourself, know of a way to improve the code or have some questions or tips, be sure to let me know. You can find the complete source in "this Gist":https://gist.github.com/913400. Have fun!
