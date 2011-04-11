@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Pure Ruby colored blob detection
-excerpt: Detecting a blobs from an image in pure Ruby, with a bit of ChunkyPNG
+excerpt: Detecting blobs from an image in pure Ruby, with a bit of ChunkyPNG
 published: true
 ---
 
@@ -47,7 +47,7 @@ working_image.height.times do |y|
 end
 {% endhighlight %}
 
-As you probably figured out already, we're assigning each pixel with a -1 value a separate label right now. This means pixels in the same blob get different labels. We don't want that, since we want to label _groups_ of pixels that are in the same blob. We need to check the pixel's neighboring pixels too.
+As you probably figured out already, we're assigning each pixel with a -1 value a separate label right now. This means pixels in the same blob get different labels. We don't want that, since we want to label _groups_ of pixels that belong to the same blob. To do that, we need to check the pixel's neighbors too.
 
 h3. Pixel neighborhoods
 
