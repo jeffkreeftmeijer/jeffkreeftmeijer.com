@@ -5,19 +5,19 @@ excerpt:
 published: true
 ---
 
-Over the last few weeks, I've become increasingly interested in computer vision. After finally getting OpenCV running, playing around with a little face detection in a MacRuby application and searching for solutions to weird problems that occurred, I decided to dive a bit deeper into computer vision to figure out how it actually works.
+Over the last few weeks, I've become increasingly interested in computer vision. After finally getting "OpenCV":http://opencv.willowgarage.com/wiki running, playing around with a little face detection in a "MacRuby":http://www.macruby.org application and searching for solutions to weird problems that occurred, I decided to dive a bit deeper into computer vision to figure out how it actually works.
 
-!/images/nose_detector.png!
+!http://jeffkreeftmeijer.com/images/nose_detector.png!
 
-I decided to start out with blob detection, which simply means detecting, locating and measuring an object in an image. A really simple way of doing something like that (without having to worry about object textures and creepy stuff like that), is to use color to identify blobs. In this article, we're going to build a clown's nose detector by finding the biggest red blob in an image. We won't use any computer vision libraries, the only thing we'll need is ChunkyPNG by @wvanbergen (but you can use any library that allows you to loop over a image's pixels).
+I started out with blob detection, which simply means detecting, locating and measuring an object in an image. A really simple way of doing something like that (without having to worry about object textures and creepy stuff like that), is to use color to identify blobs. In this article, we're going to build a clown's nose detector by finding the biggest red blob in an image. We won't use any computer vision libraries, the only thing we'll need is "ChunkyPNG":https://github.com/wvanbergen/chunky_png by "@wvanbergen(Willem van Bergen)":http://twitter.com/wvanbergen (but you can use any library that allows you to loop over a image's pixels).
 
-<img src="/images/bassie.png" style="width:100px; height:100px;"/>
+<img src="http://jeffkreeftmeijer.com/images/bassie.png" style="width:100px; height:100px;"/>
 
 Here's the image we'll be working with. If you're interested, it's Bassie from the dutch circus duo "Bassie & Adriaan":http://en.wikipedia.org/wiki/Bassie_%26_Adriaan. The important thing about this image is that the nose is the biggest red object, since we won't really be _recognizing_ things as clowns' noses, we're just _detecting_ red objects.
 
 h3. Binary images
 
-First, we load in the image and simplify it to make it easier to work with. Since we're only interested in the red pixels, we can turn the original image in a binary image. We go over each of the original image's pixels and figure out it's redness. If the pixel is red enough (we'll use a treshold of 100/255), we give it a value of -1, meaning the pixel is interesting, but we still have to process it. We don't need to do anything with the other pixels, so we'll give those a value of 0, these are the background pixels.
+First, we load in the image and simplify it to make it easier to work with. Since we're only interested in the red pixels, we can turn the original image into a binary one. We go over each of the original image's pixels and figure out it's redness. If the pixel is red enough (we'll use a treshold of 100/255), we give it a value of -1, meaning the pixel is interesting but we still have to process it. We don't need to do anything with the other pixels, so we'll give those a value of 0, these are the background pixels.
 
 {% highlight ruby %}
 require 'chunky_png'
@@ -33,9 +33,9 @@ end
 
 Here's the working image with the blobs in white and the background pixels in black:
 
-<img src="/images/bassie_blobs.png" style="width:100px; height:100px;"/>
+<img src="http://jeffkreeftmeijer.com/images/bassie_blobs.png" style="width:100px; height:100px;"/>
 
-Now we have an image we can work with, let's divide the separate blobs so we can measure them individually to figure out which one the nose is. To do this, we'll loop over every pixel in the image and see if it has a -1 value because it still needs to be processed. If it does, we'll give it a label and add it to the areas array.
+Now we have an image we can work with, let's divide the separate blobs so we can measure them individually to figure out which one the nose is. To do this, we'll loop over every pixel in the image and see if it has a -1 value because it still needs to be processed. If it does, we'll give it a label and add it to an @areas@ array.
 
 {% highlight ruby %}
 areas, label = {}, 0
@@ -48,7 +48,7 @@ working_image.height.times do |y|
 end
 {% endhighlight %}
 
-As you probably figured out already, we're assigning each pixel with a -1 value a separate label right now. This means pixels in the same blob get different labels. We don't want that, since we need to label groups of pixels that are in the same blob. We need to check the pixel's neighboring pixels too.
+As you probably figured out already, we're assigning each pixel with a -1 value a separate label right now. This means pixels in the same blob get different labels. We don't want that, since we want to label _groups_ of pixels that are in the same blob. We need to check the pixel's neighboring pixels too.
 
 h3. Pixel neighborhoods
 
@@ -66,7 +66,7 @@ We need to keep in mind that some pixels don't have four neighbors, like the one
   end
 {% endhighlight %}
 
-Using our new neighborhood method, we can improve the blob separator we wrote earlier. We implement a method named @label_recursively@, which assigns a label to the current pixel, adds the current pixel to the @areas@ array, checks its neighbors and calls itself (without changing the label) on the neighbors if their value is -1. When none of the neighbors' values are -1, the loop will stop until the main loop finds another -1-pixel. If that happens, the label gets increased by 1 and the @label_recursively@ method is called again:
+Using our new neighborhood method, we can improve the blob separator we wrote earlier. We implement a method named @label_recursively@, which assigns a label to the current pixel, adds the current pixel to the @areas@ array, checks its neighbors and calls itself (without changing the label) on the neighbors if their values are -1 too. When none of the neighbors' values are -1, the loop will stop until the main loop finds another -1-pixel. If that happens, the label gets increased by 1 and the @label_recursively@ method is called again:
 
 {% highlight ruby %}
 
@@ -92,13 +92,13 @@ end
 
 {% endhighlight %}
 
-The areas array has the pixels grouped by label now. If we would color the detected blobs, it would look somewhat like this:
+The @areas@ array holds the blobs as labeled groups of pixels now. If we would color the detected blobs, it would look somewhat like this:
 
-<img src="/images/bassie_areas.png" style="width:100px; height:100px;"/>
+<img src="http://jeffkreeftmeijer.com/images/bassie_areas.png" style="width:100px; height:100px;"/>
 
-As you can see, there were some detected areas that overlap and should have been counted as one union. This shouldn't be a problem for this example, but using an 8-neighborhood can solve some of these issues and make the result more precise, if you end up needing it.
+As you can see, there were some detected areas that overlap and should have been counted as one. This shouldn't be a problem for this example, but using an 8-neighborhood can solve some of these issues and make the result more precise, if you end up needing it.
 
-Note that the nose is the biggest colored area, so all we have to do to detect it is find out which area is the biggest (which one has the most pixels). Since we stored the areas in the @areas@ array, this should be straightforward:
+All we have to do to detect the nose is find out which area is the biggest (which one has the most pixels). Since we stored the areas in the @areas@ array, this should be straightforward:
 
 {% highlight ruby %}
 area = areas.max { |result, area| result.length <=> area.length }
@@ -115,6 +115,6 @@ image.save('bassie_detected.png')
 
 And there you go! We successfully detected, located and measured the biggest red blob in the image:
 
-<img src="/images/bassie_detected.png" style="width:100px; height:100px;"/>
+<img src="http://jeffkreeftmeijer.com/images/bassie_detected.png" style="width:100px; height:100px;"/>
 
 Of course, this method isn't fool proof, but it's a really simple first step into computer vision. As always, if you used this idea to build something yourself, know of a way to improve the code or have some questions or tips, be sure to let me know. You can find the complete source in "this Gist":https://gist.github.com/913400. Have fun!
