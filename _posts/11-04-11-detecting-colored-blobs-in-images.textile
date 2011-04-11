@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Pure Ruby colored blob detection
-excerpt:
-published: true
+excerpt: Detecting a blobs from an image in pure Ruby, with a bit of ChunkyPNG
+published: false
 ---
 
 Over the last few weeks, I've become increasingly interested in computer vision. After finally getting "OpenCV":http://opencv.willowgarage.com/wiki running, playing around with a little face detection in a "MacRuby":http://www.macruby.org application and searching for solutions to weird problems that occurred, I decided to dive a bit deeper into computer vision to figure out how it actually works.
@@ -17,7 +17,7 @@ Here's the image we'll be working with. If you're interested, it's Bassie from t
 
 h3. Binary images
 
-First, we load in the image and simplify it to make it easier to work with. Since we're only interested in the red pixels, we can turn the original image into a binary one. We go over each of the original image's pixels and figure out it's redness. If the pixel is red enough (we'll use a treshold of 100/255), we give it a value of -1, meaning the pixel is interesting but we still have to process it. We don't need to do anything with the other pixels, so we'll give those a value of 0, these are the background pixels.
+First, we load in the image and simplify it to make it easier to work with. Since we're only interested in the red pixels, we can turn the original image into a binary one. We go over each of the original image's pixels and figure out it's redness. If the pixel is red enough (we'll use a threshold of 100/255), we give it a value of -1, meaning the pixel is interesting but we still have to process it. We don't need to do anything with the other pixels, so we'll give those a value of 0, these are the background pixels.
 
 {% highlight ruby %}
 require 'chunky_png'
