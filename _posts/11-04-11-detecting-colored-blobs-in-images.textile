@@ -42,8 +42,7 @@ areas, label = {}, 0
 
 working_image.height.times do |y|
   working_image.row(y).each_with_index do |pixel, x|
-    (areas[label] ||= []) << [x,y] if pixel == -1
-    label += 1
+    (areas[label += 1] ||= []) << [x,y] if pixel == -1
   end
 end
 {% endhighlight %}
@@ -69,7 +68,6 @@ We need to keep in mind that some pixels don't have four neighbors, like the one
 Using our new neighborhood method, we can improve the blob separator we wrote earlier. We implement a method named @label_recursively@, which assigns a label to the current pixel, adds the current pixel to the @areas@ array, checks its neighbors and calls itself (without changing the label) on the neighbors if their values are -1 too. When none of the neighbors' values are -1, the loop will stop until the main loop finds another -1-pixel. If that happens, the label gets increased by 1 and the @label_recursively@ method is called again:
 
 {% highlight ruby %}
-
 def label_recursively(image, areas, label, x, y)
   image[x,y] = label
   (areas[label] ||= []) << [x,y]
@@ -77,7 +75,7 @@ def label_recursively(image, areas, label, x, y)
   image.neighbors(x,y).each do |xy|
     if image[*xy] == -1
       areas[label] << xy
-      label_with_neighbors(image, areas, label, *xy)
+      label_recursively(image, areas, label, *xy)
     end
   end
 end
@@ -86,10 +84,9 @@ areas, label = {}, 0
 
 working_image.height.times do |y|
   working_image.row(y).each_with_index do |pixel, x|
-    label_with_neighbors(working_image, areas, label += 1, x, y) if pixel == -1
+    label_recursively(working_image, areas, label += 1, x, y) if pixel == -1
   end
 end
-
 {% endhighlight %}
 
 The @areas@ array holds the blobs as labeled groups of pixels now. If we would color the detected blobs, it would look somewhat like this:
@@ -101,7 +98,7 @@ As you can see, there were some detected areas that overlap and should have been
 All we have to do to detect the nose is find out which area is the biggest (which one has the most pixels). Since we stored the areas in the @areas@ array, this should be straightforward:
 
 {% highlight ruby %}
-area = areas.max { |result, area| result.length <=> area.length }
+area = areas.values.max { |result, area| result.length <=> area.length }
 {% endhighlight %}
 
 Now, @area@ holds an array of the pixels in the blob we're interested in. Since we want to put a bounding box around the blob we found, we get the highest and lowest x and y values, create a rectangle on the image using ChunkyPNG's drawing tools and save the image:
