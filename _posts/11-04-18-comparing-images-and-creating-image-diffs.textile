@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Comparing images and creating image diffs
-excerpt: Finding the differences in two versions of an image to figure out how much it has changed in pure Ruby.
+excerpt: Using pure Ruby to find the differences in two versions of an image.
 published: true
 ---
 
