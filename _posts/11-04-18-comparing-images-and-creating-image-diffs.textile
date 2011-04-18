@@ -7,6 +7,8 @@ published: true
 
 I'm sure you've seen the "image view modes":https://github.com/blog/817-behold-image-view-modes Github released last month. It's a really nice way to see the differences between two versions of an image. In this article, I'll try to explain how a simple image diff could be built using pure Ruby and "ChunkyPNG":https://github.com/wvanbergen/chunky_png.
 
+If you need a more basic introduction to working with pixel data in ChunkyPNG, check out "last week's article":http://jeffkreeftmeijer.com/2011/pure-ruby-colored-blob-detection, which I did some simple blob detection.
+
 In its simplest form, finding differences in images works by looping over each pixel in the first image and checking if it's the same as the pixel in the same spot in the second image. An implementation might look like this:
 
 {% highlight ruby %}
