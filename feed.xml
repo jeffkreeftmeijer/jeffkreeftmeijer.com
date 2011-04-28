@@ -23,6 +23,7 @@ layout: none
     {% endif %}
     <id>http://jeffkreeftmeijer.com{{ post.url }}</id>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <summary>{{ post.excerpt | xml_escape }}</summary>
     <content type="html">
       {% if post.elsewhere %}
         {{ post.excerpt }}
