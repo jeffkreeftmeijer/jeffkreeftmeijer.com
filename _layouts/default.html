@@ -20,50 +20,52 @@
   <script src="/js/jquery.js" type="text/javascript"></script>
 </head>
 <body>
-  <div id="wrapper">
-    <div id="container">
-      <div id="header">
-        <h1>
-          {% if page.home %}
-           Jeff Kreeftmeijer <span title="krayft&bull;migh&bull;er">/kre&#618;ft&bull;ma&#618;&bull;&#604;r/</span>
-          {% else %}
-            <a href="/">&larr; Jeff Kreeftmeijer</a>
-          {% endif %}
-        </h1>
-        <ul>
-          <li>
-            <a href="/projects">Projects</a>
-          </li>
-          <li>
-            <a href="/archive">Archive</a>
-          </li>
-          <li>
-            <a href="/contact">Contact</a>
-          </li>
-          <li>
-            <form action="/search" method="get">
-              <input type="search" name="query" placeholder="Search"/>
-            </form>
-          </li>
-        </ul>
-        <hr class="right"/>
-      </div>
-      <h2>{{ page.title }}</h2>
-      {{ content }}
-    </div>
-
-    <div id="ads">
-      <div class="ad box" id="adzerk">
-        <div id="adzerk_ad_div">
-          <script type="text/javascript" src="http://engine.rubyrow.net/Server/RUBY/JK/NOCSS"></script>
+  <div id="outer">
+    <div id="wrapper">
+      <div id="container">
+        <div id="header">
+          <h1>
+            {% if page.home %}
+             Jeff Kreeftmeijer <span title="krayft&bull;migh&bull;er">/kre&#618;ft&bull;ma&#618;&bull;&#604;r/</span>
+            {% else %}
+              <a href="/">&larr; Jeff Kreeftmeijer</a>
+            {% endif %}
+          </h1>
+          <ul>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="/archive">Archive</a>
+            </li>
+            <li>
+              <a href="/contact">Contact</a>
+            </li>
+            <li>
+              <form action="/search" method="get">
+                <input type="search" name="query" placeholder="Search"/>
+              </form>
+            </li>
+          </ul>
+          <hr class="right"/>
         </div>
-        <p id="adzerk_by">Ads from <a href='http://rubyrow.net'>RubyRow</a></p>
+        <h2>{{ page.title }}</h2>
+        {{ content }}
       </div>
 
-      <div class="ad" id="webbynode">
-        <a href="http://webbynode.com">
-          <img src="/images/webbynode.png"/>
-        </a>
+      <div id="ads">
+        <div class="ad box" id="adzerk">
+          <div id="adzerk_ad_div">
+            <script type="text/javascript" src="http://engine.rubyrow.net/Server/RUBY/JK/NOCSS"></script>
+          </div>
+          <p id="adzerk_by">Ads from <a href='http://rubyrow.net'>RubyRow</a></p>
+        </div>
+
+        <div class="ad" id="webbynode">
+          <a href="http://webbynode.com">
+            <img src="/images/webbynode.png"/>
+          </a>
+        </div>
       </div>
     </div>
   </div>
