@@ -31,7 +31,7 @@ bc. [
   {
       "title":"Capybara ate Swinger",
       "published_on":"2011-02-07T05:00:00Z",
-      "content": [The whole article content],
+      "content": [the full article content],
       "link":"http://jeffkreeftmeijer.com/2011/capybara-ate-swinger",
       "summary":"Remember Swinger, the Capybara RSpec driver swapper? Capybara can now swap drivers out of the box.",
       "_score":61.15513
