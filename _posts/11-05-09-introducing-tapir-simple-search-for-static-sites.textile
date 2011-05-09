@@ -1,0 +1,51 @@
+---
+layout: post
+title: "Introducing Tapir: Simple search for static sites"
+excerpt:
+published: true
+---
+
+<span class="small">*tl;dr* Check out "Tapir":http://tapirgo.com and "see it in action":http://jeffkreeftmeijer.com/search/?query=capybara!</span>
+
+Static site generators like "Jekyll":https://github.com/mojombo/jekyll allow you to generate your whole website or blog as static HTML files and put it online without having to use a database or even building an actual application.
+
+While being static has a lot of advantages, it can be quite a pain sometimes. Since you don't have a database, you can't build a commenting system so your readers can comment on what you write, for example. Some other things are analytics and contact forms. Luckily, there are really nice solutions -- like "Disqus":http://discus.com, "Google analytics":http://google.com/analytics and "Wufoo":http://wufoo.com -- that allow you to simply implement these features using a simple javascript snippet.
+
+A feature I really wanted in my website was search, since the "archive":/archive grew quite a bit and it became impossible to find an article without knowing its title, so I started looking for a solution I could use.
+
+"!/images/tapirgo.png!":http://tapirgo.com
+
+After "asking around":http://twitter.com/#!/jkreeftmeijer/status/62928349399490560, it turned out "Google's custom search":http://www.google.com/cse/ is still the most used out there. The problem I ran into was that it takes you off the website you were searching on and takes you to a Google results page (complete with slightly irrelevant ads).
+
+I wanted a more elegant solution, with a nice JSON API that would allow me to build a search feature on my website using only javascript, but I found out that most of the existing search engines didn't have an API, made me put their logo on my website or gave me a request limit.
+
+After discussing this at "80beans":http://80beans.com, we decided to get some beers, order dinner and throw something together ourselves. After a couple of hours, we had a working prototype and we asked "@ivanasetiawan(Ivana Setiawan)":http://twitter.com/ivanasetiawan to draw us an awesome Tapir and create a nice design for the website.
+
+h3. Tapir, go!
+
+"Tapir":http://tapirgo.com is a simple application that indexes your RSS feed and uses "Tire":https://github.com/karmi/tire (which is powered by "Elasticsearch":http://www.elasticsearch.org, which is powered by "Lucene":http://lucene.apache.org) to index and search it. It gives you a straightforward JSON API that returns the results.
+
+After signing up and getting your token, you'll be able to use this API to search your site. For example, here's one of my results when "searching for &ldquo;Capybara&rdquo;":http://tapirgo.com/api/1/search.json?token=4dbfc79e3f61b05b53000011&query=capybara:
+
+bc. [
+  {
+      "title":"Capybara ate Swinger",
+      "published_on":"2011-02-07T05:00:00Z",
+      "content": [The whole article content],
+      "link":"http://jeffkreeftmeijer.com/2011/capybara-ate-swinger",
+      "summary":"Remember Swinger, the Capybara RSpec driver swapper? Capybara can now swap drivers out of the box.",
+      "_score":61.15513
+    }
+  ]
+
+Tapir will check your feed every fifteen minutes to see if there's anything new to index, but of course you can also ping
+
+Using that, you can build your own search feature, which requests its results from Tapir's API. If you want to give it a go, check out "the one I implemented":http://jeffkreeftmeijer.com/search/?query=capybara.
+
+h3. What's next?
+
+Over the last week we've been busy tweaking the search results and making the application more usable. We have a couple of plans to make Tapir more awesome, but we definitely need your help. If you start using Tapir, have a great idea or if you run into any issues, "@tapirgo(Tapir)":http://twitter.com/tapirgo would be glad to help.
+
+While we built Tapir to search static sites, you can of course use it for anything that has an RSS feed. "@thedjinn(Emil Loer)":http://twitter.com/thedjinn created a "news search":http://emilloer.com/2011/05/04/searching-the-news-with-tapir/ that searches multiple feeds, like CNN and the Dutch NOS. If you end up doing something awesome we hadn't thought about before, be sure to let us know.
+
+Now, what do _you_ think of Tapir?
