@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introducing Tapir: Simple search for static sites"
-excerpt:
+excerpt: Wouldn't it be nice to have a service that indexes your RSS feed and allows you to search it using a JSON API?
 published: true
 ---
 
