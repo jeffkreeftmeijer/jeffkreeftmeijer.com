@@ -6,6 +6,8 @@ published: true
 hackernews: 1314789
 ---
 
+<div class="notice">Capybara has an RSpec DSL now, allowing you to steak-acceptance testing without Steak. Be sure to read "Acceptance testing using Capybara's new RSpec DSL":http://jeffkreeftmeijer.com/2011/acceptance-testing-using-capybaras-new-rspec-dsl/ too.</div>
+
 I'm not going to tell you "why you should write acceptance (or integration) tests":http://robots.thoughtbot.com/post/543043259/unit-and-functional-tests-are-as-useful-as-100-code, but you should. I used "Cucumber":http://cukes.info/ for a while now and I love it, but I think writing my tests in a "business-readable domain-specific language":http://www.martinfowler.com/bliki/BusinessReadableDSL.html and translating them into Ruby using step definitions is a bit too much sometimes. And I'm not a vegetarian.
 
 Luckily, we have "Steak":http://github.com/cavalle/steak by "@cavalle(Luismi Cavallé)":http://twitter.com/cavalle:
