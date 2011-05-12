@@ -157,4 +157,4 @@ Using that, comparing the two images to the left would result in the diff-image 
 
 Because the colors are compared by channel (R,G and B) instead of as one color, three scores are returned. This means the output image is in color, but comparing the channels separately can make the result less accurate.
 
-As always, if you used this idea to build something yourself, know of a way to improve the code or have some questions or tips, be sure to let me know. If you want to know more about something I talked about, be sure to "suggest it":http://skribit.com/blogs/jeff-kreeftmeijer as a next article.
+As always, if you used this idea to build something yourself, know of a way to improve the code or have some questions or tips, be sure to let me know. If you want to know more about something I talked about, be sure to suggest it as a next article.
