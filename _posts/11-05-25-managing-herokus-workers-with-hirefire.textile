@@ -6,7 +6,7 @@ published: true
 author:
   full: Michael van Rooijen
   twitter: meskyanichi
-  description: Michael is a Ruby programmer and <a href="https://github.com/meskyanichi">open source contributor</a>.
+  description: Michael is a Ruby programmer and <a href="https://github.com/meskyanichi">open source contributor</a>, who's turning his open source HireFire gem into a hosted service.
 ---
 
 As you are most certainly already aware, "Heroku":http://heroku.com/ is a platform dedicated to hosting Ruby (or Rack) applications. One of the reasons you might consider Heroku is when you:
@@ -27,12 +27,8 @@ When you run a large business, generating plenty of income, such things matter l
 
 h3. Enter: HireFire - The Heroku Worker Manager
 
-"HireFire":http://hirefireapp.com/ is a web service I recently released to address this issue. It is an attempt to bring "pay for what you use" to Heroku's Workers. After all, Heroku is a "cloud" platform, right?
+A while back I released "HireFire":https://github.com/meskyanichi/hirefire, an open source RubyGem to address this issue. As the title suggests, HireFire monitors and manages your applications on Heroku. It will shut down workers when there aren't any jobs, and will then spin up new ones again when jobs get enqueued. This can save you a significant amount of money since workers will no longer run full-time. Not only that, but it'll also enable you to process jobs at a higher concurrency because of the ability to automatically scale up and down.
 
-I started this service because of various performance and reliability issues that existing open source solutions have, including my own.
+It has been working great, but since the performance and reliability of my open source solution didn't quite cut it, I decided to release it as a hosted service. I gave it a nice interface for easily defining how you want to scale your workers. For example, you could configure it to spin up two workers when the queue size hits 15, and four workers when the queue size hits 30, and so forth. This is nice because you can configure it based on how long the average job of your application takes.
 
-As the title suggests, HireFire monitors and manages your applications on Heroku. It will shut down workers when there aren't any jobs, and will then spin up new ones again when jobs get enqueued. This can save you a significant amount of money since workers will no longer run full-time. Not only that, but it'll also enable you to process jobs at a higher concurrency because of the ability to automatically scale up and down.
-
-HireFire provides you with a simple web interface for defining how you want to scale your workers. For example, you could configure it to spin up 2 workers when the queue size hits 15, and 4 workers when the queue size hits 30, and so forth. This is nice because you can configure it based on how long the average job of your application runs.
-
-What are you waiting for? Head over to "HireFire":http://hirefireapp.com/ and sign up for a free beta account to try it out. If you have any questions, check out the "knowledge base":http://hirefireapp.tenderapp.com/kb or post a comment below.
+If you want to give it a try, head over to "HireFire":http://hirefireapp.com/ and sign up for a account. If you have any questions, check out the "knowledge base":http://hirefireapp.tenderapp.com/kb or post a comment below.
