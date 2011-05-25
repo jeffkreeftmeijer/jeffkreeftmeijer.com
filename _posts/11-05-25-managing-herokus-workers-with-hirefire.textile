@@ -17,7 +17,7 @@ As you are most certainly already aware, "Heroku":http://heroku.com/ is a platfo
 
 Heroku also provides add-ons that hook up internal, and 3rd party services with your application automatically!
 
-!/images/hirefire.jpg!
+!http://jeffkreeftmeijer.com/images/hirefire.jpg!
 
 As appealing as it sounds, in the short run you'll find yourself spending a lot of money on resources which you would otherwise get a lot cheaper elsewhere, like with VPS or dedicated hosting.
 
@@ -29,6 +29,6 @@ h3. Enter: HireFire - The Heroku Worker Manager
 
 A while back I released "HireFire":https://github.com/meskyanichi/hirefire, an open source RubyGem to address this issue. As the title suggests, HireFire monitors and manages your applications on Heroku. It will shut down workers when there aren't any jobs, and will then spin up new ones again when jobs get enqueued. This can save you a significant amount of money since workers will no longer run full-time. Not only that, but it'll also enable you to process jobs at a higher concurrency because of the ability to automatically scale up and down.
 
-It has been working great, but since the performance and reliability of my open source solution didn't quite cut it, due to Heroku's platform limitations, I decided to release it as a hosted service. I gave it a nice interface for easily defining how you want to scale your workers. For example, you could configure it to spin up two workers when the queue size hits 15, and four workers when the queue size hits 30, and so forth. This is nice because you can configure it based on how long the average job of your application takes.
+It has been working great, but since the performance and reliability of my open source solution didn't quite cut it, I decided to release it as a hosted service. I gave it a nice interface for easily defining how you want to scale your workers. For example, you could configure it to spin up two workers when the queue size hits 15, and four workers when the queue size hits 30, and so forth. This is nice because you can configure it based on how long the average job of your application takes.
 
 If you want to give it a try, head over to "HireFire":http://hirefireapp.com and set up your worker manager. If you have any questions, check out the "knowledge base":http://hirefireapp.tenderapp.com/kb or post a comment below.
