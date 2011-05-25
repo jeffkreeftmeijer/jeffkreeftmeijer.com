@@ -376,3 +376,11 @@ img#mo{
 img#mo:hover{
   margin: -12px 0px -43px -75px;
 }
+
+ul{
+  margin: 0px 0px 0px 20px;
+}
+
+ul li{
+  list-style-type: disc;
+}
