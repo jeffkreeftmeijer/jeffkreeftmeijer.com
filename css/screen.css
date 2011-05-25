@@ -377,10 +377,11 @@ img#mo:hover{
   margin: -12px 0px -43px -75px;
 }
 
-ul{
+
+#content ul{
   margin: 0px 0px 0px 20px;
 }
 
-ul li{
+#content ul li{
   list-style-type: disc;
 }
