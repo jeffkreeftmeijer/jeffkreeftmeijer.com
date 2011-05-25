@@ -31,4 +31,4 @@ A while back I released "HireFire":https://github.com/meskyanichi/hirefire, an o
 
 It has been working great, but since the performance and reliability of my open source solution didn't quite cut it, I decided to release it as a hosted service. I gave it a nice interface for easily defining how you want to scale your workers. For example, you could configure it to spin up two workers when the queue size hits 15, and four workers when the queue size hits 30, and so forth. This is nice because you can configure it based on how long the average job of your application takes.
 
-If you want to give it a try, head over to "HireFire":http://hirefireapp.com/ and sign up for a account. If you have any questions, check out the "knowledge base":http://hirefireapp.tenderapp.com/kb or post a comment below.
+If you want to give it a try, head over to "HireFire":http://hirefireapp.com and set up your worker manager. If you have any questions, check out the "knowledge base":http://hirefireapp.tenderapp.com/kb or post a comment below.
