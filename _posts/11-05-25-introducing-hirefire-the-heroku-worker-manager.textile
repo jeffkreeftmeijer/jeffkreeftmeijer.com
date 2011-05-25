@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introducing HireFire: The Heroku Worker Manager"
+title: "Managing Heroku's Workers with HireFire"
 excerpt: HireFire fires idle workers, and hires them when needed, saving you money and adding scalability.
 published: true
 author:
@@ -9,9 +9,7 @@ author:
   description: Michael is a (freelance) Ruby programmer and <a href="https://github.com/meskyanichi">open source contributor</a>.
 ---
 
-h3. About Heroku, and the problem
-
-As you are most certainly already aware of, "Heroku":http://heroku.com/ is a platform dedicated to hosting Ruby (or Rack) applications. One of the reasons you might consider Heroku is when you:
+As you are most certainly already aware, "Heroku":http://heroku.com/ is a platform dedicated to hosting Ruby (or Rack) applications. One of the reasons you might consider Heroku is when you:
 
 * don't know how, or don't want to provision and manage servers
 * don't want to spend time on maintaining or fine-tuning servers (and software) yourself
@@ -19,24 +17,26 @@ As you are most certainly already aware of, "Heroku":http://heroku.com/ is a pla
 
 Heroku also provides add-ons that hook up internal, and 3rd party services with your application automatically!
 
+!/images/hirefire.jpg!
+
 As appealing as it sounds, in the short run you'll find yourself spending a lot of money on resources which you would otherwise get a lot cheaper elsewhere, like with VPS or dedicated hosting.
 
 One of those resources, is the "Heroku Worker":http://www.heroku.com/pricing#1-24.
 
 When you run a large business, generating plenty of income, such things matter less. However, when you have a bunch of small-medium web applications, be it startups, clients or personal sites, it becomes quite expensive early on for applications that don't generate (enough) monthly revenue to pay such fees.
 
-h3. Enter: "HireFire":http://hirefireapp.com/ - The Heroku Worker Manager
+h3. Enter: HireFire - The Heroku Worker Manager
 
-"HireFire":http://hirefireapp.com/ is a web service I recently released to address this issue. It is an attempt to bring back "pay for what you use". After all, Heroku is a "cloud" platform, right?
+"HireFire":http://hirefireapp.com/ is a web service I recently released to address this issue. It is an attempt to bring "pay for what you use" to Heroku's Workers. After all, Heroku is a "cloud" platform, right?
 
-As the title suggests, HireFire monitors and manages your applications on Heroku. It will shut down workers when there aren't any jobs, and will then spin up new ones again when jobs get enqueued.
+As the title suggests, HireFire monitors and manages your applications on Heroku. It will shut down workers when there aren't any jobs, and will then spin up new ones again when jobs get enqueued. This can save you a significant amount of money since workers will no longer run full-time. Not only that, but it'll also enable you to process jobs at a higher concurrency because of the ability to automatically scale up and down.
 
-HireFire provides you with a simple web interface for defining how you want to scale your workers up and down. For example, you could configure it to spin up 2 workers when the queue size hits 15, and 4 workers when the queue size hits 30, and so forth. This is nice because you can configure it based on how long the average job runs.
+HireFire provides you with a simple web interface for defining how you want to scale your workers up and down. For example, you could configure it to spin up 2 workers when the queue size hits 15, and 4 workers when the queue size hits 30, and so forth. This is nice because you can configure it based on how long the average job of your application runs.
 
-!/images/hirefire.jpg!
+**Here's an example on how it could save you money:** Assume you just released your new application for your startup. You have some basic background jobs that need to be processed, and for this you spin up a single Heroku worker to handle it. This worker will remain active (idle or not) for the full 720 hours a month. The worker costs $0.05/hour ($36/month). But you only have 40 hours worth of job processing a month, that means the other 680 hours the worker is practically just sitting there, idle. With HireFire, this is no longer the case. HireFire will shut down the worker once it's idle, and spin it up again when jobs need to be processed. Heroku's Workers, like Heroku Dyno's, are pro-rated to the **second**.
 
-<div class="notice">
-  "HireFire":http://hirefireapp.com/ is currently in beta, so you can try it out for free!
-</div>
+**Here's one more example regarding faster job processing:** Normally when you want to process jobs faster, you'd spin up more workers to gain more concurrency. Spinning up more workers however, significantly drives up the cost (**n** times more than in the first example). So it quickly becomes unappealing to do this, since a single worker may handle it on it's own eventually. Using HireFire this wouldn't be a problem, because the prices are pro-rated to the second. Whether you're letting 3 workers handle the jobs, and then spinning down all 3 workers, or you're letting 1 worker take it's time to finish it on it's own. The costs are the same, but 3 workers process faster than 1.
 
+Visit "hirefireapp.com":http://hirefireapp.com/, we're currently in beta, so you can try it out for free!
 
+For more information, guides, roadmap/goals, etc, refer to the "HireFire Knowledge Base":http://hirefireapp.tenderapp.com/kb.
