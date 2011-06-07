@@ -1,0 +1,38 @@
+---
+layout: post
+title: "Euruko: The small and informal European Ruby conference"
+excerpt: About Euruko 2011 in Berlin and some thoughts about the Amsterdam edition next year
+published: true
+---
+
+I know I'm a bit late to the party and I wasn't really planning on writing about "Euruko":http://euruko2011.org this time, but after reading ["@nusco(Paolo Perrotta)":http://twitter.com/#!/nusco]'s "thoughts":http://ducktypo.blogspot.com/2011/06/euruko-2011-thoughts.html, I decided to give you my two cents.
+
+!/images/euruko2011.jpg!:http://www.flickr.com/photos/der_robert/5773702901/in/photostream/
+
+We -- that's "80beans":http://80beans.com -- wanted to take three people to go to Berlin. After completely missing the first ticket run and failing in the second, we put our hopes on the last one. We managed to get only one.
+
+We were a bit bummed out, but we decided to go to Berlin anyway, since it seemed like it was going to be a great trip. I imagined
+
+After tweeting about not having a ticket, it didn't take long before "@rymai(Rémy Coutable)":http://twitter.com/rymai, replied saying that "he had one left":http://twitter.com/rymai/status/45531844854292480. I sent him my name and address and he bought the ticket for me.
+
+Just one week before we left, "@matsimitsu(Robert Beekman)":http://twitter.com/matsimitsu somehow got his ticket from somebody else. This meant we were able to get all of us into the conference after all.
+
+h3. Should Euruko "scale"?
+
+Personally, I don't agree "Euruko should get bigger":http://ducktypo.blogspot.com/2011/06/euruko-2011-thoughts.html next year, I loved the atmosphere and the relaxed feel of the one-track setup. The venue was amazing, the screen was "huge":http://www.flickr.com/photos/mfilej/5768540968 and the "wifi":http://euruko2011.org/2011/05/26/such-great-heights.html was great, too.
+
+!/images/euruko2011_amsterdam.jpg!:http://www.flickr.com/photos/der_robert/5773703421/in/photostream/
+
+<span class="small">"Amsterdam.rb":http://amsterdam-rb.org is getting to organize Euruko next year.</a>
+
+Of course, doing it like that will mean a lot of people won't be able to attend the conference, but that's a result of having a small and informal conference like this. To make this a big Ruby event, why don't we focus on organizing great things _around_ the conference?
+
+This year's "Eurucamp":http://eurucamp.org/ was an amazing idea, and I believe it got a lot of people to Berlin even though they didn't have a ticket to the main conference.  Having all these people together, combined with well-organized parties and a Github drinkup on sunday, made sure everyone -- even people without tickets to the main conference -- had a great time and a chance to meet up with each other. I think that's _exactly_ what going to a conference is about.
+
+For next year, let's focus on having a great time in Amsterdam, rather than just the conference. Let's have places to hack, great parties, an open-space event like Eurucamp and a lot of fun.
+
+h3. Tickets
+
+The three ticket runs for this year's Euruko were gone in seconds, so we need to rethink how we're going to do this for next year. We're planning on having a pre-registration to have an idea of how many people want to come and maybe we'll make some tickets available for european user groups so we're sure to have a diverse audience from all over Europe.
+
+If you have any idea of how you think the ticket sales for next year would be fair, be sure to let us know!
