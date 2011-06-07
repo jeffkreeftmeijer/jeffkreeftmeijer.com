@@ -1,0 +1,36 @@
+---
+layout: post
+title: "Euruko: The small and informal European Ruby conference"
+excerpt: About Euruko 2011 in Berlin and some thoughts about the Amsterdam edition next year
+published: true
+---
+
+I know I'm a bit late to the party and I wasn't really planning on writing about "Euruko":http://euruko2011.org this time, but after reading ["@nusco(Paolo Perrotta)":http://twitter.com/#!/nusco]'s "thoughts":http://ducktypo.blogspot.com/2011/06/euruko-2011-thoughts.html, I decided to throw my two cents in the mix.
+
+!http://jeffkreeftmeijer.com/images/euruko2011.jpg!:http://www.flickr.com/photos/der_robert/5773702901/in/photostream/
+
+We -- that's "80beans":http://80beans.com -- wanted to take three people to go to Berlin for Euruko. After completely missing the first ticket run and failing in the second, we put our hopes on the last one. Since that one was sold out in a split second too, we managed to get only one ticket. We were a bit bummed out, but we decided to go to Berlin anyway, since it seemed like it was going to be a great trip.
+
+After tweeting about not having a ticket, it didn't take long before "@rymai(Rémy Coutable)":http://twitter.com/rymai, replied saying that "he had one left":http://twitter.com/rymai/status/45531844854292480. I sent him my name and address and he bought the ticket for me. Just one week before we left, "@matsimitsu(Robert Beekman)":http://twitter.com/matsimitsu somehow got his ticket from somebody too. This meant we were able to get all of us into the conference after all.
+
+The conference was amazing, although we missed quite a few talks because waking up got harder every morning. We didn't end up at "Eurucamp":http://eurucamp.org/ at all, but I've been told that was great too. I believe we would have been just fine if we didn't all get tickets to Euruko because of that.
+
+h3. Should Euruko "scale"?
+
+Personally, I don't agree "Euruko should get bigger":http://ducktypo.blogspot.com/2011/06/euruko-2011-thoughts.html next year, I loved the atmosphere and the relaxed feel of the one-track setup. The venue was amazing, the screen was "huge":http://www.flickr.com/photos/mfilej/5768540968 and even the "wifi":http://euruko2011.org/2011/05/26/such-great-heights.html was great, too.
+
+!http://jeffkreeftmeijer.com/images/euruko2011_amsterdam.jpg!:http://www.flickr.com/photos/der_robert/5773703421/in/photostream/
+
+<span class="small">"Amsterdam.rb":http://amsterdam-rb.org is getting to organize Euruko next year.</a>
+
+Of course, doing it like that next year -- "Amsterdam.rb":http://amsterdam-rb.org will organize it -- will mean a lot of people won't be able to attend the conference, but that's a result of trying to keep it small and informal. To make this a big Ruby event, why don't we focus on organizing great things _around_ the conference?
+
+This year's Eurucamp was an amazing idea, and I believe it got a lot of people to Berlin even though they didn't have a ticket to the main conference.  Having all these people together, combined with well-organized parties and a Github drinkup on Sunday, made sure everyone -- even people without tickets to the main conference -- had a great time and a chance to meet up with each other. I think that's _exactly_ what going to a conference is about.
+
+For next year, let's focus on having a great time in Amsterdam, rather than just the conference. Let's have places and events to hack, great parties, an open-space event like Eurucamp and a lot of fun.
+
+h3. Tickets
+
+The three ticket runs for this year's Euruko were gone in seconds, so we need to rethink how we're going to do this for next year. We're planning on having a pre-registration to have an idea of how many people want to come and maybe we'll make some tickets available for European user groups so we're sure to have a diverse audience from all over Europe.
+
+If you have a great idea for Euruko 2012, or have an idea to smoothen out the ticket selling process a bit, be sure to let me know in the comments. To the Euruko 2011 organizers: I had an amazing time, let's hope next year will be as awesome in Amsterdam. I hope to see you all then!
