@@ -25,7 +25,7 @@ After you're done voting, the contestants' names are revealed and we'll show the
 
 h3. Codebrawl needs your help
 
-We're always looking for good contest ideas, so if you know something or have some open source project you'd like us to have a play with, please "submit it":http://localhost:3000/submissions/new. Also, we're looking for prize sponsors, so if you have some app credit you want to give out or some swag you want to send across the world, be sure to "let me know":jeffkreeftmeijer.com/contact.
+We're always looking for good contest ideas, so if you know something or have some open source project you'd like us to have a play with, please "submit it":http://codebrawl.com/submissions/new. Also, we're looking for prize sponsors, so if you have some app credit you want to give out or some swag you want to send across the world, be sure to "let me know":jeffkreeftmeijer.com/contact.
 
 If you have any comments, suggestions or ideas, please leave a comment below or create "an issue on Github":https://github.com/codebrawl/codebrawl/issues and be sure to participate in "this week's contest":http://codebrawl.com/contests/pixelizing-images-with-chunkypng. Good luck!
 
