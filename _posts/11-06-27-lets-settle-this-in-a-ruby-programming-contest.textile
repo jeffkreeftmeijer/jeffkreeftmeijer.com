@@ -5,7 +5,7 @@ excerpt: Introducing Codebrawl, a Ruby and open source programming contest websi
 published: true
 ---
 
-Last week, I launched "Codebrawl":http://codebrawl.com, a programming contest website focussed on Ruby programming and open source software.
+Last week, I launched "Codebrawl":http://codebrawl.com, a code contest website focussed on the Ruby programming language and open source software.
 
 !http://jeffkreeftmeijer.com/images/codebrawl.png!:http://codebrawl.com
 
