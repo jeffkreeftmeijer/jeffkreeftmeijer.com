@@ -13,7 +13,7 @@ A typical contest will introduce the contestants to an open source project to so
 
 The contestants are always encouraged to keep working on their projects after the contest, to try to make sure others in the Ruby community benefit from what's created at Codebrawl.
 
-Of course, we'll also do the occasional puzzle or give the contestants a specific task. This week, we're "introducing the contestants to ChunkyPNG":http://codebrawl.com/contests/pixelating-images-with-chunkypng, by letting them pixelate an image of a Tapir. I'm excited to see how this turns out and maybe we can even find something to contribute back to ChunkyPNG.
+Of course, we'll also do the occasional puzzle or give the contestants a specific task. This week, we're "introducing the contestants to ChunkyPNG":http://codebrawl.com/contests/pixelizing-images-with-chunkypng, by letting them pixelate an image of a Tapir. I'm excited to see how this turns out and maybe we can even find something to contribute back to ChunkyPNG.
 
 h3. How it works
 
@@ -27,6 +27,6 @@ h3. Codebrawl needs your help
 
 We're always looking for good contest ideas, so if you know something or have some open source project you'd like us to have a play with, please "submit it":http://localhost:3000/submissions/new. Also, we're looking for prize sponsors, so if you have some app credit you want to give out or some swag you want to send across the world, be sure to "let me know":jeffkreeftmeijer.com/contact.
 
-If you have any comments, suggestions or ideas, please leave a comment below and be sure to participate in "this week's contest":http://codebrawl.com/contests/pixelizing-images-with-chunkypng. Good luck!
+If you have any comments, suggestions or ideas, please leave a comment below or create "an issue on Github":https://github.com/codebrawl/codebrawl/issues and be sure to participate in "this week's contest":http://codebrawl.com/contests/pixelizing-images-with-chunkypng. Good luck!
 
 
