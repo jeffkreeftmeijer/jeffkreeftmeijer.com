@@ -86,6 +86,19 @@
       (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
   </script>
+  
+  <script type="text/javascript">
+    (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '4d62819ef0d8804188000010');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+  </script>
 
   <script stype="text/javascript">
     $('.tweet').attr('href', 'http://twitter.com/share?url=' + escape(document.location) + '&via=jkreeftmeijer&text=' + escape(document.title.split(' - ')[0]));
