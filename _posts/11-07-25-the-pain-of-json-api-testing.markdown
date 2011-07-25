@@ -74,7 +74,7 @@ That's quite simple right? Let's create a quick API action that allows us to cre
 
 In our first spec, we use `post` to POST some data to the same URL we used above, which will create a new user. We test if that really happens by asking the `User` model if its `count` changed by 1.
 
-Making sure a user is created is not enough, we need to test if our new user has the correct name and login values. In the second spec, we to just that by fetching the last user -- since we already know a user was created -- and checking its `name` and `login` methods.
+Making sure a user is created is not enough, we need to test if our new user has the correct name and login values. In the second spec, we do just that by fetching the last user -- since we already know a user was created -- and checking its `name` and `login` methods.
 
 The last thing we want our user creation API to do is to return our new user. Like the user index spec above, we parse the response body and compare is to another hash.
 
@@ -108,4 +108,4 @@ If you've been here before, you probably know I'm not Cucumber's greatest fan, b
 
 "A step description should never contain regexen, CSS or XPath selectors, any kind of code or data structure. It should be easily understood just by reading the description." -- [You're Cuking it wrong](http://elabs.se/blog/15-you-re-cuking-it-wrong)
 
-If you _have_ to use data structures in your tests, maybe it's a good idea to put Cucumber aside for a bit. No matter how much you like it.
+If you _have_ to use data structures in your tests, maybe it's a good idea to put Cucumber aside for a bit. No matter how much you like using it.
