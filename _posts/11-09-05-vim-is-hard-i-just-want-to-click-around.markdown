@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Vim is hard, I just want to click around
-excerpt:
+excerpt: Setting up MacVim with Janus and a sexy file drawer
 published: true
 ---
 
