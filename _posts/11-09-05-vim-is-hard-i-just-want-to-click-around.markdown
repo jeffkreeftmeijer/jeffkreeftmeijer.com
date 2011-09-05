@@ -22,7 +22,7 @@ I got a new hard drive, which was a great excuse to do a clean install and set u
 
 The one thing I didn't really like was the new native Lion fullscreen mode, which newer versions of MacVim use by default. Its animations annoyed me and when using multiple screens, it cleared out the second screen when I put something in fullscreen mode on the first one. In my earlier attempt at using MacVim, they rolled their own fullscreen mode that worked perfectly and I wanted that back.
 
-Lucklily, that's pretty easy to achieve. It's a matter of throwing this into your terminal:
+Luckily, that's pretty easy to achieve. It's a matter of throwing this into your terminal:
 
 {% highlight console %}
 $ defaults write org.vim.MacVim MMNativeFullScreen 0
@@ -48,9 +48,9 @@ Without NERDTree, I started getting some error messages when changing directorie
     line    4:
     E492: Not an editor command:   NERDTree
 
-So, after looking around for a bit, I found the problem in `~/.vim/gvimrc`. In the `ChangeDirectory` function, I removed [line 172](https://github.com/carlhuda/janus/blob/master/gvimrc#L172) and the problem dissapeared. I haven't had time to turn this into a patch, sorry.
+So, after looking around for a bit, I found the problem in `~/.vim/gvimrc`. In the `ChangeDirectory` function, I removed [line 172](https://github.com/carlhuda/janus/blob/master/gvimrc#L172) and the problem disappeared. I haven't had time to turn this into a patch, sorry.
 
-Oh, and while Janus comes with a plugin that highlights trailing whitespace, it doesn't automaticaly clear it when you save. I put this in my `~/.vimrc.local` file to never have to worry about that again:
+Oh, and while Janus comes with a plugin that highlights trailing whitespace, it doesn't automatically clear it when you save. I put this in my `~/.vimrc.local` file to never have to worry about that again:
 
     autocmd BufWritePre * :%s/\s\+$//e
 
