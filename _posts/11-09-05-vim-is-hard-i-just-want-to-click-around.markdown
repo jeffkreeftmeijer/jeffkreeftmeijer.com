@@ -7,7 +7,7 @@ published: true
 
 More than a year ago, I wrote about [switching to Vim](http://jeffkreeftmeijer.com/2010/stumbling-into-vim/). I was quite happy with how it all worked, but I found myself switching back to Textmate after a while. I read though a lot of dotfiles to "steal" some configuration options from others, took some time to go through `vimtutor`, read some blogposts and after a while, I was quite happy with how it all worked.
 
-![Alloy's MacVim fork with Janus](/images/vim2.png)
+![Alloy's MacVim fork with Janus](http://jeffkreeftmeijer.com/images/vim2.png)
 <span class="small">My new, full screen Janus-powered MacVim editor, with sexy drawer</span>
 
 But after some time, I started switching back to Textmate. At first, I only opened it up to do non-code writing, but after a while, I started using Textmate for bigger projects too since it felt easier to navigate around project files. After about half a year, I was back to Textmate completely and I only used Vim on my Ubuntu-powered netbook sometimes.
