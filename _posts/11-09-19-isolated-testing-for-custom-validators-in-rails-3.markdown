@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Isolated testing for custom validators in Rails 3
-excerpt: Getting blazingly fast specs by testing Rails 3 custom validators without requiring the model
+excerpt: Blazingly fast specs by testing Rails 3 custom validators without requiring the model
 published: true
 ---
 
