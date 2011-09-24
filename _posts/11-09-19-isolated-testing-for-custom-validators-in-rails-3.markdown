@@ -102,6 +102,8 @@ require 'rspec/rails/extensions'
 
 If we run our tests again, we notice that they're quite a bit slower now. We could solve that by not using the `error_on` method and not requiring `RSpec::Rails::Extensions`, but I prefer using `error_on` instead of having to do assertions on the `subject.errors` array, but that's completely up to you.
 
+_Update_: If you don't want to load up `RSpec::Rails::Extensions`, but do want to use `error_on`, just put [this validations support file](https://gist.github.com/1239170) in `spec/support/validations.rb` and `require 'support/validations'` instead of `rspec/rails/extensions`. This is saving me about 2 seconds.
+
 After requiring `RSpec::Rails::Extensions`, our spec starts running again and fails, because we haven't implemented the actual validation yet. So let's do that now:
 
 {% highlight ruby %}
