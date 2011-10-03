@@ -25,7 +25,7 @@ end
 
 Now, calling `calculate_score!` will save the results of `calculate_score` to the score attribute. It's one 4-line method in one file and it has a 25-line spec. Simple.
 
-![MicroGem](http://jeffkreeftmeijer.com/images/microgem.png)
+[![MicroGem](http://jeffkreeftmeijer.com/images/microgem.png)](https://gist.github.com/1232884)
 
 After a while, I ran into the same "issue" in another project. I wanted to use my new Bang library, but I didn't want to copy it over to the new project and I didn't feel like starting a new repository on [Github](https://github.com) because that would mean I'd have to write a `README`, squat a name on [RubyGems](http://rubygems.org), accept issues and support it forever. It just felt too small for that.
 
