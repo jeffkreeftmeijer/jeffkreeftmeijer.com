@@ -27,7 +27,7 @@ Now, calling `calculate_score!` will save the results of `calculate_score` to th
 
 ![MicroGem](http://jeffkreeftmeijer.com/images/microgem.png)
 
-After a while, I ran into the same "issue" in another project. I wanted to use my new Bang library, but I didn't want to copy it over to the new project and I didn't feel like starting a new repository on [Github](https://github.com) because that would mean I'd have to write a `README`, squat a name on RubyGems, accept issues and support it forever. It just felt too small for that.
+After a while, I ran into the same "issue" in another project. I wanted to use my new Bang library, but I didn't want to copy it over to the new project and I didn't feel like starting a new repository on [Github](https://github.com) because that would mean I'd have to write a `README`, squat a name on [RubyGems](http://rubygems.org), accept issues and support it forever. It just felt too small for that.
 
 Instead, [I put the library into a Gist](https://gist.github.com/1232884). The great thing about Gists is that they're full Git repositories in disguise, so I can just clone my library, work on it and push a new "release" without having to fiddle around in Gist's web interface.
 
