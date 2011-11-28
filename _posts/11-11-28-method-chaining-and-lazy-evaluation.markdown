@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Method chaining and lazy evaluation in Ruby
-excerpt:
+excerpt: "To figure out how method chaining and lazy evaluation work, we’ll write a library that can chain method calls to build up a MongoDB query."
 published: true
 ---
 
@@ -106,9 +106,9 @@ ruby-1.9.3-p0 :003 > c.where(:name => 'Jeff').where(:login => 'jkreeftmeijer')
  => #<Criteria:0x007fe91117c738 @criteria={:conditions=>{:name=>"Jeff", :login=>"jkreeftmeijer"}}>
 {% endhighlight %}
 
-Hah! Now we can chain as many conditions as we want. Let's go ahead and implement that `limit` method right away, so we can limit our query's results. 
+Ha! Now we can chain as many conditions as we want. Let's go ahead and implement that `limit` method right away, so we can limit our query's results. 
 
-Of course, we only need one limit, as multiple limits wouldn't make sense. This means we don't need an array, we can just set `criteria[:limit]`:
+Of course, we only need one limit, as multiple limits wouldn't make sense. This means we don't need an array, we can just set `criteria[:limit]` instead of merging hashes, like we did with the conditions before:
 
 {% highlight ruby %}
 class Criteria
@@ -131,7 +131,7 @@ end
 {% endhighlight %}
 <span class="small"><a href="https://gist.github.com/1397738/d289697a3a85deb9cc3710ddac181bf2e97d8c3b">https://gist.github.com/1397738/d28969…</a></span>
 
-Now we can chain conditions and a limit:
+Now we can chain conditions and even throw in a limit:
 
 {% highlight irb %}
 ruby-1.9.3-p0 :001 > require File.expand_path 'criteria'
@@ -144,7 +144,7 @@ ruby-1.9.3-p0 :003 > c.where(:name => 'Jeff').limit(5)
 
 ### The model
 
-Now we can collect query criteria, we need a model to actually query on. For this example, let's create a model named `User`.
+There. We can collect query criteria now, but we'll need a model to actually query on. For this example, let's create a model named `User`.
 
 Since we're building a library that can query a MongoDB database, I've installed the [mongo-ruby-driver](https://github.com/mongodb/mongo-ruby-driver) and added a `collection` method to the `User` model:
 
@@ -315,7 +315,7 @@ ruby-1.9.3-p0 :002 > User.where(:name => 'Jeff').limit(2).each { |u| puts u.insp
 
 ### Awesome! Now what?
 
-Now you have a library that can do chained and lazy-evaluated queries on a mongoDB database. Of course, there's a lot of stuff you could still add -- for example, you could mix in [Enumerable](http://www.ruby-doc.org/core-1.9.3/Enumerable.html), add a `to_a` method and do some metaprogramming magic to remove some of the duplication -- but that's beyond the scope of this article. 
+Now you have a library that can do chained and lazy-evaluated queries on a MongoDB database. Of course, there's a lot of stuff you could still add -- for example, you could mix in [Enumerable](http://www.ruby-doc.org/core-1.9.3/Enumerable.html), add a `to_a` method and do some metaprogramming magic to remove some of the duplication -- but that's beyond the scope of this article. 
 
 If you have any questions, ideas, suggestions or comments, or you just want more articles like this one be sure to let me know in the comments.
 
