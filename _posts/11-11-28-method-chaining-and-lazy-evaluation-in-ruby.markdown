@@ -55,11 +55,11 @@ Great! Let's give it a try:
 
 {% highlight irb %}
 ruby-1.9.3-p0 :001 > require File.expand_path 'criteria'
- => true 
+ => true
 ruby-1.9.3-p0 :002 > c = Criteria.new
- => #<Criteria:0x007ff9db8bf1f0> 
+ => #<Criteria:0x007ff9db8bf1f0>
 ruby-1.9.3-p0 :003 > c.where(:name => 'Jeff')
- => {:name=>"Jeff"} 
+ => {:name=>"Jeff"}
 ruby-1.9.3-p0 :004 > c
  => #<Criteria:0x007ff9db8bf1f0 @criteria={:conditions=>{:name=>"Jeff"}}>
 {% endhighlight %}
@@ -68,9 +68,9 @@ As you can see, our `Criteria` object successfully stores our condition in the `
 
 {% highlight irb %}
 ruby-1.9.3-p0 :001 > require File.expand_path 'criteria'
- => true 
+ => true
 ruby-1.9.3-p0 :002 > c = Criteria.new
- => #<Criteria:0x007fbf5296d098> 
+ => #<Criteria:0x007fbf5296d098>
 ruby-1.9.3-p0 :003 > c.where(:name => 'Jeff').where(:login => 'jkreeftmeijer')
 NoMethodError: undefined method `where' for {:name=>"Jeff"}:Hash
     from (irb):3
@@ -99,14 +99,14 @@ Okay, let's try it again:
 
 {% highlight irb %}
 ruby-1.9.3-p0 :001 > require File.expand_path 'criteria'
- => true 
+ => true
 ruby-1.9.3-p0 :002 > c = Criteria.new
- => #<Criteria:0x007fe91117c738> 
+ => #<Criteria:0x007fe91117c738>
 ruby-1.9.3-p0 :003 > c.where(:name => 'Jeff').where(:login => 'jkreeftmeijer')
  => #<Criteria:0x007fe91117c738 @criteria={:conditions=>{:name=>"Jeff", :login=>"jkreeftmeijer"}}>
 {% endhighlight %}
 
-Ha! Now we can chain as many conditions as we want. Let's go ahead and implement that `limit` method right away, so we can limit our query's results. 
+Ha! Now we can chain as many conditions as we want. Let's go ahead and implement that `limit` method right away, so we can limit our query's results.
 
 Of course, we only need one limit, as multiple limits wouldn't make sense. This means we don't need an array, we can just set `criteria[:limit]` instead of merging hashes, like we did with the conditions before:
 
@@ -135,11 +135,11 @@ Now we can chain conditions and even throw in a limit:
 
 {% highlight irb %}
 ruby-1.9.3-p0 :001 > require File.expand_path 'criteria'
- => true 
+ => true
 ruby-1.9.3-p0 :002 > c = Criteria.new
- => #<Criteria:0x007fdb1b0ca528> 
+ => #<Criteria:0x007fdb1b0ca528>
 ruby-1.9.3-p0 :003 > c.where(:name => 'Jeff').limit(5)
- => #<Criteria:0x007fdb1b0ca528 @criteria={:conditions=>{:name=>"Jeff"}, :limit=>5}> 
+ => #<Criteria:0x007fdb1b0ca528 @criteria={:conditions=>{:name=>"Jeff"}, :limit=>5}>
 {% endhighlight %}
 
 ### The model
@@ -191,9 +191,9 @@ This allows us to call our criteria methods directly on our model:
 
 {% highlight irb %}
 ruby-1.9.3-p0 :001 > require File.expand_path 'user'
- => true 
+ => true
 ruby-1.9.3-p0 :002 > User.where(:name => 'Jeff').limit(5)
- => #<Criteria:0x007fca1c8b0bd0 @criteria={:conditions=>{:name=>"Jeff"}, :limit=>5}> 
+ => #<Criteria:0x007fca1c8b0bd0 @criteria={:conditions=>{:name=>"Jeff"}, :limit=>5}>
 {% endhighlight %}
 
 Great. Calling criteria on the `User` model returns a `Criteria` object now. But, maybe you already noticed it, the returned object has no idea what to query on. We need to let it know we want to search the users collection. To do that, we need to overwrite the `Criteria`'s `initialize` method:
@@ -251,9 +251,9 @@ After a quick test, we can see that the `Criteria` instance successfully remembe
 
 {% highlight irb %}
 ruby-1.9.3-p0 :001 > require File.expand_path 'user'
- => true 
+ => true
 ruby-1.9.3-p0 :002 > User.where(:name => 'Jeff')
- => #<Criteria:0x007ffdd30d4d68 @klass=User, @criteria={:conditions=>{:name=>"Jeff"}}> 
+ => #<Criteria:0x007ffdd30d4d68 @klass=User, @criteria={:conditions=>{:name=>"Jeff"}}>
 {% endhighlight %}
 
 ### Getting some results
@@ -262,7 +262,7 @@ The last thing we need to do is lazily querying our database and getting some re
 
 {% highlight irb %}
 ruby-1.9.3-p0 :001 > require File.expand_path 'user'
- => true 
+ => true
 ruby-1.9.3-p0 :002 > User.where(:name => 'Jeff').each { |u| puts u.inspect }
 NoMethodError: undefined method `each' for #<Criteria:0x007fd0540cfea0>
 	from (irb):2
@@ -306,7 +306,7 @@ And now, finally, our query works (don't forget to add some user documents to yo
 
 {% highlight irb %}
 ruby-1.9.3-p0 :001 > require File.expand_path 'user'
- => true 
+ => true
 ruby-1.9.3-p0 :002 > User.where(:name => 'Jeff').limit(2).each { |u| puts u.inspect }
 {"_id"=>BSON::ObjectId('4ed2603b368ff6d6bc000001'), "name"=>"Jeff"}
 {"_id"=>BSON::ObjectId('4ed2603b368ff6d6bc000002'), "name"=>"Jeff"}
@@ -315,7 +315,7 @@ ruby-1.9.3-p0 :002 > User.where(:name => 'Jeff').limit(2).each { |u| puts u.insp
 
 ### Awesome! Now what?
 
-Now you have a library that can do chained and lazy-evaluated queries on a MongoDB database. Of course, there's a lot of stuff you could still add -- for example, you could mix in [Enumerable](http://www.ruby-doc.org/core-1.9.3/Enumerable.html), add a `to_a` method and do some metaprogramming magic to remove some of the duplication -- but that's beyond the scope of this article. 
+Now you have a library that can do chained and lazy-evaluated queries on a MongoDB database. Of course, there's a lot of stuff you could still add -- for example, you could mix in [Enumerable](http://www.ruby-doc.org/core-1.9.3/Enumerable.html) and do some metaprogramming magic to remove some of the duplication -- but that's beyond the scope of this article.
 
 If you have any questions, ideas, suggestions or comments, or you just want more articles like this one be sure to let me know in the comments.
 
