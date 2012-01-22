@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700);
+@import url(http://fonts.googleapis.com/css?family=Ruda:900);
 
 html,
 body
@@ -27,7 +27,7 @@ body
 
 h2,h3,h4,h5,h6
 {
-  font-family: "Yanone Kaffeesatz", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Ruda", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
 }
 
@@ -224,12 +224,12 @@ h1:hover span
 
 h2
 {
-  font-size:43px;
+  font-size:30px;
 }
 
 h3
 {
-  font-size:28px;
+  font-size:18px;
 }
 
 h4
