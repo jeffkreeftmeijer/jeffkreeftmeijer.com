@@ -14,14 +14,7 @@ html
 
 body
 {
-  -moz-background-size:100% auto;
-  -o-background-size:100% auto;
-  -webkit-background-size:100% auto;
-  background-attachment:fixed;
   background-color:#222;
-  background-image: url('../images/background.jpg');
-  background-position:center;
-  background-size:100% auto;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
