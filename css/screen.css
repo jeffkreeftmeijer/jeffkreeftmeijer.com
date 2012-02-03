@@ -135,16 +135,16 @@ div.post h3,div.post p
 
 div#ads{
   position:absolute;
-  top: 110px;
-  right: -140px;
+  top: 140px;
+  right: -150px;
 }
 
 div.ad{
-  margin: 50px 0px 25px 0px;
+  margin: 20px 0px 25px 0px;
 }
 
 div.box{
-  width: 120px;
+  width: 130px;
   background-color: #222;
   padding: 10px;
   -moz-border-radius-topright:5px;
@@ -164,14 +164,28 @@ div.box, div.box a
   text-shadow:0 1px 0 #000;
 }
 
+div.box img{
+  -webkit-border-radius: 5px;
+}
+
 div#box a:hover
 {
   color: #ddd;
 }
 
-div.box p
+div.box div.influads_text
 {
   margin:10px 0 0 0;
+}
+
+div.box div.influads_powered_div
+{
+  margin-top: 10px;
+}
+
+div.box div.influads_powered_div a
+{
+  font-size: 10px;
 }
 
 div#sixsync
