@@ -125,10 +125,8 @@ div.box{
   padding: 10px;
   -moz-border-radius-topright:5px;
   -moz-border-radius-bottomright:5px;
-  -moz-box-shadow:0 -1px 0 #444;
   -webkit-border-top-right-radius:5px;
   -webkit-border-bottom-right-radius:5px;
-  -webkit-box-shadow:0 -1px 0 #444, 0 0 10px #222;
   z-index:0;
 }
 
@@ -278,9 +276,7 @@ pre{
 div#content pre
 {
   -moz-border-radius:5px;
-  -moz-box-shadow:0 -1px 0 #444;
   -webkit-border-radius:5px;
-  -webkit-box-shadow:0 -1px 0 #444;
   background-color:#222;
   color:#fff;
   font-size: 13px;
@@ -293,9 +289,7 @@ div#content pre
 div.notice
 {
   -moz-border-radius:5px;
-  -moz-box-shadow:0 -1px 0 #fffddd;
   -webkit-border-radius:5px;
-  -webkit-box-shadow:0 -1px 0 #fffddd;
   background-color:#fffbbb;
   padding: 20px;
   text-shadow:0 1px 0 #dddaaa;
@@ -344,24 +338,13 @@ span.balloon{
   font-size: 10px;
   padding:3px 5px;
   -moz-border-radius:5px;
-  -moz-box-shadow:0 -1px 0 #444;
   -webkit-border-radius:5px;
-  -webkit-box-shadow:0 -1px 0 #444;
   text-shadow:0 1px 0 #000;
   font-weight: 500;
   margin: 0 5px;
   display:none;
   line-height: 16px;
 }
-
-img#mo{
-  margin: -10px 0px -45px -75px;
-}
-
-img#mo:hover{
-  margin: -12px 0px -43px -75px;
-}
-
 
 #content ul{
   margin: 0px 0px 0px 20px;
