@@ -1,21 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Ruda:900);
 
-html,
-body
-{
-  height: 100%;
-}
-
-html
-{
-  overflow-x:hidden;
-  overflow-y:scroll;
-}
-
 body
 {
   background-color:#222;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222;
+  font-size:15px;
+  line-height:150%;
+  text-shadow:0 1px 0 #fff;
 }
 
 h2,h3,h4,h5,h6
@@ -29,18 +21,15 @@ p,h2,h3,h4,h5,h6,ul
   margin:20px 0;
 }
 
-a, strong{
+a, strong
+{
   font-weight: 900;
 }
 
 a
 {
-  color:#000;
+  color: #000;
   text-decoration:none;
-}
-
-a img{
-  vertical-align: middle;
 }
 
 span#eighty{
@@ -73,33 +62,20 @@ div#wrapper{
 div#container
 {
   -moz-border-radius:5px;
-  -moz-box-shadow:0 1px 0 #fff;
   -webkit-border-radius:5px;
-  -webkit-box-shadow:0 -1px 0 #fff, 0 0 10px #222;
-  background-color:#eee;
   border-radius:5px;
-  box-shadow:0 1px 0 #fff;
-  color:#222;
-  font-size:15px;
-  line-height:150%;
-  opacity:0.9px;
+  background-color:#eee;
   width:450px;
   padding:20px;
-  text-shadow:0 1px 0 #fff;
-  position:relative;
-  z-index: 1;
 }
 
 div#content img, div#content object
 {
   -moz-border-radius:5px;
-  -moz-box-shadow:0 1px 0 #fff;
   -webkit-border-radius:5px;
-  -webkit-box-shadow:0 1px 0 #fff;
   border: 5px #222 solid;
   width: 440px;
 }
-
 
 div#header
 {
@@ -196,12 +172,9 @@ div#sixsync
 h1
 {
   -moz-border-radius:5px;
-  -moz-box-shadow:0 1px 0 #fff;
   -webkit-border-radius:5px;
-  -webkit-box-shadow:0 1px 0 #fff;
-  background-color:#222;
   border-radius:5px;
-  box-shadow:0 1px 0 #fff;
+  background-color:#222;
   color:#fff;
   display:inline;
   float:left;
