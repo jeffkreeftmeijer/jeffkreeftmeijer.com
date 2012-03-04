@@ -2,62 +2,46 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=550, maximum-scale=1.0" />
   <meta name="keywords" content="jeff kreeftmeijer, jeffkreeftmeijer" />
   <meta name="description" content="{{ page.excerpt }}" />
   <title>
     {% unless page.home %}{{ page.title }} - {% endunless %} Jeff Kreeftmeijer
   </title>
-  <link rel="stylesheet" href="/css/reset.css" type="text/css" />
-  {{ page.head }}
-  <link rel="stylesheet" href="/css/screen.css" type="text/css" />
-  <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
-  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css" />
-  <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="/css/ipad.css" type="text/css" />
+  <link rel="stylesheet" href="/css/style.css" type="text/css" />
   <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/jeffkreeftmeijer" />
   <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
   <link href="/images/icon.jpg" rel="apple-touch-icon" />
-  <script src="/js/jquery.js" type="text/javascript"></script>
 </head>
 <body>
-  <div id="outer">
-    <div id="wrapper">
-      <div id="container">
-        <div id="header">
-          <h1>
-            {% if page.home %}
-             Jeff Kreeftmeijer <span title="krayft&bull;migh&bull;er">/kre&#618;ft&bull;ma&#618;&bull;&#604;r/</span>
-            {% else %}
-              <a href="/">&larr; Jeff Kreeftmeijer</a>
-            {% endif %}
-          </h1>
-          <ul>
-            <li>
-              <a href="/archive">Archive</a>
-            </li>
-            <li>
-              <a href="/contact">Contact</a>
-            </li>
-            <li>
-              <form action="/search/" method="get">
-                <input type="search" name="query" placeholder="Search"/>
-              </form>
-            </li>
-          </ul>
-          <hr class="right"/>
-        </div>
-        <h2>{{ page.title }}</h2>
-        {{ content }}
-      </div>
+  <div id="container">
+    <h1>
+      {% if page.home %}
+        <a href="/">Jeff Kreeftmeijer</a>
+      {% else %}
+        <a href="/">&larr; Jeff Kreeftmeijer</a>
+      {% endif %}
+    </h1>
 
-      <div id="ads">
-        <div id="influads_block" class="ad box influads_block"></div>
-        <div class="ad" id="sixsync">
-          <a href="http://6sync.com">
-            <img src="/images/6sync.png"/>
-          </a>
-        </div>
-      </div>
+    <ul id="menu">
+      <li><a href="/archive">Archive</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li>
+        <!-- <form action="/search/" method="get"> -->
+          <input type="search" name="query" placeholder="Search"/>
+        <!-- </form> -->
+      </li>
+    </ul>
+    <h2><a class="anchor" name="content"/>{{ page.title }}</a></h2>
+    {{ content }}
+  </div>
+
+  <div id="ads">
+    <div id="influads_block" class="ad influads_block"></div>
+    <div class="ad" id="sixsync">
+      <a href="http://6sync.com">
+        Hosted by
+        <img src="/images/6sync.png"/>
+      </a>
     </div>
   </div>
 
