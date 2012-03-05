@@ -29,6 +29,7 @@ ul#menu li{
 }
 
 ul#menu form{
+  display: inline;
 }
 
 ul#articles{
