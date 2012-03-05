@@ -1,32 +1,32 @@
 ---
 layout: default
-title: 404
+title: 404. Ouch. The page you were looking for is gone.
 excerpt: Ouch. The page you were looking for is gone.
 ---
 
-<h4>Ouch. The page you were looking for is gone.</h4>
+<p>Eh. Somehow the page you're looking for vanished. You can go to the <a href="/">homepage</a> or check out the recent articles below to try to find what you're looking for.</p>
 
-<p>Somehow the page you're looking for vanished. You can go to the <a href="/">homepage</a> or check out the recent articles below to try to find what you're looking for.</p>
-
-{% for post in site.posts %}
- <div class="post">
+<ul id="articles">
+{% for post in site.posts limit:10 %}
+  <li>
     <h3>
     {% if post.elsewhere %}
-      <a href="{{ post.elsewhere.url }}/">{{ post.title }}</a>
+      <a href="{{ post.elsewhere.url }}">{{ post.title }}</a>
       {% else %}
-        <a href="{{ post.url }}/">{{ post.title }}</a>
+        <a href="{{ post.url }}/#content">{{ post.title }}</a>
       {% endif %}
     </h3>
-    <p class="date">{{ post.date | date_to_string }}
+    <span class="date">{{ post.date | date_to_string }}
       {% if post.author %}
         by <a href="http://twitter.com/{{ post.author.twitter }}" title="{{ post.author.full}}">@{{ post.author.twitter }}</a>
       {% endif %}
-    </p>
+    </span>
     <p>
       {{ post.excerpt }}
       {% if post.elsewhere %}
         <span class="small">Published as a guest article for <a href="{{ post.elsewhere.main_url }}">{{ post.elsewhere.name}}</a>.</span>
       {% endif %}
     </p>
-  </div>
+  </li>
 {% endfor %}
+</ul>
