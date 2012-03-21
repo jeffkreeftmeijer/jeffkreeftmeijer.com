@@ -12,7 +12,7 @@ excerpt: Jeff Kreeftmeijer; Ruby programmer, making apps at Fingertips in Amster
     {% if post.elsewhere %}
       <a href="{{ post.elsewhere.url }}">{{ post.title }}</a>
       {% else %}
-        <a href="{{ post.url }}/#content">{{ post.title }}</a>
+        <a href="{{ post.url }}">{{ post.title }}</a>
       {% endif %}
     </h3>
     <span class="date">{{ post.date | date_to_string }}
