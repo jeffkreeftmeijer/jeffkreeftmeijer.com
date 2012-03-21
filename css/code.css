@@ -1,3 +1,23 @@
+pre{
+  background-color: #2b2b2b;
+  color: #fff;
+  text-shadow: 0 -1px 0 #000;
+  padding: 20px;
+  margin: 1em 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  -webkit-border-radius: 5px;
+}
+
+code {
+  font-size: 80%;
+  line-height: 150%;
+  font-family: "Bitstream Vera Sans Mono", "Monaco", "Courier New", monospace;
+}
+
 .highlight .hll { background-color: #e6e1dc }
 .highlight .c { color: #bc9458; font-style: italic } /* Comment */
 .highlight .err { color: #ffc66d } /* Error */

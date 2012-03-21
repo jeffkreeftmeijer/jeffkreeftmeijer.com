@@ -1,0 +1,3 @@
+process do |files|
+  execute('rake pack_stylesheets') unless files.grep(/^css/).empty?
+end

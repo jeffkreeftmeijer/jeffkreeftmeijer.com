@@ -5,9 +5,7 @@ excerpt: Vim's relativenumber option is great, but sometimes it gets into your w
 published: true
 ---
 
-<span id="intro">
 Vim's <code>relativenumber</code> is a great setting to help you move around files quickly, but sometimes it can get into your way a bit. Luckily, it's really easy to add some clever settings, so Vim knows when to toggle between relative and absolute line numbers.
-</span>
 
 Moving around is probably the most useful thing to learn when you're starting to use Vim. A good starting point would be to get [@tednaleid](http://twitter.com/#!/tednaleid "Ted Naleid")'s [movement shortcuts wallpaper](http://naleid.com/blog/2010/10/04/vim-movement-shortcuts-wallpaper), a great cheat sheet you can use to get familiar with some of the commands.
 
