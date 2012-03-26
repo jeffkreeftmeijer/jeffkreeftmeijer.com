@@ -5,7 +5,9 @@ excerpt: Wouldn't it be nice to have a service that indexes your RSS feed and al
 published: true
 ---
 
-<span class="small">*tl;dr* Check out "Tapir":http://tapirgo.com and "see it in action":http://jeffkreeftmeijer.com/search/?query=capybara!</span>
+<p class="small">
+  <strong>Note:</strong> I stopped working at <a href="http://80beans.com">80beans</a>, so I can't help you with any issues anymore. You can always send an e-mail to <a href="mailto:help@tapirgo.com">Tapir's support e-mail address</a> if you need help, though. 
+</p>
 
 Static site generators like "Jekyll":https://github.com/mojombo/jekyll allow you to generate your whole website or blog as static HTML files and put it online without having to use a database or even building an actual application.
 
