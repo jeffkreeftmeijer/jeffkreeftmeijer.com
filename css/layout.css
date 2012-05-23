@@ -67,12 +67,18 @@ ul#articles p, div.result p{
   width: 130px;
 }
 
-#influads_block img{
-  -webkit-border-radius: 5px;
+.ad .carbonad{
+  font-family: "Helvetica Neue" !important;
+  background-color: #fff !important;
+  border: none !important;
 }
 
-.influads_text, .influads_powered_div{
-  margin-top: 10px;
+.carbonad img{
+  margin-top: 0;
+}
+
+.carbonad span, .carbonad img{
+  margin-left: 0px !important;
 }
 
 #sixsync{
