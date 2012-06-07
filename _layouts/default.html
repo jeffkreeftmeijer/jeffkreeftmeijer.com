@@ -45,23 +45,21 @@
 
         var cookies = {};
         var pairs = document.cookie.split('; ')
-        var cookie;
+        var adSlot;
 
         for(i in pairs) {
           pair = pairs[i].split('=');
           if(pair[0] == 'jk-ad') {
-            cookie = pair[1];
+            adSlot = pair[1];
           }
         }
 
-        if(!cookie) {
-          cookie = new Date().getSeconds() % 2;
-          document.cookie = 'jk-ad=' + cookie;
+        if(!adSlot) {
+          adSlot = new Date().getSeconds() % 2;
+          document.cookie = 'jk-ad=' + adSlot;
         }
 
-        console.log(cookie);
-
-        document.write(ads[cookie]);
+        document.write(ads[adSlot]);
       </script>
     </div>
 
@@ -77,6 +75,7 @@
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-12888762-1']);
     _gaq.push(['_trackPageview']);
+    _gaq.push(['_setCustomVar', 1, 'adSlot', adSlot == 1 ? 'Carbon ads' : 'Influads']);
 
     (function() {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
