@@ -1,0 +1,67 @@
+#ads{
+  position: absolute;
+  width: 425px;
+  max-width: 50%;
+  left: 50%;
+  top: 145px;
+  margin: auto;
+  overflow: hidden;
+  font-size: 90%;
+  line-height: 1.2;
+  z-index: 0;
+}
+
+.ad{
+  margin: 0 0 30px 295px;
+  width: 130px;
+}
+
+.ad#ad_main{
+  height: 200px !important;
+}
+
+.ad, .ad a{
+  font-size: 11px;
+  color: #888;
+}
+
+#influads_block img{
+  -webkit-border-radius: 5px;
+}
+
+.influads_text, .influads_powered_div{
+  margin-top: 10px;
+}
+
+.ad .carbonad{
+  background-color: #fff !important;
+  border: none !important;
+}
+
+.carbonad img{
+  margin-top: 0;
+}
+
+.carbonad span, .carbonad img, .influads_text, .influads_powered_div{
+  width: 130px;
+  margin-left: 0px !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 11px !important;
+}
+
+.carbonad span, .carbonad a, .influads_text, .influads_text a, .influads_powered_div, .influads_powered_div a{
+  color: #888 !important;
+}
+
+.carbonad-tag{
+  padding-top: 0 !important;
+}
+
+#sixsync{
+  line-height: 23px;
+}
+
+#sixsync img{
+  float: right;
+  vertical-align: middle;
+}

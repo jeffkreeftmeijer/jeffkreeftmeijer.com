@@ -79,7 +79,7 @@ a.anchor{
   padding-top: 50px;
 }
 
-.ad{
-  font-size: 80%;
+.ad, .ad a{
+  font-size: 11px;
   color: #888;
 }
