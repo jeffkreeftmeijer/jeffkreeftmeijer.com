@@ -5,7 +5,7 @@ excerpt:
 published: true
 ---
 
-Tools like [Spin](https://github.com/jstorimer/spin) and [Spork](https://github.com/sporkrb/spork) help you speed up your test runs by preloading your dependencies and running your tests without reloading the whole stack for each run. That sounds like magic, but it's actually quite simple to build a tool that can do something like that. In this article, we'll builda dependency preloader at around 20 lines of code, to give you a basic understanding of this technique Ready? Let's go!
+Tools like [Spin](https://github.com/jstorimer/spin) and [Spork](https://github.com/sporkrb/spork) help you speed up your test runs by preloading your dependencies and running your tests without reloading the whole stack for each run. That sounds like magic, but it's actually quite simple to build a tool that can do something like that. In this article, we'll write a dependency preloader in about twenty lines of code. Ready? Let's go!
 
 To keep things understandable, We'll start out with a simple file named `test.rb`, that pretends to be a running test file by printing out a hundred dots.
 
@@ -24,11 +24,11 @@ It requires a file named `slow.rb`, which will simulate your suite's startup tim
 sleep 2
 {% endhighlight %}
 
-As you might have guessed, when you run `ruby test.rb`, it'll take two seconds before anything happens. That probably looks a lot like your Rails application's test suite, right? Good. Now, waiting for two seconds is no real problem unless you're running your suite multiple times. If you run `ruby test.rb` three times now, you'll notice what I mean. Let's fix that.
+As you might have guessed, when you run `ruby test.rb`, it'll take two seconds before anything happens. That probably looks a lot like your Rails application's test suite, right? Now, waiting for two seconds is no real problem unless you're running your suite multiple times. If you run `ruby test.rb` three times now, you'll notice what I mean. 
 
 ### Forking
 
-In this case, let's pretend `slow.rb` is a dependency that doesn't change too often, like Rails or some other Rubygem you use in your application. That means it's safe to preload it and run the test suite with it a couple of times, instead of reloading it for every run. We can do that by requiring it once and forking the process every time we run our test suite. A simple example of that could look like this, which will run `test.rb` three times without reloading its dependencies:
+In this case, let's pretend `slow.rb` is a dependency that doesn't change too often, like Rails or some other Rubygem you use in your application. That means it's safe to preload it and run the test suite with it a couple of times, instead of reloading it for every run. We can do that by requiring it once and forking the process every time we run our test suite. A simple example of that could look like this, which will run `test.rb` three times without reloading `slow.rb`:
 
 {% highlight ruby %}
 require File.expand_path 'slow'
@@ -76,7 +76,7 @@ runner = DRbObject.new nil, 'druby://:4321'
 runner.run(ARGV)
 {% endhighlight %}
 
-The only thing the client does is create a new `DRbObject` --which returns the instance of `Runner` we initialized in `server.rb`-- and call the `run` method on it using whatever's been passed to `ARGV`. 
+The only thing the client does is create a new `DRbObject` --which returns the instance of `Runner` we initialized in `server.rb`-- and call the `run` method on it.
 
 To try it out, start your server and tell it to preload `slow.rb`:
 
@@ -92,6 +92,6 @@ $ ruby client.rb test
 
 As you'll see, your tests will start almost instantly.
 
-Now, if you want to use your new preloader in a Rails application, you'll probably want to preload `config/application`, since that's the file that starts your application and tells Bundler to require your dependencies.
+Note: if you want to use your new preloader in a Rails application, you'll probably want to preload `config/application`, since that's the file that starts your application and tells Bundler to require your dependencies.
 
 See how easy it is to preload dependencies instead of loading them before every test run? Of course, this could use a lot of work, but this was just an attempt to show you a really simple way to ease the pain of your application's startup time when running your tests. If you're looking for something more polished, check out [Spin](https://github.com/jstorimer/spin), by [@jstorimer](http://twitter.com/jstorimer "Jesse Storimer").
