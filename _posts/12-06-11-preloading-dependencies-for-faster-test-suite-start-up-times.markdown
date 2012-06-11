@@ -44,7 +44,7 @@ end
 {% endhighlight %}
 <span class="small"><a href="https://gist.github.com/2909445/ec2f2245bb8b8ee411723f02eccaa0e9c1e65f30">https://gist.github.com/2909445/ec2f22…</a></span>
 
-After preloading `slow.rb` on the first line, we'll go into a loop which creates a subprocess using `fork`. We'll require `test.rb` in this subprocess andinally, we'll call `Process.wait` in the main process, which will halt to wait for the subprocess to exit. Because `slow.rb` is already required in the main process before forking off, it won't be loaded again by `test.rb` in the forked subprocesses.
+After preloading `slow.rb` on the first line, we'll go into a loop which creates a subprocess using `fork`. We'll require `test.rb` in this subprocess and finally, we'll call `Process.wait` in the main process, which will halt to wait for the subprocess to exit. Because `slow.rb` is already required in the main process before forking off, it won't be loaded again by `test.rb` in the forked subprocesses.
 
 ### Server
 
