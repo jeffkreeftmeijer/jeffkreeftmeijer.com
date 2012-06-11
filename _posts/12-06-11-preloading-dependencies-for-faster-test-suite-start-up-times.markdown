@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Preloading dependencies for faster test suite start-up times
-excerpt: 
+excerpt: To speed up our start-up times between test runs, we'll write a really simple dependency preloader in about twenty lines of Ruby.
 published: true
 ---
 
