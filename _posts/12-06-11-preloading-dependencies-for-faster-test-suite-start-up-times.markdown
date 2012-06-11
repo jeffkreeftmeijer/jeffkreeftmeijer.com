@@ -1,9 +1,11 @@
 ---
 layout: post
-title: Preloading application dependencies while testing
+title: Preloading dependencies for faster test suite start-up times
 excerpt: 
 published: true
 ---
+
+Tools like [Spin](https://github.com/jstorimer/spin) and [Spork](https://github.com/sporkrb/spork) help you speed up your test runs by preloading your dependencies and running your tests multiple times without reloading the whole stack for each run. But, how does that work? Well, it's actually quite simple. to build a dependency preloader. In this article, I'll try to take some of the magic away by building a dependency preloader at around 20 lines of code. Ready? Let's go!
 
 To keep things understandable, I'll start out with a simple file named `test.rb`, that pretends to be a running test file:
 
