@@ -23,6 +23,7 @@ It requires a file named `slow.rb`, which will simulate your suite's startup tim
 {% highlight ruby %}
 sleep 2
 {% endhighlight %}
+<span class="small"><a href="https://gist.github.com/2909445/5cabc0559d3a3d9aad90721306bac4aa8f4cfa9b">https://gist.github.com/2909445/5cabc0…</a></span>
 
 As you might have guessed, when you run `ruby test.rb`, it'll take two seconds before anything happens. That probably looks a lot like your Rails application's test suite, right? Now, waiting for two seconds is no real problem unless you're running your suite multiple times. If you run `ruby test.rb` three times now, you'll notice what I mean. 
 
@@ -41,7 +42,7 @@ require File.expand_path 'slow'
   Process.wait
 end
 {% endhighlight %}
-
+<span class="small"><a href="https://gist.github.com/2909445/ec2f2245bb8b8ee411723f02eccaa0e9c1e65f30">https://gist.github.com/2909445/ec2f22…</a></span>
 
 After preloading `slow.rb` on the first line, we'll go into a loop which creates a subprocess using `fork`. In this subprocess, we'll require `test.rb`. Finally, we'll call `Process.wait`, which will halt to wait for the subprocess to exit. Because `slow.rb` is already required in the main process before forking off, it won't be loaded again by `test.rb` in the forked subprocesses.
 
@@ -75,6 +76,8 @@ require 'drb'
 runner = DRbObject.new nil, 'druby://:4321'
 runner.run(ARGV)
 {% endhighlight %}
+<span class="small"><a href="https://gist.github.com/2909445/185119a265744aea8d69a1df2fc60fdd7a97164b">https://gist.github.com/2909445/185119a265744aea8…</a></span>
+
 
 The only thing the client does is create a new `DRbObject` --which returns the instance of `Runner` we initialized in `server.rb`-- and call the `run` method on it.
 
