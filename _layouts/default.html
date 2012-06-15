@@ -55,8 +55,11 @@
         }
 
         if(!adSlot) {
+          expiryDate = new Date;
+          expiryDate.setFullYear(expiryDate.getFullYear() + 10);
+
           adSlot = new Date().getSeconds() % 2;
-          document.cookie = 'jk-ad=' + adSlot;
+          document.cookie = 'jk-ad=' + adSlot + '; expires=' + expiryDate.toGMTString( ) + ';';
         }
 
         document.write(ads[adSlot]);
