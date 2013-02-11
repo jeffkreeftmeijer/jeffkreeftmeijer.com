@@ -11,6 +11,7 @@ This means you can use it for whatever you want, but please be nice:
 * Don't publish my content. It's mine. Write your own.
 * Don't serve my ads.
 * Remove my analytics code, I don't want to track your page views.
+* Remove the Disqus code, or at least make sure your comments don't end up in my inbox.
 * If you decide to use my design, be nice and link back.
 
 I don't want to bitch about licensing, I wouldn't sue you even if I had a proper licence. Again: just be nice. Deal? :)
