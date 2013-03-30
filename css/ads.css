@@ -9,11 +9,15 @@
   z-index: 0;
 }
 
-.ad, .props{
+.ad{
   margin: 0 0 20px 295px;
   width: 130px;
   font-size: 11px;
   line-height: 1.2;
+}
+
+.ad .props{
+  margin-top: 10px;
 }
 
 #ads, #ads a{
