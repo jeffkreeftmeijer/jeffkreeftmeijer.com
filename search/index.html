@@ -14,7 +14,7 @@ title: Search results
     var loading = $('#loading')
 
     $('h2').text(title)
-    $('title').text(title)
+    $('title').text(title + ' - Jeff Kreeftmeijer')
 
     $.getJSON(
       'http://tapirgo.com/api/1/search.json?token=4dbfc79e3f61b05b53000011&query=' + query + '&callback=?', function(data){
