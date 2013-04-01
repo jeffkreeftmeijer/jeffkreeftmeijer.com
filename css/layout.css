@@ -48,3 +48,10 @@ ul#articles p, div.result p{
   width: 100%;
   -webkit-border-radius: 5px;
 }
+
+#loading{
+  margin: auto;
+  width: 32px;
+  height: 32px;
+  background-image: url('/images/loading.gif')
+}

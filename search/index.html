@@ -3,16 +3,37 @@ layout: default
 title: Search results
 ---
 
-<div id="content">
-  <img src="/images/loading.gif" style="border:none; margin:auto; width:32px; height:32px; box-shadow:none; display: block;"/>
+<div id="search">
+  <div id="loading"></div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="/js/jquery-tapir.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var query = paramValue('query')
+    var title = $('h2').text() + ': “' + query + '”'
+    var loading = $('#loading')
 
-<script>
-  $('#content').tapir({
-    token: '4dbfc79e3f61b05b53000011',
-    complete: function(){ $('#content img').remove() }
-  });
+    $('h2').text(title)
+    $('title').text(title + ' - Jeff Kreeftmeijer')
+
+    $.getJSON(
+      'http://tapirgo.com/api/1/search.json?token=4dbfc79e3f61b05b53000011&query=' + query + '&callback=?', function(data){
+        $(loading).hide()
+
+        if(data.length > 0) {
+          $.each(data, function(key, val) {
+            $('#search').append('<div class="result"><h3><a href="' + val.link + '">' + val.title + '</a></h3><p>' + val.summary + '</p></div>')
+          })
+        } else {
+        $('#search').append(
+          "Sorry, no results for “" + query + "”. You can try to search for something else using the search box above, or take a look in the <a href=\"/archive\">archives</a>. If you believe there should have been something here, feel free to <a href=\"/contact\">let me know</a>.")
+        }
+      }
+    )
+  })
+
+  function paramValue(query_param) {
+    var results = new RegExp('[\\?&]' + query_param + '=([^&#]*)').exec(window.location.href)
+    return results ? results[1] : false
+  }
 </script>
