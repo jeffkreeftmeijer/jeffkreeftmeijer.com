@@ -1,4 +1,5 @@
 .DS_Store
 _site
 *.swp
+s3.yml
 css/style.css

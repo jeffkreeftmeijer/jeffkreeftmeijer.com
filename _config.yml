@@ -1,2 +1,2 @@
 permalink: /:year/:title
-exclude: lib, Rakefile, README.md
+exclude: lib, Rakefile, README.md, s3.yml
