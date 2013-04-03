@@ -44,6 +44,10 @@ ul.articles p, div.result p{
   margin: 0;
 }
 
+p.more{
+  margin-top: -20px;
+}
+
 .content img{
   width: 100%;
   -webkit-border-radius: 5px;
