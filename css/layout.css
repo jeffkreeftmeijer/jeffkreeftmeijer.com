@@ -32,15 +32,15 @@ ul#menu form{
   display: inline;
 }
 
-ul#articles{
+ul.articles{
   list-style-type: none;
 }
 
-ul#articles li, div.result{
+ul.articles li, div.result{
   margin-bottom: 30px;
 }
 
-ul#articles p, div.result p{
+ul.articles p, div.result p{
   margin: 0;
 }
 
