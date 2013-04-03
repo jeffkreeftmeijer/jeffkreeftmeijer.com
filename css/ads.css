@@ -9,17 +9,26 @@
   z-index: 0;
 }
 
-.ad, .props{
+.ad{
   margin: 0 0 20px 295px;
   width: 130px;
   font-size: 11px;
   line-height: 1.2;
 }
 
-#ads, #ads a{
+.ad a{
   color: #888;
+  font-weight: 500;
 }
 
-.influads_powered_div{
-  display: none;
+div.influads_powered_div{
+  margin-top: 5px;
+}
+
+a.influads_text_a{
+  font-size: 11px;
+}
+
+a.influads_powered_link{
+  font-size: 10px;
 }
