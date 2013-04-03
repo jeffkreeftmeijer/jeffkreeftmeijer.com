@@ -3,6 +3,7 @@ layout: post
 title: Comparing images and creating image diffs
 excerpt: Using pure Ruby to find the differences in two versions of an image.
 published: true
+category: popular
 ---
 
 I'm sure you've seen the "image view modes":https://github.com/blog/817-behold-image-view-modes Github released last month. It's a really nice way to see the differences between two versions of an image. In this article, I'll try to explain how a simple image diff could be built using pure Ruby and "ChunkyPNG":https://github.com/wvanbergen/chunky_png.

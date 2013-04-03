@@ -55,18 +55,23 @@ h2, h2 a{
   font-weight: 500;
 }
 
+h2 a{
+  color: #2b2b2b;
+  border-bottom: 3px solid #eee;
+}
+
 h3{
   font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 140%;
   line-height: 100%;
 }
 
-h2 a{
-  color: #2b2b2b;
-  border-bottom: 3px solid #eee;
+h4{
+  font-family: "Intro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 10px;
 }
 
-.date, .small{
+.date, .small, h4{
   color: #888;
   font-size: 80%;
 }

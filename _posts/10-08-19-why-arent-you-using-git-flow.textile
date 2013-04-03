@@ -3,6 +3,7 @@ layout: post
 title: Why aren't you using git-flow?
 excerpt: Using Vincent Driessen's branching model and Git extensions to keep your repositories organized.
 published: true
+category: popular
 ---
 
 In January of this year, "@nvie(Vincent Driessen)":http://twitter.com/nvie published "&ldquo;A successful Git branching model&rdquo;":http://nvie.com/posts/a-successful-git-branching-model, in which he explained how he keeps his Git repositories nice and tidy. In addition to that, he released ["git-flow":http://github.com/nvie/gitflow]; a bunch of Git extensions to make following this model extremely easy.
