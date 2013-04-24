@@ -31,6 +31,9 @@ task :update do
   files.each do |file|
     pathname = Pathname.new(file).relative_path_from(output_directory)
     puts "Uploading #{pathname}..."
-    bucket.objects[pathname].write(File.read(file), :acl => :public_read)
+
+    options = {:acl => :public_read}
+    options[:content_type] = 'text/html' if File.extname(file) == '.html'
+    bucket.objects[pathname].write(File.read(file), options)
   end
 end
