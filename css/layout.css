@@ -59,3 +59,6 @@ p.more{
   height: 32px;
   background-image: url('/images/loading.gif')
 }
+input.st-search-input{
+  width: 200px;
+}

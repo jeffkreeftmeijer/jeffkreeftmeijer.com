@@ -27,9 +27,10 @@
       <li><a href="/archive">Archive</a></li>
       <li><a href="/contact">Contact</a></li>
       <li>
-        <form action="/search/" method="get">
-          <input type="search" name="query" placeholder="Search"/>
+        <form>
+          <input type="search" id="st-search-input" class="st-search-input" placeholder="Search" />
         </form>
+        <div id="st-results-container"></div>
       </li>
     </ul>
     <h2>{{ page.title }}</h2>
@@ -45,6 +46,24 @@
   <script type="text/javascript" async="true" defer="true" src="http://engine.influads.com/show/130/nocss/acc_826d563_pub"></script>
   <script type="text/javascript" async="true" id="gauges-tracker" data-site-id="4d62819ef0d8804188000010" src="http://secure.gaug.es/track.js"></script>
   <script type="text/javascript" async="true" src="http://www.google-analytics.com/ga.js"></script>
+
+<script type="text/javascript">
+  var Swiftype = window.Swiftype || {};
+  (function() {
+    Swiftype.key = '22r4bvM5LCKff2Gwkhx7';
+    Swiftype.inputElement = '#st-search-input';
+    Swiftype.resultContainingElement = '#st-results-container';
+    Swiftype.attachElement = '#st-search-input';
+    Swiftype.renderStyle = "overlay";
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = "//swiftype.com/embed.js";
+    var entry = document.getElementsByTagName('script')[0];
+    entry.parentNode.insertBefore(script, entry);
+  }());
+</script>
 
   <script type="text/javascript">
     var _gaq = _gaq || [];
