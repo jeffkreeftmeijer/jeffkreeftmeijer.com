@@ -83,3 +83,7 @@ p{
 a.anchor{
   padding-top: 50px;
 }
+
+em{
+  font-style: italic;
+}
