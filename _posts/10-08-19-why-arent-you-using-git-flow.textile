@@ -46,6 +46,6 @@ bc. $ git flow release start v0.1.0
 
 When you finish a release branch, it'll merge your changes to @master@ _and_ back to @develop@, so you don't have to worry about your @master@ being ahead of @develop@.
 
-The last thing that makes git-flow awesome is it's ability to handle hotfixes. You start and finish a hotfix branch like anything else, but it's based on @master@ so you can quickly fix it when something's broken production and merge it back to @master@ and @develop@ using @finish@.
+The last thing that makes git-flow awesome is its ability to handle hotfixes. You start and finish a hotfix branch like anything else, but it's based on @master@ so you can quickly fix it when something's broken production and merge it back to @master@ and @develop@ using @finish@.
 
 Awesome, right? Now, what are you waiting for?
