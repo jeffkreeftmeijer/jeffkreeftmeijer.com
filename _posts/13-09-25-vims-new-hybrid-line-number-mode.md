@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Vim's new hybrid line number mode 
-excerpt: Instead of having to switch between relative and absolute line numbers, Vim 7.4 gives us a "hybrid" mode to use them both at the same time.
+excerpt: Instead of having to switch between relative and absolute line numbers, Vim 7.4 comes with a "hybrid" mode to use them both at the same time.
 published: true
 ---
 
@@ -9,12 +9,12 @@ Well over a year ago, I wrote about [using relative line numbers in Vim](http://
 
 Because I wanted to switch back to absolute line numbers when I wasn't busy moving around files, I wrote a small vim plugin to do so and released it as [vim-numbertoggle](https://github.com/jeffkreeftmeijer/vim-numbertoggle). This allowed me, and a lot of other people, to use relative numbers when it made sense, and switch back to the default when it didn't.
 
-Since Vim 7.4, you can enable both the `number` and `relativenumer` settings at the same time, which will give you something I'll call hybrid line number mode. Using both, all lines will show their relative line number, except for the line you're currently on, which will show its absolute line number.
+Since Vim 7.4, you can enable both the `number` and `relativenumer` settings at the same time, which will give you something I'll call hybrid line number mode. Using that, all lines will show their relative line number, except for the line you're currently on, which will show its absolute line number.
 
 ![The New hybrid line number mode in Vim 7.4](http://jeffkreeftmeijer.com/images/hybridnumber.png)
 <span class="small">Hybrid line number mode in Vim 7.4</span>
 
-Setting up Vim to use hybrid mode is easy. All you have to do is enable both the `number` and `relativenumber` settings;
+Setting up Vim to use hybrid mode is easy. All you have to do is enable both the `number` and `relativenumber` settings in your config file;
 
 {% highlight vim %}
 set relativenumber 
