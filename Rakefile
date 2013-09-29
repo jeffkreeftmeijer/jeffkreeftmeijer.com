@@ -1,4 +1,3 @@
-require "yui/compressor"
 require 'aws-sdk'
 require 'yaml'
 require 'pathname'
@@ -7,7 +6,7 @@ desc "Package stylesheets into style.css"
 task :pack_stylesheets do
   File.open('css/style.css', 'w') do |f|
     Dir.glob('css/*').map { |p| File.read(p) }.join("\n").tap do |output|
-      f.write YUI::CssCompressor.new.compress(output)
+      f.write output
     end
   end
 end
