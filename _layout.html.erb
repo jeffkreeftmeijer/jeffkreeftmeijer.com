@@ -5,7 +5,10 @@
   <meta name="keywords" content="jeff kreeftmeijer, jeffkreeftmeijer" />
   <meta name="description" content="{{ page.excerpt }}" />
   <title>
-    {% unless page.home %}{{ page.title }} - {% endunless %} Jeff Kreeftmeijer
+    <% if @current.url == '/' && @current.metadata['title'] %>
+      <%= @current.metadata['title'] %> –
+    <% end %>
+    Jeff Kreeftmeijer
   </title>
   <link rel="stylesheet" href="/css/style.css" type="text/css" />
   <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/jeffkreeftmeijer" />
@@ -16,11 +19,9 @@
 <body>
   <div id="container">
     <h1>
-      {% if page.home %}
-        <a href="/">Jeff Kreeftmeijer</a>
-      {% else %}
-        <a href="/">&larr; Jeff Kreeftmeijer</a>
-      {% endif %}
+      <a class="<%= @current.url == '/' ? 'back' : '' %>" href="/">
+        Jeff Kreeftmeijer
+      </a>
     </h1>
 
     <ul id="menu">
@@ -33,8 +34,8 @@
         <div id="st-results-container"></div>
       </li>
     </ul>
-    <h2>{{ page.title }}</h2>
-    {{ content }}
+    <h2><%= @current.metadata['title'] %></h2>
+    <%= yield %>
   </div>
 
   <div id="ads">
