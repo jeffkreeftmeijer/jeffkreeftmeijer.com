@@ -41,3 +41,7 @@ div.carbonad{
 .carbonad-image, .carbonad-text, .carbonad-tag{
   margin-left: 0 !important;
 }
+
+.carbonad-image{
+  margin-top: 0 !important;
+}
