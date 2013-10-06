@@ -32,3 +32,12 @@ a.influads_text_a{
 a.influads_powered_link{
   font-size: 10px;
 }
+
+div.carbonad{
+  background-color: #fff;
+  border: 0;
+}
+
+.carbonad-image, .carbonad-text, .carbonad-tag{
+  margin-left: 0 !important;
+}
