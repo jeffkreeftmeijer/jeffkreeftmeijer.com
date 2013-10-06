@@ -5,7 +5,7 @@
   <meta name="keywords" content="jeff kreeftmeijer, jeffkreeftmeijer" />
   <meta name="description" content="<%= @current.metadata['description'] %>" />
   <title>
-    <% if @current.url == '/' && @current.metadata['title'] %>
+    <% if @current.url != '/' && @current.metadata['title'] %>
       <%= @current.metadata['title'] %> –
     <% end %>
     Jeff Kreeftmeijer
