@@ -1,0 +1,7 @@
+<h2>Archive</h2>
+
+<ul class="articles">
+  <% @articles.each do |article| %>
+    <%= render :article, {:article => article} %>
+  <% end %>
+</ul>
