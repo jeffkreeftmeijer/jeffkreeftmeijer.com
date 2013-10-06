@@ -1,10 +1,3 @@
----
-layout: post
-title: Vim's new hybrid line number mode 
-excerpt: Instead of having to switch between relative and absolute line numbers, Vim 7.4 comes with a "hybrid" mode to use them both at the same time.
-published: true
----
-
 Well over a year ago, I wrote about [using relative line numbers in Vim](http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/) to speed up movement by displaying line numbers relative to the current line. This makes it easier to find out how many lines up or down you have to jump to get to where you want to be.
 
 Because I wanted to switch back to absolute line numbers when I wasn't busy moving around files, I wrote a small vim plugin to do so and released it as [vim-numbertoggle](https://github.com/jeffkreeftmeijer/vim-numbertoggle). This allowed me, and a lot of other people, to use relative numbers when it made sense, and switch back to the default when it didn't.
