@@ -29,7 +29,7 @@ task :update do
     :secret_access_key => config['secret_access_key']
   )
 
-  output_directory = Pathname.new('_site')
+  output_directory = Pathname.new('_output')
   files = Dir["#{output_directory }/**/*"].reject { |file| File.directory?(file) }
   bucket = service.buckets["jeffkreeftmeijer.com"]
 
