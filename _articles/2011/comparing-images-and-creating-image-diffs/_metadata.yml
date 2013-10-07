@@ -1,0 +1,4 @@
+---
+title: Comparing images and creating image diffs
+description: Using pure Ruby to find the differences in two versions of an image.
+date: '2011-04-18'

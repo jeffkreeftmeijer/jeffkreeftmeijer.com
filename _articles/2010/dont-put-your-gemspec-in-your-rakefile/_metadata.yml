@@ -1,0 +1,5 @@
+---
+title: Don't put your *.gemspec in your Rakefile
+description: Why *.gemspecs in repositories aren't as stupid as I thought and why
+  Rakefiles don't have anything to do with anything.
+date: '2010-04-03'

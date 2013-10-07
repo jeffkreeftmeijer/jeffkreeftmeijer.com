@@ -1,0 +1,5 @@
+---
+title: Managing Heroku's workers with HireFire@meskyanichi
+description: HireFire fires idle workers, and hires them when needed, saving you money
+  and enables faster job processing.
+date: '2011-05-25'

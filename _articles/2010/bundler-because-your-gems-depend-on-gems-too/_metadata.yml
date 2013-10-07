@@ -1,0 +1,5 @@
+---
+title: Bundler, because your gems depend on gems too
+description: Bundler made gem dependencies in Rails projects a lot easier, but what
+  about gems themselves?
+date: '2010-08-16'

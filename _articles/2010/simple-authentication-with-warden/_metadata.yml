@@ -1,0 +1,5 @@
+---
+title: Simple authentication with Warden
+description: No registration or confirmation. Authentication middleware that gets
+  the job done.
+date: '2010-04-13'

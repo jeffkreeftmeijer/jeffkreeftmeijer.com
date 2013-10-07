@@ -1,3 +1,5 @@
-title: Vim's new hybrid line number mode 
-description: Instead of having to switch between relative and absolute line numbers, Vim 7.4 comes with a "hybrid" mode to use them both at the same time.
-date: 25 Sep 2013
+---
+title: Vim's new hybrid line number mode
+description: Instead of having to switch between relative and absolute line numbers,
+  Vim 7.4 comes with a "hybrid" mode to use them both at the same time.
+date: '2013-09-25'

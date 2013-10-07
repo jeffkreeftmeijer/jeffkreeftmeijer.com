@@ -1,0 +1,5 @@
+---
+title: Spec helpers, Bundler.setup and faster Rails test suites
+description: Loading dependencies in your Rails models, controllers, and initializers
+  instead of letting Bundler pre-require everything all the time.
+date: '2011-10-17'

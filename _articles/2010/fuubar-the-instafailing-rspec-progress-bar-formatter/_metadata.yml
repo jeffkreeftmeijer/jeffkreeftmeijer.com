@@ -1,0 +1,5 @@
+---
+title: ! 'Fuubar: the instafailing RSpec progress bar formatter'
+description: Combining the work of Nick Evans and Michael Grosser in an attempt to
+  create a better RSpec formatter
+date: '2010-11-15'

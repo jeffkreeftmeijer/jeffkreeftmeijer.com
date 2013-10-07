@@ -1,0 +1,5 @@
+---
+title: .gitignore your *.gemspec
+description: Being overly dramatic about putting the *.gemspec in your gitignore file
+  to keep people from patching it.
+date: '2010-04-02'

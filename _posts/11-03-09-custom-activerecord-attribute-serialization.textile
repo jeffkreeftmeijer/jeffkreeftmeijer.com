@@ -1,9 +1,0 @@
----
-layout: post
-title: Custom ActiveRecord Attribute Serialization
-excerpt: Serializing attributes in ActiveRecord has been possible for a while, but in Rails 3.1 you'll be able to use arbitrary objects.
-elsewhere:
-  url: http://edgerails.info/articles/what-s-new-in-edge-rails/2011/03/09/custom-activerecord-attribute-serialization/index.html
-  name: EdgeRails
-  main_url: http://edgerails.info
----

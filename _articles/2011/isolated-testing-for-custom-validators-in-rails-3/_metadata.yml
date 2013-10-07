@@ -1,0 +1,5 @@
+---
+title: Isolated testing for custom validators in Rails 3
+description: Blazingly fast specs by testing Rails 3 custom validators without requiring
+  the model
+date: '2011-09-19'

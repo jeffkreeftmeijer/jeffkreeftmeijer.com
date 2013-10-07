@@ -1,0 +1,5 @@
+---
+title: Testing code that's testing itself
+description: Trying to solve the problem of broken code being unable to test itself
+  because it's broken
+date: '2011-01-24'

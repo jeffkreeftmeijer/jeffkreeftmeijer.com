@@ -1,0 +1,5 @@
+---
+title: Fuubar on RSpec 1.3.x, Cucumber & MiniTest
+description: Last week I released an RSpec progress bar formatter called Fuubar. Now
+  it's running on RSpec 1.3.x, MiniTest and Cucumber.
+date: '2010-11-22'
