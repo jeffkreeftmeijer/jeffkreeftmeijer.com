@@ -1,6 +1,7 @@
 <h4>Newest:</h4>
+
 <ul class="articles">
-  <% @articles.each do |article| %>
+  <% @articles.sort_by { |a| a.metadata['date'] }.reverse[0..2].each do |article| %>
     <%= render :article, {:article => article} %>
   <% end %>
 </ul>
