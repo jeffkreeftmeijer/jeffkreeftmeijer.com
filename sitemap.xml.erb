@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://jeffkreeftmeijer.com/</loc>
+    <lastmod><%= Time.now.strftime '%Y-%m-%d' %></lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://jeffkreeftmeijer.com/projects/</loc>
+    <lastmod><%= Time.now.strftime '%Y-%m-%d' %></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://jeffkreeftmeijer.com/projects/navvy/</loc>
+    <lastmod><%= Time.now.strftime '%Y-%m-%d' %></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://jeffkreeftmeijer.com/projects/swinger/</loc>
+    <lastmod><%= Time.now.strftime '%Y-%m-%d' %></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://jeffkreeftmeijer.com/projects/fuubar/</loc>
+    <lastmod><%= Time.now.strftime '%Y-%m-%d' %></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://jeffkreeftmeijer.com/projects/stillmaintained/</loc>
+    <lastmod><%= Time.now.strftime '%Y-%m-%d' %></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://jeffkreeftmeijer.com/archive</loc>
+    <lastmod><%= Time.now.strftime '%Y-%m-%d' %></lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <% @articles.sort_by { |a| a.metadata['date'] }.reverse.each do |article| %>
+  <url>
+    <loc>http://jeffkreeftmeijer.com<%= article.url %>/</loc>
+    <lastmod><%= Time.parse(article.metadata['date']).strftime('%Y-%m-%d') %></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <% end %>
+</urlset>
