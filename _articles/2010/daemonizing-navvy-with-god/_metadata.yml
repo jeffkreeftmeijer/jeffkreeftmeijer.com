@@ -1,0 +1,5 @@
+---
+title: Daemonizing Navvy with God
+description: Let's stop using the included daemon script and actually monitor our
+  background process, shall we?
+date: '2010-05-31'

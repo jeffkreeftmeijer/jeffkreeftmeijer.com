@@ -1,0 +1,5 @@
+---
+title: Let's not add_bundler_dependencies anymore
+description: Letting the Bundler Gemfile read your .gemspec instead of the other way
+  around.
+date: '2010-09-27'

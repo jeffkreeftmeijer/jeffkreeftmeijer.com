@@ -1,0 +1,5 @@
+---
+title: Method chaining and lazy evaluation in Ruby
+description: To figure out how method chaining and lazy evaluation work, we’ll write
+  a library that can chain method calls to build up a MongoDB query.
+date: '2011-11-28'

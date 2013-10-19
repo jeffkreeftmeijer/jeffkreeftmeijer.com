@@ -1,0 +1,4 @@
+---
+title: Making RSpec stop operation immediately after failing
+description: Discovering RSpec's fail_fast configuration option and command line argument
+date: '2010-11-08'

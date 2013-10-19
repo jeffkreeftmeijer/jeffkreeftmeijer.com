@@ -1,0 +1,5 @@
+---
+title: ! 'Be awesome: write your .gemspec yourself'
+description: Why I'm still having issues with gem builders and .gemspec files and
+  why I think you should consider using Bundler to bootstrap your RubyGems.
+date: '2010-10-18'

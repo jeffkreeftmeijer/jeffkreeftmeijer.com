@@ -1,0 +1,4 @@
+---
+title: Making Machinist master MongoMapper & Mongoid
+description: Using machinist_mongo to use Machinist with mongoDB ORMs.
+date: '2010-04-26'

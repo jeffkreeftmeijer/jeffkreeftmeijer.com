@@ -1,6 +1,12 @@
 require 'aws-sdk'
 require 'yaml'
 require 'pathname'
+require 'dracula'
+
+task :generate do
+  `rm -rf _output`
+  Dracula::Generator.new(File.dirname(__FILE__)).generate
+end
 
 desc "Package stylesheets into style.css"
 task :pack_stylesheets do
@@ -23,7 +29,7 @@ task :update do
     :secret_access_key => config['secret_access_key']
   )
 
-  output_directory = Pathname.new('_site')
+  output_directory = Pathname.new('_output')
   files = Dir["#{output_directory }/**/*"].reject { |file| File.directory?(file) }
   bucket = service.buckets["jeffkreeftmeijer.com"]
 

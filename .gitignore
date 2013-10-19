@@ -3,3 +3,4 @@ _site
 *.swp
 s3.yml
 css/style.css
+_output

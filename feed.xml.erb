@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jeff Kreeftmeijer</title>
+  <link href="http://jeffkreeftmeijer.com/feed.xml" rel="self"/>
+  <link href="http://jeffkreeftmeijer.com/"/>
+  <updated><%= Time.now.strftime '%Y-%m-%dT%H:%M:%S%z' %></updated>
+  <id>http://jeffkreeftmeijer.com/</id>
+  <author>
+    <name>Jeff Kreeftmeijer</name>
+  </author>
+
+  <% @articles.sort_by { |a| a.metadata['date'] }.reverse.each do |article| %>
+  <entry>
+    <title type="html"><%= article.metadata['title'].encode(:xml => :text) %></title>
+    <link href="http://jeffkreeftmeijer.com<%= article.url %>"/>
+    <id>http://jeffkreeftmeijer.com<%= article.url %></id>
+    <updated><%= Time.parse(article.metadata['date']).strftime('%Y-%m-%dT%H:%M:%S%z') %></updated>
+    <summary><%= article.metadata['description'].encode(:xml => :text) %></summary>
+    <content type="html">
+      <%= article.content(false).encode(:xml => :text) %>
+    </content>
+  </entry>
+  <% end %>
+</feed>

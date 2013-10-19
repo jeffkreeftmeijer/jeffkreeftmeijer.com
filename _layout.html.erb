@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="jeff kreeftmeijer, jeffkreeftmeijer" />
+  <meta name="description" content="<%= @current.metadata['description'] %>" />
+  <title>
+    <% if @current.url != '/' && @current.metadata['title'] %>
+      <%= @current.metadata['title'] %> –
+    <% end %>
+    Jeff Kreeftmeijer
+  </title>
+  <link rel="stylesheet" href="/css/style.css" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/jeffkreeftmeijer" />
+  <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link href="/images/icon.jpg" rel="apple-touch-icon" />
+  <script type="text/javascript" src="/js/zepto.js"></script>
+</head>
+<body>
+  <div id="container">
+    <h1>
+      <a class="<%= @current.url == '/' ? 'back' : '' %>" href="/">
+        Jeff Kreeftmeijer
+      </a>
+    </h1>
+
+    <ul id="menu">
+      <li><a href="/archive">Archive</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li>
+        <form>
+          <input type="search" id="st-search-input" class="st-search-input" placeholder="Search" />
+        </form>
+        <div id="st-results-container"></div>
+      </li>
+    </ul>
+    <h2><%= @current.metadata['title'] %></h2>
+    <%= yield %>
+  </div>
+
+  <div id="ads">
+    <div class="ad">
+      <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/15549/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
+    </div>
+  </div>
+
+  <script type="text/javascript" async="true" id="gauges-tracker" data-site-id="4d62819ef0d8804188000010" src="http://secure.gaug.es/track.js"></script>
+  <script type="text/javascript" async="true" src="http://www.google-analytics.com/ga.js"></script>
+
+<script type="text/javascript">
+  var Swiftype = window.Swiftype || {};
+  (function() {
+    Swiftype.key = '22r4bvM5LCKff2Gwkhx7';
+    Swiftype.inputElement = '#st-search-input';
+    Swiftype.resultContainingElement = '#st-results-container';
+    Swiftype.attachElement = '#st-search-input';
+    Swiftype.renderStyle = "overlay";
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = "//swiftype.com/embed.js";
+    var entry = document.getElementsByTagName('script')[0];
+    entry.parentNode.insertBefore(script, entry);
+  }());
+</script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-12888762-1']);
+    _gaq.push(['_trackPageview']);
+  </script>
+</body>
+</html>

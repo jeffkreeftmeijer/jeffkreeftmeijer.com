@@ -1,0 +1,5 @@
+<ul class="articles">
+  <% @articles.sort_by { |a| a.metadata['date'] }.reverse.each do |article| %>
+    <%= render :article, {:article => article} %>
+  <% end %>
+</ul>

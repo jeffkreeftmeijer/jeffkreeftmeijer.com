@@ -1,0 +1,5 @@
+---
+title: On the death of ifs
+description: As a response to an article named “The death of ifs”, we'll try to refactor
+  a method with a long if statement, without too much overengineering.
+date: '2013-04-29'
