@@ -17,7 +17,7 @@
     <updated><%= Time.parse(article.metadata['date']).strftime('%Y-%m-%dT%H:%M:%S%z') %></updated>
     <summary><%= article.metadata['description'].encode(:xml => :text) %></summary>
     <content type="html">
-      <%= article.content(false).encode(:xml => :text) %>
+      <%= article.content(layout: false).encode(:xml => :text) %>
     </content>
   </entry>
   <% end %>
