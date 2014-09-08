@@ -20,7 +20,7 @@ end
 desc "Upload to S3"
 task :update do
   puts `rake pack_stylesheets`
-  puts `jekyll --pygments`
+  puts `rake generate`
 
   config = YAML.load_file('s3.yml')
 
