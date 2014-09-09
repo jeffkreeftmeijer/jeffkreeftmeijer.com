@@ -22,11 +22,11 @@ task :update do
   puts `rake pack_stylesheets`
   puts `rake generate`
 
-  config = YAML.load_file('s3.yml')
+  load 'env.rb'
 
   service = AWS::S3.new(
-    :access_key_id     => config['access_key_id'],
-    :secret_access_key => config['secret_access_key']
+    :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
   )
 
   output_directory = Pathname.new('_output')
