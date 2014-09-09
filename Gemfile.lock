@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:jeffkreeftmeijer/dracula.git
-  revision: cd8bb55ebf1f90d9f96368f60dcae0d693436c0e
+  revision: a04e26868f2a48eecf4dfce17c44c3ac130b2741
   specs:
     dracula (0.1.0)
       pygments.rb (~> 0.4.2)
