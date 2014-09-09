@@ -1,6 +1,5 @@
 .DS_Store
 _site
 *.swp
-css/style.css
 _output
 env.rb
