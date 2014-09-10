@@ -18,10 +18,7 @@ task :pack_stylesheets do
 end
 
 desc "Upload to S3"
-task :update do
-  puts `rake pack_stylesheets`
-  puts `rake generate`
-
+task :upload do
   load 'env.rb'
 
   service = AWS::S3.new(
@@ -35,10 +32,17 @@ task :update do
 
   files.each do |file|
     pathname = Pathname.new(file).relative_path_from(output_directory)
-    puts "Uploading #{pathname}..."
 
     options = {:acl => :public_read}
     options[:content_type] = 'text/html' if File.extname(file) == '.html'
+
+    if pathname.to_s == 'feed.xml'
+      options[:website_redirect_location] = 'http://feedpress.me/jeffkreeftmeijer'
+    end
+
+    puts "Uploading #{pathname} with options: #{options}..."
     bucket.objects[pathname].write(File.read(file), options)
   end
 end
+
+task update: [:pack_stylesheets, :generate, :upload]
