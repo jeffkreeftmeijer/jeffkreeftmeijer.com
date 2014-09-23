@@ -13,7 +13,7 @@
   <entry>
     <title type="html"><%= article.metadata['title'].encode(:xml => :text) %></title>
     <link href="http://jeffkreeftmeijer.com<%= article.url %>"/>
-    <id>http://jeffkreeftmeijer.com<%= article.url %></id>
+    <id>http://jeffkreeftmeijer.com<%= article.metadata['original_url'] || article.url %></id>
     <updated><%= Time.parse(article.metadata['date']).strftime('%Y-%m-%dT%H:%M:%S%z') %></updated>
     <summary><%= article.metadata['description'].encode(:xml => :text) %></summary>
     <content type="html">
