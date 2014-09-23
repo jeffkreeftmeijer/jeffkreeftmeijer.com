@@ -3,3 +3,4 @@ title: Relative line numbers in Vim for super-fast movement
 description: Vim's relativenumber option is great, but sometimes it gets into your
   way a bit. With some clever settings, let's set it up so it just works.
 date: '2012-01-30'
+popular: true
