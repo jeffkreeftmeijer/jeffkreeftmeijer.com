@@ -1,26 +1,174 @@
-<p>In January of this year, <a href="http://twitter.com/nvie" title="Vincent Driessen">@nvie</a> published <a href="http://nvie.com/posts/a-successful-git-branching-model">&#8220;A successful Git branching model&#8221;</a>, in which he explained how he keeps his Git repositories nice and tidy. In addition to that, he released <a href="http://github.com/nvie/gitflow">git-flow</a>; a bunch of Git extensions to make following this model extremely easy.</p>
-<p>I&#8217;m astounded that some people never heard of it before, so in this article I&#8217;ll try to tell you why it can make you happy and cheerful all day.</p>
-<p><img src="http://jeffkreeftmeijer.com/images/gitflow.png" alt=""></p>
-<p>After installing git-flow, you can start a new repository in the current directory or convert an existing one to the new branch structure:</p>
-<pre><code>$ git flow init</code></pre>
-<p>It will ask you a bunch of questions, but you probably want to accept the default values:</p>
-<pre><code>No branches exist yet. Base branches must be created now.
-Branch name for production releases: [master] 
-Branch name for "next release" development: [develop] 
+[Vincent Driessen's Git Flow branching model](http://nvie.com/posts/a-successful-git-branching-model/) is a git branching and release management strategy that helps developers keep track of features, hotfixes and releases in bigger software projects. This workflow has lot of commands to type and remember, though, so there's also the [git-flow library of git extensions](https://github.com/nvie/gitflow) that helps automate some parts of the flow to make working with it a lot easier.
+
+<img src="http://jeffkreeftmeijer.com/images/gitflow.png" alt="">
+
+After [installing git-flow](https://github.com/nvie/gitflow/wiki/Installation) (`brew install git-flow`), you can start using git-flow in your repository by using it's `init` command. You can use it in existing projects, but let's start a new repository:
+
+```
+$ git flow init
+Initialized empty Git repository in ~/project/.git/
+No branches exist yet. Base branches must be created now.
+Branch name for production releases: [master]
+Branch name for "next release" development: [develop]
+
 How to name your supporting branch prefixes?
-Feature branches? [feature/] 
-Release branches? [release/] 
-Hotfix branches? [hotfix/] 
-Support branches? [support/] 
-Version tag prefix? []</code></pre>
-<p>After you&#8217;ve answered the questions, git flow sets your default branch to <code>develop</code> (or whatever you named it) automatically, since that&#8217;s the one you&#8217;ll be working in.</p>
-<p>Now, simply use Git like you&#8217;re used to, but only work on some small features in the <code>develop</code> branch. If you need to work on a bigger feature, just create a feature branch based on <code>develop</code>. Let&#8217;s say you want to add a login page:</p>
-<pre><code>$ git flow feature start login</code></pre>
-<p>This will create a new branch called <code>feature/login</code>, based on our <code>develop</code> branch and switches to it. Commit away and after you finish working on the login page, simply finish it:</p>
-<pre><code>$ git flow feature finish login</code></pre>
-<p>It&#8217;ll merge <code>feature/login</code> back to <code>develop</code> and delete the feature branch.</p>
-<p>When you&#8217;re feature complete, simply start a release branch &#8212; again, based on <code>develop</code> &#8212; to bump the version number and fix the last bugs before releasing:</p>
-<pre><code>$ git flow release start v0.1.0</code></pre>
-<p>When you finish a release branch, it&#8217;ll merge your changes to <code>master</code> <em>and</em> back to <code>develop</code>, so you don&#8217;t have to worry about your <code>master</code> being ahead of <code>develop</code>.</p>
-<p>The last thing that makes git-flow awesome is its ability to handle hotfixes. You start and finish a hotfix branch like anything else, but it&#8217;s based on <code>master</code> so you can quickly fix it when something&#8217;s broken production and merge it back to <code>master</code> and <code>develop</code> using <code>finish</code>.</p>
-<p>Awesome, right? Now, what are you waiting for?</p>
+Feature branches? [feature/]
+Release branches? [release/]
+Hotfix branches? [hotfix/]
+Support branches? [support/]
+Version tag prefix? []
+```
+
+git-flow is just a wrapper around existing git commands, so the `init` command doesn't change anything in your repository other than creating branches for you. If you don't want to use git-flow anymore, there's nothing to change or remove, you just stop using the git-flow commands.
+
+If you run `git branch` after setting up, you'll notice that you switched from the master branch to a new one named `develop`.
+
+```
+$ git branch
+* develop
+  master
+```
+
+The `develop` branch is intended to be the default branch where most of the work will happen, and the `master` branch keeps track of production-ready code. So instead of working in the `master` branch, you'll use `git push origin develop` to push new code to your repository from now on.
+
+### Feature branches
+
+git-flow makes it easy to work on multiple features at the same time by using feature branches. To start one, use `feature start` with the name of your new feature (in this case, "authentication"):
+
+```
+$ git flow feature start authentication
+Switched to a new branch 'feature/authentication'
+
+Summary of actions:
+- A new branch 'feature/authentication' was created, based on 'develop'
+- You are now on branch 'feature/authentication'
+
+Now, start committing on your feature. When done, use:
+
+     git flow feature finish authentication
+```
+
+As the output already explains, you're now on a new branch you can use to work on your feature.
+Use git like you normally would, and finish the feature using `feature finish` when it's done:
+
+```
+$ git flow feature finish authentication
+Switched to branch 'develop'
+Updating 9060376..00bafe4
+Fast-forward
+ authentication.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 authentication.txt
+Deleted branch feature/authentication (was 00bafe4).
+
+Summary of actions:
+- The feature branch 'feature/authentication' was merged into 'develop'
+- Feature branch 'feature/authentication' has been removed
+- You are now on branch 'develop'
+```
+
+Your feature branch will be merged and you're taken back to your `develop` branch. Internally, git-flow used `git merge --no-ff feature/authentication` to make sure you don't lose any hostorical information about your feature branch before it is removed.
+
+### Versioned releases
+
+If you need tagged and versioned releases, you can use git-flow's release branches to start a new branch when you're ready to deploy a new version to production.
+
+Like everything else in git-flow, you don't have to use release branches if you don't want to. Prefer to manually `git merge --no-ff develop` into master without tagging? No problem.
+However, if you're working on a versioned API or library, release branches might be really useful, and they work exactly like you'd expect:
+
+``` 
+$ git flow release start 0.1.0
+Switched to a new branch 'release/0.1.0'
+
+Summary of actions:
+- A new branch 'release/0.1.0' was created, based on 'develop'
+- You are now on branch 'release/0.1.0'
+
+Follow-up actions:
+- Bump the version number now!
+- Start committing last-minute fixes in preparing your release
+- When done, run:
+
+     git flow release finish '0.1.0'
+```
+
+Bump the version number and do everything that's required to release your project in the release branch. I personally wouldn't do any last minute fixes, but if you do, git-flow will make sure everything is correctly merged into both `master` and `develop`.
+Then, finish the release:
+
+```
+$ git flow release finish 0.1.0
+Switched to branch 'master'
+Merge made by the 'recursive' strategy.
+ authentication.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 authentication.txt
+Deleted branch release/0.1.0 (was 1b26f7c).
+
+Summary of actions:
+- Latest objects have been fetched from 'origin'
+- Release branch has been merged into 'master'
+- The release was tagged '0.1.0'
+- Release branch has been back-merged into 'develop'
+- Release branch 'release/0.1.0' has been deleted
+```
+
+Boom. git-flow pulls from origin, merges the release branch into master, tags the release and back-merges everything back into develop before removing the release branch.
+
+You're still on master, so you can deploy before going back to your `develop` branch, which git-flow made sure to update with the release changes in `master`.
+
+### Hotfixing production code
+
+Because you keep your `master` branch always in sync with the code that's on production, you'll be able to quickly fix any issues on production.
+
+For example, if your assets aren't loading on production, you'd roll back your deploy and start a hotfix branch:
+
+```
+$ git flow hotfix start asets
+Switched to a new branch 'hotfix/assets'
+
+Summary of actions:
+- A new branch 'hotfix/assets' was created, based on 'master'
+- You are now on branch 'hotfix/assets'
+
+Follow-up actions:
+- Bump the version number now!
+- Start committing your hot fixes
+- When done, run:
+
+     git flow hotfix finish 'assets'
+```
+
+Hotfix branches are a lot like release branches, except they're based on master instead of develop. You're automatically switched to the new hotfix branch so you can start fixing the issue and bumping the minor version number.
+When you're done, `hotfix finish`:
+
+```
+ $ git flow hotfix finish assets
+Switched to branch 'master'
+Merge made by the 'recursive' strategy.
+ assets.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 assets.txt
+Switched to branch 'develop'
+Merge made by the 'recursive' strategy.
+ assets.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 assets.txt
+Deleted branch hotfix/assets (was 08edb94).
+
+Summary of actions:
+- Latest objects have been fetched from 'origin'
+- Hotfix branch has been merged into 'master'
+- The hotfix was tagged '0.1.1'
+- Hotfix branch has been back-merged into 'develop'
+- Hotfix branch 'hotfix/assets' has been deleted
+```
+
+Like when finishing a release branch, the hotfix branch gets merged into both `master` and `develop`. The release is tagged and the hotfix branch is removed. 
+
+Boom. git-flow pulls from origin, merges the release branch into master, tags the release and back-merges everything back into develop before removing the release branch.
+
+### Why aren't you using git-flow?
+
+Of course, if you're [not doing versioned releases](http://scottchacon.com/2011/08/31/github-flow.html), Vincent's git workflow and the git-flow library might not be a right fit for you
+
+However, if you work on a project that's [semantically versioned](http://semver.org), like a Rubygem or a versioned API, git-flow will give you a couple of simple commands that will do a lot of work under the hood, making working on features, pushing new releases and hotfixing bugs a lot easier. Well, at leat on the git side.
