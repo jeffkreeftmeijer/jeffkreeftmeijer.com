@@ -165,8 +165,6 @@ Summary of actions:
 
 Like when finishing a release branch, the hotfix branch gets merged into both `master` and `develop`. The release is tagged and the hotfix branch is removed. 
 
-Boom. git-flow pulls from origin, merges the release branch into master, tags the release and back-merges everything back into develop before removing the release branch.
-
 ### Why aren't you using git-flow?
 
 Of course, if you're [not doing versioned releases](http://scottchacon.com/2011/08/31/github-flow.html), Vincent's git workflow and the git-flow library might not be a right fit for you. However, if you work on a project that's [semantically versioned](http://semver.org), like a Rubygem or a versioned API, git-flow will give you a couple of simple commands that will do a lot of work under the hood, making working on features, pushing new releases and hotfixing bugs a lot easier. Well, at leat on the git side.
