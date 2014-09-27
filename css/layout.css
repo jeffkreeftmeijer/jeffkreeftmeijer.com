@@ -1,5 +1,5 @@
 #container{
-  width: 550px;
+  max-width: 550px;
   margin: 50px auto;
   padding: 0 20px;
   position: relative;
@@ -58,7 +58,4 @@ p.more{
   width: 32px;
   height: 32px;
   background-image: url('/images/loading.gif')
-}
-input.st-search-input{
-  width: 200px;
 }
