@@ -161,7 +161,7 @@ code {
 #container{
   max-width: 550px;
   margin: 50px auto;
-  padding: 0 20px;
+  padding: 0 10px;
   position: relative;
   z-index: 1;
 }
@@ -225,14 +225,14 @@ p.more{
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
-  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../OpenSans-Bold.woff') format('woff');
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('/OpenSans-Bold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Intro';
   font-style: normal;
   font-weight: 500;
-  src: local('Intro'), local('Intro'), url('../Intro.woff') format('woff');
+  src: local('Intro'), local('Intro'), url('/Intro.woff') format('woff');
 }
 
 body{
