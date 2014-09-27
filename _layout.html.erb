@@ -6,24 +6,18 @@
   <meta name="description" content="<%= @current.metadata['description'] %>" />
   <title>
     <% if @current.url != '/' && @current.metadata['title'] %>
-      <%= @current.metadata['title'] %> –
+      <%= title = @current.metadata['title'] %>
+      <% unless title.length >= 40 %>
+         — Jeff Kreeftmeijer
+     <% end %>
+    <% else %>
+      Jeff Kreeftmeijer
     <% end %>
-    Jeff Kreeftmeijer
   </title>
-  <link rel="stylesheet" href="/css/style.css" type="text/css" />
+  <style><%= YUI::CssCompressor.new.compress(File.read('css/style.css')) %></style>
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
   <link href="/images/icon.jpg" rel="apple-touch-icon" />
-  <script type="text/javascript" src="/js/zepto.js"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-12888762-1', 'auto');
-    ga('send', 'pageview');
-  </script>
 </head>
 <body>
   <div id="container">
@@ -34,6 +28,7 @@
     </h1>
 
     <ul id="menu">
+      <li><a href="http://shorts.jeffkreeftmeijer.com">Shorts</a></li>
       <li><a href="/archive">Archive</a></li>
       <li><a href="/contact">Contact</a></li>
       <li>
@@ -55,28 +50,15 @@
 
   <script type="text/javascript" async="true" id="gauges-tracker" data-site-id="4d62819ef0d8804188000010" src="http://secure.gaug.es/track.js"></script>
 
-<script type="text/javascript">
-  var Swiftype = window.Swiftype || {};
-  (function() {
-    Swiftype.key = '22r4bvM5LCKff2Gwkhx7';
-    Swiftype.inputElement = '#st-search-input';
-    Swiftype.resultContainingElement = '#st-results-container';
-    Swiftype.attachElement = '#st-search-input';
-    Swiftype.renderStyle = "overlay";
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','/js/analytics.js','ga');
 
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.async = true;
-    script.src = "//swiftype.com/embed.js";
-    var entry = document.getElementsByTagName('script')[0];
-    entry.parentNode.insertBefore(script, entry);
-  }());
+  ga('create', 'UA-12888762-1', 'auto');
+  ga('send', 'pageview');
+
 </script>
-
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-12888762-1']);
-    _gaq.push(['_trackPageview']);
-  </script>
 </body>
 </html>
