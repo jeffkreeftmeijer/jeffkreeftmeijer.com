@@ -1,6 +1,6 @@
 [Vincent Driessen's branching model](http://nvie.com/posts/a-successful-git-branching-model/) is a git branching and release management strategy that helps developers keep track of features, hotfixes and releases in bigger software projects. This workflow has lot of commands to type and remember, though, so there's also the [git-flow library of git subcommands](https://github.com/nvie/gitflow) that helps automate some parts of the flow to make working with it a lot easier.
 
-<img src="http://jeffkreeftmeijer.com/images/gitflow.png" alt="">
+<img src="http://jeffkreeftmeijer.com/images/gitflow.gif" alt="The git-flow branching model">
 
 After [installing git-flow](https://github.com/nvie/gitflow/wiki/Installation) (`brew install git-flow`), you can start using git-flow in your repository by using it's `init` command. You can use it in existing projects, but let's start a new repository:
 
