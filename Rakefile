@@ -82,6 +82,10 @@ task :upload do
       options[:content_encoding] = 'gzip'
     end
 
+    if ['.js', '.ico'].include? File.extname(file)
+      options[:cache_control] = 'max-age=2592000'
+    end
+
     puts "Uploading #{pathname} with options: #{options}..."
     bucket.objects[pathname].write(File.read(file), options)
   end
