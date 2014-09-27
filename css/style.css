@@ -170,11 +170,11 @@ code {
   margin-top: -1em;
 }
 
-h1{
+h2{
   float: left;
 }
 
-h2{
+h1{
   clear: both;
 }
 
@@ -256,7 +256,7 @@ a:hover {
   color: #2b2b2b;
 }
 
-h1 a, h1 a:hover {
+h2 a, h2 a:hover {
   color: #fff;
   display: block;
   line-height: 150%;
@@ -266,7 +266,7 @@ h1 a, h1 a:hover {
   -webkit-border-radius: 5px;
 }
 
-h2{
+h1{
   font-family: "Intro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 38px;
   line-height: 100%;
@@ -274,11 +274,11 @@ h2{
   text-rendering: optimizeLegibility;
 }
 
-h2, h2 a{
+h1, h1 a{
   font-weight: 500;
 }
 
-h2 a{
+h1 a{
   color: #2b2b2b;
   border-bottom: 3px solid #eee;
 }

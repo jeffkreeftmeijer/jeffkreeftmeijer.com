@@ -22,18 +22,18 @@
 </head>
 <body>
   <div id="container">
-    <h1>
+    <h2>
       <a class="<%= @current.url == '/' ? 'back' : '' %>" href="/">
         Jeff Kreeftmeijer
       </a>
-    </h1>
+    </h2>
 
     <ul id="menu">
       <li><a href="http://shorts.jeffkreeftmeijer.com">Shorts</a></li>
       <li><a href="/archive">Archive</a></li>
       <li><a href="/contact">Contact</a></li>
     </ul>
-    <h2><%= @current.metadata['title'] %></h2>
+    <h1><%= @current.metadata['title'] %></h1>
     <%= yield %>
   </div>
 
