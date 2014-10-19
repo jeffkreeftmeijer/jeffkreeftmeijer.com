@@ -2,7 +2,7 @@
 
 <p>Moving around is probably the most useful thing to learn when you’re starting to use Vim. A good starting point would be to get <a href="http://twitter.com/#!/tednaleid" title="Ted Naleid">@tednaleid</a>’s <a href="http://naleid.com/blog/2010/10/04/vim-movement-shortcuts-wallpaper">movement shortcuts wallpaper</a>, a great cheat sheet you can use to get familiar with some of the commands.</p>
 
-<p><img alt="Relative line numbers in Vim" src="http://jeffkreeftmeijer.com/images/relativenumber.png"><span class="small">Relative line numbers in Vim</span></p>
+<p><img alt="Relative line numbers in Vim" src="http://jeffkreeftmeijer.com/images/relativenumber.gif"><span class="small">Relative line numbers in Vim</span></p>
 
 <p>After a while, you’ll be able to move by lines, paragraphs and whole screens. Using <code>gg</code> and <code>G</code>, you can move to the start and end of the file and you can use <code>/</code> and <code>?</code> to quickly find some text. Awesome.</p>
 
