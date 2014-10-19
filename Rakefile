@@ -81,7 +81,7 @@ task :upload do
       options[:content_encoding] = 'gzip'
     end
 
-    if ['.js', '.ico'].include? File.extname(file)
+    if ['.js', '.css', '.gif', '.png', '.jpg', '.ico'].include? File.extname(file)
       options[:cache_control] = 'max-age=2592000'
     end
 
