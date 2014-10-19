@@ -73,6 +73,10 @@ task :upload do
       options[:website_redirect_location] = 'http://jeffkreeftmeijer.com'
     end
 
+    if pathname.to_s == '2010/ever-heard-of-capybaras-save_and_open_page-method/index.html'
+      options[:website_redirect_location] = 'http://shorts.jeffkreeftmeijer.com/2010/open-the-browser-with-capybaras-save_and_open_page/'
+    end
+
     if ['.html', '.css', '.js'].include? File.extname(file)
       options[:content_encoding] = 'gzip'
     end
