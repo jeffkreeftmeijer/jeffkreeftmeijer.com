@@ -10,11 +10,6 @@ task :generate do
   Dracula::Generator.new(File.dirname(__FILE__)).generate
 end
 
-desc "Update analytics javascripts"
-task :update_analytics do
-  `curl http://google-analytics.com/analytics.js -o js/analytics.js`
-end
-
 desc "Compress HTML"
 task :compress_html do
   output_directory = Pathname.new('_output')
@@ -91,4 +86,4 @@ task :upload do
   end
 end
 
-task update: [:update_analytics, :pack_stylesheets, :generate, :gzip, :upload]
+task update: [:pack_stylesheets, :generate, :gzip, :upload]
