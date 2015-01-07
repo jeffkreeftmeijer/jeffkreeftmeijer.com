@@ -123,7 +123,7 @@ Because you keep your `master` branch always in sync with the code that's on pro
 For example, if your assets aren't loading on production, you'd roll back your deploy and start a hotfix branch:
 
 ```
-$ git flow hotfix start asets
+$ git flow hotfix start assets
 Switched to a new branch 'hotfix/assets'
 
 Summary of actions:
