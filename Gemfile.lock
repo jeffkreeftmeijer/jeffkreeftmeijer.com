@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:jeffkreeftmeijer/dracula.git
-  revision: f8c02ae885aa3b7d95aaf632e0da75479dc24bf2
+  revision: 4a34aacbcadcc813b82eca6ccc0e844dd1529195
   specs:
     dracula (0.1.0)
       pygments.rb (~> 0.4.2)
@@ -12,15 +12,15 @@ GEM
     aws-sdk (1.43.3)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
-    json (1.8.1)
-    mini_portile (0.6.0)
-    nokogiri (1.6.2.1)
-      mini_portile (= 0.6.0)
-    posix-spawn (0.3.9)
+    json (1.8.3)
+    mini_portile2 (2.0.0)
+    nokogiri (1.6.7.2)
+      mini_portile2 (~> 2.0.0.rc2)
+    posix-spawn (0.3.11)
     pygments.rb (0.4.2)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
-    rake (10.3.1)
+    rake (11.1.1)
     redcarpet (2.2.2)
     yajl-ruby (1.1.0)
 
@@ -28,6 +28,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk
+  aws-sdk (= 1.43.3)
   dracula!
   rake
+
+BUNDLED WITH
+   1.11.2
