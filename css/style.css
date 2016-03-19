@@ -159,9 +159,9 @@ code {
 .highlight .il { color: #2aa198 } /* Literal.Number.Integer.Long */
 
 #container{
-  width: 550px;
+  max-width: 550px;
   margin: 50px auto;
-  padding: 0 20px;
+  padding: 0 10px;
   position: relative;
   z-index: 1;
 }
@@ -170,11 +170,11 @@ code {
   margin-top: -1em;
 }
 
-h1{
+h2{
   float: left;
 }
 
-h2{
+h1{
   clear: both;
 }
 
@@ -219,23 +219,20 @@ p.more{
   height: 32px;
   background-image: url('/images/loading.gif')
 }
-input.st-search-input{
-  width: 200px;
-}
 
 
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
-  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../OpenSans-Bold.woff') format('woff');
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('/OpenSans-Bold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Intro';
   font-style: normal;
   font-weight: 500;
-  src: local('Intro'), local('Intro'), url('../Intro.woff') format('woff');
+  src: local('Intro'), local('Intro'), url('/Intro.woff') format('woff');
 }
 
 body{
@@ -259,7 +256,7 @@ a:hover {
   color: #2b2b2b;
 }
 
-h1 a, h1 a:hover {
+h2 a, h2 a:hover {
   color: #fff;
   display: block;
   line-height: 150%;
@@ -269,7 +266,7 @@ h1 a, h1 a:hover {
   -webkit-border-radius: 5px;
 }
 
-h2{
+h1{
   font-family: "Intro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 38px;
   line-height: 100%;
@@ -277,11 +274,11 @@ h2{
   text-rendering: optimizeLegibility;
 }
 
-h2, h2 a{
+h1, h1 a{
   font-weight: 500;
 }
 
-h2 a{
+h1 a{
   color: #2b2b2b;
   border-bottom: 3px solid #eee;
 }

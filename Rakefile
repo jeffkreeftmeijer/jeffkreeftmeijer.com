@@ -2,10 +2,26 @@ require 'aws-sdk'
 require 'yaml'
 require 'pathname'
 require 'dracula'
+require 'yui/compressor'
+require 'html_press'
 
 task :generate do
   `rm -rf _output`
   Dracula::Generator.new(File.dirname(__FILE__)).generate
+end
+
+desc "Compress HTML"
+task :compress_html do
+  output_directory = Pathname.new('_output')
+  files = Dir["#{output_directory }/**/*"].reject { |file| File.directory?(file) }
+
+  files.each do |file|
+    if File.extname(file) == '.html'
+      puts "Compressing #{file}..."
+      contents = HtmlPress.press File.read(file)
+      File.open(file, 'w') { |f| f.write contents }
+    end
+  end
 end
 
 desc "Package stylesheets into style.css"
@@ -13,6 +29,19 @@ task :pack_stylesheets do
   File.open('css/style.css', 'w') do |f|
     Dir.glob('css/*').map { |p| File.read(p) }.join("\n").tap do |output|
       f.write output
+    end
+  end
+end
+
+desc "GZip html, css and javascript files"
+task :gzip do
+  output_directory = Pathname.new('_output')
+  files = Dir["#{output_directory }/**/*"].reject { |file| File.directory?(file) }
+
+  files.each do |file|
+    if ['.html', '.css', '.js'].include? File.extname(file)
+      puts "GZipping #{file}..."
+      `gzip -9 #{file} && mv #{file}.gz #{file}`
     end
   end
 end
@@ -40,9 +69,25 @@ task :upload do
       options[:website_redirect_location] = 'http://feedpress.me/jeffkreeftmeijer'
     end
 
+    if pathname.to_s == 'comments/index.html'
+      options[:website_redirect_location] = 'http://jeffkreeftmeijer.com'
+    end
+
+    if pathname.to_s == '2010/ever-heard-of-capybaras-save_and_open_page-method/index.html'
+      options[:website_redirect_location] = 'http://shorts.jeffkreeftmeijer.com/2010/open-the-browser-with-capybaras-save_and_open_page/'
+    end
+
+    if ['.html', '.css', '.js'].include? File.extname(file)
+      options[:content_encoding] = 'gzip'
+    end
+
+    if ['.js', '.css', '.gif', '.png', '.jpg', '.ico'].include? File.extname(file)
+      options[:cache_control] = 'max-age=2592000'
+    end
+
     puts "Uploading #{pathname} with options: #{options}..."
     bucket.objects[pathname].write(File.read(file), options)
   end
 end
 
-task update: [:pack_stylesheets, :generate, :upload]
+task update: [:pack_stylesheets, :generate, :gzip, :upload]

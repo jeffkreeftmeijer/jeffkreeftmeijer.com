@@ -12,8 +12,22 @@ GEM
     aws-sdk (1.43.3)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
+    css_press (0.3.2)
+      csspool-st (= 3.1.2)
+      json
+    csspool-st (3.1.2)
+    execjs (2.6.0)
+    html_press (0.8.2)
+      htmlentities
+      multi_css (>= 0.1.0)
+      multi_js (>= 0.1.0)
+    htmlentities (4.3.4)
     json (1.8.3)
     mini_portile2 (2.0.0)
+    multi_css (0.1.0)
+      css_press
+    multi_js (0.1.0)
+      uglifier (~> 2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     posix-spawn (0.3.11)
@@ -22,7 +36,11 @@ GEM
       yajl-ruby (~> 1.1.0)
     rake (11.1.1)
     redcarpet (2.2.2)
+    uglifier (2.7.2)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
     yajl-ruby (1.1.0)
+    yui-compressor (0.12.0)
 
 PLATFORMS
   ruby
@@ -30,7 +48,9 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (= 1.43.3)
   dracula!
+  html_press
   rake
+  yui-compressor
 
 BUNDLED WITH
    1.11.2

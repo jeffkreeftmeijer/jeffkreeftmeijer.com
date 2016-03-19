@@ -1,7 +1,7 @@
 #container{
-  width: 550px;
+  max-width: 550px;
   margin: 50px auto;
-  padding: 0 20px;
+  padding: 0 10px;
   position: relative;
   z-index: 1;
 }
@@ -10,11 +10,11 @@
   margin-top: -1em;
 }
 
-h1{
+h2{
   float: left;
 }
 
-h2{
+h1{
   clear: both;
 }
 
@@ -58,7 +58,4 @@ p.more{
   width: 32px;
   height: 32px;
   background-image: url('/images/loading.gif')
-}
-input.st-search-input{
-  width: 200px;
 }

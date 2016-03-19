@@ -1,6 +1,6 @@
-[Vincent Driessen's Git Flow branching model](http://nvie.com/posts/a-successful-git-branching-model/) is a git branching and release management strategy that helps developers keep track of features, hotfixes and releases in bigger software projects. This workflow has lot of commands to type and remember, though, so there's also the [git-flow library of git extensions](https://github.com/nvie/gitflow) that helps automate some parts of the flow to make working with it a lot easier.
+[Vincent Driessen's branching model](http://nvie.com/posts/a-successful-git-branching-model/) is a git branching and release management strategy that helps developers keep track of features, hotfixes and releases in bigger software projects. This workflow has lot of commands to type and remember, though, so there's also the [git-flow library of git subcommands](https://github.com/nvie/gitflow) that helps automate some parts of the flow to make working with it a lot easier.
 
-<img src="http://jeffkreeftmeijer.com/images/gitflow.png" alt="">
+<img src="http://jeffkreeftmeijer.com/images/gitflow.gif" alt="The git-flow branching model">
 
 After [installing git-flow](https://github.com/nvie/gitflow/wiki/Installation) (`brew install git-flow`), you can start using git-flow in your repository by using it's `init` command. You can use it in existing projects, but let's start a new repository:
 
@@ -123,7 +123,7 @@ Because you keep your `master` branch always in sync with the code that's on pro
 For example, if your assets aren't loading on production, you'd roll back your deploy and start a hotfix branch:
 
 ```
-$ git flow hotfix start asets
+$ git flow hotfix start assets
 Switched to a new branch 'hotfix/assets'
 
 Summary of actions:
@@ -165,10 +165,6 @@ Summary of actions:
 
 Like when finishing a release branch, the hotfix branch gets merged into both `master` and `develop`. The release is tagged and the hotfix branch is removed. 
 
-Boom. git-flow pulls from origin, merges the release branch into master, tags the release and back-merges everything back into develop before removing the release branch.
-
 ### Why aren't you using git-flow?
 
-Of course, if you're [not doing versioned releases](http://scottchacon.com/2011/08/31/github-flow.html), Vincent's git workflow and the git-flow library might not be a right fit for you
-
-However, if you work on a project that's [semantically versioned](http://semver.org), like a Rubygem or a versioned API, git-flow will give you a couple of simple commands that will do a lot of work under the hood, making working on features, pushing new releases and hotfixing bugs a lot easier. Well, at leat on the git side.
+Of course, if you're [not doing versioned releases](http://scottchacon.com/2011/08/31/github-flow.html), Vincent's git workflow and the git-flow library might not be a right fit for you. However, if you work on a project that's [semantically versioned](http://semver.org), like a Rubygem or a versioned API, git-flow will give you a couple of simple commands that will do a lot of work under the hood, making working on features, pushing new releases and hotfixing bugs a lot easier. Well, at leat on the git side.

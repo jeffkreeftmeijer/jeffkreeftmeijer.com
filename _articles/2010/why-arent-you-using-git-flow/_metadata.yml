@@ -1,5 +1,5 @@
 ---
-title: 'git-flow: extensions for a successful git branching workflow'
-description: git-flow is a library of extensions that helps automate the git branching and release workflow in Vincent Driessen's successful branching model.
+title: Using git-flow to automate your git branching workflow
+description: git-flow is a library of git subcommands that helps automate your branching and release workflow workflow, using Vincent Driessen's successful branching model.
 date: '2010-08-19'
 popular: true
