@@ -1,4 +1,4 @@
-<%= for article <- @articles do %>
+<%= for article <- @articles |> Enum.sort_by(fn(article) -> article.date end, &>=/2) do %>
 <article>
   <h1><a href="<%= article.path %>"><%= article.title %></a></h1>
   <time datetime="<%= article.date %>"><%= article.date %></time>
