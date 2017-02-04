@@ -7,3 +7,6 @@
 [submodule "_articles/vim-hybrid-line-numbers"]
 	path = _articles/vim-hybrid-line-numbers
 	url = git@gist.github.com:7c0280f08d06abd8461ff8eaf436edc3.git
+[submodule "_articles/death-of-ifs"]
+	path = _articles/death-of-ifs
+	url = git@gist.github.com:f8096e86d2c43f4b8de13d39b2adcc8b.git
