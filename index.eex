@@ -2,6 +2,13 @@
 <article>
   <h1><a href="<%= article.path %>"><%= article.title %></a></h1>
   <time datetime="<%= article.date %>"><%= article.date %></time>
-  <p><%= article.intro %></p>
+  <p><%= article.intro |> String.replace_trailing(".", "") %>…
+  <a href="<%= article.path %>">
+    Read more
+    <%= if article.path |> String.starts_with?("http") do %>
+      at <%= article.publication %>
+    <% end %>
+  </a>
+  </p>
 </article>
 <% end %>
