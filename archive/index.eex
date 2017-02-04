@@ -1,1 +1,13 @@
-../index.eex
+<%= for article <- @articles |> Enum.sort_by(fn(article) -> article.date end, &>=/2) do %>
+<article>
+  <h1><a href="<%= article.path %>"><%= article.title %></a></h1>
+  <time datetime="<%= article.date %>"><%= article.date %></time>
+  <p><%= article.intro |> String.replace_trailing(".", "") %>…
+  <%= if article.path |> String.starts_with?("http") do %>
+    <a rel="external" href="<%= article.path %>">Read more at <%= article.publication %></a>
+  <% else %>
+    <a href="<%= article.path %>">Read more</a>
+  <% end %>
+  </p>
+</article>
+<% end %>
