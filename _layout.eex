@@ -1,3 +1,5 @@
+<style><%= @root |> Path.join("style/enough.min.css") |> File.read! %></style>
+
 <%= @inner %>
 <hr/>
 <nav style="display: flex;justify-content: space-between">
