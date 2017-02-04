@@ -1,3 +1,6 @@
 [submodule "style"]
 	path = style
 	url = git@gist.github.com:362cfd02b8e9f73a435b13e763f28423.git
+[submodule "_articles/carrierwave-fixtures"]
+	path = _articles/carrierwave-fixtures
+	url = git@gist.github.com:f5263b6e846c5bca4670.git
