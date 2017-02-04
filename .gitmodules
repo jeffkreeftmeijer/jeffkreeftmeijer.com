@@ -13,3 +13,6 @@
 [submodule "_articles/ruby-dependency-preloader"]
 	path = _articles/ruby-dependency-preloader
 	url = git@gist.github.com:1e495122d129ee224c32ef2d96458067.git
+[submodule "_articles/vim-relative-line-numbers"]
+	path = _articles/vim-relative-line-numbers
+	url = git@gist.github.com:e8dc9addf31a8f34d1a11a152d8710cd.git
