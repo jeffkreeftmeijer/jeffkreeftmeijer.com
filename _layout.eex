@@ -1,0 +1,13 @@
+<%= @inner %>
+<hr/>
+<nav style="display: flex;justify-content: space-between">
+  <%= if @path == "/" do %>
+    <a rel="author">Jeff Kreeftmeijer</a>
+  <% else %>
+    <a rel="author" href="/">← Jeff Kreeftmeijer</a>
+  <% end %>
+  <a href="/archive/">Archive</a>
+  <a href="https://twitter.com/jkreeftmeijer">Twitter</a>
+  <a href="https://github.com/jeffkreeftmeijer">Github</a>
+  <a href="/feed.xml">RSS</a>
+</nav>

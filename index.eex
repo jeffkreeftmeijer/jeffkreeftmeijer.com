@@ -1,0 +1,7 @@
+<%= for article <- @articles do %>
+<article>
+  <h1><a href="<%= article.path %>"><%= article.title %></a></h1>
+  <time datetime="<%= article.date %>"><%= article.date %></time>
+  <p><%= article.intro %></p>
+</article>
+<% end %>
