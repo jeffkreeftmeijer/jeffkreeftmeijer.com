@@ -1,0 +1,5 @@
+title: Building a 30 line HTTP server in Ruby
+intro: Web servers, and HTTP in general, might seem difficult to understand. How does the browser format a request, and how does the response get sent to the user? In this Ruby Magic episode we’ll learn how a to build a simple Ruby HTTP server in 30 lines of code. When we’re done, our server will handle HTTP GET requests and we’ll use it to serve a simple Rack app.
+path: http://blog.appsignal.com/2016/11/23/ruby-magic-building-a-30-line-http-server-in-ruby.html
+date: 2016-11-23
+publication: "🎩Ruby Magic"
