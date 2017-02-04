@@ -10,3 +10,6 @@
 [submodule "_articles/death-of-ifs"]
 	path = _articles/death-of-ifs
 	url = git@gist.github.com:f8096e86d2c43f4b8de13d39b2adcc8b.git
+[submodule "_articles/ruby-dependency-preloader"]
+	path = _articles/ruby-dependency-preloader
+	url = git@gist.github.com:1e495122d129ee224c32ef2d96458067.git
