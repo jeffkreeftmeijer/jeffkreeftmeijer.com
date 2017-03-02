@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="jeff kreeftmeijer, jeffkreeftmeijer" />
+  <meta name="description" content="git-flow is a library of extensions that helps automate the git branching and release workflow in Vincent Driessen's successful branching model." />
+  <title>
+    
+      git-flow: extensions for a successful git branching workflow –
+    
+    Jeff Kreeftmeijer
+  </title>
+  <link rel="stylesheet" href="/css/style.css" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link href="/images/icon.jpg" rel="apple-touch-icon" />
+  <script type="text/javascript" src="/js/zepto.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-12888762-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+  <div id="container">
+    <h1>
+      <a class="" href="/">
+        Jeff Kreeftmeijer
+      </a>
+    </h1>
+
+    <ul id="menu">
+      <li><a href="/archive">Archive</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li>
+        <form>
+          <input type="search" id="st-search-input" class="st-search-input" placeholder="Search" />
+        </form>
+        <div id="st-results-container"></div>
+      </li>
+    </ul>
+    <h2>git-flow: extensions for a successful git branching workflow</h2>
+    <span class="date">2010-08-19</span>
+
+<div class="content">
+  <p>In January of this year, <a href="http://twitter.com/nvie" title="Vincent Driessen">@nvie</a> published <a href="http://nvie.com/posts/a-successful-git-branching-model">&#8220;A successful Git branching model&#8221;</a>, in which he explained how he keeps his Git repositories nice and tidy. In addition to that, he released <a href="http://github.com/nvie/gitflow">git-flow</a>; a bunch of Git extensions to make following this model extremely easy.</p>
+
+<p>I&#8217;m astounded that some people never heard of it before, so in this article I&#8217;ll try to tell you why it can make you happy and cheerful all day.</p>
+
+<p><img src="http://jeffkreeftmeijer.com/images/gitflow.png" alt=""></p>
+
+<p>After installing git-flow, you can start a new repository in the current directory or convert an existing one to the new branch structure:</p>
+
+<pre><code>$ git flow init</code></pre>
+
+<p>It will ask you a bunch of questions, but you probably want to accept the default values:</p>
+
+<pre><code>No branches exist yet. Base branches must be created now.
+Branch name for production releases: [master] 
+Branch name for "next release" development: [develop] 
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Release branches? [release/] 
+Hotfix branches? [hotfix/] 
+Support branches? [support/] 
+Version tag prefix? []</code></pre>
+
+<p>After you&#8217;ve answered the questions, git flow sets your default branch to <code>develop</code> (or whatever you named it) automatically, since that&#8217;s the one you&#8217;ll be working in.</p>
+
+<p>Now, simply use Git like you&#8217;re used to, but only work on some small features in the <code>develop</code> branch. If you need to work on a bigger feature, just create a feature branch based on <code>develop</code>. Let&#8217;s say you want to add a login page:</p>
+
+<pre><code>$ git flow feature start login</code></pre>
+
+<p>This will create a new branch called <code>feature/login</code>, based on our <code>develop</code> branch and switches to it. Commit away and after you finish working on the login page, simply finish it:</p>
+
+<pre><code>$ git flow feature finish login</code></pre>
+
+<p>It&#8217;ll merge <code>feature/login</code> back to <code>develop</code> and delete the feature branch.</p>
+
+<p>When you&#8217;re feature complete, simply start a release branch &#8212; again, based on <code>develop</code> &#8212; to bump the version number and fix the last bugs before releasing:</p>
+
+<pre><code>$ git flow release start v0.1.0</code></pre>
+
+<p>When you finish a release branch, it&#8217;ll merge your changes to <code>master</code> <em>and</em> back to <code>develop</code>, so you don&#8217;t have to worry about your <code>master</code> being ahead of <code>develop</code>.</p>
+
+<p>The last thing that makes git-flow awesome is its ability to handle hotfixes. You start and finish a hotfix branch like anything else, but it&#8217;s based on <code>master</code> so you can quickly fix it when something&#8217;s broken production and merge it back to <code>master</code> and <code>develop</code> using <code>finish</code>.</p>
+
+<p>Awesome, right? Now, why aren't you using git-flow?</p>
+
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript" async="true" src="http://jeffkreeftmeijer.disqus.com/embed.js"></script>
+
+  </div>
+
+  <div id="ads">
+    <div class="ad">
+      <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/15549/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
+    </div>
+  </div>
+
+  <script type="text/javascript" async="true" id="gauges-tracker" data-site-id="4d62819ef0d8804188000010" src="http://secure.gaug.es/track.js"></script>
+
+<script type="text/javascript">
+  var Swiftype = window.Swiftype || {};
+  (function() {
+    Swiftype.key = '22r4bvM5LCKff2Gwkhx7';
+    Swiftype.inputElement = '#st-search-input';
+    Swiftype.resultContainingElement = '#st-results-container';
+    Swiftype.attachElement = '#st-search-input';
+    Swiftype.renderStyle = "overlay";
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = "//swiftype.com/embed.js";
+    var entry = document.getElementsByTagName('script')[0];
+    entry.parentNode.insertBefore(script, entry);
+  }());
+</script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-12888762-1']);
+    _gaq.push(['_trackPageview']);
+  </script>
+</body>
+</html>
