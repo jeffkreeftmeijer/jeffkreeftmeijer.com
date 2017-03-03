@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<title>Jeff Kreeftmeijer</title>
+<meta name="viewport" content="initial-scale=1, user-scalable=yes">
+<meta name="description" content="Jeff Kreeftmeijer is an Elixir/Ruby programmer, writing code and words for AppSignal and Ruby Magic.">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+<style>
+body{font:18px/1.4 -apple-system,sans-serif;margin:auto;max-width:40em;padding:1em}h1,h2,h3,h4,h5,h6{line-height:normal}
+</style>
+
+<%= @inner %>
+<hr/>
+<nav style="display: flex;justify-content: space-between">
+  <a rel="author">Jeff Kreeftmeijer</a>
+  <a href="/archive/">Archive</a>
+  <a href="https://twitter.com/jkreeftmeijer">Twitter</a>
+  <a href="https://github.com/jeffkreeftmeijer">Github</a>
+  <a href="/feed.xml">RSS</a>
+</nav>
