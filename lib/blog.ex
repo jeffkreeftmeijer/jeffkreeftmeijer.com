@@ -1,18 +1,35 @@
 defmodule Mix.Tasks.Blog.Generate do
   def run(path) do
-    output_path = path
-    |> Path.join("_output")
-
-    index_path = Path.join(path, "index.html")
-
-    File.mkdir_p(output_path)
-
-    contents = path
-    |> Path.join("_layout.eex")
-    |> EEx.eval_file([assigns: %{inner: File.read!(index_path)}])
-
-    output_path
+    path
     |> Path.join("index.html")
-    |> File.write!(contents)
+    |> index
+    |> render
+    |> generate
+  end
+
+  def generate(%{
+    output_directory: output_directory,
+    output_path: output_path,
+    rendered_contents: contents,
+  }) do
+    File.mkdir_p(output_directory)
+    File.write!(output_path, contents)
+  end
+
+  def render(%{contents: contents, layouts: [layout]} = index) do
+    rendered_contents = EEx.eval_string(layout, [assigns: %{inner: contents}])
+    Map.put(index, :rendered_contents, rendered_contents)
+  end
+
+  def index(input_path) do
+    input_directory = Path.dirname(input_path)
+    output_directory = Path.join(input_directory, "_output")
+
+    %{
+      output_directory: output_directory,
+      output_path: Path.join(output_directory, Path.basename(input_path)),
+      contents: File.read!(input_path),
+      layouts: [File.read!(Path.join(input_directory, "_layout.eex"))]
+    }
   end
 end
