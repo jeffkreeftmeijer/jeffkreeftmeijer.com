@@ -3,10 +3,16 @@ defmodule Mix.Tasks.Blog.Generate do
     output_path = path
     |> Path.join("_output")
 
+    index_path = Path.join(path, "index.html")
+
     File.mkdir_p(output_path)
 
-    path
+    contents = path
+    |> Path.join("_layout.eex")
+    |> EEx.eval_file([assigns: %{inner: File.read!(index_path)}])
+
+    output_path
     |> Path.join("index.html")
-    |> File.cp(Path.join(output_path, "index.html"))
+    |> File.write!(contents)
   end
 end

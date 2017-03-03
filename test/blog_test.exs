@@ -7,9 +7,9 @@ defmodule BlogTest do
     on_exit &clean_output/0
   end
 
-  test "copies index.html to the _output directory" do
+  test "uses _layout.eex to generate _output/index.html" do
     Mix.Tasks.Blog.Generate.run("test/site/")
-    assert File.read!("test/site/_output/index.html") == File.read!("test/site/index.html")
+    assert "layout.eex(index.html)" == File.read!("test/site/_output/index.html")
   end
 
   defp clean_output do
