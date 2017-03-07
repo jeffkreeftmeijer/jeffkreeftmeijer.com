@@ -1,8 +1,8 @@
 defmodule Mix.Tasks.Blog.Generate do
-  def run(path) do
-    path
+  def run(root) do
+    root
     |> Path.join("index.html")
-    |> index
+    |> index(root)
     |> render
     |> generate
   end
@@ -21,7 +21,7 @@ defmodule Mix.Tasks.Blog.Generate do
     Map.put(index, :contents, rendered_contents)
   end
 
-  def index(input_path) do
+  def index(input_path, root) do
     input_directory = Path.dirname(input_path)
     output_directory = Path.join(input_directory, "_output")
 
@@ -29,7 +29,7 @@ defmodule Mix.Tasks.Blog.Generate do
       output_directory: output_directory,
       output_path: Path.join(output_directory, Path.basename(input_path)),
       contents: File.read!(input_path),
-      layouts: [File.read!(Path.join(input_directory, "_layout.eex"))]
+      layouts: [File.read!(Path.join(root, "_layout.eex"))]
     }
   end
 end
