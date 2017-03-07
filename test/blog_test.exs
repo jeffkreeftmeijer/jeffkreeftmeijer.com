@@ -17,6 +17,11 @@ defmodule BlogTest do
     assert "layout.eex(article/index.html)" == File.read!("test/site/_output/article/index.html")
   end
 
+  test "renders and layouts a markdown file" do
+    Mix.Tasks.Blog.Generate.run("test/site/")
+    assert "layout.eex(<p>markdown.md</p>\n)" == File.read!("test/site/_output/markdown.html")
+  end
+
   defp clean_output do
     File.rm_rf("test/site/_output")
   end
