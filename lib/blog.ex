@@ -1,7 +1,7 @@
 defmodule Mix.Tasks.Blog.Generate do
   def run(root) do
     root
-    |> Path.join("**/*")
+    |> Path.join("**/*.{html,md}")
     |> Path.wildcard
     |> index(root)
     |> render
