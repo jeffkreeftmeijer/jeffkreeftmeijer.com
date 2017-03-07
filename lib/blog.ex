@@ -10,7 +10,7 @@ defmodule Mix.Tasks.Blog.Generate do
   def generate(%{
     output_directory: output_directory,
     output_path: output_path,
-    rendered_contents: contents,
+    contents: contents,
   }) do
     File.mkdir_p(output_directory)
     File.write!(output_path, contents)
@@ -18,7 +18,7 @@ defmodule Mix.Tasks.Blog.Generate do
 
   def render(%{contents: contents, layouts: [layout]} = index) do
     rendered_contents = EEx.eval_string(layout, [assigns: %{inner: contents}])
-    Map.put(index, :rendered_contents, rendered_contents)
+    Map.put(index, :contents, rendered_contents)
   end
 
   def index(input_path) do
