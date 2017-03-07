@@ -22,12 +22,12 @@ defmodule Mix.Tasks.Blog.Generate do
   end
 
   def index(input_path, root) do
-    input_directory = Path.dirname(input_path)
-    output_directory = Path.join(input_directory, "_output")
+    relative_path = Path.relative_to(input_path, root)
+    output_path  = root |> Path.join("_output") |> Path.join(relative_path)
 
     %{
-      output_directory: output_directory,
-      output_path: Path.join(output_directory, Path.basename(input_path)),
+      output_directory: Path.dirname(output_path),
+      output_path: output_path,
       contents: File.read!(input_path),
       layouts: [File.read!(Path.join(root, "_layout.eex"))]
     }
