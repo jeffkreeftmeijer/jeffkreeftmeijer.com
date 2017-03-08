@@ -1,0 +1,3 @@
+[submodule "activerecord-destroyed"]
+	path = activerecord-destroyed
+	url = git@gist.github.com:b150960e69d6af28c9e6707886a19dff.git
