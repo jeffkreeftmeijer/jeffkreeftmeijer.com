@@ -3,7 +3,8 @@
   <title>Jeff Kreeftmeijer</title>
   <link href="http://jeffkreeftmeijer.com/feed.xml" rel="self"/>
   <link href="http://jeffkreeftmeijer.com/"/>
-  <updated>2017-08-22T00:00:00+0200</updated>
+  <updated>2017-08-22T00:00:00Z</updated>
+
   <id>http://jeffkreeftmeijer.com/</id>
   <author>
     <name>Jeff Kreeftmeijer</name>
@@ -13,7 +14,7 @@
     <title type="html">Property-based testing in Elixir using PropEr</title>
     <link href="http://jeffkreeftmeijer.com/mix-proper"/>
     <id>http://jeffkreeftmeijer.com/mix-proper</id>
-    <updated>2017-08-22T00:00:00+0200</updated>
+    <updated>2017-08-22T00:00:00Z</updated>
     <summary>While reading Fred Hébert’s PropEr testing, on property-based testing in Erlang, I set out write PropEr tests in Elixir, and run them with a Mix task.</summary>
     <content type="html">
       <![CDATA[
