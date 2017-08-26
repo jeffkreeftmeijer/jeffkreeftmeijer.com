@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://jeffkreeftmeijer.com/</loc>
-    <lastmod>2017-08-22</lastmod>
+    <lastmod>2017-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
@@ -16,6 +16,13 @@
   <url>
     <loc>http://jeffkreeftmeijer.com/mix-proper/</loc>
     <lastmod>2017-08-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>http://jeffkreeftmeijer.com/git-flow/</loc>
+    <lastmod>2017-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -310,13 +317,6 @@
   <url>
     <loc>http://jeffkreeftmeijer.com/2010/git-your-act-together/</loc>
     <lastmod>2010-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/</loc>
-    <lastmod>2010-08-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
