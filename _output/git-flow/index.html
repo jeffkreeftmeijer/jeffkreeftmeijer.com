@@ -29,7 +29,7 @@ Version tag prefix? []</code></pre>
 * develop
   master</code></pre>
 <p>The <code class="inline">develop</code> branch is intended to be the default branch where most of the work will happen, and the <code class="inline">master</code> branch keeps track of production-ready code. So instead of working in the <code class="inline">master</code> branch, you’ll use <code class="inline">git push origin develop</code> to push new code to your repository from now on.</p>
-<h3>Feature branches</h3>
+<h2>Feature branches</h2>
 <p>git-flow makes it easy to work on multiple features at the same time by using feature branches. To start one, use <code class="inline">feature start</code> with the name of your new feature (in this case, “authentication”):</p>
 <pre><code class="">$ git flow feature start authentication
 Switched to a new branch &#39;feature/authentication&#39;
@@ -57,7 +57,7 @@ Summary of actions:
 - Feature branch &#39;feature/authentication&#39; has been removed
 - You are now on branch &#39;develop&#39;</code></pre>
 <p>Your feature branch will be merged and you’re taken back to your <code class="inline">develop</code> branch. Internally, git-flow used <code class="inline">git merge --no-ff feature/authentication</code> to make sure you don’t lose any hostorical information about your feature branch before it is removed.</p>
-<h3>Versioned releases</h3>
+<h2>Versioned releases</h2>
 <p>If you need tagged and versioned releases, you can use git-flow’s release branches to start a new branch when you’re ready to deploy a new version to production.</p>
 <p>Like everything else in git-flow, you don’t have to use release branches if you don’t want to. Prefer to manually <code class="inline">git merge --no-ff develop</code> into master without tagging? No problem.
 However, if you’re working on a versioned API or library, release branches might be really useful, and they work exactly like you’d expect:</p>
@@ -92,7 +92,7 @@ Summary of actions:
 - Release branch &#39;release/0.1.0&#39; has been deleted</code></pre>
 <p>Boom. git-flow pulls from origin, merges the release branch into master, tags the release and back-merges everything back into develop before removing the release branch.</p>
 <p>You’re still on master, so you can deploy before going back to your <code class="inline">develop</code> branch, which git-flow made sure to update with the release changes in <code class="inline">master</code>.</p>
-<h3>Hotfixing production code</h3>
+<h2>Hotfixing production code</h2>
 <p>Because you keep your <code class="inline">master</code> branch always in sync with the code that’s on production, you’ll be able to quickly fix any issues on production.</p>
 <p>For example, if your assets aren’t loading on production, you’d roll back your deploy and start a hotfix branch:</p>
 <pre><code class="">$ git flow hotfix start assets
@@ -130,7 +130,7 @@ Summary of actions:
 - Hotfix branch has been back-merged into &#39;develop&#39;
 - Hotfix branch &#39;hotfix/assets&#39; has been deleted</code></pre>
 <p>Like when finishing a release branch, the hotfix branch gets merged into both <code class="inline">master</code> and <code class="inline">develop</code>. The release is tagged and the hotfix branch is removed. </p>
-<h3>Why aren’t you using git-flow?</h3>
+<h2>Why aren’t you using git-flow?</h2>
 <p>Of course, if you’re <a href="http://scottchacon.com/2011/08/31/github-flow.html">not doing versioned releases</a>, Vincent’s git workflow and the git-flow library might not be a right fit for you. However, if you work on a project that’s <a href="http://semver.org">semantically versioned</a>, like a Rubygem or a versioned API, git-flow will give you a couple of simple commands that will do a lot of work under the hood, making working on features, pushing new releases and hotfixing bugs a lot easier. Well, at least on the git side.</p>
 
 <hr/>
