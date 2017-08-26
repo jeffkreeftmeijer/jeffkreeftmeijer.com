@@ -2,7 +2,7 @@
 <meta charset="utf-8"/>
 <title>Jeff Kreeftmeijer</title>
 <meta name="viewport" content="initial-scale=1, user-scalable=yes">
-<meta name="description" content="Jeff Kreeftmeijer is an Elixir/Ruby programmer, writing code and words for AppSignal and Ruby Magic.">
+<meta name="description" content="Jeff Kreeftmeijer is an Elixir/Ruby programmer, writing code for AppSignal.">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <style><%= File.read!("enough.css/enough.min.css") %><%= File.read!("ad.min.css") %></style>
 
