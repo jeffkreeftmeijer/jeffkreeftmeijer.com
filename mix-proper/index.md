@@ -34,8 +34,8 @@ defmodule BiggestProp do
   import :proper_types
 
   def prop_biggest do
-    forall(non_empty(list(integer())), fn(list) ->    # ➊
-      biggest(list) == list |> Enum.sort |> List.last # ➊
+    forall(non_empty(list(integer())), fn(list) ->    # ➋
+      biggest(list) == list |> Enum.sort |> List.last # ➌
     end)
   end
 
