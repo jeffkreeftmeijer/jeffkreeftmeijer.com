@@ -19,7 +19,7 @@
     <content type="html">
       <![CDATA[
 <p>While reading <a href="http://ferd.ca" title="">Fred Hébert</a>’s <a href="http://propertesting.com" title="">PropEr testing</a>, on property-based testing in Erlang, I set out write <a href="http://proper.softlab.ntua.gr" title="">PropEr</a> tests in Elixir, and run them with a Mix task.<sup><a href="#fn:1" id="fnref:1" class="footnote" title="see footnote">1</a></sup></p>
-<p><img src="mix_proper.png" alt="mix_proper running property-based tests in an Elixir project"/></p>
+<p><img src="https://jeffkreeftmeijer.com/mix-proper/mix_proper.png" alt="mix_proper running property-based tests in an Elixir project"/></p>
 <h2>Writing PropEr tests in Elixir</h2>
 <p>To explain writing PropEr tests (named “properties”) in Elixir, let’s take <a href="http://propertesting.com/book_stateless_properties.html#_writing_properties" title="">an example from PropEr testing</a>. A property of a function named <code class="inline">biggest/1</code> is that the returned value is equal to the biggest value in the passed list.</p>
 <pre><code class="erlang"># test/prop_biggest.erl
@@ -32,7 +32,7 @@ prop_biggest() -&gt;
             biggest(List) =:= lists:last(lists:sort(List)) # ➋
         end).</code></pre>
 <ol>
-<li><p><code class="inline">?FORALL</code> is a macro around <code class="inline">proper:forall/2</code>.<sup><a href="#fn:2" id="fnref:2" class="footnote" title="see footnote">2</a></sup> It takes a variable name, a generator, and a property. In this case, the generator returns arandom, non-empty list of integers and puts it in the <code class="inline">List</code> variable for every run.</p>
+<li><p><code class="inline">?FORALL</code> is a macro around <code class="inline">proper:forall/2</code>.<sup><a href="#fn:2" id="fnref:2" class="footnote" title="see footnote">2</a></sup> It takes a variable name, a generator, and a property. In this case, the generator returns a random, non-empty list of integers and puts it in the <code class="inline">List</code> variable for every run.</p>
 </li>
 <li><p>The property itself is a function that uses the random variable to assert the result from <code class="inline">biggest/1</code> matches the biggest value in the list.</p>
 </li>
@@ -45,15 +45,15 @@ defmodule BiggestProp do
   import :proper_types
 
   def prop_biggest do
-    forall(non_empty(list(integer())), fn(list) -&gt;    # ➊
-      biggest(list) == list |&gt; Enum.sort |&gt; List.last # ➊
+    forall(non_empty(list(integer())), fn(list) -&gt;    # ➋
+      biggest(list) == list |&gt; Enum.sort |&gt; List.last # ➌
     end)
   end
 
   # ...
 end</code></pre>
 <ol>
-<li>The <code class="inline">:proper</code> and <code class="inline">:proper_types</code> modules are imported manually instead of includingthe <code class="inline">proper.hrl</code> header file, which is a mostly <a href="https://github.com/manopapad/proper/blob/master/include/proper.hrl" title="">a list of imports</a> itself.
+<li>The <code class="inline">:proper</code> and <code class="inline">:proper_types</code> modules are imported manually instead of including the <code class="inline">proper.hrl</code> header file, which is a mostly <a href="https://github.com/manopapad/proper/blob/master/include/proper.hrl" title="">a list of imports</a> itself.
 </li>
 <li>Elixir <a href="https://groups.google.com/forum/#!topic/elixir-lang-talk/VbGTz7rKebM" title="">doesn’t support Erlang’s macros</a>, so <code class="inline">:proper.forall/2</code> is called directly.
 </li>
@@ -131,8 +131,8 @@ prop_biggest() -&gt;
     end).</code></pre>
 <p><a href="#fnref:2" title="return to article" class="reversefootnote">&#x21A9;</a></p>
 </li>
-<li id="fn:3"><p>Instead of <em>prefixing</em> the names for modules with property-based tests with “”Prop” (like “PropBiggest”), I chose toadd it as a suffix. By adding “Prop” to the end, the module names are in line with ExUnit’s, which suffixes its test case module names with “Test” (like “BiggestTest”, for example).</p>
-<p>The names for the properties themselves <em>are</em> prefixed with “prop_”, like in rebar3_proper, for now. I could do away with functionname matching and use a macro to use for defining tests (like StreamData does, for example), but I like not having to import anything but PropEr’s modules.&nbsp;<a href="#fnref:3" title="return to article" class="reversefootnote">&#x21A9;</a></p>
+<li id="fn:3"><p>Instead of <em>prefixing</em> the names for modules with property-based tests with “”Prop” (like “PropBiggest”), I chose to add it as a suffix. By adding “Prop” to the end, the module names are in line with ExUnit’s, which suffixes its test case module names with “Test” (like “BiggestTest”, for example).</p>
+<p>The names for the properties themselves <em>are</em> prefixed with “prop_”, like in rebar3_proper, for now. I could do away with function name matching and use a macro to use for defining tests (like StreamData does, for example), but I like not having to import anything but PropEr’s modules.&nbsp;<a href="#fnref:3" title="return to article" class="reversefootnote">&#x21A9;</a></p>
 </li>
 <li id="fn:4"><p>mix_proper is still a proof of concept. Although running tests works, you could run into some problems with PropEr’s generators in Elixir. If you run into one, please don’t hesitate to open an <a href="https://github.com/jeffkreeftmeijer/mix_proper/issues" title="">issue</a>.&nbsp;<a href="#fnref:4" title="return to article" class="reversefootnote">&#x21A9;</a></p>
 </li>
