@@ -4,6 +4,7 @@
 <meta name="viewport" content="initial-scale=1, user-scalable=yes">
 <meta name="description" content="Jeff Kreeftmeijer is an Elixir/Ruby programmer, writing code for AppSignal.">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+<link rel="alternate" type="application/atom+xml" href="/feed.xml">
 <style><%= File.read!("enough.css/enough.min.css") %><%= File.read!("ad.min.css") %></style>
 
 <%= @inner %>
