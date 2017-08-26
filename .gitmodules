@@ -4,3 +4,6 @@
 [submodule "enough.css"]
 	path = enough.css
 	url = git@gist.github.com:362cfd02b8e9f73a435b13e763f28423.git
+[submodule "mix-proper"]
+	path = mix-proper
+	url = git@gist.github.com:1246716f9241bc94264b6c9c5db1aa65.git
