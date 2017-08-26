@@ -2,7 +2,7 @@
 
 While reading [Fred Hébert]'s [PropEr testing], on property-based testing in Erlang, I set out write [PropEr] tests in Elixir, and run them with a Mix task.<sup>[^1]</sup>
 
-![mix_proper running property-based tests in an Elixir project](mix_proper.png)
+![mix_proper running property-based tests in an Elixir project](https://jeffkreeftmeijer.com/mix-proper/mix_proper.png)
 
 ## Writing PropEr tests in Elixir
 
