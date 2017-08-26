@@ -21,15 +21,15 @@ defmodule Mix.Tasks.Blog.Generate do
 
   def render([]), do: []
   def render([%{contents: contents, extension: ".md"} = index|tail]) do
-    rendered_contents = Earmark.as_html!(contents)
+    rendered_contents = Earmark.as_html!(contents, %Earmark.Options{footnotes: true})
     new_index = index
     |> Map.put(:extension, ".html")
     |> Map.put(:contents, rendered_contents)
 
     render([new_index|tail])
   end
-  def render([%{contents: contents, layouts: [layout]} = index|tail]) do
-    rendered_contents = EEx.eval_string(layout, [assigns: %{inner: contents}])
+  def render([%{contents: contents, layouts: [layout], relative_path: path} = index|tail]) do
+    rendered_contents = EEx.eval_string(layout, [assigns: %{inner: contents, path: path}])
     [Map.put(index, :contents, rendered_contents)|render(tail)]
   end
 
@@ -49,6 +49,7 @@ defmodule Mix.Tasks.Blog.Generate do
           output_directory: Path.dirname(output_path),
           output_path: output_path,
           contents: File.read!(input_path),
+          relative_path: relative_path,
           layouts: [File.read!(Path.join(root, "_layout.eex"))]
         }|index(tail, root)]
     end
