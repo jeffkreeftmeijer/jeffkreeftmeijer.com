@@ -21,7 +21,7 @@ defmodule Mix.Tasks.Blog.Generate do
 
   def render([]), do: []
   def render([%{contents: contents, extension: ".md"} = index|tail]) do
-    rendered_contents = Earmark.as_html!(contents, %Earmark.Options{footnotes: true})
+    rendered_contents = Earmark.as_html!(contents, %Earmark.Options{footnotes: true, heading_anchors: true})
     new_index = index
     |> Map.put(:extension, ".html")
     |> Map.put(:contents, rendered_contents)
