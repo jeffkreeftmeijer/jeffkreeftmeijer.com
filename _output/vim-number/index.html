@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<title>Jeff Kreeftmeijer</title>
+<meta name="viewport" content="initial-scale=1, user-scalable=yes">
+<meta name="description" content="Jeff Kreeftmeijer is an Elixir/Ruby programmer, writing code for AppSignal.">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+<link rel="alternate" type="application/atom+xml" href="/feed.xml">
+<style>body{font:18px/1.4 -apple-system,sans-serif;margin:auto;max-width:40em;padding:1em}h1,h2,h3,h4,h5,h6{line-height:normal}img{max-width:100%}
+code{font:0.8em Monaco,monospace}pre{background-color:ghostwhite;overflow-x:auto;padding:1em}
+kbd{font-family:inherit;font-size:0.8em;border:1px solid lightgrey;padding:.1em .6em;border-radius:3px}aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside div{margin-left:22em;width:130px}aside a{text-decoration:none;color:slategray;font-size:0.7em;display:block;margin-bottom:1em}aside .carbon-poweredby{font-style:italic}</style>
+
+<a id="vims-absolute-relative-and-hybrid-line-numbers-the-ultimate-guide"></a><h1>Vim’s absolute, relative and hybrid line numbers: the ultimate guide</h1>
+<p><time datetime="2012-01-30">2012-01-30</time>
+(last updated on <time datetime="2017-09-03">2017-09-03</time>)</p>
+<p>Besides regular absolute line numbers, Vim has relative and “hybrid” modes to help navigate around files. With some autocommands, Vim can even toggle between line number modes automatically when you switch files or enter insert mode.</p>
+<a id="absolute-line-numbers"></a><h2>Absolute line numbers</h2>
+<p>Using the <code class="inline">number</code> option, Vim sets up absolute line numbers to show the line number for each line in the file you’re working on. </p>
+<p>
+  <video autoplay="autoplay" loop="loop">
+    <source src="absolute.mp4" type="video/mp4" />
+    <img src="absolute.gif" alt="Absolute line numbers in Vim" />
+  </video>
+</p><pre><code class="">:set number
+:set nonumber  &quot; turn line numbers off
+:set number!   &quot; toggle line numbers</code></pre>
+<p>Besides being useful for finding a line from a stacktrace or a test result, you can use line numbers to help you quickly jump around. For example, if you want to go to the tenth line in your file, you’d type <kbd>esc</kbd> if you’re in insert mode and then <code class="inline">:10</code> to move to the correct line.</p>
+<a id="relative-line-numbers"></a><h2>Relative line numbers</h2>
+<p>With the <code class="inline">relativenumber</code> option, each line in your file is numbered relative to the line you’re currently on. The current line is marked 0, the ones above and below it are marked 1, and so on.</p>
+<p>
+  <video autoplay="autoplay" loop="loop">
+    <source src="relative.mp4" type="video/mp4" />
+    <img src="relative.gif" alt="Relative line numbers in Vim" />
+  </video>
+</p><pre><code class="">:set relativenumber
+:set norelativenumber  &quot; turn relative line numbers off
+:set relativenumber!   &quot; toggle relative line numbers</code></pre>
+<p>Like any any command in Vim, the <kbd>j</kbd> and <kbd>k</kbd> (or <kbd>↑</kbd> and <kbd>↓</kbd>) keys can be prefixed with a number. Typing <kbd>5</kbd><kbd>j</kbd> will move the cursor five lines down, for example. If you want to remove seven lines, you can use <kbd>d</kbd><kbd>7</kbd><kbd>d</kbd> without having to switch to visual mode to select the lines first.</p>
+<p>However, it can be difficult to see how many lines you need to jump to get to where you want to be, rendering this method useless for any jumps over ten lines. Also, absolute line numbers become less useful when working in lenghy files.</p>
+<p>With relative line numbers, you can quickly glance at the number of the line you want to jump to. If it’s thirteen lines up, you press <kbd>1</kbd><kbd>3</kbd><kbd>k</kbd> to get there. To get back to where you came from, you use <kbd>1</kbd><kbd>3</kbd><kbd>j</kbd>.</p>
+<a id="hybrid-line-numbers"></a><h2>“Hybrid” line numbers</h2>
+<p>Since Vim 7.4, you can enable <code class="inline">number</code> and <code class="inline">relativenumber</code> at the same time, to give you <em>hybrid line number mode</em>. All lines will show their relative number, except for the line you’re currently on, which will show its absolute line number.</p>
+<p>
+  <video autoplay="autoplay" loop="loop">
+    <source src="hybrid.mp4" type="video/mp4" />
+    <img src="hybrid.gif" alt="“Hybrid” line numbers in Vim" />
+  </video>
+</p><pre><code class="">:set number relativenumber
+:set nonumber norelativenumber  &quot; turn hybrid line numbers off
+:set !number !relativenumber    &quot; toggle hybrid line numbers</code></pre>
+<p>While not strictly relative, hybrid line numbers are what relative line numbers should have been. Instead of having a useless zero on the current line, it uses that space to give you an idea of where you are in the file.<sup><a href="#fn:1" id="fnref:1" class="footnote" title="see footnote">1</a></sup></p>
+<a id="automatic-toggling-between-line-number-modes"></a><h2>Automatic toggling between line number modes</h2>
+<p>Although relative line numbers are helpful when moving around in normal mode, absolute line numbers are more suited for insert mode. When the buffer doesn’t have focus, it’d also be more useful to show absolute line numbers. For example, when running tests from a seperate terminal split, it’d make more sense to be able to see which test is on which absolute line number. </p>
+<p>Using some autocommands, Vim can switch between line number modes automatically.</p>
+<p>
+  <video autoplay="autoplay" loop="loop">
+    <source src="toggle.mp4" type="video/mp4" />
+    <img src="toggle.gif" alt="Auto-toggling line numbers in Vim" />
+  </video>
+</p><pre><code class="">:set number relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END</code></pre>
+<p>In this example, both absolute and relative line numbers are enabled by default, which produces “hybrid” line numbers. When entering insert mode, relative line numbers are turned off, leaving absolute line numbers turned on. This also happens when the buffer loses focus, so you can glance back at it to see which absolute line you were working on, if you need to.</p>
+<p>I’ve been using this way of automatically switching line number modes for years. You can set it up yourself by putting the snippet above in your <code class="inline">~/.vimrc</code>, or use the <a href="https://github.com/jeffkreeftmeijer/vim-numbertoggle">vim-numbertoggle</a> plugin, which does the same thing.</p>
+<style>
+  video{
+    display: block;
+    margin: auto;
+    max-width: 90%;
+  }
+</style><div class="footnotes">
+<hr>
+<ol>
+<li id="fn:1"><p>Another way to see which line you’re currently on is Vim’s <code class="inline">ruler</code> option, which shows the current line and column. You can see it in action in the screenshots above, in the bottom right. It’s turned on by default in NeoVim and <a href="https://github.com/tpope/vim-sensible">vim-sensible</a>, but you can also set turn it on yourself using <code class="inline">:set ruler</code>.&nbsp;<a href="#fnref:1" title="return to article" class="reversefootnote">&#x21A9;</a></p>
+</li>
+</ol>
+
+</div>
+<hr/>
+<nav style="display: flex;justify-content: space-between">
+  
+    <a href="/" rel="author">Jeff Kreeftmeijer</a>
+  
+  <a href="/archive/">Archive</a>
+  <a href="https://twitter.com/jkreeftmeijer">Twitter</a>
+  <a href="https://github.com/jeffkreeftmeijer">Github</a>
+  <a href="/feed.xml">RSS</a>
+</nav>
+
+<aside>
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
+</aside>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12888762-1', 'auto');
+  ga('send', 'pageview');
+</script>

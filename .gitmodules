@@ -10,3 +10,6 @@
 [submodule "git-flow"]
 	path = git-flow
 	url = git@gist.github.com:52e5912de46216a3a562032383a38bf6.git
+[submodule "vim-number"]
+	path = vim-number
+	url = git@gist.github.com:475a313c9108bb12437c2ad9cde3e5e6.git
