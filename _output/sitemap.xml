@@ -42,13 +42,6 @@
   </url>
   
   <url>
-    <loc>https://jeffkreeftmeijer.com/2013/vims-new-hybrid-line-number-mode/</loc>
-    <lastmod>2013-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
     <loc>https://jeffkreeftmeijer.com/2013/on-the-death-of-ifs/</loc>
     <lastmod>2013-04-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -63,8 +56,8 @@
   </url>
   
   <url>
-    <loc>https://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/</loc>
-    <lastmod>2012-01-30</lastmod>
+    <loc>https://jeffkreeftmeijer.com/vim-number/</loc>
+    <lastmod>2017-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
