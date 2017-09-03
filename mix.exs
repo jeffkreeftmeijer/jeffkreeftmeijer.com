@@ -28,6 +28,6 @@ defmodule Blog.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:earmark, git: "git@github.com:pragdave/earmark.git"}]#"~> 1.1.1"}]
+    [{:earmark, github: "jeffkreeftmeijer/earmark", branch: "heading-anchors"}]
   end
 end

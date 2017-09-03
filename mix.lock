@@ -1,1 +1,1 @@
-%{"earmark": {:git, "git@github.com:pragdave/earmark.git", "894c3a70f47d586665a772b0151cb3b73a3e89bf", []}}
+%{"earmark": {:git, "https://github.com/jeffkreeftmeijer/earmark.git", "c1a72fb990efb814d5e6285a80a314de8488c5b0", [branch: "heading-anchors"]}}
