@@ -76,13 +76,7 @@
 :augroup END</code></pre>
 <p>In this example, both absolute and relative line numbers are enabled by default, which produces “hybrid” line numbers. When entering insert mode, relative line numbers are turned off, leaving absolute line numbers turned on. This also happens when the buffer loses focus, so you can glance back at it to see which absolute line you were working on, if you need to.</p>
 <p>I’ve been using this way of automatically switching line number modes for years. You can set it up yourself by putting the snippet above in your <code class="inline">~/.vimrc</code>, or use the <a href="https://github.com/jeffkreeftmeijer/vim-numbertoggle">vim-numbertoggle</a> plugin, which does the same thing.</p>
-<style>
-  video{
-    display: block;
-    margin: auto;
-    max-width: 90%;
-  }
-</style><div class="footnotes">
+<div class="footnotes">
 <hr>
 <ol>
 <li id="fn:1"><p>Another way to see which line you’re currently on is Vim’s <code class="inline">ruler</code> option, which shows the current line and column. You can see it in action in the screenshots above, in the bottom right. It’s turned on by default in NeoVim and <a href="https://github.com/tpope/vim-sensible">vim-sensible</a>, but you can also set turn it on yourself using <code class="inline">:set ruler</code>.&nbsp;<a href="#fnref:1" title="return to article" class="reversefootnote">&#x21A9;</a></p>
