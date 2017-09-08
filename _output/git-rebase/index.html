@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<title>Git rebase: reapply your changes onto another branch</title>
+<meta name="viewport" content="initial-scale=1, user-scalable=yes">
+<meta name="description" content="Instead of merging other branches into yours, git’s rebase command can reapply your changes onto another branch.">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+<link rel="alternate" type="application/atom+xml" href="/feed.xml">
+<style>body,pre{padding:1em}body{font:18px/1.4 -apple-system,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%}code{font:.8em Monaco,monospace}pre{background-color:#f8f8ff;overflow-x:auto}kbd{font-family:inherit;font-size:.8em;border:1px solid #d3d3d3;padding:.1em .6em;border-radius:3px}aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside div{margin-left:22em;width:130px}aside a{text-decoration:none;color:slategray;font-size:0.7em;display:block;margin-bottom:1em}aside .carbon-poweredby{font-style:italic}</style>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@jkreeftmeijer">
+<meta name="twitter:creator" content="@jkreeftmeijer">
+<meta name="twitter:title" content="Git rebase: reapply your changes onto another branch">
+<meta name="twitter:description" content="Instead of merging other branches into yours, git’s rebase command can reapply your changes onto another branch.">
+<meta name="twitter:image" content="https://jeffkreeftmeijer.com/git-rebase/git-rebase.png">
+<a id="git-rebase-reapply-your-changes-onto-another-branch"></a><h1>Git rebase: reapply your changes onto another branch</h1>
+<p><time datetime="2010-10-11">2010-10-11</time></p>
+<p>Instead of merging other branches into yours, git’s rebase command can reapply your changes onto another branch.</p>
+<p>Let’s say you’re working on a feature branch called <code class="inline">feature/login</code>, which was branched off the main <code class="inline">develop</code> branch. While working in your own branch, some commits were pushed to <code class="inline">develop</code>. How would you get these commits into your feature branch?</p>
+<p>Merging the <code class="inline">develop</code> branch back into yours would result in a merge commit in your branch. Merge commits are typically reserved for merging branches back upstream. Another option is to cherry-pick the commits. This works, but you’d duplicate commits already in the <code class="inline">develop</code> branch into yours, which can cause issues when merging your feature branch upstream later.</p>
+<p><img src="git-rebase.png" alt="git rebase vs git merge"/></p>
+<p>Git’s rebase command allows you to temporarily rewind the commits you did in this branch, pull in everything from another branch and apply your commits on top of that again.</p>
+<pre><code class="console"><span class="gp">$</span> git rebase develop
+<span class="go">First, rewinding head to replay your work on top of it...</span>
+<span class="go">Fast-forwarded feature/login to develop.</span>
+</code></pre>
+
+<p>It’s as if you didn’t start working in the <code>feature/login</code> branch before the commits you pulled in were made. Nice, huh? You can also <a href="http://www.gitready.com/advanced/2009/02/11/pull-with-rebase.html">pull with rebase</a> so you don’t have to switch out of your current branch.</p>
+
+<h3>Conflicts served in smaller chunks</h3>
+
+<p>Besides keeping your history clean, rebase also has your back when you run into a merge conflict during the rebase:</p>
+
+<pre><code class="console"><span class="gp">$</span> git rebase develop
+<span class="go">First, rewinding head to replay your work on top of it...</span>
+<span class="go">Applying: feature/login</span>
+<span class="go">Using index info to reconstruct a base tree...</span>
+<span class="go">Falling back to patching base and 3-way merge...</span>
+<span class="go">Auto-merging config/environment.rb</span>
+<span class="go">CONFLICT (content): Merge conflict in config/environment.rb</span>
+<span class="go">Failed to merge in the changes.</span>
+<span class="go">Patch failed at 0001 feature/login</span>
+
+<span class="go">When you have resolved this problem run "git rebase --continue".</span>
+<span class="go">If you would prefer to skip this patch, instead run "git rebase --skip".</span>
+<span class="go">To restore the original branch and stop rebasing run "git rebase --abort".</span>
+</code></pre>
+
+<p>Because rebase merges every commit individually, conflicts will be served in smaller chunks making them easier to fix and understand. When you’re done fixing a conflict, simply <code>git add</code> the file and continue rebasing:</p>
+
+<pre><code class="console"><span class="gp">$</span> git rebase --continue
+</code></pre>
+
+<h3>Rebase vs Merge</h3>
+
+<p>When you’re working on a feature branch and you need changes from the main development branch, I would suggest using rebase. Merge can be used when you want to merge a feature branch back into your development branch. That way, you’ll be able to see when you merged in what in the future because you have that merge commit I called “nasty” before. It isn’t, really.</p>
+
+<p>What I would like to ask you is to rebase your feature branch to the main development branch before merging it in. This way you make sure your branch applies cleanly to the branch you’re merging into.</p>
+<hr/>
+<nav style="display: flex;justify-content: space-between">
+  
+    <a href="/" rel="author">Jeff Kreeftmeijer</a>
+  
+  <a href="/archive/">Archive</a>
+  <a href="https://twitter.com/jkreeftmeijer">Twitter</a>
+  <a href="https://github.com/jeffkreeftmeijer">Github</a>
+  <a href="/feed.xml">RSS</a>
+</nav>
+
+<aside>
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
+</aside>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12888762-1', 'auto');
+  ga('send', 'pageview');
+</script>

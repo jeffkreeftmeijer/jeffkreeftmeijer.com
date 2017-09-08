@@ -13,3 +13,6 @@
 [submodule "vim-number"]
 	path = vim-number
 	url = git@gist.github.com:475a313c9108bb12437c2ad9cde3e5e6.git
+[submodule "git-rebase"]
+	path = git-rebase
+	url = git@gist.github.com:e41d66b7e0f1defbdc1087783e49b386.git
