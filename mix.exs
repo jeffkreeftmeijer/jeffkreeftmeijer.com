@@ -28,6 +28,6 @@ defmodule Blog.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:dracula, path: "~/sandbox/dracula"}]
+    [{:dracula, github: "jeffkreeftmeijer/dracula"}]
   end
 end
