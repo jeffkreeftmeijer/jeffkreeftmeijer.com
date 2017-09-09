@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <meta charset="utf-8"/>
-<title>Jeff Kreeftmeijer</title>
+<title><%= @title || "Jeff Kreeftmeijer" %></title>
 <meta name="viewport" content="initial-scale=1, user-scalable=yes">
-<meta name="description" content="Jeff Kreeftmeijer is an Elixir/Ruby programmer, writing code for AppSignal.">
+<meta name="description" content="<%= @description || "Jeff Kreeftmeijer is an Elixir/Ruby programmer, writing (about) software at AppSignal in Amsterdam." %>">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
 <style><%= File.read!("enough.css/enough.min.css") %><%= File.read!("ad.min.css") %></style>
-
+<%= if @image do %>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@jkreeftmeijer">
+<meta name="twitter:creator" content="@jkreeftmeijer">
+<meta name="twitter:title" content="<%= @title %>">
+<meta name="twitter:description" content="<%= @description %>">
+<meta name="twitter:image" content="<%= @image %>">
+<% end %>
 <%= @contents %>
 <hr/>
 <nav style="display: flex;justify-content: space-between">
