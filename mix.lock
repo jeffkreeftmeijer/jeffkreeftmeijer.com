@@ -1,1 +1,3 @@
-%{"earmark": {:git, "https://github.com/jeffkreeftmeijer/earmark.git", "c1a72fb990efb814d5e6285a80a314de8488c5b0", [branch: "heading-anchors"]}}
+%{"earmark": {:git, "https://github.com/jeffkreeftmeijer/earmark.git", "c1a72fb990efb814d5e6285a80a314de8488c5b0", [branch: "heading-anchors"]},
+  "yamerl": {:hex, :yamerl, "0.5.0", "6ec55a5d830f6f0d65a4030f5c5db24b0e72b813dfbde32fea44b4951ed9417c", [], [], "hexpm"},
+  "yaml_elixir": {:hex, :yaml_elixir, "1.3.1", "b84b6333343b0cba176c43c463e622f838825e7476e35334f719b83df4535bff", [], [{:yamerl, "~> 0.5", [hex: :yamerl, repo: "hexpm", optional: false]}], "hexpm"}}

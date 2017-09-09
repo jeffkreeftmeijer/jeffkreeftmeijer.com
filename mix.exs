@@ -28,6 +28,6 @@ defmodule Blog.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:earmark, github: "jeffkreeftmeijer/earmark", branch: "heading-anchors"}]
+    [{:dracula, path: "~/sandbox/dracula"}]
   end
 end
