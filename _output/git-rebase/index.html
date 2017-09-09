@@ -13,19 +13,20 @@
 <meta name="twitter:title" content="Git rebase: reapply your changes onto another branch">
 <meta name="twitter:description" content="Instead of merging other branches into yours, git’s rebase command can reapply your changes onto another branch.">
 <meta name="twitter:image" content="https://jeffkreeftmeijer.com/git-rebase/git-rebase.png">
+
 <a id="git-rebase-reapply-your-changes-onto-another-branch"></a><h1>Git rebase: reapply your changes onto another branch</h1>
 <p><time datetime="2010-10-11">2010-10-11</time></p>
 <p>Instead of merging other branches into yours, git’s rebase command can reapply your changes onto another branch.</p>
 <p>Let’s say you’re working on a feature branch called <code class="inline">feature/login</code>, which was branched off the main <code class="inline">develop</code> branch. While working in your own branch, some commits were pushed to <code class="inline">develop</code>. How would you get these commits into your feature branch?</p>
 <p>Merging the <code class="inline">develop</code> branch back into yours would result in a merge commit in your branch. Merge commits are typically reserved for merging branches back upstream. Another option is to cherry-pick the commits. This works, but you’d duplicate commits already in the <code class="inline">develop</code> branch into yours, which can cause issues when merging your feature branch upstream later.</p>
-<p><img src="git-rebase.png" alt="git rebase vs git merge"/></p>
+<p><img src="https://jeffkreeftmeijer.com/git-rebase/git-rebase.png" alt="git rebase vs git merge"/></p>
 <p>Git’s rebase command allows you to temporarily rewind the commits you did in this branch, pull in everything from another branch and apply your commits on top of that again.</p>
 <pre><code class="console"><span class="gp">$</span> git rebase develop
 <span class="go">First, rewinding head to replay your work on top of it...</span>
 <span class="go">Fast-forwarded feature/login to develop.</span>
 </code></pre>
 
-<p>It’s as if you didn’t start working in the <code>feature/login</code> branch before the commits you pulled in were made. Nice, huh? You can also <a href="http://www.gitready.com/advanced/2009/02/11/pull-with-rebase.html">pull with rebase</a> so you don’t have to switch out of your current branch.</p>
+<p>It’s as if you didn’t start working in the <code>feature/login</code> branch before the commits you pulled in were made. You can also <a href="http://www.gitready.com/advanced/2009/02/11/pull-with-rebase.html">pull with rebase</a> so you don’t have to switch out of your current branch.</p>
 
 <h3>Conflicts served in smaller chunks</h3>
 
