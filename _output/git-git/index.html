@@ -32,7 +32,7 @@ On branch master
 nothing to commit, working tree clean</code></pre>
 <a id="enough"></a><h2>Enough</h2>
 <pre><code class="">$ git config --global alias.git &#39;!git&#39;</code></pre>
-<p>By adding <code class="inline">git</code> as a git subcommand alias<sup><a href="#fn:1" id="fnref:1" class="footnote" title="see footnote">1</a></sup>, a command is run whenever you execute <code class="inline">git git</code>. By adding an exclamation mark to the beginning of the alias’ value, git will run any command, instead of just it’s own subcommands. </p>
+<p>By adding <code class="inline">git</code> as a subcommand alias<sup><a href="#fn:1" id="fnref:1" class="footnote" title="see footnote">1</a></sup>, a command is run whenever you execute <code class="inline">git git</code>. Using an exclamation mark to the beginning of the alias’ value, git will run any command instead of just it’s own subcommands. In this case it’s aliased to <code class="inline">!git</code>, meaning <code class="inline">git git</code> will be converted to <code class="inline">git</code>.</p>
 <p>Using this alias, <code class="inline">$ git git status</code> will now automatically convert to <code class="inline">$ git status</code>.<sup><a href="#fn:2" id="fnref:2" class="footnote" title="see footnote">2</a></sup></p>
 <pre><code class="">$ git git status
 On branch master
