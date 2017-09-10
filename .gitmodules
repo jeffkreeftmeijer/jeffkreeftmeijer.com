@@ -16,3 +16,6 @@
 [submodule "git-rebase"]
 	path = git-rebase
 	url = git@gist.github.com:e41d66b7e0f1defbdc1087783e49b386.git
+[submodule "git-git"]
+	path = git-git
+	url = git@gist.github.com:9e4256b938342706477653c797ce5578.git
