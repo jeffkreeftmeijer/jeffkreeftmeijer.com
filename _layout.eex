@@ -6,7 +6,7 @@
 <meta name="description" content="<%= @description || "Jeff Kreeftmeijer is an Elixir/Ruby programmer, writing (about) software at AppSignal in Amsterdam." %>">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
-<style><%= File.read!("enough.css/enough.min.css") %><%= File.read!("ad.min.css") %></style>
+<style><%= File.read!("enough.css/enough.min.css") %><%= File.read!("ad.min.css") %>nav{display:flex;justify-content:space-between}</style>
 <%= if @image do %>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@jkreeftmeijer">
@@ -17,7 +17,7 @@
 <% end %>
 <%= @contents %>
 <hr/>
-<nav style="display: flex;justify-content: space-between">
+<nav>
   <%= if @path == "/" do %>
     <a rel="author">Jeff Kreeftmeijer</a>
   <% else %>
