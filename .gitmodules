@@ -19,3 +19,6 @@
 [submodule "git-git"]
 	path = git-git
 	url = git@gist.github.com:9e4256b938342706477653c797ce5578.git
+[submodule "open-source-maintainability"]
+	path = open-source-maintainability
+	url = git@gist.github.com:aa1d6d6793b592e67b108867115d13f6.git
