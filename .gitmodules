@@ -19,3 +19,6 @@
 [submodule "git-git"]
 	path = git-git
 	url = git@gist.github.com:9e4256b938342706477653c797ce5578.git
+[submodule "ruby-compare-images"]
+	path = ruby-compare-images
+	url = git@gist.github.com:59beb32510e7a4e222147c888d0ddab2.git
