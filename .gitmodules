@@ -22,3 +22,6 @@
 [submodule "ruby-compare-images"]
 	path = ruby-compare-images
 	url = git@gist.github.com:59beb32510e7a4e222147c888d0ddab2.git
+[submodule "open-source-maintainability"]
+	path = open-source-maintainability
+	url = git@gist.github.com:aa1d6d6793b592e67b108867115d13f6.git
