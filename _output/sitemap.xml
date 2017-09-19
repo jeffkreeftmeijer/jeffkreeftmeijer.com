@@ -8,11 +8,18 @@
   </url>
   <url>
     <loc>https://jeffkreeftmeijer.com/archive/</loc>
-    <lastmod>2017-09-10</lastmod>
+    <lastmod>2017-09-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
+  <url>
+    <loc>https://jeffkreeftmeijer.com/open-source-maintainability/</loc>
+    <lastmod>2017-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://jeffkreeftmeijer.com/mix-proper/</loc>
     <lastmod>2017-08-22</lastmod>
