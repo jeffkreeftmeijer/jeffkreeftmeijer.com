@@ -25,3 +25,6 @@
 [submodule "open-source-maintainability"]
 	path = open-source-maintainability
 	url = git@gist.github.com:aa1d6d6793b592e67b108867115d13f6.git
+[submodule "carrierwave-rails-test-fixtures"]
+	path = carrierwave-rails-test-fixtures
+	url = git@gist.github.com:9363e0bdd9457a57bf01a2dfc4676b39.git

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Using Rails test fixtures with CarrierWave</title>
+<meta name="viewport" content="initial-scale=1, user-scalable=yes">
+<meta name="description" content="Testing uploads with Rails fixtures and the CarrierWave file uploading gem.">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+<link rel="alternate" type="application/atom+xml" href="/feed.xml">
+<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}code,kbd{font:.8em Monaco,monospace}pre{background-color:#f8f8ff;overflow-x:auto}kbd{border:1px solid #d3d3d3;padding:.1em .6em;border-radius:3px}blockquote{color:#696969;font-style:italic}aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside div{margin-left:22em;width:130px}aside a{text-decoration:none;color:slategray;font-size:0.7em;display:block;margin-bottom:1em}aside .carbon-poweredby{font-style:italic}nav{display:flex;justify-content:space-between}</style>
+
+</head>
+<body>
+<a id="using-rails-test-fixtures-with-carrierwave"></a><h1>Using Rails test fixtures with CarrierWave</h1>
+<p>After posting <a href="https://twitter.com/jkreeftmeijer/status/505035292764827648">a tweet about using fixtures</a> a while ago, <a href="https://twitter.com/stravid" title="David Strauß">@stravid</a> <a href="https://twitter.com/stravid/status/505653323262078976">replied</a> and asked me for some pointers to using fixtures in <a href="https://github.com/carrierwaveuploader/carrierwave">CarrierWave</a>, the Rails file uploading gem, so I decided to dive in and see if I could get it to work. Here's <a href="https://github.com/jeffkreeftmeijer/carrierwave_fixtures/compare/184afb7db535af5fde6aadb71c3d4574c1a6dc80...master">how I would do it</a>.</p><p>When using CarrierWave you create an uploader, which subclasses from <code>CarrierWave::Uploader::Base</code>, add a field to the database that holds the upload's filename, and link it all together using a call to <code>mount_uploader</code> in the model. So, when uploading avatars for users, for example, you'd create an <code>AvatarUploader</code> (there's a <a href="https://github.com/carrierwaveuploader/carrierwave#getting-started">generator</a> for that), add a string column in your users table named "avatar", and use it in your model like this:</p><div class="highlight"><pre><span class="c1"># app/models/user.rb</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+  <span class="n">mount_uploader</span> <span class="ss">:avatar</span><span class="p">,</span> <span class="no">AvatarUploader</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>Now, how would we test this? Let's put an image in <code>test/fixtures/files/tapir.jpg</code>, and use <a href="http://apidock.com/rails/ActionController/TestProcess/fixture_file_upload"><code>fixture_file_upload</code></a> to test the uploader. Here's a test that checks if an existing user has an avatar, and one to make sure an avatar can be created with a new user:</p>
+
+<div class="highlight"><pre><span class="c1"># test/models/user_test.rb</span>
+
+<span class="n">require_relative</span> <span class="s1">'../test_helper'</span>
+
+<span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:TestCase</span>
+  <span class="nb">test</span> <span class="s2">"has an avatar"</span> <span class="k">do</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">users</span><span class="p">(</span><span class="ss">:user_with_avatar</span><span class="p">)</span>
+    <span class="n">assert</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">avatar</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="nb">test</span> <span class="s2">"uploads an avatar"</span> <span class="k">do</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">:avatar</span><span class="p">,</span> <span class="n">fixture_file_upload</span><span class="p">(</span><span class="s1">'/files/tapir.jpg'</span><span class="p">,</span> <span class="s1">'image/jpg'</span><span class="p">))</span>
+    <span class="n">assert</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">reload</span><span class="o">.</span><span class="n">avatar</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>The first test uses a fixture named <code>users(:user_with_avatar)</code>, so let's create that first.
+When you upload a file, only its basename gets stored in the <code>User#avatar</code> field, and the rest of the path to the file comes from your uploader class, meaning a fixture would look like this:</p>
+
+<div class="highlight"><pre><span class="c1"># test/fixtures/users.yml</span>
+
+<span class="n">user_with_avatar</span><span class="p">:</span> <span class="c1"># generated id: 605975481</span>
+  <span class="ss">avatar</span><span class="p">:</span> <span class="s1">'tapir.jpg'</span>
+</pre></div>
+
+<p>Now, if you want to get "uploaded" files from the fixtures directory instead of having to upload it before every test, you can change <code>CarrierWave.root</code> in your test helper so it points to the fixture directory instead of the project's public directory:</p>
+
+<div class="highlight"><pre><span class="c1"># test/test_helper.rb</span>
+
+<span class="no">CarrierWave</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="s1">'test/fixtures/files'</span>
+</pre></div>
+
+<p>Then, putting a file in <code>test/fixtures/uploads/user/avatar/605975481/tapir.jpg</code> (where "605975481" is the user's <a href="http://api.rubyonrails.org/v3.2.13/classes/ActiveRecord/Fixtures.html#label-Stable%2C+Autogenerated+IDs">autogenerated ID</a>), will make sure CarrierWave can find the fixture user's avatar in your tests.</p>
+
+<p>Both tests should pass right now, but there's a problem. The second test uploads a new file directly to the fixture directory, which is not where you want it. What you actually want is to save the uploaded files to a temporary location, so the files created by your tests won't make a mess out of your fixture files.</p>
+
+<p>After looking through CarrierWave's source for a while, I found that it actually already does this. When you upload a file and don't save it, CarrierWave will keep it in a temporary files directory until you save the parent model instance, which then moves the file to your uploader's <code>store_dir</code> and removes the temporary version. </p>
+
+<p>So, as long as you don't actually move the file to its final location (which, in your case is the fixture directory), CarrierWave will simply keep using the cached file path. If you break <code>CarrierWave::Mount::Mounter#store!</code> in the test helper, you'll make sure nothing ever actually gets stored while running your tests:</p>
+
+<div class="highlight"><pre><span class="c1"># test/test_helper.rb</span>
+
+<span class="no">ENV</span><span class="o">[</span><span class="s1">'RAILS_ENV'</span><span class="o">]</span> <span class="o">||=</span> <span class="s1">'test'</span>
+<span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">'../../config/environment'</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+<span class="nb">require</span> <span class="s1">'rails/test_help'</span>
+
+<span class="k">class</span> <span class="nc">CarrierWave</span><span class="o">::</span><span class="ss">Mount</span><span class="p">:</span><span class="ss">:Mounter</span>
+  <span class="k">def</span> <span class="nf">store!</span>
+    <span class="c1"># Not storing uploads in the tests</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="kp">include</span> <span class="ss">ActionDispatch</span><span class="p">:</span><span class="ss">:TestProcess</span>
+
+  <span class="n">fixtures</span> <span class="ss">:all</span>
+
+  <span class="no">CarrierWave</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'test/fixtures/files'</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">after_teardown</span>
+    <span class="k">super</span>
+    <span class="no">CarrierWave</span><span class="o">.</span><span class="n">clean_cached_files!</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>Running the tests again, you'll see both tests still pass. The first test loads the file from the fixture directory we created, and the second one uploads a new file to <code>test/fixtures/files/uploads/tmp</code>, which is a path you can easily <code>.gitignore</code>. Also, there's an <code>after_teardown</code> to clean up cached files. We're passing a 0 because CarrierWave defaults to cleaning files that are at least one day old, and we want to remove everything all the time.</p>
+
+<p>I've created a <a href="https://github.com/jeffkreeftmeijer/carrierwave_fixtures">demo Rails project</a> (<a href="https://github.com/jeffkreeftmeijer/carrierwave_fixtures/compare/184afb7db535af5fde6aadb71c3d4574c1a6dc80...master">diff</a>), so you can play around with this yourself. Also, I've <a href="https://github.com/carrierwaveuploader/carrierwave/pull/1456">submitted a patch to CarrierWave</a> to add a <code>:cache_only</code> option, which would save you some monkey-patching. It's merged in, but it hasn't been released yet, so you'll have to use the edge version of CarrierWave if you want to try it.</p>
+
+<p>If you tried this approach in your project and have anything to add, please let me know!</p>
+<hr/>
+<nav>
+  
+    <a href="/" rel="author">Jeff Kreeftmeijer</a>
+  
+  <a href="/archive/">Archive</a>
+  <a href="https://twitter.com/jkreeftmeijer">Twitter</a>
+  <a href="https://github.com/jeffkreeftmeijer">Github</a>
+  <a href="/feed.xml">RSS</a>
+</nav>
+
+<aside>
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
+</aside>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12888762-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>

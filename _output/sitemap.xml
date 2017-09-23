@@ -42,8 +42,8 @@
   </url>
 
   <url>
-    <loc>https://jeffkreeftmeijer.com/2014/using-test-fixtures-with-carrierwave/</loc>
-    <lastmod>2014-09-09</lastmod>
+    <loc>https://jeffkreeftmeijer.com/carrierwave-rails-test-fixtures/</loc>
+    <lastmod>2017-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
