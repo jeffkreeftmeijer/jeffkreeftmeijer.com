@@ -1,1 +1,2 @@
 aws s3 sync _output s3://jeffkreeftmeijer.com --acl public-read
+./redirect
