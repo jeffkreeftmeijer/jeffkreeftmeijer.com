@@ -1,0 +1,7 @@
+while read -r from to
+  do aws s3 cp _output/$from s3://jeffkreeftmeijer.com/$from --website-redirect=$to --acl public-read
+done < "$(dirname "$0")/redirects.txt"
+
+while read -r from to
+  do aws s3 cp empty s3://jeffkreeftmeijer.com/$from --website-redirect=$to --acl public-read
+done < "$(dirname "$0")/empty_redirects.txt"
