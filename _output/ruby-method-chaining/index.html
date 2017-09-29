@@ -151,12 +151,12 @@ end</code></pre>
 ruby-1.9.3-p0 :002 &gt; User.where(:name =&gt; &#39;Jeff&#39;)
  =&gt; #&lt;Criteria:0x007ffdd30d4d68 @klass=User, @criteria={:conditions=&gt;{:name=&gt;&quot;Jeff&quot;}}&gt;</code></pre>
 <a id="getting-some-results"></a><h2>Getting some results</h2>
-<p>The last thing we need to do is lazily querying our database and getting some results. To make sure our library doesn’t query before collecting all of the criteria, we’ll wait until <code>each</code> gets called – to loop over the query’s results – on the <code>Criteria</code> instance. Let’s see how our library handles that right now:</p><p>  ruby-1.9.3-p0 :001 &gt; require File.expand_path ‘user’
-   =&gt; true
-  ruby-1.9.3-p0 :002 &gt; User.where(:name =&gt; ‘Jeff’).each { |u| puts u.inspect }
-  NoMethodError: undefined method <code class="inline">each&#39; for #&lt;Criteria:0x007fd0540cfea0&gt;
-     from (irb):2
-     from /Users/jeff/.rvm/rubies/ruby-1.9.3-p0/bin/irb:16:in</code><main>‘</p>
+<p>The last thing we need to do is lazily querying our database and getting some results. To make sure our library doesn’t query before collecting all of the criteria, we’ll wait until <code>each</code> gets called – to loop over the query’s results – on the <code>Criteria</code> instance. Let’s see how our library handles that right now:</p><pre><code>ruby-1.9.3-p0 :001 &gt; require File.expand_path &#39;user&#39;
+ =&gt; true
+ruby-1.9.3-p0 :002 &gt; User.where(:name =&gt; &#39;Jeff&#39;).each { |u| puts u.inspect }
+NoMethodError: undefined method `each&#39; for #&lt;Criteria:0x007fd0540cfea0&gt;
+   from (irb):2
+   from /Users/jeff/.rvm/rubies/ruby-1.9.3-p0/bin/irb:16:in `&lt;main&gt;&#39;</code></pre>
 <p>Of course, there’s no method named <code>each</code> on <code>Criteria</code>, because we don’t have anything to loop over yet. We’ll create <code>Criteria#each</code>, which will execute the query, giving us an array of results. We use that array’s <code>each</code> method to pass our block to:</p><pre><code class="ruby">class Criteria
   def initialize(klass)
     @klass = klass
