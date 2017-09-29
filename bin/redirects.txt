@@ -2,6 +2,7 @@
 2010/the-magical-and-not-harmful-rebase/index.html https://jeffkreeftmeijer.com/git-rebase/
 2010/why-arent-you-using-git-flow/index.html https://jeffkreeftmeijer.com/git-flow/
 2011/comparing-images-and-creating-image-diffs/index.html https://jeffkreeftmeijer.com/ruby-compare-images/
+2011/method-chaining-and-lazy-evaluation-in-ruby/index.html http://jeffkreeftmeijer.com/ruby-method-chaining/
 2012/relative-line-numbers-in-vim-for-super-fast-movement/index.html https://jeffkreeftmeijer.com/vim-number/#relative-line-numbers
 2013/vims-new-hybrid-line-number-mode/index.html https://jeffkreeftmeijer.com/vim-number/#hybrid-line-numbers
 2014/using-test-fixtures-with-carrierwave/index.html https://jeffkreeftmeijer.com/carrierwave-rails-test-fixtures/
