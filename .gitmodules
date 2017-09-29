@@ -28,3 +28,6 @@
 [submodule "carrierwave-rails-test-fixtures"]
 	path = carrierwave-rails-test-fixtures
 	url = git@gist.github.com:9363e0bdd9457a57bf01a2dfc4676b39.git
+[submodule "ruby-method-chaining"]
+	path = ruby-method-chaining
+	url = git@gist.github.com:e5f4547ba9ec64d073d7e3094bea944b.git
