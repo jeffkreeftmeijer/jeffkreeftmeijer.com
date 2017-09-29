@@ -7,7 +7,7 @@
 <meta name="description" content="git-flow is a library of git subcommands that helps automate your branching and release workflow workflow, using Vincent Driessen's successful branching model.">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
-<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}blockquote{font-style:italic}code,kbd,pre{font:.8em/1.4 SFMono-Regular,Monaco,monospace;border-radius:3px;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}
+<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}blockquote{font-style:italic}code,kbd,pre{font:.8em/1.4 SF Mono,Monaco,monospace;border-radius:3px;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}
 aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside div{margin-left:22em;width:130px}aside a{text-decoration:none;color:slategray;font-size:0.7em;display:block;margin-bottom:1em}aside .carbon-poweredby{font-style:italic}nav{display:flex;justify-content:space-between}</style>
 
 <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,6 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
 </head>
 <body>
 <a id="using-git-flow-to-automate-your-git-branching-workflow"></a><h1>Using git-flow to automate your git branching workflow</h1>
-<p><time datetime="2010-08-19">2010-08-19</time> (last updated on <time datetime="2017-01-07">2017-01-07</time>)</p>
 <p><a href="http://nvie.com/posts/a-successful-git-branching-model/">Vincent Driessen’s branching model</a> is a git branching and release management strategy that helps developers keep track of features, hotfixes and releases in bigger software projects. This workflow has lot of commands to type and remember, though, so there’s also the <a href="https://github.com/nvie/gitflow">git-flow library of git subcommands</a> that helps automate some parts of the flow to make working with it a lot easier.</p>
 <p><img src="https://jeffkreeftmeijer.com/git-flow/git-flow.png" alt="The git-flow branching model"/></p>
 <p>After <a href="https://github.com/nvie/gitflow/wiki/Installation">installing git-flow</a> (<code class="inline">brew install git-flow</code>), you can start using git-flow in your repository by using it’s <code class="inline">init</code> command. You can use it in existing projects, but let’s start a new repository:</p>
@@ -41,7 +40,7 @@ Version tag prefix? []</code></pre>
 <pre><code class="">$ git branch
 * develop
   master</code></pre>
-<p>The <code class="inline">develop</code> branch is intended to be the default branch where most of the work will happen, and the <code class="inline">master</code> branch keeps track of production-ready code. So instead of working in the <code class="inline">master</code> branch, you’ll use <code class="inline">git push origin develop</code> to push new code to your repository from now on.</p>
+<p>The <code class="inline">develop</code> branch the default branch where most of the work will happen, and the <code class="inline">master</code> branch keeps track of production-ready code.</p>
 <a id="feature-branches"></a><h2>Feature branches</h2>
 <p>git-flow makes it easy to work on multiple features at the same time by using feature branches. To start one, use <code class="inline">feature start</code> with the name of your new feature (in this case, “authentication”):</p>
 <pre><code class="">$ git flow feature start authentication
@@ -54,8 +53,7 @@ Summary of actions:
 Now, start committing on your feature. When done, use:
 
      git flow feature finish authentication</code></pre>
-<p>As the output already explains, you’re now on a new branch you can use to work on your feature.
-Use git like you normally would, and finish the feature using <code class="inline">feature finish</code> when it’s done:</p>
+<p>A feature branch was created and you’re automatically switched to it. Implement your feature in this branch while using git like you normally would. When you’re finished, use <code class="inline">feature finish</code>:</p>
 <pre><code class="">$ git flow feature finish authentication
 Switched to branch &#39;develop&#39;
 Updating 9060376..00bafe4
@@ -144,7 +142,7 @@ Summary of actions:
 - Hotfix branch &#39;hotfix/assets&#39; has been deleted</code></pre>
 <p>Like when finishing a release branch, the hotfix branch gets merged into both <code class="inline">master</code> and <code class="inline">develop</code>. The release is tagged and the hotfix branch is removed. </p>
 <a id="why-arent-you-using-git-flow"></a><h2>Why aren’t you using git-flow?</h2>
-<p>Of course, if you’re <a href="http://scottchacon.com/2011/08/31/github-flow.html">not doing versioned releases</a>, Vincent’s git workflow and the git-flow library might not be a right fit for you. However, if you work on a project that’s <a href="http://semver.org">semantically versioned</a>, like a Rubygem or a versioned API, git-flow will give you a couple of simple commands that will do a lot of work under the hood, making working on features, pushing new releases and hotfixing bugs a lot easier. Well, at least on the git side.</p>
+<p>If you’re <a href="http://scottchacon.com/2011/08/31/github-flow.html">not doing versioned releases</a>, Vincent’s git workflow and the git-flow library might not be a right fit for you. However, if you work on a project that’s <a href="http://semver.org">semantically versioned</a>, like a Rubygem or a versioned API, git-flow will give you a couple of simple commands that will do a lot of work under the hood, making working on features, pushing new releases and hotfixing bugs a lot easier. Well, at least on the git side.</p>
 
 <hr/>
 <nav>
