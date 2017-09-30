@@ -22,7 +22,7 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
 <a id="git-is-not-a-git-command"></a><h1>git is not a git command</h1>
 <p><time datetime="2015-10-01">2015-10-01</time> (last updated on <time datetime="2017-09-10">2017-09-10</time>)</p>
 <p>It probably happens to me once or twice a week. I try to get the current repository’s status, the log, or the contents of some specific commit when I’m greeted with a familiar error message.</p>
-<pre><code class="">$ git git status
+<pre><code class=" language-">$ git git status
 git: &#39;git&#39; is not a git command. See &#39;git --help&#39;.
 
 The most similar command is
@@ -32,14 +32,14 @@ The most similar command is
 <blockquote><p>“‘git’ is not a git command.”</p>
 </blockquote>
 <p>Defeated, I press <kbd>↑</kbd>, hold <kbd>⌥</kbd> while double-tapping <kbd>←</kbd>, then <kbd>⌫</kbd> four times and <kbd>⏎</kbd>, to get the result I wanted. </p>
-<pre><code class="">$ git status
+<pre><code class=" language-">$ git status
 On branch master
 nothing to commit, working tree clean</code></pre>
 <a id="enough"></a><h2>Enough</h2>
-<pre><code class="">$ git config --global alias.git &#39;!git&#39;</code></pre>
+<pre><code class=" language-">$ git config --global alias.git &#39;!git&#39;</code></pre>
 <p>By adding <code class="inline">git</code> as a subcommand alias<sup><a href="#fn:1" id="fnref:1" class="footnote" title="see footnote">1</a></sup>, a command is run whenever you execute <code class="inline">git git</code>. Using an exclamation mark to the beginning of the alias’ value, git will run any command instead of just it’s own subcommands. In this case it’s aliased to <code class="inline">!git</code>, meaning <code class="inline">git git</code> will be converted to <code class="inline">git</code>.</p>
 <p>Using this alias, <code class="inline">$ git git status</code> will now automatically convert to <code class="inline">$ git status</code>.<sup><a href="#fn:2" id="fnref:2" class="footnote" title="see footnote">2</a></sup></p>
-<pre><code class="">$ git git status
+<pre><code class=" language-">$ git git status
 On branch master
 nothing to commit, working tree clean</code></pre>
 <p>Now, git <em>is</em> a git command.</p>
@@ -47,7 +47,7 @@ nothing to commit, working tree clean</code></pre>
 <hr>
 <ol>
 <li id="fn:1"><p>Running the <code class="inline">$ git config --global alias.git &#39;!git&#39;</code>-command will write <a href="https://github.com/jeffkreeftmeijer/dotfiles/blob/138d2d200bcedc0097e28fea5af11f0c7cbd2e71/.gitconfig#L7">the following alias</a> to your <code class="inline">~/.gitconfig</code> file:</p>
-<pre><code class="">[alias]
+<pre><code class=" language-">[alias]
         git = !git</code></pre>
 <p><a href="#fnref:1" title="return to article" class="reversefootnote">&#x21A9;</a></p>
 </li>

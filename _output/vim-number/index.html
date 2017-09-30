@@ -28,7 +28,7 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
 <p>
   <video src="https://jeffkreeftmeijer.com/vim-number/absolute.mp4" autoplay loop muted playsinline>
   </video>
-</p><pre><code class="">:set number
+</p><pre><code class=" language-">:set number
 :set nonumber  &quot; turn line numbers off
 :set number!   &quot; toggle line numbers</code></pre>
 <p>Besides being useful for finding a line from a stacktrace or a test result, you can use line numbers to help you quickly jump around. For example, if you want to go to the tenth line in your file, you’d type <kbd>esc</kbd> if you’re in insert mode and then <code class="inline">:10</code> to move to the correct line.</p>
@@ -37,7 +37,7 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
 <p>
   <video src="https://jeffkreeftmeijer.com/vim-number/relative.mp4" autoplay loop muted playsinline>
   </video>
-</p><pre><code class="">:set relativenumber
+</p><pre><code class=" language-">:set relativenumber
 :set norelativenumber  &quot; turn relative line numbers off
 :set relativenumber!   &quot; toggle relative line numbers</code></pre>
 <p>Like any any command in Vim, the <kbd>j</kbd> and <kbd>k</kbd> (or <kbd>↑</kbd> and <kbd>↓</kbd>) keys can be prefixed with a number. Typing <kbd>5</kbd><kbd>j</kbd> will move the cursor five lines down, for example. If you want to remove seven lines, you can use <kbd>d</kbd><kbd>7</kbd><kbd>d</kbd> without having to switch to visual mode to select the lines first.</p>
@@ -48,7 +48,7 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
 <p>
   <video src="https://jeffkreeftmeijer.com/vim-number/hybrid.mp4" autoplay loop muted playsinline>
   </video>
-</p><pre><code class="">:set number relativenumber
+</p><pre><code class=" language-">:set number relativenumber
 :set nonumber norelativenumber  &quot; turn hybrid line numbers off
 :set !number !relativenumber    &quot; toggle hybrid line numbers</code></pre>
 <p>While not strictly relative, hybrid line numbers are what relative line numbers should have been. Instead of having a useless zero on the current line, it uses that space to give you an idea of where you are in the file.<sup><a href="#fn:1" id="fnref:1" class="footnote" title="see footnote">1</a></sup></p>
@@ -58,7 +58,7 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
 <p>
   <video src="https://jeffkreeftmeijer.com/vim-number/toggle.mp4" autoplay loop muted playsinline>
   </video>
-</p><pre><code class="">:set number relativenumber
+</p><pre><code class=" language-">:set number relativenumber
 
 :augroup numbertoggle
 :  autocmd!
