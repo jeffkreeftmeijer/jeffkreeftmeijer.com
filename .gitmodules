@@ -8,7 +8,7 @@
 	path = _articles/mix-proper
 	url = git@gist.github.com:1246716f9241bc94264b6c9c5db1aa65.git
 [submodule "git-flow"]
-	path = git-flow
+	path = _articles/git-flow
 	url = git@gist.github.com:52e5912de46216a3a562032383a38bf6.git
 [submodule "vim-number"]
 	path = _articles/vim-number
@@ -17,7 +17,7 @@
 	path = _articles/git-rebase
 	url = git@gist.github.com:e41d66b7e0f1defbdc1087783e49b386.git
 [submodule "git-git"]
-	path = git-git
+	path = _articles/git-git
 	url = git@gist.github.com:9e4256b938342706477653c797ce5578.git
 [submodule "ruby-compare-images"]
 	path = _articles/ruby-compare-images
