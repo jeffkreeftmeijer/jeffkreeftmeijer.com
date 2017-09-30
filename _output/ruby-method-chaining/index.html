@@ -14,14 +14,14 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
 <body>
 <a id="method-chaining-and-lazy-evaluation-in-ruby"></a><h1>Method chaining and lazy evaluation in Ruby</h1>
 <p>  <p>Method chaining has been all the rage lately and every database wrapper or aything else that’s uses queries seems to be doing it. But, how does it work? To figure that out, we’ll write a library that can chain method calls to build up a MongoDB query in this article. Let’s get started!</p></p>
-<p>Oh, and don’t worry if you haven’t used MongoDB before, I’m just using it as an example to query on. If you’re using this guide to build a querying library for something else, the MongoDB part should be easy to swap out.</p><p>Let’s say we’re working with a user collection and we want to be able to query it somewhat like this:</p><pre><code class="ruby">User.where(:name =&gt; &#39;Jeff&#39;).limit(5)</code></pre>
-<p>We’ll create a <code>Criteria</code> class to build queries. As you might have guessed, it needs two instance methods named <code>where</code> and <code>limit</code>.</p><p>When calling one of these methods, all our object needs to do is remember the criteria that were passed, so we’ll need to set up an instance variable --named `@criteria`-– to store them in.</p><p>Our <code>where</code> method is used to specify conditions and we want it to return an empty array when none have been specified yet, so we’ll add an empty array to our criteria hash by default:</p><pre><code class="ruby">class Criteria
+<p>Oh, and don’t worry if you haven’t used MongoDB before, I’m just using it as an example to query on. If you’re using this guide to build a querying library for something else, the MongoDB part should be easy to swap out.</p><p>Let’s say we’re working with a user collection and we want to be able to query it somewhat like this:</p><pre><code class="ruby language-ruby">User.where(:name =&gt; &#39;Jeff&#39;).limit(5)</code></pre>
+<p>We’ll create a <code>Criteria</code> class to build queries. As you might have guessed, it needs two instance methods named <code>where</code> and <code>limit</code>.</p><p>When calling one of these methods, all our object needs to do is remember the criteria that were passed, so we’ll need to set up an instance variable --named `@criteria`-– to store them in.</p><p>Our <code>where</code> method is used to specify conditions and we want it to return an empty array when none have been specified yet, so we’ll add an empty array to our criteria hash by default:</p><pre><code class="ruby language-ruby">class Criteria
   def criteria
     @criteria ||= {:conditions =&gt; {}}
   end
 end</code></pre>
 <p></p>
-<pre><code class="ruby">class Criteria
+<pre><code class="ruby language-ruby">class Criteria
   def criteria
     @criteria ||= {:conditions =&gt; {}}
   end
@@ -44,7 +44,7 @@ ruby-1.9.3-p0 :002 &gt; c = Criteria.new
  =&gt; #&lt;Criteria:0x007fbf5296d098&gt;
 ruby-1.9.3-p0 :003 &gt; c.where(:name =&gt; &#39;Jeff&#39;).where(:login =&gt; &#39;jkreeftmeijer&#39;)
 NoMethodError: undefined method where&#39; for {:name=&amp;gt;&quot;Jeff&quot;}:Hash&lt;/span&gt;</code></pre>
-<p>Hm. That didn’t work, because <code>where</code> returns a hash and <code>Hash</code> doesn’t have a <code>where</code> method. We need to make sure the <code>where</code> method returns the <code>Criteria</code> object. Let’s update the <code>where</code> method so it returns <code>self</code> instead of the conditions variable:</p><pre><code class="ruby">class Criteria
+<p>Hm. That didn’t work, because <code>where</code> returns a hash and <code>Hash</code> doesn’t have a <code>where</code> method. We need to make sure the <code>where</code> method returns the <code>Criteria</code> object. Let’s update the <code>where</code> method so it returns <code>self</code> instead of the conditions variable:</p><pre><code class="ruby language-ruby">class Criteria
   def criteria
     @criteria ||= {:conditions =&gt; {}}
   end
@@ -60,7 +60,7 @@ ruby-1.9.3-p0 :002 &gt; c = Criteria.new
  =&gt; #&lt;Criteria:0x007fe91117c738&gt;
 ruby-1.9.3-p0 :003 &gt; c.where(:name =&gt; &#39;Jeff&#39;).where(:login =&gt; &#39;jkreeftmeijer&#39;)
  =&gt; #&lt;Criteria:0x007fe91117c738 @criteria={:conditions=&gt;{:name=&gt;&quot;Jeff&quot;, :login=&gt;&quot;jkreeftmeijer&quot;}}&gt;</code></pre>
-<p>Ha! Now we can chain as many conditions as we want. Let’s go ahead and implement that <code>limit</code> method right away, so we can limit our query’s results.</p><p></p><p>Of course, we only need one limit, as multiple limits wouldn’t make sense. This means we don’t need an array, we can just set <code>criteria[:limit]</code> instead of merging hashes, like we did with the conditions before:</p><pre><code class="ruby">class Criteria
+<p>Ha! Now we can chain as many conditions as we want. Let’s go ahead and implement that <code>limit</code> method right away, so we can limit our query’s results.</p><p></p><p>Of course, we only need one limit, as multiple limits wouldn’t make sense. This means we don’t need an array, we can just set <code>criteria[:limit]</code> instead of merging hashes, like we did with the conditions before:</p><pre><code class="ruby language-ruby">class Criteria
   def criteria
     @criteria ||= {:conditions =&gt; {}}
   end
@@ -76,14 +76,14 @@ ruby-1.9.3-p0 :003 &gt; c.where(:name =&gt; &#39;Jeff&#39;).where(:login =&gt; &
   end
 end</code></pre>
 <p></p>
-<pre><code class="ruby">ruby-1.9.3-p0 :001 &gt; require File.expandpath &#39;criteria&#39;
+<pre><code class="ruby language-ruby">ruby-1.9.3-p0 :001 &gt; require File.expandpath &#39;criteria&#39;
  =&gt; true
 ruby-1.9.3-p0 :002 &gt; c = Criteria.new
  =&gt; #&lt;Criteria:0x007fdb1b0ca528&gt;
 ruby-1.9.3-p0 :003 &gt; c.where(:name =&gt; &#39;Jeff&#39;).limit(5)
  =&gt; #&lt;Criteria:0x007fdb1b0ca528 @criteria={:conditions=&gt;{:name=&gt;&quot;Jeff&quot;}, :limit=&gt;5}&gt;</code></pre>
 <a id="the-model"></a><h2>The model</h2>
-<p>There. We can collect query criteria now, but we’ll need a model to actually query on. For this example, let’s create a model named <code>User</code>.</p><p>Since we’re building a library that can query a MongoDB database, I’ve installed the <a href="https://github.com/mongodb/mongo-ruby-driver">mongo-ruby-driver</a> and added a <code>collection</code> method to the <code>User</code> model:</p><pre><code class="ruby">require &#39;mongo&#39;
+<p>There. We can collect query criteria now, but we’ll need a model to actually query on. For this example, let’s create a model named <code>User</code>.</p><p>Since we’re building a library that can query a MongoDB database, I’ve installed the <a href="https://github.com/mongodb/mongo-ruby-driver">mongo-ruby-driver</a> and added a <code>collection</code> method to the <code>User</code> model:</p><pre><code class="ruby language-ruby">require &#39;mongo&#39;
 
 class User
   def self.collection
@@ -91,7 +91,7 @@ class User
   end
 end</code></pre>
 <p></p>
-<p>Remember when I said I wanted to be able to do something like <code>User.where(:name =&gt; 'Jeff').limit(5)</code>? Well, right now our model doesn’t implement <code>where</code> or <code>limit</code>, since we put them in the <code>Criteria</code> class. Let’s fix that by creating two methods on <code>User</code> that delegate to <code>Criteria</code>.</p><pre><code class="ruby">require &#39;mongo&#39;
+<p>Remember when I said I wanted to be able to do something like <code>User.where(:name =&gt; 'Jeff').limit(5)</code>? Well, right now our model doesn’t implement <code>where</code> or <code>limit</code>, since we put them in the <code>Criteria</code> class. Let’s fix that by creating two methods on <code>User</code> that delegate to <code>Criteria</code>.</p><pre><code class="ruby language-ruby">require &#39;mongo&#39;
 require File.expand_path &#39;criteria&#39;
 
 class User
@@ -111,7 +111,7 @@ end</code></pre>
  =&gt; true
 ruby-1.9.3-p0 :002 &gt; User.where(:name =&gt; &#39;Jeff&#39;).limit(5)
  =&gt; #&lt;Criteria:0x007fca1c8b0bd0 @criteria={:conditions=&gt;{:name=&gt;&quot;Jeff&quot;}, :limit=&gt;5}&gt;</code></pre>
-<p>Great. Calling criteria on the <code>User</code> model returns a <code>Criteria</code> object now. But, maybe you already noticed it, the returned object has no idea what to query on. We need to let it know we want to search the users collection. To do that, we need to overwrite the <code>Criteria</code>’s <code>initialize</code> method:</p><pre><code class="ruby">class Criteria
+<p>Great. Calling criteria on the <code>User</code> model returns a <code>Criteria</code> object now. But, maybe you already noticed it, the returned object has no idea what to query on. We need to let it know we want to search the users collection. To do that, we need to overwrite the <code>Criteria</code>’s <code>initialize</code> method:</p><pre><code class="ruby language-ruby">class Criteria
   def initialize(klass)
     @klass = klass
   end
@@ -130,7 +130,7 @@ ruby-1.9.3-p0 :002 &gt; User.where(:name =&gt; &#39;Jeff&#39;).limit(5)
     self
   end
 end</code></pre>
-<p>With a slight change to our model – passing <code>self</code> to <code>Criteria.new</code> –, we can let the <code>Criteria</code> class know what we’re looking for:</p><pre><code class="ruby">require &#39;mongo&#39;
+<p>With a slight change to our model – passing <code>self</code> to <code>Criteria.new</code> –, we can let the <code>Criteria</code> class know what we’re looking for:</p><pre><code class="ruby language-ruby">require &#39;mongo&#39;
 require File.expand_path &#39;criteria&#39;
 
 class User
@@ -157,7 +157,7 @@ ruby-1.9.3-p0 :002 &gt; User.where(:name =&gt; &#39;Jeff&#39;).each { |u| puts u
 NoMethodError: undefined method `each&#39; for #&lt;Criteria:0x007fd0540cfea0&gt;
    from (irb):2
    from /Users/jeff/.rvm/rubies/ruby-1.9.3-p0/bin/irb:16:in `&lt;main&gt;&#39;</code></pre>
-<p>Of course, there’s no method named <code>each</code> on <code>Criteria</code>, because we don’t have anything to loop over yet. We’ll create <code>Criteria#each</code>, which will execute the query, giving us an array of results. We use that array’s <code>each</code> method to pass our block to:</p><pre><code class="ruby">class Criteria
+<p>Of course, there’s no method named <code>each</code> on <code>Criteria</code>, because we don’t have anything to loop over yet. We’ll create <code>Criteria#each</code>, which will execute the query, giving us an array of results. We use that array’s <code>each</code> method to pass our block to:</p><pre><code class="ruby language-ruby">class Criteria
   def initialize(klass)
     @klass = klass
   end
