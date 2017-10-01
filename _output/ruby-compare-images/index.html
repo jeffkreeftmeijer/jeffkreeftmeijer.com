@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 <meta charset="utf-8"/>
 <title>Comparing images and creating image diffs</title>
 <meta name="viewport" content="initial-scale=1, user-scalable=yes">
@@ -10,8 +9,6 @@
 <style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}blockquote{font-style:italic}code,kbd,pre{font:.8em/1.4 SF Mono,Monaco,monospace;border-radius:3px;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}
 aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside div{margin-left:22em;width:130px}aside a{text-decoration:none;color:slategray;font-size:0.7em;display:block;margin-bottom:1em}aside .carbon-poweredby{font-style:italic}nav{display:flex;justify-content:space-between}</style>
 
-</head>
-<body>
 <h1>Comparing images and creating image diffs</h1><p>  <p>I’m sure you’ve seen the <a href="https://github.com/blog/817-behold-image-view-modes">image view modes</a> Github released last month. It’s a really nice way to see the differences between two versions of an image. In this article, I’ll try to explain how a simple image diff could be built using pure Ruby and <a href="https://github.com/wvanbergen/chunky_png">ChunkyPNG</a>.</p></p>
 <p>If you need a more basic introduction to working with pixel data in ChunkyPNG, check out <a href="http://jeffkreeftmeijer.com/2011/pure-ruby-colored-blob-detection">last week’s article</a>, which I did some simple blob detection.</p><p>In its simplest form, finding differences in images works by looping over each pixel in the first image and checking if it’s the same as the pixel in the same spot in the second image. An implementation might look like this:</p><div class="highlight">
 <pre><code class="ruby"><span class="nb">require</span> <span class="s1">'chunky_png'</span>
@@ -189,5 +186,4 @@ image changed (%): 5.4418255392228945%</code></pre>
   ga('create', 'UA-12888762-1', 'auto');
   ga('send', 'pageview');
 </script>
-</body>
 </html>
