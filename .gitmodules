@@ -31,3 +31,6 @@
 [submodule "ruby-method-chaining"]
 	path = _articles/ruby-method-chaining
 	url = git@gist.github.com:e5f4547ba9ec64d073d7e3094bea944b.git
+[submodule "_articles/open-source-maintainability"]
+	path = _articles/open-source-maintainability
+	url = git@gist.github.com:aa1d6d6793b592e67b108867115d13f6.git
