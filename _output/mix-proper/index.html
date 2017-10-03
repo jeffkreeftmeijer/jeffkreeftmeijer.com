@@ -17,8 +17,7 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
 <meta name="twitter:image" content="https://jeffkreeftmeijer.com/mix-proper/mix_proper.png">
 
 <a id="property-based-testing-in-elixir-using-proper"></a><h1>Property-based testing in Elixir using PropEr</h1>
-<p><time datetime="2017-08-22">2017-08-22</time></p>
-<p>While reading <a href="http://ferd.ca" title="">Fred Hébert</a>’s <a href="http://propertesting.com" title="">PropEr testing</a>, on property-based testing in Erlang, I set out write <a href="http://proper.softlab.ntua.gr" title="">PropEr</a> tests in Elixir, and run them with a Mix task.<sup><a href="#fn:1" id="fnref:1" class="footnote" title="see footnote">1</a></sup></p>
+<p>While reading Fred Hébert’s <a href="http://propertesting.com" title="">PropEr testing</a>, on property-based testing in Erlang, I set out write <a href="http://proper.softlab.ntua.gr" title="">PropEr</a> tests in Elixir, and run them with a Mix task.<sup><a href="#fn:1" id="fnref:1" class="footnote" title="see footnote">1</a></sup></p>
 <p><img src="https://jeffkreeftmeijer.com/mix-proper/mix_proper.png" alt="mix_proper running property-based tests in an Elixir project"/></p>
 <a id="writing-proper-tests-in-elixir"></a><h2>Writing PropEr tests in Elixir</h2>
 <p>To explain writing PropEr tests (named “properties”) in Elixir, let’s take <a href="http://propertesting.com/book_stateless_properties.html#_writing_properties" title="">an example from PropEr testing</a>. A property of a function named <code class="inline">biggest/1</code> is that the returned value is equal to the biggest value in the passed list.</p>
@@ -53,14 +52,14 @@ defmodule BiggestProp do
   # ...
 end</code></pre>
 <ol>
-<li>The <code class="inline">:proper</code> and <code class="inline">:proper_types</code> modules are imported manually instead of including the <code class="inline">proper.hrl</code> header file, which is a mostly <a href="https://github.com/manopapad/proper/blob/master/include/proper.hrl" title="">a list of imports</a> itself.
+<li>The <code class="inline">BiggestProp</code> module imports <code class="inline">:proper</code> and <code class="inline">:proper_types</code> manually instead of including the <code class="inline">proper.hrl</code> header file.
 </li>
-<li>Elixir <a href="https://groups.google.com/forum/#!topic/elixir-lang-talk/VbGTz7rKebM" title="">doesn’t support Erlang’s macros</a>, so <code class="inline">:proper.forall/2</code> is called directly.
+<li>Elixir <a href="https://groups.google.com/forum/#!topic/elixir-lang-talk/VbGTz7rKebM" title="">doesn’t support Erlang’s macros</a>, so it calls <code class="inline">:proper.forall/2</code> directly.
 </li>
-<li>Although Erlang’s <code class="inline">lists</code> module would work, <code class="inline">Enum.sort/1</code> and <code class="inline">List.last/1</code> are used as trusted functions to test the implementation.
+<li>Although Erlang’s <code class="inline">lists</code> module would work, it uses <code class="inline">Enum.sort/1</code> and <code class="inline">List.last/1</code> as trusted functions to test the implementation.
 </li>
 </ol>
-<p>With a <a href="https://github.com/jeffkreeftmeijer/mix_proper_example/blob/a09d6ac1bc800ae3f77a105c76f8db44d9b8d5ce/test/biggest_prop.exs#L19-L27" title="">working implementation</a>, and <a href="https://hex.pm/packages/proper" title="">:proper</a> included in the project’s dependencies, the property can be run in IEx by requiring the test file manually and running the property through <code class="inline">:proper.quickcheck/1</code>.</p>
+<p>With a <a href="https://github.com/jeffkreeftmeijer/mix_proper_example/blob/a09d6ac1bc800ae3f77a105c76f8db44d9b8d5ce/test/biggest_prop.exs#L19-L27" title="">working implementation</a>, and <a href="https://hex.pm/packages/proper" title="">:proper</a> included in the project’s dependencies, the property runs in IEx by requiring the test file manually and running the property through <code class="inline">:proper.quickcheck/1</code>.</p>
 <pre><code class=" language-">$ iex -S mix
 iex(1)&gt; Kernel.ParallelRequire.files([&quot;test/biggest_prop.exs&quot;])
 [BiggestProp]
@@ -69,7 +68,7 @@ iex(2)&gt; :proper.quickcheck(BiggestProp.prop_biggest())
 OK: Passed 100 test(s).
 true</code></pre>
 <a id="rebar3_proper-and-mix_proper"></a><h2>rebar3_proper and mix_proper</h2>
-<p>Although that worked, it would be nice to have a command to quickly run all tests in a Mix project. For Erlang, there’s a library named <a href="https://github.com/ferd/rebar3_proper" title="">rebar3_proper</a> that does just that by adding the <code class="inline">rebar3 proper</code> command.</p>
+<p>Although that worked, it would be nice to have a command to run all tests in a Mix project. For Erlang, there’s a library named <a href="https://github.com/ferd/rebar3_proper" title="">rebar3_proper</a> that does just that by adding the <code class="inline">rebar3 proper</code> command.</p>
 <pre><code class=" language-">$ rebar3 proper
 ===&gt; Testing prop_biggest:prop_biggest()
 ....................................................................................................
@@ -89,7 +88,7 @@ OK: Passed 100 test(s).
 
   # ...
 end</code></pre>
-<p>Using “test/**/*_prop.exs” as a wildcard pattern, the paths for all property-based testing files in the test directory are found. Being .exs files, they are not compiled, so they need to be required manually when they’re needed. <a href="https://github.com/elixir-lang/elixir/blob/df7e0ca55cd03e3d46f426c7cd02fd25dcf2df87/lib/mix/lib/mix/compilers/test.ex#L50" title="">Mix’s own test task uses <code class="inline">Kernel.ParallelRequire.files/1-2</code></a>, which takes a list of filenames, includes the modules in the files and returns the names of the newly included modules.</p>
+<p>Using “test/**/*_prop.exs” as a wildcard pattern, the task finds the paths for all property-based testing files in the test directory. Being .exs files, they are not compiled, so they’re required manually when they’re needed. <a href="https://github.com/elixir-lang/elixir/blob/df7e0ca55cd03e3d46f426c7cd02fd25dcf2df87/lib/mix/lib/mix/compilers/test.ex#L50" title="">Mix’s own test task uses <code class="inline">Kernel.ParallelRequire.files/1-2</code></a>, which takes a list of filenames, includes the modules in the files and returns the names of the newly included modules.</p>
 <pre><code class="elixir language-elixir">defmodule Mix.Tasks.Proper do
   use Mix.Task
 
@@ -108,7 +107,7 @@ end</code></pre>
 
   # ...
 end</code></pre>
-<p>Using the list of included modules, their property functions are found using the <code class="inline">__info__/1</code> function. Functions without the proper name or an arity other than 0 get <a href="https://github.com/jeffkreeftmeijer/mix_proper/blob/fda1e4b19c6aabdf856b7d4948102409e0a5c9fc/lib/mix/tasks/proper.ex#L30-L35" title="">filtered out</a>. The remaining functions in the list are called using <code class="inline">:erlang.apply/3</code>, and their results are passed to <code class="inline">:proper.quickcheck/1</code>, which runs the tests.</p>
+<p>The task uses the list of included modules to find their properties using the <code class="inline">__info__/1</code> function. Functions without the proper name or an arity other than 0 get <a href="https://github.com/jeffkreeftmeijer/mix_proper/blob/fda1e4b19c6aabdf856b7d4948102409e0a5c9fc/lib/mix/tasks/proper.ex#L30-L35" title="">filtered out</a>. It then calls the remaining functions in the list using <code class="inline">:erlang.apply/3</code>, and passes their results to <code class="inline">:proper.quickcheck/1</code>, to runs the tests.</p>
 <pre><code class=" language-">$ mix proper
 ....................................................................................................
 OK: Passed 100 test(s).</code></pre>
