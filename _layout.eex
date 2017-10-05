@@ -4,6 +4,7 @@
 <title><%= @title || "Jeff Kreeftmeijer" %></title>
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="description" content="<%= @description || "Jeff Kreeftmeijer is an Elixir/Ruby programmer, writing (about) software at AppSignal in Amsterdam." %>">
+<meta name="author" content="Jeff Kreeftmeijer">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
 <style><%= File.read!("enough.css/enough.min.css") %><%= File.read!("ad.min.css") %>nav{display:flex;justify-content:space-between}</style>
