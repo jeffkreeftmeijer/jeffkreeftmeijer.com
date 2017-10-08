@@ -24,6 +24,18 @@ end %>
 By <a href="/" rel="author"><%= attr(:author) %></a>
 
 <%= content %>
+
+<% unless !footnotes? || attr?(:nofootnotes) %>
+  <div id="footnotes">
+    <hr>
+    <% footnotes.each do |fn| %>
+      <div class="footnote" id="_footnote_<%= fn.index %>">
+        <a href="#_footnoteref_<%= fn.index %>"><%= fn.index %></a>. <%= fn.text %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <hr/>
 <nav>
   <a href="/" rel="author">Jeff Kreeftmeijer</a>
