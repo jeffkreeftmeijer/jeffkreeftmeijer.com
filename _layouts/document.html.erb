@@ -1,3 +1,4 @@
+<% require 'time' %>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8"/>
@@ -19,7 +20,25 @@ end %>
 <meta name="twitter:description" content="<%= attr(:description) %>">
 <meta name="twitter:image" content="<%= attr(:image) %>">
 <% end %>
-
+<% if attr?(:url) %><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "<%= attr(:url) %>"
+  },
+  "headline": "<%= doctitle %>",
+  "image": <%= [attr(:image)].inspect %>,
+  "datePublished": "<%= Date.parse(attr(:revdate)).iso8601 %>",
+  "dateModified": "<%= Time.parse(attr(:docdatetime)).utc.iso8601 %>",
+  "author": {
+    "@type": "Person",
+    "name": "Jeff Kreeftmeijer"
+  },
+  "description": "<%= attr(:description) %>"
+}
+</script><% end %>
 <h1><%= @header.title %></h1>
 By <a href="/" rel="author"><%= attr(:author) %></a>
 
