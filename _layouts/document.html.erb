@@ -18,7 +18,7 @@ end %>
 <meta name="twitter:creator" content="@jkreeftmeijer">
 <meta name="twitter:title" content="<%= doctitle %>">
 <meta name="twitter:description" content="<%= attr(:description) %>">
-<meta name="twitter:image" content="<%= attr(:image) %>">
+<meta name="twitter:image" content="<%= image_uri(attr(:image), :url) %>">
 <% end %>
 <% if attr?(:url) %><script type="application/ld+json">
 {
@@ -29,7 +29,7 @@ end %>
     "@id": "<%= attr(:url) %>"
   },
   "headline": "<%= doctitle %>",
-  "image": <%= [attr(:image)].inspect %>,
+  "image": <%= [image_uri(attr(:image), :url)].inspect %>,
   "datePublished": "<%= Date.parse(attr(:revdate)).iso8601 %>",
   "dateModified": "<%= Time.parse(attr(:docdatetime)).utc.iso8601 %>",
   "author": {
