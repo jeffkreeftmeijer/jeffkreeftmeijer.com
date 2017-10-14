@@ -7,8 +7,7 @@
 <meta name="author" content="Jeff Kreeftmeijer">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
-<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}blockquote{font-style:italic}code,kbd,pre{font:.8em/1.4 SF Mono,Monaco,monospace;border-radius:3px;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}
-aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside div{margin-left:22em;width:130px}aside a{text-decoration:none;color:slategray;font-size:0.7em;display:block;margin-bottom:1em}aside .carbon-poweredby{font-style:italic}nav{display:flex;justify-content:space-between}</style>
+<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}code,kbd,pre{font:.8em/1.4 SF Mono,Monaco,monospace;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}blockquote{font-style:italic}aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside div{margin-left:22em;width:130px}aside a{text-decoration:none;color:slategray;font-size:0.7em;display:block;margin-bottom:1em}aside .carbon-poweredby{font-style:italic}nav{display:flex;justify-content:space-between}</style>
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@jkreeftmeijer">
@@ -17,104 +16,186 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
 <meta name="twitter:description" content="It's impossible to predict if you'll have time to work on your open source project in the future, but there are ways to minimize the amount of maintenance it requires.">
 <meta name="twitter:image" content="https://jeffkreeftmeijer.com/open-source-maintainability/notifications.png">
 
-<a id="keeping-open-source-projects-maintainable"></a><h1>Keeping open source projects maintainable</h1>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jeffkreeftmeijer.com/open-source-maintainability/"
+  },
+  "headline": "Keeping open source projects maintainable",
+  "image": ["https://jeffkreeftmeijer.com/open-source-maintainability/notifications.png"],
+  "datePublished": "2017-09-19",
+  "dateModified": "2017-10-14T09:14:21Z",
+  "author": {
+    "@type": "Person",
+    "name": "Jeff Kreeftmeijer"
+  },
+  "description": "It's impossible to predict if you'll have time to work on your open source project in the future, but there are ways to minimize the amount of maintenance it requires."
+}
+</script>
+<h1>Keeping open source projects maintainable</h1>
+By <a href="/" rel="author">Jeff Kreeftmeijer</a>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
 <p>If your open source project gains popularity, it will stay included in other
-people’s projects and workflows for years. It’s impossible to predict if you’ll
+people&#8217;s projects and workflows for years. It&#8217;s impossible to predict if you&#8217;ll
 have time to maintain your work in the future, but there are ways to minimize
 the amount of maintenance your project requires to remain useful.</p>
-<a id="dont-add-or-merge-features-you-wont-use-yourself"></a><h2>Don’t add or merge features you won’t use yourself</h2>
-<blockquote><p>It didn’t take long to add support for another database management
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="don-t-add-or-merge-features-you-won-t-use-yourself">Don&#8217;t add or merge features you won&#8217;t use yourself</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>It didn&#8217;t take long to add support for another database management
 system into your background job library. You spent an evening getting it to
 work, and fifteen minutes here and there to fix some issues in the weeks
-after releasing it. You don’t use that database yourself, but you have some
-users who do, and it doesn’t take long to get it set up when somebody reports
+after releasing it. You don&#8217;t use that database yourself, but you have some
+users who do, and it doesn&#8217;t take long to get it set up when somebody reports
 a bug.</p>
+</div>
+<div class="paragraph">
 <p>After a while, an issue comes up. Everything works for the database you use,
-but it’s affecting the one you added later. You don’t have a lot of time or
+but it&#8217;s affecting the one you added later. You don&#8217;t have a lot of time or
 motivation to fix it and setting up the database takes a while. The issue sits
 there for a couple of weeks until somebody else sends a pull request. You
-understand most of the fix, the code looks okay and you’re glad the bug is
+understand most of the fix, the code looks okay and you&#8217;re glad the bug is
 solved, so you merge it in.</p>
+</div>
+<div class="paragraph">
 <p>When another issue comes in months later, you have a bigger problem than
-before. You still don’t have a lot of time to work on it, and you have code in
-your project you didn’t completely understand back when you merged it in. Let
+before. You still don&#8217;t have a lot of time to work on it, and you have code in
+your project you didn&#8217;t completely understand back when you merged it in. Let
 alone now.</p>
+</div>
 </blockquote>
+</div>
+<div class="paragraph">
 <p>Instead of merging new features or implementing them yourself, allow for easy
-extension. Consider separating your project’s database layer into an adapter
-that’s easy to swap out for something else. If somebody needs your library to
+extension. Consider separating your project&#8217;s database layer into an adapter
+that&#8217;s easy to swap out for something else. If somebody needs your library to
 run on MongoDB, for example, they can write an adapter themselves.</p>
-<p>Don’t be afraid to tell contributors to maintain their fork instead of merging
-their pull request. If a feature doesn’t help your own use case, it doesn’t
+</div>
+<div class="paragraph">
+<p>Don&#8217;t be afraid to tell contributors to maintain their fork instead of merging
+their pull request. If a feature doesn&#8217;t help your own use case, it doesn&#8217;t
 need to be in your project. This can be difficult if your users are
-requesting a something you don’t need, but it’ll make your project easier to
+requesting a something you don&#8217;t need, but it&#8217;ll make your project easier to
 maintain in the long run.</p>
-<a id="drop-support-for-old-versions-of-your-dependencies"></a><h2>Drop support for old versions of your dependencies</h2>
-<blockquote><p>You wrote a plug-in for your favorite editor that adds some useful
-functionality. It’s a couple of lines, but wrapping it in a plug-in allows you
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="drop-support-for-old-versions-of-your-dependencies">Drop support for old versions of your dependencies</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>You wrote a plug-in for your favorite editor that adds some useful
+functionality. It&#8217;s a couple of lines, but wrapping it in a plug-in allows you
 and others to install it using a plug-in manager.</p>
+</div>
+<div class="paragraph">
 <p>A new version of the editor comes out, which adds some functionality that
 makes your plug-in even more useful. You update it to take advantage of that
 new feature and made sure not to break backward compatibility. It has a
 version check that loads the original implementation when running in an older
 version of the editor.</p>
-<p>After a couple of years, you’d like to change the plug-in to add a new feature
-or handle some use case better. When you open the code, you can’t find a way
+</div>
+<div class="paragraph">
+<p>After a couple of years, you&#8217;d like to change the plug-in to add a new feature
+or handle some use case better. When you open the code, you can&#8217;t find a way
 to get this new feature working for the older versions of the editor.</p>
-<p>You’re not sure if your changes will break anything, and you don’t have the
+</div>
+<div class="paragraph">
+<p>You&#8217;re not sure if your changes will break anything, and you don&#8217;t have the
 ancient editor version running on your machine. Although your project is
-popular, you don’t know if anyone is still using the old version of the
+popular, you don&#8217;t know if anyone is still using the old version of the
 editor.</p>
+</div>
 </blockquote>
+</div>
+<div class="paragraph">
 <p>Whenever you start using a new version of a dependency, consider dropping
 support for older versions and bumping your major version number. If your users
 are tied to a previous version of your dependency, they should lock to an older
 version of your project.  Dropping backward compatibility allows you to remove
-conditional code that’s difficult to develop on.</p>
-<p>Don’t backport new features. Since you have limited resources you want your
+conditional code that&#8217;s difficult to develop on.</p>
+</div>
+<div class="paragraph">
+<p>Don&#8217;t backport new features. Since you have limited resources you want your
 users to switch to new versions as quickly as possible, even if that means
-they’ll have to spend time updating their dependencies.</p>
-<a id="hand-over-projects-if-you-cant-help-anymore"></a><h2>Hand over projects if you can’t help anymore</h2>
-<blockquote><p>You maintain an add-on for some kind of test framework, that’s specifically
+they&#8217;ll have to spend time updating their dependencies.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hand-over-projects-if-you-can-t-help-anymore">Hand over projects if you can&#8217;t help anymore</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>You maintain an add-on for some kind of test framework, that&#8217;s specifically
 suited for a problem you have. Since others have the same problem, your
-project is used by hundreds of people. You haven’t implemented anything you
-don’t use yourself, and you quickly drop support for old versions of the test
+project is used by hundreds of people. You haven&#8217;t implemented anything you
+don&#8217;t use yourself, and you quickly drop support for old versions of the test
 framework.</p>
+</div>
+<div class="paragraph">
 <p>After a while, you start using another test framework on a daily basis. Maybe
-because a new project at your job uses it, or your new situation doesn’t have
+because a new project at your job uses it, or your new situation doesn&#8217;t have
 that problem your add-on fixed. You stop using your add-on.</p>
-<p>Your project still provides value for its users, but you don’t have time to
-reproduce issues you haven’t run into yourself. There’s a handful of people
+</div>
+<div class="paragraph">
+<p>Your project still provides value for its users, but you don&#8217;t have time to
+reproduce issues you haven&#8217;t run into yourself. There&#8217;s a handful of people
 excited about your project, so you usually receive a pull request when
 something breaks.</p>
+</div>
+<div class="paragraph">
 <p>After merging pull requests for a while, the code starts to lack structure
-because there’s nobody actively maintaining the project. The code becomes
-increasingly difficult to understand, and it’s becoming difficult to even
+because there&#8217;s nobody actively maintaining the project. The code becomes
+increasingly difficult to understand, and it&#8217;s becoming difficult to even
 press the merge button without breaking the build.</p>
+</div>
 </blockquote>
-<p>If you stop using your own project, you’re not fit to maintain it anymore. You
-don’t have to do all the work, but you need to be among the first to know when
-something breaks. If you don’t, you’re hurting the project more than you’re
+</div>
+<div class="paragraph">
+<p>If you stop using your own project, you&#8217;re not fit to maintain it anymore. You
+don&#8217;t have to do all the work, but you need to be among the first to know when
+something breaks. If you don&#8217;t, you&#8217;re hurting the project more than you&#8217;re
 helping.</p>
+</div>
+<div class="paragraph">
 <p>Hand the project over to somebody that actively uses your project and knows the
-code. If you can’t, open an issue in your tracker to announce you’re looking for
-a new maintainer. Explain that you can’t help anymore and mention that you won’t
+code. If you can&#8217;t, open an issue in your tracker to announce you&#8217;re looking for
+a new maintainer. Explain that you can&#8217;t help anymore and mention that you won&#8217;t
 be answering issues or reviewing pull requests.</p>
+</div>
+</div>
+</div>
 
-<aside>
-  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
-</aside>
+
 
 <hr/>
 <nav>
-  
-    <a href="/" rel="author">Jeff Kreeftmeijer</a>
-  
+  <a href="/" rel="author">Jeff Kreeftmeijer</a>
   <a href="/archive/">Archive</a>
   <a href="https://twitter.com/jkreeftmeijer">Twitter</a>
   <a href="https://github.com/jeffkreeftmeijer">Github</a>
   <a href="/feed.xml">RSS</a>
 </nav>
+
+<aside>
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
+</aside>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
