@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8"/>
-<title>Vim's absolute, relative and hybrid line numbers</title>
+<title>Vim&#8217;s absolute, relative and hybrid line numbers</title>
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="description" content="Besides regular absolute line numbers, Vim has relative and “hybrid” modes to help navigate around files.">
 <meta name="author" content="Jeff Kreeftmeijer">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
-<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}blockquote{font-style:italic}code,kbd,pre{font:.8em/1.4 SF Mono,Monaco,monospace;border-radius:3px;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}
-aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside div{margin-left:22em;width:130px}aside a{text-decoration:none;color:slategray;font-size:0.7em;display:block;margin-bottom:1em}aside .carbon-poweredby{font-style:italic}nav{display:flex;justify-content:space-between}</style>
+<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}code,kbd,pre{font:.8em/1.4 SF Mono,Monaco,monospace;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}blockquote{font-style:italic}aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside div{margin-left:22em;width:130px}aside a{text-decoration:none;color:slategray;font-size:0.7em;display:block;margin-bottom:1em}aside .carbon-poweredby{font-style:italic}nav{display:flex;justify-content:space-between}</style>
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@jkreeftmeijer">
 <meta name="twitter:creator" content="@jkreeftmeijer">
-<meta name="twitter:title" content="Vim's absolute, relative and hybrid line numbers">
+<meta name="twitter:title" content="Vim&#8217;s absolute, relative and hybrid line numbers">
 <meta name="twitter:description" content="Besides regular absolute line numbers, Vim has relative and “hybrid” modes to help navigate around files.">
 <meta name="twitter:image" content="https://jeffkreeftmeijer.com/vim-number/toggle.gif">
 
@@ -25,15 +24,10 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
     "@type": "WebPage",
     "@id": "https://jeffkreeftmeijer.com/vim-number/"
   },
-  "headline": "Vim’s absolute, relative and hybrid line numbers",
-  "image": [
-    "https://jeffkreeftmeijer.com/vim-number/toggle.gif",
-    "https://jeffkreeftmeijer.com/vim-number/hybrid.gif",
-    "https://jeffkreeftmeijer.com/vim-number/relative.gif",
-    "https://jeffkreeftmeijer.com/vim-number/absolute.gif"
-   ],
-  "datePublished": "2012-01-30T0-:00:00+00:00",
-  "dateModified": "2017-10-08T09:00:00+00:00",
+  "headline": "Vim&#8217;s absolute, relative and hybrid line numbers",
+  "image": ["https://jeffkreeftmeijer.com/vim-number/toggle.gif", "https://jeffkreeftmeijer.com/vim-number/hybrid.gif", "https://jeffkreeftmeijer.com/vim-number/relative.gif", "https://jeffkreeftmeijer.com/vim-number/absolute.gif"],
+  "datePublished": "2012-01-30",
+  "dateModified": "2017-10-15T11:24:56Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -41,75 +35,152 @@ aside{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-1
   "description": "Besides regular absolute line numbers, Vim has relative and “hybrid” modes to help navigate around files."
 }
 </script>
+<h1>Vim&#8217;s absolute, relative and hybrid line numbers</h1>
+By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 
-<a id="vims-absolute-relative-and-hybrid-line-numbers"></a><h1>Vim’s absolute, relative and hybrid line numbers</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
 <p>Besides regular absolute line numbers, Vim has relative and “hybrid” modes to help navigate around files. With some autocommands, Vim can even toggle between line number modes automatically when you switch files or enter insert mode.</p>
-<a id="absolute-line-numbers"></a><h2>Absolute line numbers</h2>
-<p>Using the <code class="inline">number</code> option, Vim sets up absolute line numbers to show the line number for each line in the file you’re working on. </p>
-<p>
-  <video src="https://jeffkreeftmeijer.com/vim-number/absolute.mp4" autoplay loop muted playsinline>
-  </video>
-</p><pre><code class=" language-">:set number
-:set nonumber  &quot; turn line numbers off
-:set number!   &quot; toggle line numbers</code></pre>
-<p>Besides being useful for finding a line from a stacktrace or a test result, you can use line numbers to help you quickly jump around. For example, if you want to go to the tenth line in your file, you’d type <kbd>esc</kbd> if you’re in insert mode and then <code class="inline">:10</code> to move to the correct line.</p>
-<a id="relative-line-numbers"></a><h2>Relative line numbers</h2>
-<p>With the <code class="inline">relativenumber</code> option, each line in your file is numbered relative to the line you’re currently on. The current line is marked 0, the ones above and below it are marked 1, and so on.</p>
-<p>
-  <video src="https://jeffkreeftmeijer.com/vim-number/relative.mp4" autoplay loop muted playsinline>
-  </video>
-</p><pre><code class=" language-">:set relativenumber
-:set norelativenumber  &quot; turn relative line numbers off
-:set relativenumber!   &quot; toggle relative line numbers</code></pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="absolute-line-numbers">Absolute line numbers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using the <code>number</code> option, Vim sets up absolute line numbers to show the line number for each line in the file you&#8217;re working on.</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<video src="https://jeffkreeftmeijer.com/vim-number/absolute.mp4" poster="https://jeffkreeftmeijer.com/vim-number/absolute.gif" autoplay muted playsinline loop>
+</video>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>:set number
+:set nonumber  " turn line numbers off
+:set number!   " toggle line numbers</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Besides being useful for finding a line from a stacktrace or a test result, you can use line numbers to help you quickly jump around. For example, if you want to go to the tenth line in your file, you&#8217;d type <kbd>esc</kbd> if you&#8217;re in insert mode and then <code>:10</code> to move to the correct line.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="relative-line-numbers">Relative line numbers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With the <code>relativenumber</code> option, each line in your file is numbered relative to the line you&#8217;re currently on. The current line is marked 0, the ones above and below it are marked 1, and so on.</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<video src="https://jeffkreeftmeijer.com/vim-number/relative.mp4" poster="https://jeffkreeftmeijer.com/vim-number/relative.gif" autoplay muted playsinline loop>
+</video>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>:set relativenumber
+:set norelativenumber  " turn relative line numbers off
+:set relativenumber!   " toggle relative line numbers</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Like any any command in Vim, the <kbd>j</kbd> and <kbd>k</kbd> (or <kbd>↑</kbd> and <kbd>↓</kbd>) keys can be prefixed with a number. Typing <kbd>5</kbd><kbd>j</kbd> will move the cursor five lines down, for example. If you want to remove seven lines, you can use <kbd>d</kbd><kbd>7</kbd><kbd>d</kbd> without having to switch to visual mode to select the lines first.</p>
+</div>
+<div class="paragraph">
 <p>However, it can be difficult to see how many lines you need to jump to get to where you want to be, rendering this method useless for any jumps over ten lines. Also, absolute line numbers become less useful when working in lenghy files.</p>
-<p>With relative line numbers, you can quickly glance at the number of the line you want to jump to. If it’s thirteen lines up, you press <kbd>1</kbd><kbd>3</kbd><kbd>k</kbd> to get there. To get back to where you came from, you use <kbd>1</kbd><kbd>3</kbd><kbd>j</kbd>.</p>
-<a id="hybrid-line-numbers"></a><h2>“Hybrid” line numbers</h2>
-<p>Since Vim 7.4, you can enable <code class="inline">number</code> and <code class="inline">relativenumber</code> at the same time, to give you <em>hybrid line number mode</em>. All lines will show their relative number, except for the line you’re currently on, which will show its absolute line number.</p>
-<p>
-  <video src="https://jeffkreeftmeijer.com/vim-number/hybrid.mp4" autoplay loop muted playsinline>
-  </video>
-</p><pre><code class=" language-">:set number relativenumber
-:set nonumber norelativenumber  &quot; turn hybrid line numbers off
-:set !number !relativenumber    &quot; toggle hybrid line numbers</code></pre>
-<p>While not strictly relative, hybrid line numbers are what relative line numbers should have been. Instead of having a useless zero on the current line, it uses that space to give you an idea of where you are in the file.<sup><a href="#fn:1" id="fnref:1" class="footnote" title="see footnote">1</a></sup></p>
-<a id="automatic-toggling-between-line-number-modes"></a><h2>Automatic toggling between line number modes</h2>
-<p>Although relative line numbers are helpful when moving around in normal mode, absolute line numbers are more suited for insert mode. When the buffer doesn’t have focus, it’d also be more useful to show absolute line numbers. For example, when running tests from a seperate terminal split, it’d make more sense to be able to see which test is on which absolute line number. </p>
+</div>
+<div class="paragraph">
+<p>With relative line numbers, you can quickly glance at the number of the line you want to jump to. If it&#8217;s thirteen lines up, you press <kbd>1</kbd><kbd>3</kbd><kbd>k</kbd> to get there. To get back to where you came from, you use <kbd>1</kbd><kbd>3</kbd><kbd>j</kbd>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hybrid-line-numbers">“Hybrid” line numbers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since Vim 7.4, you can enable <code>number</code> and <code>relativenumber</code> at the same time, to give you <em>hybrid line number mode</em>. All lines will show their relative number, except for the line you&#8217;re currently on, which will show its absolute line number.</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<video src="https://jeffkreeftmeijer.com/vim-number/hybrid.mp4" poster="https://jeffkreeftmeijer.com/vim-number/hybrid.gif" autoplay muted playsinline loop>
+</video>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>:set number relativenumber
+:set nonumber norelativenumber  " turn hybrid line numbers off
+:set !number !relativenumber    " toggle hybrid line numbers</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>While not strictly relative, hybrid line numbers are what relative line numbers should have been. Instead of having a useless zero on the current line, it uses that space to give you an idea of where you are in the file.<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="automatic-toggling-between-line-number-modes">Automatic toggling between line number modes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Although relative line numbers are helpful when moving around in normal mode, absolute line numbers are more suited for insert mode. When the buffer doesn&#8217;t have focus, it&#8217;d also be more useful to show absolute line numbers. For example, when running tests from a seperate terminal split, it&#8217;d make more sense to be able to see which test is on which absolute line number.</p>
+</div>
+<div class="paragraph">
 <p>Using some autocommands, Vim can switch between line number modes automatically.</p>
-<p>
-  <video src="https://jeffkreeftmeijer.com/vim-number/toggle.mp4" autoplay loop muted playsinline>
-  </video>
-</p><pre><code class=" language-">:set number relativenumber
+</div>
+<div class="videoblock">
+<div class="content">
+<video src="https://jeffkreeftmeijer.com/vim-number/toggle.mp4" poster="https://jeffkreeftmeijer.com/vim-number/toggle.gif" autoplay muted playsinline loop>
+</video>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>:set number relativenumber
 
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END</code></pre>
-<p>In this example, both absolute and relative line numbers are enabled by default, which produces “hybrid” line numbers. When entering insert mode, relative line numbers are turned off, leaving absolute line numbers turned on. This also happens when the buffer loses focus, so you can glance back at it to see which absolute line you were working on, if you need to.</p>
-<p>I’ve been using this way of automatically switching line number modes for years. You can set it up yourself by putting the snippet above in your <code class="inline">~/.vimrc</code>, or use the <a href="https://github.com/jeffkreeftmeijer/vim-numbertoggle">vim-numbertoggle</a> plugin, which does the same thing.</p>
-<div class="footnotes">
-<hr>
-<ol>
-<li id="fn:1"><p>Another way to see which line you’re currently on is Vim’s <code class="inline">ruler</code> option, which shows the current line and column. You can see it in action in the screenshots above, in the bottom right. It’s turned on by default in NeoVim and <a href="https://github.com/tpope/vim-sensible">vim-sensible</a>, but you can also set turn it on yourself using <code class="inline">:set ruler</code>.&nbsp;<a href="#fnref:1" title="return to article" class="reversefootnote">&#x21A9;</a></p>
-</li>
-</ol>
-
 </div>
-<aside>
-  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
-</aside>
+</div>
+<div class="paragraph">
+<p>In this example, both absolute and relative line numbers are enabled by default, which produces “hybrid” line numbers. When entering insert mode, relative line numbers are turned off, leaving absolute line numbers turned on. This also happens when the buffer loses focus, so you can glance back at it to see which absolute line you were working on, if you need to.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ve been using this way of automatically switching line number modes for years. You can set it up yourself by putting the snippet above in your <code>~/.vimrc</code>, or use the <a href="https://github.com/jeffkreeftmeijer/vim-numbertoggle">vim-numbertoggle</a> plugin, which does the same thing.</p>
+</div>
+</div>
+</div>
+
+
+  <div id="footnotes">
+    <hr>
+    
+      <div class="footnote" id="_footnote_1">
+        <a href="#_footnoteref_1">1</a>. Another way to see which line you&#8217;re currently on is Vim&#8217;s <code>ruler</code> option, which shows the current line and column. You can see it in action in the screenshots above, in the bottom right. It&#8217;s turned on by default in NeoVim and <a href="https://github.com/tpope/vim-sensible">vim-sensible</a>, but you can also set turn it on yourself using <code>:set ruler</code>.
+      </div>
+    
+  </div>
+
 
 <hr/>
 <nav>
-  
-    <a href="/" rel="author">Jeff Kreeftmeijer</a>
-  
+  <a href="/" rel="author">Jeff Kreeftmeijer</a>
   <a href="/archive/">Archive</a>
   <a href="https://twitter.com/jkreeftmeijer">Twitter</a>
   <a href="https://github.com/jeffkreeftmeijer">Github</a>
   <a href="/feed.xml">RSS</a>
 </nav>
+
+<aside>
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
+</aside>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

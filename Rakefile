@@ -3,6 +3,7 @@ require 'asciidoctor'
 task :generate do
   {
     '_articles/git-flow/git-flow.adoc' => '_output/git-flow/index.html',
+    '_articles/vim-number/vim-number.adoc' => '_output/vim-number/index.html',
     '_articles/open-source-maintainability/index.adoc' => '_output/open-source-maintainability/index.html',
   }.each do |from, to|
     Asciidoctor.convert_file(
