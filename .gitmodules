@@ -37,3 +37,6 @@
 [submodule "_layouts/html5"]
 	path = _layouts/html5
 	url = git@gist.github.com:04cbb44227b1c62d218187699bd25bff.git
+[submodule "_layouts/amp"]
+	path = _layouts/amp
+	url = git@gist.github.com:95564bc9712e1e8667d3f3292f000e1d.git
