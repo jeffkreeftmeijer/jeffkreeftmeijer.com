@@ -9,7 +9,7 @@ task :generate do
       from,
       {
         to_file: to,
-        template_dir: '_layouts',
+        template_dir: '_layouts/html5',
         safe: 0,
         header_footer: true,
         attributes: {

@@ -34,3 +34,6 @@
 [submodule "_articles/open-source-maintainability"]
 	path = _articles/open-source-maintainability
 	url = git@gist.github.com:aa1d6d6793b592e67b108867115d13f6.git
+[submodule "_layouts/html5"]
+	path = _layouts/html5
+	url = git@gist.github.com:04cbb44227b1c62d218187699bd25bff.git
