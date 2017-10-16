@@ -1,4 +1,4 @@
-aside{
+aside.ad{
   position: absolute;
   top: 2.34em;
   left: 50%;
@@ -6,17 +6,17 @@ aside{
   overflow: hidden;
   z-index: -100;
 }
-aside div{
+aside.ad div{
   margin-left: 22em;
   width: 130px;
 }
-aside a{
+aside.ad a{
   text-decoration: none;
   color: slategray;
   font-size: 0.7em;
   display: block;
   margin-bottom: 1em;
 }
-aside .carbon-poweredby{
+.carbon-poweredby{
   font-style: italic;
 }
