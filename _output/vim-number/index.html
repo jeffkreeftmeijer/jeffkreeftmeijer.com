@@ -57,12 +57,9 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 <div class="paragraph">
 <p>Using the <code>number</code> option, Vim sets up absolute line numbers to show the line number for each line in the file you&#8217;re working on.</p>
 </div>
-<div class="videoblock">
-<div class="content">
+
 <video src="https://jeffkreeftmeijer.com/vim-number/absolute.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/absolute.gif" autoplay muted playsinline loop>
 </video>
-</div>
-</div>
 
 <pre class="highlight"><code>:set number
 :set nonumber  " turn line numbers off
@@ -78,12 +75,9 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 <div class="paragraph">
 <p>With the <code>relativenumber</code> option, each line in your file is numbered relative to the line you&#8217;re currently on. The current line is marked 0, the ones above and below it are marked 1, and so on.</p>
 </div>
-<div class="videoblock">
-<div class="content">
+
 <video src="https://jeffkreeftmeijer.com/vim-number/relative.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/relative.gif" autoplay muted playsinline loop>
 </video>
-</div>
-</div>
 
 <pre class="highlight"><code>:set relativenumber
 :set norelativenumber  " turn relative line numbers off
@@ -105,12 +99,9 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 <div class="paragraph">
 <p>Since Vim 7.4, you can enable <code>number</code> and <code>relativenumber</code> at the same time, to give you <em>hybrid line number mode</em>. All lines will show their relative number, except for the line you&#8217;re currently on, which will show its absolute line number.</p>
 </div>
-<div class="videoblock">
-<div class="content">
+
 <video src="https://jeffkreeftmeijer.com/vim-number/hybrid.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/hybrid.gif" autoplay muted playsinline loop>
 </video>
-</div>
-</div>
 
 <pre class="highlight"><code>:set number relativenumber
 :set nonumber norelativenumber  " turn hybrid line numbers off
@@ -129,12 +120,9 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 <div class="paragraph">
 <p>Using some autocommands, Vim can switch between line number modes automatically.</p>
 </div>
-<div class="videoblock">
-<div class="content">
+
 <video src="https://jeffkreeftmeijer.com/vim-number/toggle.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/toggle.gif" autoplay muted playsinline loop>
 </video>
-</div>
-</div>
 
 <pre class="highlight"><code>:set number relativenumber
 
