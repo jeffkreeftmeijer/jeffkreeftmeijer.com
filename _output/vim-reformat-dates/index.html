@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Find, convert and replace dates with Vim substitutions</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="description" content="By using the date utility from a substitution, Vim can convert all dates in a file to a different format and replace them all at once.">
+<meta name="author" content="Jeff Kreeftmeijer">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+<link rel="alternate" type="application/atom+xml" href="/feed.xml">
+<link rel="amphtml" href="https://jeffkreeftmeijer.com/vim-reformat-dates/amp.html">
+<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%;height:auto}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}code,kbd,pre{font:.8em/1.4 SF Mono,Monaco,monospace;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}blockquote{font-style:italic}td{padding:.5em}aside.ad{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside.ad div{margin-left:22em;width:130px}aside.ad a{text-decoration:none;color:#708090;font-size:.7em;display:block;margin-bottom:1em}.carbon-poweredby{font-style:italic}
+article aside{border: 1px solid lightgrey;padding:0 1em}nav{display:flex;justify-content:space-between}</style>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@jkreeftmeijer">
+<meta name="twitter:creator" content="@jkreeftmeijer">
+<meta name="twitter:title" content="Find, convert and replace dates with Vim substitutions">
+<meta name="twitter:description" content="By using the date utility from a substitution, Vim can convert all dates in a file to a different format and replace them all at once.">
+<meta name="twitter:image" content="https://jeffkreeftmeijer.com/vim-reformat-dates/substitute.png">
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jeffkreeftmeijer.com/vim-reformat-dates/"
+  },
+  "headline": "Find, convert and replace dates with Vim substitutions",
+  "image": ["https://jeffkreeftmeijer.com/vim-reformat-dates/substitute.png"],
+  "datePublished": "2017-10-17",
+  "dateModified": "2017-10-16T18:35:53Z",
+  "author": {
+    "@type": "Person",
+    "name": "Jeff Kreeftmeijer"
+  },
+  "description": "By using the date utility from a substitution, Vim can convert all dates in a file to a different format and replace them all at once."
+}
+</script>
+</head>
+<body>
+<h1>Find, convert and replace dates with Vim substitutions</h1>
+By <a href="/" rel="author">Jeff Kreeftmeijer</a>
+
+<article>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vim&#8217;s substitution command is a powerful way to make changes to text files.
+Besides finding and replacing text using regular expressions, substitutions can
+call out to external programs for more complicated replacements. By using the
+<code>date</code> utility from a substitution, Vim can convert all dates in a file to a
+different format and replace them all at once.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://jeffkreeftmeijer.com/vim-reformat-dates/substitute.png" alt="Finding" width="converting and replacing dates with Vim substitutions" height="1490">
+</div>
+</div>
+
+<small>The input file</small>
+<pre class="highlight"><code class="html language-html">&lt;article&gt;
+  &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
+  &lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;
+&lt;/article&gt;
+
+&lt;article&gt;
+  &lt;h1&gt;Property-based testing in Elixir using PropEr&lt;/h1&gt;
+  &lt;time datetime="2017-08-22"&gt;2017-08-22&lt;/time&gt;
+&lt;/article&gt;
+
+&lt;article&gt;
+  &lt;h1&gt;git is not a git command&lt;/h1&gt;
+  &lt;time datetime="2015-10-01"&gt;2015-10-01&lt;/time&gt;
+&lt;/article&gt;
+
+...</code></pre>
+<div class="paragraph">
+<p>The <em>input file</em> is an HTML page with a list of articles. Each article includes
+a <code>&lt;time&gt;</code> tag with a value and a datetime attribute to show the publication
+date. We need to convert the dates&#8217; values to a friendlier format that
+includes the full month name (&#8220;September 19, 2017&#8221;), while keeping the
+datetime attributes in their current format.</p>
+</div>
+
+<small>The result: articles with reformatted dates</small>
+<pre class="highlight"><code class="html language-html">&lt;article&gt;
+  &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
+  &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;/time&gt;
+&lt;/article&gt;
+
+&lt;article&gt;
+  &lt;h1&gt;Property-based testing in Elixir using PropEr&lt;/h1&gt;
+  &lt;time datetime="2017-08-22"&gt;August 22, 2017&lt;/time&gt;
+&lt;/article&gt;
+
+&lt;article&gt;
+  &lt;h1&gt;git is not a git command&lt;/h1&gt;
+  &lt;time datetime="2015-10-01"&gt;October 01, 2015&lt;/time&gt;
+&lt;/article&gt;
+...</code></pre>
+<div class="paragraph">
+<p>The input file has more then forty articles, so replacing them all by hand
+would be a lot of error-prone work. Instead, we write a substitution that
+finds all dates in the file and replaces them with a reformatted value.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="finding-the-dates">Finding the dates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first step in replacing the dates is finding where they are in the input
+file and making sure not to match the ones in the datetime attributes.</p>
+</div>
+<aside class="sidebarblock">
+<h3>Finding patterns</h3>
+<div class="paragraph">
+<p>Vim searches for text by pressing <kbd>esc</kbd> to get to normal mode, then
+<kbd>/</kbd>, followed by a <em>search pattern</em>. Type <kbd>esc</kbd> <code>/2017</code> to find all
+occurrences of "2017" in a file.</p>
+</div>
+<div class="paragraph">
+<p>The dot (<code>.</code>) is a wildcard that matches any single character. Searching for
+<code>20..</code> (<kbd>esc</kbd> <code>/20..</code>) matches &#8220;2017&#8221;, but also &#8220;2015&#8221;, &#8220;2078&#8221;,
+&#8220;20a%&#8221;, and &#8220;20°c&#8221;.</p>
+</div>
+</aside>
+<div class="paragraph">
+<p>To find all dates in the file, we could use <code>....-..-..</code> (<kbd>esc</kbd>
+<code>/....-..-..</code>) as our search pattern to match the date format. However, this
+pattern&#8217;s results will include all matching dates in the file, including the
+ones in the <code>&lt;time&gt;</code> tags&#8217; datetime attributes.</p>
+</div>
+
+<pre class="highlight"><code class="html language-html">&lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;</code></pre>
+<div class="paragraph">
+<p>In the input file, all <code>&lt;time&gt;</code> values are immediately followed by the
+less-than sign from the closing <code>&lt;/time&gt;</code> tag. To prevent the datetimes from
+the attributes to be included in the results, we include the less-than sign in
+the search pattern.</p>
+</div>
+
+<pre>....-..-..&lt;</pre>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reformatting-dates-from-the-command-line">Reformatting dates from the command line</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We need the month&#8217;s full name in the date replacements, so we can&#8217;t reorder the
+input value (&#8220;2017-09-19&#8221;) to get the result we want. Instead, we need to
+call out to an external utility that knows month names and can convert between
+date formats.</p>
+</div>
+<aside class="sidebarblock">
+<h3>The <code>date</code> utility</h3>
+<div class="paragraph">
+<p>The <code>date</code> utility returns the current date and time. The desired <em>output
+format</em> is passed in through a trailing argument that starts with a plus sign.
+It needs to be wrapped in quotes if it contains any whitespace.</p>
+</div>
+
+<pre>$ date
+Thu Oct 17 09:41:10 CEST 2017
+$ date +%Y-%m-%d
+2017-10-17
+$ date +"%B %d, %Y"
+October 17, 2017</pre>
+<div class="paragraph">
+<p>On macOS (or other derivatives of BSD) passing a date to the <code>date</code> utility
+overwrites the system date unless the <code>-j</code> flag is passed. With that flag, the
+utility allows passing a test date to be reformatted. The test date needs to be
+formatted as <code>[[[mm]dd]HH]MM[[cc]yy][.ss]</code> by default or we can pass a custom
+<em>input format</em> with <code>-f</code>.</p>
+</div>
+
+<pre>$ date -j110200361991.35
+Sat Nov  2 00:36:35 CET 1991
+$ date -jf %Y-%m-%d 1991-11-02
+Sat Nov  2 09:41:27 CET 1991</pre>
+<div class="paragraph">
+<p>GNU <code>date</code> uses the <code>--date</code> argument to pass in dates, and it figures out the
+input format on its own.</p>
+</div>
+
+<pre># date --date=1991-11-02
+Sat Nov  2 00:00:00 UTC 1991</pre>
+<div class="paragraph">
+<p>By setting the input and output format, we can use the <code>date</code> utility to
+reformat dates.</p>
+</div>
+
+<pre>$ date -jf %Y-%m-%d 1991-11-02 +"%B %d, %Y" # BSD
+November 02, 1991</pre>
+
+<pre># date --date=1991-11-02 +"%B %d, %Y" # GNU
+November 02, 1991</pre>
+</aside>
+<div class="paragraph">
+<p>We reformat each match of our search pattern to our desired format (&#8220;September
+19, 2017&#8221;) with the <code>date</code> utility. Because we include the trailing less-than
+sign in the search pattern, the dates we use for the conversion will end
+with one too (&#8220;2017-09-19&lt;&#8221;). We append the less-than sign to the input
+format to match the results from the search pattern (<code>"%Y-%m-%d&lt;"</code>).</p>
+</div>
+<div class="paragraph">
+<p>The output format is <code>"%B %d, %Y&lt;"</code> to produce the month&#8217;s name, the date&#8217;s
+number, a comma and the year number, followed by the less-than sign (<code>September
+19, 2017&lt;</code>) to keep the HTML intact.</p>
+</div>
+<div class="paragraph">
+<p>With these formats the <code>date</code> utility reformats <code>1992-11-02&lt;</code> to <code>November 02,
+1991&lt;</code>.</p>
+</div>
+
+<pre>$ date -jf "%Y-%m-%d&lt;" "1991-11-02&lt;" +"%B %d, %Y&lt;"
+November 02 1991&lt;</pre>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>-j</code></dt>
+<dd>
+<p>Don&#8217;t try to set the system date</p>
+</dd>
+<dt class="hdlist1"><code>-f "%Y-%m-%d&lt;"</code></dt>
+<dd>
+<p>Use the passed input format instead of the default. In this case
+<code>"%Y-%m-%d&lt;"</code> to match the input format (<code>1991-11-02&lt;</code>).</p>
+</dd>
+<dt class="hdlist1"><code>"1991-11-02&lt;"</code></dt>
+<dd>
+<p>An example date to be parsed using the input format passed to <code>-f</code>.</p>
+</dd>
+<dt class="hdlist1"><code>+"%B %d, %Y&lt;"</code></dt>
+<dd>
+<p>The output format, which produces <code>November 02, 1991&lt;</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="calling-out-to-external-utilities-from-substitutions">Calling out to external utilities from substitutions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We know how to find all dates in the file, and how to convert a date to another
+format from the command line. To replace all found dates with a reformatted
+version from the <code>date</code> utility, we need to run an <em>expression</em> from a
+<em>substitution</em>.</p>
+</div>
+<aside id="substitutions" class="sidebarblock">
+<h3>Substitutions</h3>
+<div class="paragraph">
+<p>Vim&#8217;s substitutions can find and replace text. To replace &#8220;November&#8221; with
+&#8220;October&#8221; throughout a file, we execute a substitution where the pattern
+is <code>November</code> and the <em>substitute string</em> is <code>October</code>.</p>
+</div>
+
+<pre>:%s/November/October/gc</pre>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">ℹ️</div>
+</td>
+<td class="content">
+Options can be passed after the last slash. In this case, we use
+<code>g[lobal]</code> to make the substitution <em>global</em>, meaning it will replace all
+occurrences of the pattern in the file. The second option is <code>c[onfirm]</code>, which
+will ask for confirmation before executing each substitution.
+</td>
+</tr>
+</table>
+</div>
+</aside>
+<div id="hardcoded-substitution" class="paragraph">
+<p>Using the search pattern we prepared earlier, we can find and replace all date
+values from the input file with a substitution. For example, we could overwrite
+all dates with a hardcoded value:</p>
+</div>
+
+<pre>:%s/....-..-..&lt;/November 2, 1991&lt;/gc</pre>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>....-..-..&lt;</code></dt>
+<dd>
+<p>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</p>
+</dd>
+<dt class="hdlist1"><code>November 2, 1991&lt;</code></dt>
+<dd>
+<p>The literal substitute string to replace the dates with a hardcoded one.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Instead of inserting a hardcoded substitute string, we need to run an
+expression for each match to get its replacement.</p>
+</div>
+<aside class="sidebarblock">
+<h3>Expressions</h3>
+<div class="paragraph">
+<p>When a substitute string starts with <code>\=</code>, Vim evaluates it as an expression.</p>
+</div>
+<div class="paragraph">
+<p>We can call Vim&#8217;s built in functions from an expression. To replace all numbers
+in a file with the number of the line they&#8217;re on, we use the <code>line()</code> function
+from an expression in the substitute string.</p>
+</div>
+
+<pre>%s/\d\+/\=line('.')/gc</pre>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>\d\+</code></dt>
+<dd>
+<p>The pattern to match all numbers (<code>\d</code>) in the file. Multi-digit numbers (42,
+785, 14281) are matched as one number by using <code>\+</code>.</p>
+</dd>
+<dt class="hdlist1"><code>\=line('.')</code></dt>
+<dd>
+<p>The substitute string with an expression (<code>\=</code>) to call the <code>line()</code>
+function. Passing <code>'.'</code> as the function&#8217;s argument returns the current cursor
+position, which is used to replace the match.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Vim provides the <code>system()</code> function to call out to an external command and use
+the result as the replacement string. To replace all numbers in a file with a
+random number, we call <code>echo -n $RANDOM</code> with the <code>system()</code> function.</p>
+</div>
+
+<pre>:%s/\d\+/\=system('echo -n $RANDOM')/gc</pre>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">ℹ️</div>
+</td>
+<td class="content">
+This substitution has the same result as the <a href="#hardcoded-substitution">hardcoded substitution</a> from before, but it uses a roundabout method to
+      get the replacement string by calling out to the <code>echo</code> utility.
+</td>
+</tr>
+</table>
+</div>
+</aside>
+<div class="paragraph">
+<p>We use the <code>system()</code> function from an expression (<code>\=</code>) to call out to the
+<code>date</code> utility. Sticking with hardcoded dates for now, we can use the utility
+to convert a date&#8217;s format from &#8220;1991-11-02&#8221; to &#8220;November 2, 1991&#8221; before
+inserting it into the file:</p>
+</div>
+
+<pre>:%s/....-..-..&lt;/\=system('date -jf "%Y-%m-%d&lt;" "1991-11-02&lt;" +"%B %d, %Y&lt;"')/gc</pre>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>....-..-..&lt;</code></dt>
+<dd>
+<p>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</p>
+</dd>
+<dt class="hdlist1"><code>\=system('date &#8230;&#8203;')</code></dt>
+<dd>
+<p>An expression that uses the <code>system()</code> function to execute an external
+command and returns its value as the substitute string.</p>
+</dd>
+<dt class="hdlist1"><code>'date -jf "%Y-%m-%d&lt;" "1991-11-02&lt;" +"%B %d, %Y&lt;"'</code></dt>
+<dd>
+<p>The <a href="#date-command">date command</a> as a string, with a hardcoded date
+(<code>"1991-11-02&lt;"</code>) as its input date argument. This date matches the format of
+the search pattern&#8217;s matches.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">⚠️</div>
+</td>
+<td class="content">
+This substitution produces a newline in the <code>&lt;time&gt;</code> tag, because the
+         <code>date</code> utility appends one to its output. We&#8217;ll remove these later
+         while discussing <a href="#nested-substitutions">nested substitutions</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The replacement value is still hardcoded (&#8220;1991-11-02&#8221;), so this substitution
+will overwrite all date values in the file to a date in 1991. To put the
+matched date values back in the file, we need to pass them to the date command.</p>
+</div>
+<aside class="sidebarblock">
+<h3>Submatches</h3>
+<div class="paragraph">
+<p>Vim&#8217;s <code>submatch()</code> function returns matches from our pattern. If we call it
+with <code>0</code> as its argument, it will return the whole match instead of a submatch.
+To wrap each occurrence of &#8220;October&#8221; in brackets, we use <code>[\0]</code> as the
+substitute string.</p>
+</div>
+
+<pre>:%s/October/[\0]/gc</pre>
+<div class="paragraph">
+<p>In an expression, submatches can be included using the <code>submatch()</code> function.</p>
+</div>
+
+<pre>:%s/October/\='['.submatch('0').']'/gc</pre>
+</aside>
+<div class="paragraph">
+<p>To pass the matched date to the call to <code>date</code> in our expression, we need to
+break out of the string passed to the <code>system()</code> function and replace the
+hardcoded date with a call to <code>submatch(0)</code> to insert the whole match.</p>
+</div>
+
+<pre>:%s/....-..-..&lt;/\=system('date -jf "%Y-%m-%d&lt;" "'.submatch(0).'" +"%B %d, %Y&lt;"')/gc</pre>
+<div class="paragraph">
+<p>Running this substitution will turn all <code>&lt;time&gt;</code> tags from the input file to
+our desired format, but it beaks the closing <code>&lt;/time&gt;</code> tag with an extra
+newline.</p>
+</div>
+
+<small>The current result, with an added newline that breaks the closing <code>&lt;/time&gt;</code> tag</small>
+<pre class="highlight"><code class="html language-html">&lt;article&gt;
+  &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
+  &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;
+/time&gt;
+&lt;/article&gt;
+
+...</code></pre>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nested-substitutions">Nested substitutions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A newline is appended to the result of the <code>date</code> command, which ends up in the
+file after running the substitution. Since there&#8217;s no way to get the date
+command to omit the newline, we need to take it out ourselves.</p>
+</div>
+<div class="paragraph">
+<p>We can run a second substitution to remove them after running the first one:</p>
+</div>
+
+<pre>:%s/&lt;\n\/time&gt;/&lt;\/time&gt;/g</pre>
+<div class="paragraph">
+<p>Another option is to use a <em>nested substitution</em> to keep the original
+substitution from adding newlines in the first place.</p>
+</div>
+<aside class="sidebarblock">
+<h3>The <code>substitute()</code> function</h3>
+<div class="paragraph">
+<p>Vim&#8217;s <code>substitute()</code> function replaces strings and can be run from an
+expression in a substitution. Nested substitutions are useful for transforming
+the result of another function.</p>
+</div>
+<div class="paragraph">
+<p>The function (<code>substitute()</code>) works like the substitute command (<code>:s</code>), and
+takes the same arguments, so <code>substitute("input", "find", "replace", "g")</code> is
+equivalent to running <code>:%s/find/replace/g</code> in a file.</p>
+</div>
+<div class="paragraph">
+<p>The <code>substitute()</code> function works like the substitute command (<code>:s[ubstitute]</code>)
+in Vim&#8217;s command line and takes the same arguments. The first argument is the
+input, then the search pattern, the substitute string, followed by optional
+options. <code>substitute("input", "find", "replace", "g")</code> is equivalent to running
+<code>:%s/find/replace/g</code> in a file.</p>
+</div>
+
+<pre>:echom substitute("October 02, 1991", "October", "November", "")</pre>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>"October 02, 1991"</code></dt>
+<dd>
+<p>The input string to run the substitution on.</p>
+</dd>
+<dt class="hdlist1"><code>"October"</code></dt>
+<dd>
+<p>The search pattern.</p>
+</dd>
+<dt class="hdlist1"><code>"November"</code></dt>
+<dd>
+<p>The substitute string.</p>
+</dd>
+<dt class="hdlist1"><code>""</code></dt>
+<dd>
+<p><a href="#substitutions">Options</a>, like in a &#8220;regular&#8221; substitution. This example
+doesn&#8217;t use the <code>g</code> option because we&#8217;re sure there&#8217;s only one match in the
+input string, so it isn&#8217;t necessary.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>If an external command called from a substitution returns a trailing newline
+(like <code>echo</code> would without the <code>-n</code> flag), we can use the <code>substitute()</code>
+function to take it out before the match is replaced.</p>
+</div>
+
+<pre>:%s/October/\=substitute(system('echo "November"'), "\n", "", "")/gc</pre>
+</aside>
+<div class="paragraph">
+<p>We wrap the call to the <code>date</code> utility in a nested substitution using the
+<code>substitute()</code> function. It takes the result, matches the newline (<code>"\n"</code>) and
+replaces it with an empty string.</p>
+</div>
+
+<pre>:%s/....-..-..&lt;/\=substitute(system('date -jf "%Y-%m-%d&lt;" "'.submatch(0).'" +"%B %d, %Y&lt;"'), "\n", "", "")/gc</pre>
+<div class="paragraph">
+<p>Now our substitution will turn the <code>&lt;time&gt;</code> tags into the correct format,
+without adding that extra newline.</p>
+</div>
+
+<small>The result</small>
+<pre>&lt;article&gt;
+  &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
+  &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;/time&gt;
+&lt;/article&gt;
+
+&lt;article&gt;
+  &lt;h1&gt;Property-based testing in Elixir using PropEr&lt;/h1&gt;
+  &lt;time datetime="2017-08-22"&gt;August 22, 2017&lt;/time&gt;
+&lt;/article&gt;
+
+&lt;article&gt;
+  &lt;h1&gt;git is not a git command&lt;/h1&gt;
+  &lt;time datetime="2015-10-01"&gt;October 01, 2015&lt;/time&gt;
+&lt;/article&gt;
+
+...</pre>
+</div>
+</div>
+
+
+</article>
+
+<hr/>
+<nav>
+  <a href="/" rel="author">Jeff Kreeftmeijer</a>
+  <a href="/archive/">Archive</a>
+  <a href="https://twitter.com/jkreeftmeijer">Twitter</a>
+  <a href="https://github.com/jeffkreeftmeijer">Github</a>
+  <a href="/feed.xml">RSS</a>
+</nav>
+
+<aside class="ad">
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
+</aside>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12888762-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>

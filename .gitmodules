@@ -40,3 +40,6 @@
 [submodule "_layouts/amp"]
 	path = _layouts/amp
 	url = git@gist.github.com:95564bc9712e1e8667d3f3292f000e1d.git
+[submodule "_articles/vim-reformat-dates"]
+	path = _articles/vim-reformat-dates
+	url = git@gist.github.com:b3185d5fcda90a1aca921f1cd5b07c0e.git

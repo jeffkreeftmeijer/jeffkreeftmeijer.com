@@ -14,6 +14,13 @@
   </url>
 
   <url>
+    <loc>https://jeffkreeftmeijer.com/vim-reformat-dates/</loc>
+    <lastmod>2017-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://jeffkreeftmeijer.com/open-source-maintainability/</loc>
     <lastmod>2017-09-19</lastmod>
     <changefreq>weekly</changefreq>
