@@ -306,19 +306,6 @@ random number, we call <code>echo -n $RANDOM</code> with the <code>system()</cod
 </div>
 
 <pre>:%s/\d\+/\=system('echo -n $RANDOM')/gc</pre>
-<div class="admonitionblock note">
-<table>
-<tbody><tr>
-<td class="icon">
-<div class="title">ℹ️</div>
-</td>
-<td class="content">
-This substitution has the same result as the <a href="#hardcoded-substitution">hardcoded substitution</a> from before, but it uses a roundabout method to
-      get the replacement string by calling out to the <code>echo</code> utility.
-</td>
-</tr>
-</tbody></table>
-</div>
 </aside>
 <div class="paragraph">
 <p>We use the <code>system()</code> function from an expression (<code>\=</code>) to call out to the

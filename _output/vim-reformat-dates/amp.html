@@ -34,7 +34,7 @@ article aside{border: 1px solid lightgrey;padding:0 1em}nav{display:flex;justify
   "headline": "Find, convert and replace dates with Vim substitutions",
   "image": ["https://jeffkreeftmeijer.com/vim-reformat-dates/substitute.png"],
   "datePublished": "2017-10-17",
-  "dateModified": "2017-10-17T05:21:31Z",
+  "dateModified": "2017-10-17T06:42:31Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -335,19 +335,6 @@ random number, we call <code>echo -n $RANDOM</code> with the <code>system()</cod
 </div>
 
 <pre>:%s/\d\+/\=system('echo -n $RANDOM')/gc</pre>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">ℹ️</div>
-</td>
-<td class="content">
-This substitution has the same result as the <a href="#hardcoded-substitution">hardcoded substitution</a> from before, but it uses a roundabout method to
-      get the replacement string by calling out to the <code>echo</code> utility.
-</td>
-</tr>
-</table>
-</div>
 </aside>
 <div class="paragraph">
 <p>We use the <code>system()</code> function from an expression (<code>\=</code>) to call out to the
