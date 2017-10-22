@@ -41,7 +41,7 @@ If you would prefer to skip this patch, instead run &quot;git rebase --skip&quot
 To restore the original branch and stop rebasing run &quot;git rebase --abort&quot;.</code></pre>
 <p>Because rebase merges every commit individually, conflicts will be served in smaller chunks making them easier to fix and understand. When you’re done fixing a conflict, simply <code>git add</code> the file and continue rebasing:</p><pre><code>$ git rebase --continue</code></pre>
 <h3>Rebase vs Merge</h3><p>When you’re working on a feature branch and you need changes from the main development branch, I would suggest using rebase. Merge can be used when you want to merge a feature branch back into your development branch. That way, you’ll be able to see when you merged in what in the future because you have that merge commit I called “nasty” before. It isn’t, really.</p><p>What I would like to ask you is to rebase your feature branch to the main development branch before merging it in. This way you make sure your branch applies cleanly to the branch you’re merging into.</p>
-<aside>
+<aside class="ad">
   <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
 </aside>
 
