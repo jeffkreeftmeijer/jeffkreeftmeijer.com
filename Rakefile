@@ -3,6 +3,7 @@ require 'asciidoctor'
 task :generate do
   {
     '_articles/git-flow/git-flow.adoc' => '_output/git-flow/',
+    '_articles/git-rebase/git-rebase.adoc' => '_output/git-rebase/',
     '_articles/vim-number/vim-number.adoc' => '_output/vim-number/',
     '_articles/mix-proper/mix-proper.adoc' => '_output/mix-proper/',
     '_articles/open-source-maintainability/index.adoc' => '_output/open-source-maintainability/',
