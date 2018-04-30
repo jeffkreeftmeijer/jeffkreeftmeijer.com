@@ -6,6 +6,9 @@ aside.ad{
   overflow: hidden;
   z-index: -100;
 }
+aside.ad img{
+  height: 100px;
+}
 aside.ad div#cf_ad{
   display: block;
   width: 130px;
