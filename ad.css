@@ -6,9 +6,10 @@ aside.ad{
   overflow: hidden;
   z-index: -100;
 }
-aside.ad div{
-  margin-left: 22em;
+aside.ad div#cf_ad{
+  display: block;
   width: 130px;
+  margin-left: 22em;
 }
 aside.ad a{
   text-decoration: none;
@@ -17,6 +18,6 @@ aside.ad a{
   display: block;
   margin-bottom: 1em;
 }
-.carbon-poweredby{
+.cf-powered-by{
   font-style: italic;
 }
