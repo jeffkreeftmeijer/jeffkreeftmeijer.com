@@ -7,8 +7,7 @@
 <meta name="author" content="Jeff Kreeftmeijer">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
-<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%;height:auto}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}a{text-decoration:none}a:hover{text-decoration:underline}code,kbd,pre{font:.8em/1.4 SF Mono,Monaco,monospace;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}blockquote{font-style:italic}table{border-collapse:collapse;font:inherit;width:100%}td,th{padding:.5em}td:first-child,th:first-child{padding-left:0}td:last-child,th:last-child{padding-right:0}th{text-align:left}aside.ad{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside.ad div{margin-left:22em;width:130px}aside.ad a{text-decoration:none;color:#708090;font-size:.7em;display:block;margin-bottom:1em}.carbon-poweredby{font-style:italic}
-nav{display:flex;justify-content:space-between}</style>
+<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%;height:auto}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}a{text-decoration:none}a:hover{text-decoration:underline}code,kbd,pre{font:.8em/1.4 SF Mono,Monaco,monospace;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}blockquote{font-style:italic}table{border-collapse:collapse;font:inherit;width:100%}td,th{padding:.5em}td:first-child,th:first-child{padding-left:0}td:last-child,th:last-child{padding-right:0}th{text-align:left}aside.ad{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside.ad div#cf_ad{display:block;width:130px;margin-left:22em}aside.ad a{text-decoration:none;color:#708090;font-size:.7em;display:block;margin-bottom:1em}.cf-powered-by{font-style:italic}nav{display:flex;justify-content:space-between}</style>
 
 <h1>Comparing images and creating image diffs</h1><p>  <p>I’m sure you’ve seen the <a href="https://github.com/blog/817-behold-image-view-modes">image view modes</a> Github released last month. It’s a really nice way to see the differences between two versions of an image. In this article, I’ll try to explain how a simple image diff could be built using pure Ruby and <a href="https://github.com/wvanbergen/chunky_png">ChunkyPNG</a>.</p></p>
 <p>If you need a more basic introduction to working with pixel data in ChunkyPNG, check out <a href="http://jeffkreeftmeijer.com/2011/pure-ruby-colored-blob-detection">last week’s article</a>, which I did some simple blob detection.</p><p>In its simplest form, finding differences in images works by looping over each pixel in the first image and checking if it’s the same as the pixel in the same spot in the second image. An implementation might look like this:</p><div class="highlight">
@@ -163,8 +162,9 @@ image changed (%): 5.4418255392228945%</code></pre>
 <p>Because the colors are compared by channel (R,G and B) instead of as one color, three scores are returned. This means the output image is in color, but comparing the channels separately can make the result less accurate.</p>
 
 <p>As always, if you used this idea to build something yourself, know of a way to improve the code or have some questions or tips, be sure to let me know. If you want to know more about something I talked about, be sure to suggest it as a next article.</p>
-<aside class="ad">
-  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
+<aside class="ad" id="codefund_ad">
+  <script async src="https://codefund.io/scripts/48fc837b-75ff-48f2-9cf2-3f52281d7721/embed.js"></script>
+  <script>window._codefund_theme = '';</script>
 </aside>
 
 <hr/>

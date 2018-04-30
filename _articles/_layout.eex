@@ -1,4 +1,5 @@
 <%= @contents %>
-<aside class="ad">
-  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jeffkreeftmeijercom" id="_carbonads_js"></script>
+<aside class="ad" id="codefund_ad">
+  <script async src="https://codefund.io/scripts/48fc837b-75ff-48f2-9cf2-3f52281d7721/embed.js"></script>
+  <script>window._codefund_theme = '';</script>
 </aside>
