@@ -252,8 +252,8 @@
   </url>
   
   <url>
-    <loc>https://jeffkreeftmeijer.com/2010/making-rspec-stop-operation-immediately-after-failing/</loc>
-    <lastmod>2010-11-08</lastmod>
+    <loc>https://jeffkreeftmeijer.com/rspec-fail-fast/</loc>
+    <lastmod>2018-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -287,8 +287,8 @@
   </url>
   
   <url>
-    <loc>https://jeffkreeftmeijer.com/2010/the-magical-and-not-harmful-rebase/</loc>
-    <lastmod>2010-10-11</lastmod>
+    <loc>https://jeffkreeftmeijer.com/git-rebase/</loc>
+    <lastmod>2018-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
