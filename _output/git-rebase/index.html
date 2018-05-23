@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <title>Git rebase: reapply your changes onto another branch</title>
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="description" content="Git's rebase command temporarily rewinds the commits on your current branch, pulls in the commits from the other branch and reapplies the rewinded commits back on top. By switching the current This bases the current branch onto the other branch.">
 <meta name="author" content="Jeff Kreeftmeijer">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
@@ -14,7 +15,7 @@
 <meta name="twitter:site" content="@jkreeftmeijer">
 <meta name="twitter:creator" content="@jkreeftmeijer">
 <meta name="twitter:title" content="Git rebase: reapply your changes onto another branch">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Git's rebase command temporarily rewinds the commits on your current branch, pulls in the commits from the other branch and reapplies the rewinded commits back on top. By switching the current This bases the current branch onto the other branch.">
 <meta name="twitter:image" content="https://jeffkreeftmeijer.com/git-rebase/git-rebase.png">
 
 <script type="application/ld+json">
@@ -28,12 +29,12 @@
   "headline": "Git rebase: reapply your changes onto another branch",
   "image": ["https://jeffkreeftmeijer.com/git-rebase/git-rebase.png"],
   "datePublished": "2010-10-11",
-  "dateModified": "2017-10-23T04:02:12Z",
+  "dateModified": "2018-05-23T19:33:57Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
   },
-  "description": "",
+  "description": "Git's rebase command temporarily rewinds the commits on your current branch, pulls in the commits from the other branch and reapplies the rewinded commits back on top. By switching the current This bases the current branch onto the other branch.",
   "publisher": {
     "@type": "Organization",
     "name": "jeffkreeftmeijer.com",
@@ -53,21 +54,13 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Instead of merging other branches into yours, git&#8217;s rebase command can reapply
-your changes onto another branch.</p>
+<p>Git&#8217;s rebase command reapplies your changes onto another branch. As opposed to merging, which pulls the differences from the other branch into yours, rebasing switches your branch&#8217;s base to the other branch&#8217;s position and walks through your commits one by one to apply them again.</p>
 </div>
 <div class="paragraph">
-<p>Let’s say you’re working on a feature branch called <code>feature/login</code>, which is
-based on the main <code>develop</code> branch. While working in your branch, somebody else
-pushes some commits to <code>develop</code>. How would you get these commits into your
-feature branch?</p>
+<p>Let&#8217;s look at an example. While working on a branch named <code>login</code>, based on the <code>master</code> branch, one of your team members pushed some changes to <code>master</code>. You need these changes to finish the login feature in your branch.</p>
 </div>
 <div class="paragraph">
-<p>Merging the <code>develop</code> branch back into yours would result in a merge commit in
-your branch. Merge commits are typically reserved for merging branches back
-upstream. Another option is to cherry-pick the commits. This works, but you&#8217;d
-duplicate commits already in the <code>develop</code> branch into yours, which can cause
-issues when merging your feature branch upstream later.</p>
+<p><em>Merging</em> the <code>master</code> branch back into yours would result in a merge commit, which includes the changes between both branches and exists to show where a merge occured. We won&#8217;t need to know when we merged the <code>master</code> into the <code>login</code> branch in the future. Instead, we&#8217;d like to pretend that all commits on the <code>login</code> branch happened based on the new state of the <code>master</code> branch.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -75,16 +68,14 @@ issues when merging your feature branch upstream later.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Git’s rebase command allows you to temporarily rewind the commits you did in
-this branch, pull in everything from another branch and apply your commits on
-top of that again.</p>
+<p>Git&#8217;s rebase command temporarily rewinds the commits on your current branch, pulls in the commits from the other branch and reapplies the rewinded commits back on top. By switching the current This <em>bases</em> the current branch onto the other branch.</p>
 </div>
 
-<pre>$ git rebase develop
+<pre>$ git rebase master
 First, rewinding head to replay your work on top of it...
-Fast-forwarded feature/login to develop.</pre>
+Fast-forwarded login to master.</pre>
 <div class="paragraph">
-<p>It’s as if you didn’t start working in the <code>feature/login</code> branch before the
+<p>It’s as if you didn’t start working in the <code>login</code> branch before the
 commits you pulled in were made. You can also
 <a href="http://www.gitready.com/advanced/2009/02/11/pull-with-rebase.html">pull with
 rebase</a> so you don’t have to switch out of your current branch.</p>
@@ -99,15 +90,15 @@ rebase</a> so you don’t have to switch out of your current branch.</p>
 a merge conflict during the rebase:</p>
 </div>
 
-<pre>$ git rebase develop
+<pre>$ git rebase master
 First, rewinding head to replay your work on top of it...
-Applying: feature/login
+Applying: login
 Using index info to reconstruct a base tree...
 Falling back to patching base and 3-way merge...
 Auto-merging config/environment.rb
 CONFLICT (content): Merge conflict in config/environment.rb
 Failed to merge in the changes.
-Patch failed at 0001 feature/login
+Patch failed at 0001 login
 
 When you have resolved this problem run "git rebase --continue".
 If you would prefer to skip this patch, instead run "git rebase --skip".
@@ -126,14 +117,14 @@ fixing a conflict, simply <code>git add</code> the file and continue rebasing:</
 <div class="sectionbody">
 <div class="paragraph">
 <p>When you’re working on a feature branch and you need changes from the main
-development branch, I would suggest using rebase. Merge can be used when you
-want to merge a feature branch back into your development branch. That way,
+master branch, I would suggest using rebase. Merge can be used when you
+want to merge a feature branch back into your master branch. That way,
 you’ll be able to see when you merged in what in the future because you have
 that merge commit I called “nasty” before. It isn’t, really.</p>
 </div>
 <div class="paragraph">
 <p>What I would like to ask you is to rebase your feature branch to the main
-development branch before merging it in. This way you make sure your branch
+master branch before merging it in. This way you make sure your branch
 applies cleanly to the branch you’re merging into.</p>
 </div>
 </div>
