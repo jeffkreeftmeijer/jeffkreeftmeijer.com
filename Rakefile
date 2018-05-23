@@ -3,6 +3,7 @@ require 'asciidoctor'
 task :generate do
   {
     '_articles/git-flow/git-flow.adoc' => '_output/git-flow/',
+    '_articles/rspec-fail-fast/rspec-fail-fast.adoc' => '_output/rspec-fail-fast/',
     '_articles/git-rebase/git-rebase.adoc' => '_output/git-rebase/',
     '_articles/vim-number/vim-number.adoc' => '_output/vim-number/',
     '_articles/mix-proper/mix-proper.adoc' => '_output/mix-proper/',
@@ -16,6 +17,7 @@ task :generate do
       Asciidoctor.convert_file(
         from,
         {
+          mkdirs: true,
           to_file: "#{to}/#{filename}",
           template_dir: "_layouts/#{backend}",
           safe: 0,

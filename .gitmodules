@@ -43,3 +43,6 @@
 [submodule "_articles/vim-reformat-dates"]
 	path = _articles/vim-reformat-dates
 	url = git@gist.github.com:b3185d5fcda90a1aca921f1cd5b07c0e.git
+[submodule "_articles/rspec-fail-fast"]
+	path = _articles/rspec-fail-fast
+	url = git@gist.github.com:dbfc0b90094bbd8edbaad4b3885f34a7.git

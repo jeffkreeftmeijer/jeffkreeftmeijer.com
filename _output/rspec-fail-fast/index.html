@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Stop RSpec on the first failure with the --fail-fast command line option</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="description" content="RSpec's --fail-fast command line option stops test suite runs immediately after the first failure occurs, so you can get to work to fix it without waiting for the run to finish.">
+<meta name="author" content="Jeff Kreeftmeijer">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+<link rel="alternate" type="application/atom+xml" href="/feed.xml">
+<link rel="amphtml" href="https://jeffkreeftmeijer.com/rspec-fail-fast/amp.html">
+<style>body,pre{padding:1em}body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em}h1,h2,h3,h4,h5,h6{line-height:normal}img,video{max-width:100%;height:auto}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}a{text-decoration:none}a:hover{text-decoration:underline}code,kbd,pre{font:.8em/1.4 SF Mono,Monaco,monospace;background-color:#f8f8ff}code,kbd{padding:.2em .4em}pre code{font:inherit;padding:0}pre{overflow-x:auto}blockquote{font-style:italic}table{border-collapse:collapse;font:inherit;width:100%}td,th{padding:.5em}td:first-child,th:first-child{padding-left:0}td:last-child,th:last-child{padding-right:0}th{text-align:left}aside.ad img{width:130px;height:100px}aside.ad{position:absolute;top:2.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside.ad div#cf_ad{display:block;width:130px;margin-left:22em}aside.ad a{text-decoration:none;color:#708090;font-size:.7em;display:block;margin-bottom:1em}.cf-powered-by{font-style:italic}article aside{border: 1px solid lightgrey;padding:0 1em}nav{display:flex;justify-content:space-between}</style>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@jkreeftmeijer">
+<meta name="twitter:creator" content="@jkreeftmeijer">
+<meta name="twitter:title" content="Stop RSpec on the first failure with the --fail-fast command line option">
+<meta name="twitter:description" content="RSpec's --fail-fast command line option stops test suite runs immediately after the first failure occurs, so you can get to work to fix it without waiting for the run to finish.">
+<meta name="twitter:image" content="https://jeffkreeftmeijer.com/rspec-fail-fast/fail-fast.png">
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jeffkreeftmeijer.com/rspec-fail-fast/"
+  },
+  "headline": "Stop RSpec on the first failure with the --fail-fast command line option",
+  "image": ["https://jeffkreeftmeijer.com/rspec-fail-fast/fail-fast.png"],
+  "datePublished": "2010-11-08",
+  "dateModified": "2018-05-23T20:35:59Z",
+  "author": {
+    "@type": "Person",
+    "name": "Jeff Kreeftmeijer"
+  },
+  "description": "RSpec's --fail-fast command line option stops test suite runs immediately after the first failure occurs, so you can get to work to fix it without waiting for the run to finish.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "jeffkreeftmeijer.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jeffkreeftmeijer.com/logo.png"
+    }
+  }
+}
+</script>
+</head>
+<body>
+<h1>Stop RSpec on the first failure with the --fail-fast command line option</h1>
+By <a href="/" rel="author">Jeff Kreeftmeijer</a>
+
+<article>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Imagine you’re running your whole RSpec test suite and the first or second test fails. You have about two hundred tests to go, but you want to dive in and fix that first failure right away. You’d probably interrupt the run to get the failure details to go fix them, right?</p>
+</div>
+<div class="paragraph">
+<p>While this works most of the time (you might get some problems interrupting the run when using Selenium) wouldn’t it be awesome if RSpec could automatically stop and output when running into the first failure?</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://jeffkreeftmeijer.com/rspec-fail-fast/fail-fast.png" alt="fail fast">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-fail_fast-configuration">The <code>fail_fast</code> configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I started poking around in the RSpec source and accidentally stumbled on RSpec’s generated documentation on Relish, where I found <a href="https://relishapp.com/rspec/rspec-core/v/2-0/docs/configuration/fail-fast">the <code>fail_fast</code> configuration option</a> that got introduced in rspec-core 2.0.0.rc. It actually does exactly what I wanted to achieve.</p>
+</div>
+<div class="paragraph">
+<p>The <code>fail_fast</code> option will cause RSpec to immediately stop running your specs and output the failure details whenever it fails for the first time, giving you a nice speed boost when trying to fix some spec fails.</p>
+</div>
+
+<pre class="highlight"><code class="ruby language-ruby">RSpec.configure do |c|
+  c.fail_fast = true
+end</code></pre>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-fail-fast-command-line-option">The <code>--fail-fast</code> command line option</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since you probably still want to run your whole spec suite without using the <code>fail_fast</code> option from time to time, setting it in <code>spec/spec_helper.rb</code> isn’t really a great option. So I added a <a href="https://github.com/rspec/rspec-core/pull/219">command line option</a> so you can use it whenever you want.</p>
+</div>
+
+<pre>$ rspec spec --fail-fast
+..F
+
+Failures:
+
+  1) Fuubar when it is created does not start the bar until the formatter is started
+    Failure/Error: expect(formatter.progress).to be_started
+      expected `#&lt;ProgressBar:0/0&gt;.started?` to return true, got nil
+    # ./spec/fuubar_spec.rb:64:in `block (3 levels) in &lt;top (required)&gt;'
+
+Finished in 0.02256 seconds (files took 0.15578 seconds to load)
+3 examples, 1 failure
+
+Failed examples:
+
+rspec ./spec/fuubar_spec.rb:63 # Fuubar when it is created does not start the bar until the formatter is started</pre>
+<div class="paragraph">
+<p>The <code>--fail-fast</code> option was <a href="http://blog.davidchelimsky.net/blog/2010/11/07/rspec-21-is-released/">released</a> yesterday as a part of RSpec 2.1, so don’t forget to update.</p>
+</div>
+</div>
+</div>
+
+
+</article>
+
+<hr>
+<p>
+  Any questions, feedback or suggestions? Please respond on
+  <a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://jeffkreeftmeijer.com/rspec-fail-fast/">Twitter</a>
+   (or via
+  <a rel="nofollow" href="https://twitter.com/messages/compose?recipient_id=8284992">direct message</a>)
+  or send an
+  <a rel="nofollow" href="mailto:&#x6a;&#x65;&#x66;&#x66;&#x6b;&#x72;&#x65;&#x65;&#x66;&#x74;&#x6d;&#x65;&#x69;&#x6a;&#x65;&#x72;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;&#x3f;&#x73;&#x75;&#x62;&#x6a;&#x65;&#x63;&#x74;&#x3d;&#x4f;&#x6e;&#x20;&#x201c;&#x53;&#x74;&#x6f;&#x70;&#x20;&#x52;&#x53;&#x70;&#x65;&#x63;&#x20;&#x6f;&#x6e;&#x20;&#x74;&#x68;&#x65;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x66;&#x61;&#x69;&#x6c;&#x75;&#x72;&#x65;&#x20;&#x77;&#x69;&#x74;&#x68;&#x20;&#x74;&#x68;&#x65;&#x20;&#x2d;&#x2d;&#x66;&#x61;&#x69;&#x6c;&#x2d;&#x66;&#x61;&#x73;&#x74;&#x20;&#x63;&#x6f;&#x6d;&#x6d;&#x61;&#x6e;&#x64;&#x20;&#x6c;&#x69;&#x6e;&#x65;&#x20;&#x6f;&#x70;&#x74;&#x69;&#x6f;&#x6e;&#x201d;">e-mail</a>.
+  Even better, write your own article as a response.
+</p>
+<hr/>
+<nav>
+  <a href="/" rel="author">Jeff Kreeftmeijer</a>
+  <a href="/archive/">Archive</a>
+  <a rel="me" href="https://twitter.com/jkreeftmeijer">Twitter</a>
+  <a rel="me" href="https://github.com/jeffkreeftmeijer">Github</a>
+  <a href="/feed.xml">RSS</a>
+</nav>
+
+<aside class="ad" id="codefund_ad">
+  <script async src="https://codefund.io/scripts/48fc837b-75ff-48f2-9cf2-3f52281d7721/embed.js"></script>
+  <script>window._codefund_theme = '';</script>
+</aside>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12888762-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
