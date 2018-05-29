@@ -1,6 +1,8 @@
 require 'asciidoctor'
 
-task :generate do
+task :generate => [:bundle, :build]
+
+task :build do
   {
     '_articles/git-flow/git-flow.adoc' => '_output/git-flow/',
     '_articles/rspec-fail-fast/rspec-fail-fast.adoc' => '_output/rspec-fail-fast/',
@@ -35,4 +37,8 @@ task :generate do
       )
     end
   end
+end
+
+task :bundle do
+  `cat enough.css/enough.min.css blog.css ad.css | csso -o style.css`
 end

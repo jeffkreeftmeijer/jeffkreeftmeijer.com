@@ -1,1 +1,9 @@
-article aside{border: 1px solid lightgrey;padding:0 1em}nav{display:flex;justify-content:space-between}
+article aside{
+  border: 1px solid lightgrey;
+  padding:0 1em;
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+}
