@@ -3,6 +3,10 @@ article aside{
   padding:0 1em;
 }
 
+.admonitionblock td{
+  border: none;
+}
+
 nav{
   display:flex;
   justify-content:space-between;
