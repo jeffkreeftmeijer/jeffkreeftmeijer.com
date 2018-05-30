@@ -1,14 +1,44 @@
-article aside{
-  border: 1px solid lightgrey;
-  padding:0 1em;
-}
-
-.admonitionblock td{
-  border: none;
-}
-
 nav{
   display:flex;
   justify-content:space-between;
   margin: 1em 0;
+}
+
+/* adoc */
+
+.sidebarblock{
+  border-left: 10px solid whitesmoke;
+  padding-left: 30px;
+}
+
+.admonition-block h6{
+  float: left;
+  height: 1em;
+  margin: 0 0.25em 0 0;
+  font-size: 1em;
+}
+
+.admonition-block{
+  padding: 1em;
+  margin: 1em 0;
+}
+
+.admonition-block p{
+  margin: 0;
+}
+
+.warning{
+  background-color: ivory;
+}
+
+.caution, .important{
+  background-color: lavenderblush;
+}
+
+.note, .tip{
+  background-color: aliceblue;
+}
+
+.admonitionblock td{
+  border: none;
 }
