@@ -1,4 +1,5 @@
 require 'asciidoctor'
+require 'asciidoctor-html5s'
 
 task :generate => [:bundle, :build]
 
@@ -15,13 +16,14 @@ task :build do
     {
       'amp' => 'amp.html',
       'html5' => 'index.html'
-    }.each do |backend, filename|
+    }.each do |template, filename|
       Asciidoctor.convert_file(
         from,
         {
+          backend: "html5s",
           mkdirs: true,
           to_file: "#{to}/#{filename}",
-          template_dir: "_layouts/#{backend}",
+          template_dir: "_layouts/#{template}",
           safe: 0,
           header_footer: true,
           attributes: {
