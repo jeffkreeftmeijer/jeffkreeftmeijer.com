@@ -120,10 +120,7 @@ finds all dates in the file and replaces them with a reformatted value.</p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="finding-the-dates">Finding the dates</h2>
-<div class="sectionbody">
-<div class="paragraph">
+<section class="doc-section level-1"><h2 id="finding-the-dates">Finding the dates</h2><div class="paragraph">
 <p>The first step in replacing the dates is finding where they are in the input
 file and making sure not to match the ones in the datetime attributes.</p>
 </div>
@@ -154,13 +151,8 @@ the attributes to be included in the results, we include the less-than sign in
 the search pattern.</p>
 </div>
 
-<pre>....-..-..&lt;</pre>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reformatting-dates-from-the-command-line">Reformatting dates from the command line</h2>
-<div class="sectionbody">
-<div class="paragraph">
+<pre>....-..-..&lt;</pre></section>
+<section class="doc-section level-1"><h2 id="reformatting-dates-from-the-command-line">Reformatting dates from the command line</h2><div class="paragraph">
 <p>We need the month&#8217;s full name in the date replacements, so we can&#8217;t reorder the
 input value (&#8220;2017-09-19&#8221;) to get the result we want. Instead, we need to
 call out to an external utility that knows month names and can convert between
@@ -249,13 +241,8 @@ November 02 1991&lt;</pre>
 <p>The output format, which produces <code>November 02, 1991&lt;</code>.</p>
 </dd>
 </dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="calling-out-to-external-utilities-from-substitutions">Calling out to external utilities from substitutions</h2>
-<div class="sectionbody">
-<div class="paragraph">
+</div></section>
+<section class="doc-section level-1"><h2 id="calling-out-to-external-utilities-from-substitutions">Calling out to external utilities from substitutions</h2><div class="paragraph">
 <p>We know how to find all dates in the file, and how to convert a date to another
 format from the command line. To replace all found dates with a reformatted
 version from the <code>date</code> utility, we need to run an <em>expression</em> from a
@@ -403,13 +390,8 @@ newline.</p>
 /time&gt;
 &lt;/article&gt;
 
-...</code></pre></figure>
-</div>
-</div>
-<div class="sect1">
-<h2 id="nested-substitutions">Nested substitutions</h2>
-<div class="sectionbody">
-<div class="paragraph">
+...</code></pre></figure></section>
+<section class="doc-section level-1"><h2 id="nested-substitutions">Nested substitutions</h2><div class="paragraph">
 <p>A newline is appended to the result of the <code>date</code> command, which ends up in the
 file after running the substitution. Since there&#8217;s no way to get the date
 command to omit the newline, we need to take it out ourselves.</p>
@@ -501,9 +483,7 @@ without adding that extra newline.</p>
   &lt;time datetime="2015-10-01"&gt;October 01, 2015&lt;/time&gt;
 &lt;/article&gt;
 
-...</pre></figure>
-</div>
-</div>
+...</pre></figure></section>
 
 
 </article>

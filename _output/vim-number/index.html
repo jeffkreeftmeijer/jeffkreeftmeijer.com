@@ -58,10 +58,7 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="absolute-line-numbers">Absolute line numbers</h2>
-<div class="sectionbody">
-<div class="paragraph">
+<section class="doc-section level-1"><h2 id="absolute-line-numbers">Absolute line numbers</h2><div class="paragraph">
 <p>Using the <code>number</code> option, Vim sets up absolute line numbers to show the line number for each line in the file you&#8217;re working on.</p>
 </div>
 
@@ -72,13 +69,8 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 :set number!   " toggle line numbers</code></pre></div>
 <div class="paragraph">
 <p>Besides being useful for finding a line from a stacktrace or a test result, you can use line numbers to help you quickly jump around. For example, if you want to go to the tenth line in your file, you&#8217;d type <kbd>esc</kbd> if you&#8217;re in insert mode and then <code>:10</code> to move to the correct line.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="relative-line-numbers">Relative line numbers</h2>
-<div class="sectionbody">
-<div class="paragraph">
+</div></section>
+<section class="doc-section level-1"><h2 id="relative-line-numbers">Relative line numbers</h2><div class="paragraph">
 <p>With the <code>relativenumber</code> option, each line in your file is numbered relative to the line you&#8217;re currently on. The current line is marked 0, the ones above and below it are marked 1, and so on.</p>
 </div>
 
@@ -95,13 +87,8 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 </div>
 <div class="paragraph">
 <p>With relative line numbers, you can quickly glance at the number of the line you want to jump to. If it&#8217;s thirteen lines up, you press <kbd>1</kbd><kbd>3</kbd><kbd>k</kbd> to get there. To get back to where you came from, you use <kbd>1</kbd><kbd>3</kbd><kbd>j</kbd>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="hybrid-line-numbers">“Hybrid” line numbers</h2>
-<div class="sectionbody">
-<div class="paragraph">
+</div></section>
+<section class="doc-section level-1"><h2 id="hybrid-line-numbers">“Hybrid” line numbers</h2><div class="paragraph">
 <p>Since Vim 7.4, you can enable <code>number</code> and <code>relativenumber</code> at the same time, to give you <em>hybrid line number mode</em>. All lines will show their relative number, except for the line you&#8217;re currently on, which will show its absolute line number.</p>
 </div>
 
@@ -112,13 +99,8 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 :set !number !relativenumber    " toggle hybrid line numbers</code></pre></div>
 <div class="paragraph">
 <p>While not strictly relative, hybrid line numbers are what relative line numbers should have been. Instead of having a useless zero on the current line, it uses that space to give you an idea of where you are in the file.<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="automatic-toggling-between-line-number-modes">Automatic toggling between line number modes</h2>
-<div class="sectionbody">
-<div class="paragraph">
+</div></section>
+<section class="doc-section level-1"><h2 id="automatic-toggling-between-line-number-modes">Automatic toggling between line number modes</h2><div class="paragraph">
 <p>Although relative line numbers are helpful when moving around in normal mode, absolute line numbers are more suited for insert mode. When the buffer doesn&#8217;t have focus, it&#8217;d also be more useful to show absolute line numbers. For example, when running tests from a seperate terminal split, it&#8217;d make more sense to be able to see which test is on which absolute line number.</p>
 </div>
 <div class="paragraph">
@@ -139,9 +121,7 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 </div>
 <div class="paragraph">
 <p>I&#8217;ve been using this way of automatically switching line number modes for years. You can set it up yourself by putting the snippet above in your <code>~/.vimrc</code>, or use the <a href="https://github.com/jeffkreeftmeijer/vim-numbertoggle">vim-numbertoggle</a> plugin, which does the same thing.</p>
-</div>
-</div>
-</div>
+</div></section>
 
 
   <div id="footnotes">

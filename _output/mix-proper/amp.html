@@ -69,10 +69,7 @@ task.</p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="writing-proper-tests-in-elixir">Writing PropEr tests in Elixir</h2>
-<div class="sectionbody">
-<div class="paragraph">
+<section class="doc-section level-1"><h2 id="writing-proper-tests-in-elixir">Writing PropEr tests in Elixir</h2><div class="paragraph">
 <p>To explain writing PropEr tests (named &#8220;properties&#8221;) in Elixir, let&#8217;s take
 <a href="http://propertesting.com/book_stateless_properties.html#_writing_properties:">an
 example from PropEr testing</a>. A property of a function named <code>biggest/1</code> is
@@ -139,13 +136,8 @@ iex(1)&gt; Kernel.ParallelRequire.files(["test/biggest_prop.exs"])
 iex(2)&gt; :proper.quickcheck(BiggestProp.prop_biggest())
 ....................................................................................................
 OK: Passed 100 test(s).
-true</pre>
-</div>
-</div>
-<div class="sect1">
-<h2 id="rebar3_proper-and-mix_proper">rebar3_proper and mix_proper</h2>
-<div class="sectionbody">
-<div class="paragraph">
+true</pre></section>
+<section class="doc-section level-1"><h2 id="rebar3_proper-and-mix_proper">rebar3_proper and mix_proper</h2><div class="paragraph">
 <p>Although that worked, it would be nice to have a command to run all tests in a
 Mix project. For Erlang, there&#8217;s a library named
 <a href="https://github.com/ferd/rebar3_proper:">rebar3_proper</a> that does just that by
@@ -222,9 +214,7 @@ is the basis of <a href="https://github.com/jeffkreeftmeijer/mix_proper:">mix_pr
 which can be used in your Elixir project by
 <a href="https://github.com/jeffkreeftmeijer/mix_proper_example/blob/master/mix.exs#L24:">adding
 it as a dependency</a>.</p>
-</div>
-</div>
-</div>
+</div></section>
 
 
 </article>
