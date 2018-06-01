@@ -7,8 +7,9 @@ nav{
 /* adoc */
 
 .sidebarblock{
-  border-left: 10px solid whitesmoke;
-  padding-left: 30px;
+  border: 1px solid lightgray;
+  box-shadow: 3px 3px 0 0 whitesmoke;
+  padding: 1em;
 }
 
 .admonition-block h6{
@@ -25,6 +26,14 @@ nav{
 
 .admonition-block p{
   margin: 0;
+}
+
+.sidebarblock > *:first-child{
+  margin-top: 0;
+}
+
+.sidebarblock > *:last-child{
+  margin-bottom: 0;
 }
 
 .warning{
