@@ -6,6 +6,10 @@ nav{
 
 /* adoc */
 
+figcaption{
+  font-size: smaller;
+}
+
 .sidebarblock{
   border: 1px solid lightgray;
   box-shadow: 3px 3px 0 0 whitesmoke;
