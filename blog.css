@@ -6,14 +6,18 @@ nav{
 
 /* adoc */
 
+figure{
+  margin: 0;
+}
 figcaption{
   font-size: smaller;
 }
 
-.sidebarblock{
+.sidebarblock, .admonition-block{
   border: 1px solid lightgray;
   box-shadow: 3px 3px 0 0 whitesmoke;
   padding: 1em;
+  margin: 1em 0;
 }
 
 .admonition-block h6{
@@ -21,11 +25,6 @@ figcaption{
   height: 1em;
   margin: 0 0.25em 0 0;
   font-size: 1em;
-}
-
-.admonition-block{
-  padding: 1em;
-  margin: 1em 0;
 }
 
 .admonition-block p{
