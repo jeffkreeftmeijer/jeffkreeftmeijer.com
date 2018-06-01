@@ -51,33 +51,19 @@
 By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 
 <article>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Imagine you’re running your whole RSpec test suite and the first or second test fails. You have about two hundred tests to go, but you want to dive in and fix that first failure right away. You’d probably interrupt the run to get the failure details to go fix them, right?</p>
-</div>
-<div class="paragraph">
+<section id="preamble" aria-label="Preamble"><p>Imagine you’re running your whole RSpec test suite and the first or second test fails. You have about two hundred tests to go, but you want to dive in and fix that first failure right away. You’d probably interrupt the run to get the failure details to go fix them, right?</p>
 <p>While this works most of the time (you might get some problems interrupting the run when using Selenium) wouldn’t it be awesome if RSpec could automatically stop and output when running into the first failure?</p>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="https://jeffkreeftmeijer.com/rspec-fail-fast/fail-fast.png" alt="Stop RSpec on the first failure with the --fail-fast command line option" width="730" height="479">
 </div>
-</div>
-</div>
-</div>
-<section class="doc-section level-1"><h2 id="the-fail_fast-configuration">The <code>fail_fast</code> configuration</h2><div class="paragraph">
-<p>I started poking around in the RSpec source and accidentally stumbled on RSpec’s generated documentation on Relish, where I found <a href="https://relishapp.com/rspec/rspec-core/v/2-0/docs/configuration/fail-fast">the <code>fail_fast</code> configuration option</a> that got introduced in rspec-core 2.0.0.rc. It actually does exactly what I wanted to achieve.</p>
-</div>
-<div class="paragraph">
+</div></section>
+<section class="doc-section level-1"><h2 id="the-fail_fast-configuration">The <code>fail_fast</code> configuration</h2><p>I started poking around in the RSpec source and accidentally stumbled on RSpec’s generated documentation on Relish, where I found <a href="https://relishapp.com/rspec/rspec-core/v/2-0/docs/configuration/fail-fast">the <code>fail_fast</code> configuration option</a> that got introduced in rspec-core 2.0.0.rc. It actually does exactly what I wanted to achieve.</p>
 <p>The <code>fail_fast</code> option will cause RSpec to immediately stop running your specs and output the failure details whenever it fails for the first time, giving you a nice speed boost when trying to fix some spec fails.</p>
-</div>
 <div class="listing-block"><pre class="highlight"><code class="language-ruby" data-lang="ruby">RSpec.configure do |c|
   c.fail_fast = true
 end</code></pre></div></section>
-<section class="doc-section level-1"><h2 id="the-fail-fast-command-line-option">The <code>--fail-fast</code> command line option</h2><div class="paragraph">
-<p>Since you probably still want to run your whole spec suite without using the <code>fail_fast</code> option from time to time, setting it in <code>spec/spec_helper.rb</code> isn’t really a great option. So I added a <a href="https://github.com/rspec/rspec-core/pull/219">command line option</a> so you can use it whenever you want.</p>
-</div>
+<section class="doc-section level-1"><h2 id="the-fail-fast-command-line-option">The <code>--fail-fast</code> command line option</h2><p>Since you probably still want to run your whole spec suite without using the <code>fail_fast</code> option from time to time, setting it in <code>spec/spec_helper.rb</code> isn’t really a great option. So I added a <a href="https://github.com/rspec/rspec-core/pull/219">command line option</a> so you can use it whenever you want.</p>
 <div class="listing-block"><pre>$ rspec spec --fail-fast
 ..F
 
@@ -94,9 +80,7 @@ Finished in 0.02256 seconds (files took 0.15578 seconds to load)
 Failed examples:
 
 rspec ./spec/fuubar_spec.rb:63 # Fuubar when it is created does not start the bar until the formatter is started</pre></div>
-<div class="paragraph">
-<p>The <code>--fail-fast</code> option was <a href="http://blog.davidchelimsky.net/blog/2010/11/07/rspec-21-is-released/">released</a> yesterday as a part of RSpec 2.1, so don’t forget to update.</p>
-</div></section>
+<p>The <code>--fail-fast</code> option was <a href="http://blog.davidchelimsky.net/blog/2010/11/07/rspec-21-is-released/">released</a> yesterday as a part of RSpec 2.1, so don’t forget to update.</p></section>
 
 
 </article>

@@ -55,41 +55,24 @@
 By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 
 <article>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Git&#8217;s rebase command reapplies your changes onto another branch. As opposed to merging, which pulls the differences from the other branch into yours, rebasing switches your branch&#8217;s base to the other branch&#8217;s position and walks through your commits one by one to apply them again.</p>
-</div>
-<div class="paragraph">
+<section id="preamble" aria-label="Preamble"><p>Git&#8217;s rebase command reapplies your changes onto another branch. As opposed to merging, which pulls the differences from the other branch into yours, rebasing switches your branch&#8217;s base to the other branch&#8217;s position and walks through your commits one by one to apply them again.</p>
 <p>Let&#8217;s look at an example. While working on a branch named <code>login</code>, based on the <code>master</code> branch, one of your team members pushed some changes to <code>master</code>. You need these changes to finish the login feature in your branch.</p>
-</div>
-<div class="paragraph">
 <p><em>Merging</em> the <code>master</code> branch back into yours would result in a merge commit, which includes the changes between both branches and exists to show where a merge occured. We won&#8217;t need to know when we merged the <code>master</code> into the <code>login</code> branch in the future. Instead, we&#8217;d like to pretend that all commits on the <code>login</code> branch happened based on the new state of the <code>master</code> branch.</p>
-</div>
 <div class="imageblock">
 <div class="content">
 <amp-img layout="responsive" src="https://jeffkreeftmeijer.com/git-rebase/git-rebase.png" alt="git rebase vs git merge" width="1800" height="1167">
 </div>
 </div>
-<div class="paragraph">
 <p>Git&#8217;s rebase command temporarily rewinds the commits on your current branch, pulls in the commits from the other branch and reapplies the rewinded commits back on top. By switching the current This <em>bases</em> the current branch onto the other branch.</p>
-</div>
-
-<pre>$ git rebase master
+<div class="literal-block"><pre>$ git rebase master
 First, rewinding head to replay your work on top of it...
-Fast-forwarded login to master.</pre>
-<div class="paragraph">
+Fast-forwarded login to master.</pre></div>
 <p>It’s as if you didn’t start working in the <code>login</code> branch before the
 commits you pulled in were made. You can also
 <a href="http://www.gitready.com/advanced/2009/02/11/pull-with-rebase.html">pull with
-rebase</a> so you don’t have to switch out of your current branch.</p>
-</div>
-</div>
-</div>
-<section class="doc-section level-1"><h2 id="conflicts-served-in-smaller-chunks">Conflicts served in smaller chunks</h2><div class="paragraph">
-<p>Besides keeping your history clean, rebase also has your back when you run into
+rebase</a> so you don’t have to switch out of your current branch.</p></section>
+<section class="doc-section level-1"><h2 id="conflicts-served-in-smaller-chunks">Conflicts served in smaller chunks</h2><p>Besides keeping your history clean, rebase also has your back when you run into
 a merge conflict during the rebase:</p>
-</div>
 <div class="listing-block"><pre>$ git rebase master
 First, rewinding head to replay your work on top of it...
 Applying: login
@@ -103,25 +86,18 @@ Patch failed at 0001 login
 When you have resolved this problem run "git rebase --continue".
 If you would prefer to skip this patch, instead run "git rebase --skip".
 To restore the original branch and stop rebasing run "git rebase --abort".</pre></div>
-<div class="paragraph">
 <p>Because rebase merges every commit individually, conflicts will be served in
 smaller chunks making them easier to fix and understand. When you’re done
 fixing a conflict, simply <code>git add</code> the file and continue rebasing:</p>
-</div>
-
-<pre>$ git rebase --continue</pre></section>
-<section class="doc-section level-1"><h2 id="rebase-vs-merge">Rebase vs Merge</h2><div class="paragraph">
-<p>When you’re working on a feature branch and you need changes from the main
+<div class="literal-block"><pre>$ git rebase --continue</pre></div></section>
+<section class="doc-section level-1"><h2 id="rebase-vs-merge">Rebase vs Merge</h2><p>When you’re working on a feature branch and you need changes from the main
 master branch, I would suggest using rebase. Merge can be used when you
 want to merge a feature branch back into your master branch. That way,
 you’ll be able to see when you merged in what in the future because you have
 that merge commit I called “nasty” before. It isn’t, really.</p>
-</div>
-<div class="paragraph">
 <p>What I would like to ask you is to rebase your feature branch to the main
 master branch before merging it in. This way you make sure your branch
-applies cleanly to the branch you’re merging into.</p>
-</div></section>
+applies cleanly to the branch you’re merging into.</p></section>
 
 
 </article>

@@ -51,19 +51,13 @@
 By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 
 <article>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="http://nvie.com/posts/a-successful-git-branching-model/">Vincent Driessen&#8217;s branching model</a> is a git branching and release management strategy that helps developers keep track of features, hotfixes and releases in bigger software projects. This workflow has lot of commands to type and remember, so there&#8217;s also the <a href="https://github.com/nvie/gitflow">git-flow library of git subcommands</a> to help automate some parts of the flow to make working with it easier.</p>
-</div>
+<section id="preamble" aria-label="Preamble"><p><a href="http://nvie.com/posts/a-successful-git-branching-model/">Vincent Driessen&#8217;s branching model</a> is a git branching and release management strategy that helps developers keep track of features, hotfixes and releases in bigger software projects. This workflow has lot of commands to type and remember, so there&#8217;s also the <a href="https://github.com/nvie/gitflow">git-flow library of git subcommands</a> to help automate some parts of the flow to make working with it easier.</p>
 <div class="imageblock">
 <div class="content">
 <img src="https://jeffkreeftmeijer.com/git-flow/git-flow.png" alt="The git-flow branching model" width="1200" height="1600">
 </div>
 </div>
-<div class="paragraph">
 <p>After <a href="https://github.com/nvie/gitflow/wiki/Installation">installing git-flow</a> (<code>brew install git-flow</code>), you can start using git-flow in your repository by using it&#8217;s <code>init</code> command. You can use it in existing projects, but let&#8217;s start a new repository:</p>
-</div>
 <div class="listing-block"><pre>$ git flow init
 Initialized empty Git repository in ~/project/.git/
 No branches exist yet. Base branches must be created now.
@@ -76,23 +70,13 @@ Release branches? [release/]
 Hotfix branches? [hotfix/]
 Support branches? [support/]
 Version tag prefix? []</pre></div>
-<div class="paragraph">
 <p>git-flow is just a wrapper around existing git commands, so the <code>init</code> command doesn&#8217;t change anything in your repository other than creating branches for you. If you don&#8217;t want to use git-flow anymore, there&#8217;s nothing to change or remove, you just stop using the git-flow commands.</p>
-</div>
-<div class="paragraph">
 <p>If you run <code>git branch</code> after setting up, you&#8217;ll notice that you switched from the master branch to a new one named <code>develop</code>.</p>
-</div>
 <div class="listing-block"><pre>$ git branch
 * develop
   master</pre></div>
-<div class="paragraph">
-<p>The <code>develop</code> branch the default branch where most of the work will happen, and the <code>master</code> branch keeps track of production-ready code.</p>
-</div>
-</div>
-</div>
-<section class="doc-section level-1"><h2 id="feature-branches">Feature branches</h2><div class="paragraph">
-<p>git-flow makes it easy to work on multiple features at the same time by using feature branches. To start one, use <code>feature start</code> with the name of your new feature (in this case, &#8220;authentication&#8221;):</p>
-</div>
+<p>The <code>develop</code> branch the default branch where most of the work will happen, and the <code>master</code> branch keeps track of production-ready code.</p></section>
+<section class="doc-section level-1"><h2 id="feature-branches">Feature branches</h2><p>git-flow makes it easy to work on multiple features at the same time by using feature branches. To start one, use <code>feature start</code> with the name of your new feature (in this case, &#8220;authentication&#8221;):</p>
 <div class="listing-block"><pre>$ git flow feature start authentication
 Switched to a new branch 'feature/authentication'
 
@@ -103,9 +87,7 @@ Summary of actions:
 Now, start committing on your feature. When done, use:
 
      git flow feature finish authentication</pre></div>
-<div class="paragraph">
 <p>A feature branch was created and you&#8217;re automatically switched to it. Implement your feature in this branch while using git like you normally would. When you&#8217;re finished, use <code>feature finish</code>:</p>
-</div>
 <div class="listing-block"><pre>$ git flow feature finish authentication
 Switched to branch 'develop'
 Updating 9060376..00bafe4
@@ -119,16 +101,10 @@ Summary of actions:
 - The feature branch 'feature/authentication' was merged into 'develop'
 - Feature branch 'feature/authentication' has been removed
 - You are now on branch 'develop'</pre></div>
-<div class="paragraph">
-<p>Your feature branch will be merged and you&#8217;re taken back to your <code>develop</code> branch. Internally, git-flow used <code>git merge --no-ff feature/authentication</code> to make sure you don&#8217;t lose any historical information about your feature branch before it is removed.</p>
-</div></section>
-<section class="doc-section level-1"><h2 id="versioned-releases">Versioned releases</h2><div class="paragraph">
-<p>If you need tagged and versioned releases, you can use git-flow&#8217;s release branches to start a new branch when you&#8217;re ready to deploy a new version to production.</p>
-</div>
-<div class="paragraph">
+<p>Your feature branch will be merged and you&#8217;re taken back to your <code>develop</code> branch. Internally, git-flow used <code>git merge --no-ff feature/authentication</code> to make sure you don&#8217;t lose any historical information about your feature branch before it is removed.</p></section>
+<section class="doc-section level-1"><h2 id="versioned-releases">Versioned releases</h2><p>If you need tagged and versioned releases, you can use git-flow&#8217;s release branches to start a new branch when you&#8217;re ready to deploy a new version to production.</p>
 <p>Like everything else in git-flow, you don&#8217;t have to use release branches if you don&#8217;t want to. Prefer to manually <code>git merge --no-ff develop</code> into master without tagging? No problem.
 However, if you&#8217;re working on a versioned API or library, release branches might be really useful, and they work exactly like you&#8217;d expect:</p>
-</div>
 <div class="listing-block"><pre>$ git flow release start 0.1.0
 Switched to a new branch 'release/0.1.0'
 
@@ -142,10 +118,8 @@ Follow-up actions:
 - When done, run:
 
      git flow release finish '0.1.0'</pre></div>
-<div class="paragraph">
 <p>Bump the version number and do everything that&#8217;s required to release your project in the release branch. I personally wouldn&#8217;t do any last minute fixes, but if you do, git-flow will make sure everything is correctly merged into both <code>master</code> and <code>develop</code>.
 Then, finish the release:</p>
-</div>
 <div class="listing-block"><pre>$ git flow release finish 0.1.0
 Switched to branch 'master'
 Merge made by the 'recursive' strategy.
@@ -160,18 +134,10 @@ Summary of actions:
 - The release was tagged '0.1.0'
 - Release branch has been back-merged into 'develop'
 - Release branch 'release/0.1.0' has been deleted</pre></div>
-<div class="paragraph">
 <p>Boom. git-flow pulls from origin, merges the release branch into master, tags the release and back-merges everything back into develop before removing the release branch.</p>
-</div>
-<div class="paragraph">
-<p>You&#8217;re still on master, so you can deploy before going back to your <code>develop</code> branch, which git-flow made sure to update with the release changes in <code>master</code>.</p>
-</div></section>
-<section class="doc-section level-1"><h2 id="hotfixing-production-code">Hotfixing production code</h2><div class="paragraph">
-<p>Because you keep your <code>master</code> branch always in sync with the code that&#8217;s on production, you&#8217;ll be able to quickly fix any issues on production.</p>
-</div>
-<div class="paragraph">
+<p>You&#8217;re still on master, so you can deploy before going back to your <code>develop</code> branch, which git-flow made sure to update with the release changes in <code>master</code>.</p></section>
+<section class="doc-section level-1"><h2 id="hotfixing-production-code">Hotfixing production code</h2><p>Because you keep your <code>master</code> branch always in sync with the code that&#8217;s on production, you&#8217;ll be able to quickly fix any issues on production.</p>
 <p>For example, if your assets aren&#8217;t loading on production, you&#8217;d roll back your deploy and start a hotfix branch:</p>
-</div>
 <div class="listing-block"><pre>$ git flow hotfix start assets
 Switched to a new branch 'hotfix/assets'
 
@@ -185,10 +151,8 @@ Follow-up actions:
 - When done, run:
 
      git flow hotfix finish 'assets'</pre></div>
-<div class="paragraph">
 <p>Hotfix branches are a lot like release branches, except they&#8217;re based on master instead of develop. You&#8217;re automatically switched to the new hotfix branch so you can start fixing the issue and bumping the minor version number.
 When you&#8217;re done, <code>hotfix finish</code>:</p>
-</div>
 <div class="listing-block"><pre>$ git flow hotfix finish assets
 Switched to branch 'master'
 Merge made by the 'recursive' strategy.
@@ -208,12 +172,8 @@ Summary of actions:
 - The hotfix was tagged '0.1.1'
 - Hotfix branch has been back-merged into 'develop'
 - Hotfix branch 'hotfix/assets' has been deleted</pre></div>
-<div class="paragraph">
-<p>Like when finishing a release branch, the hotfix branch gets merged into both <code>master</code> and <code>develop</code>. The release is tagged and the hotfix branch is removed.</p>
-</div></section>
-<section class="doc-section level-1"><h2 id="why-arent-you-using-git-flow">Why aren&#8217;t you using git-flow?</h2><div class="paragraph">
-<p>If you&#8217;re <a href="http://scottchacon.com/2011/08/31/github-flow.html">not doing versioned releases</a>, Vincent&#8217;s git workflow and the git-flow library might not be a right fit for you. However, if you work on a project that&#8217;s <a href="http://semver.org">semantically versioned</a>, like a Rubygem or a versioned API, git-flow will give you a couple of simple commands that will do a lot of work under the hood, making working on features, pushing new releases and hotfixing bugs a lot easier. Well, at least on the git side.</p>
-</div></section>
+<p>Like when finishing a release branch, the hotfix branch gets merged into both <code>master</code> and <code>develop</code>. The release is tagged and the hotfix branch is removed.</p></section>
+<section class="doc-section level-1"><h2 id="why-arent-you-using-git-flow">Why aren&#8217;t you using git-flow?</h2><p>If you&#8217;re <a href="http://scottchacon.com/2011/08/31/github-flow.html">not doing versioned releases</a>, Vincent&#8217;s git workflow and the git-flow library might not be a right fit for you. However, if you work on a project that&#8217;s <a href="http://semver.org">semantically versioned</a>, like a Rubygem or a versioned API, git-flow will give you a couple of simple commands that will do a lot of work under the hood, making working on features, pushing new releases and hotfixing bugs a lot easier. Well, at least on the git side.</p></section>
 
 
 </article>
