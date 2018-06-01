@@ -89,8 +89,7 @@ rebase</a> so you don’t have to switch out of your current branch.</p>
 <p>Besides keeping your history clean, rebase also has your back when you run into
 a merge conflict during the rebase:</p>
 </div>
-
-<pre>$ git rebase master
+<div class="listing-block"><pre>$ git rebase master
 First, rewinding head to replay your work on top of it...
 Applying: login
 Using index info to reconstruct a base tree...
@@ -102,7 +101,7 @@ Patch failed at 0001 login
 
 When you have resolved this problem run "git rebase --continue".
 If you would prefer to skip this patch, instead run "git rebase --skip".
-To restore the original branch and stop rebasing run "git rebase --abort".</pre>
+To restore the original branch and stop rebasing run "git rebase --abort".</pre></div>
 <div class="paragraph">
 <p>Because rebase merges every commit individually, conflicts will be served in
 smaller chunks making them easier to fix and understand. When you’re done

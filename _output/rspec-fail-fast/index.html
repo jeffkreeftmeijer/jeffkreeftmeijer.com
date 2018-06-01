@@ -75,10 +75,9 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 <div class="paragraph">
 <p>The <code>fail_fast</code> option will cause RSpec to immediately stop running your specs and output the failure details whenever it fails for the first time, giving you a nice speed boost when trying to fix some spec fails.</p>
 </div>
-
-<pre class="highlight"><code class="ruby language-ruby">RSpec.configure do |c|
+<div class="listing-block"><pre class="highlight"><code class="language-ruby" data-lang="ruby">RSpec.configure do |c|
   c.fail_fast = true
-end</code></pre>
+end</code></pre></div>
 </div>
 </div>
 <div class="sect1">
@@ -87,8 +86,7 @@ end</code></pre>
 <div class="paragraph">
 <p>Since you probably still want to run your whole spec suite without using the <code>fail_fast</code> option from time to time, setting it in <code>spec/spec_helper.rb</code> isn’t really a great option. So I added a <a href="https://github.com/rspec/rspec-core/pull/219">command line option</a> so you can use it whenever you want.</p>
 </div>
-
-<pre>$ rspec spec --fail-fast
+<div class="listing-block"><pre>$ rspec spec --fail-fast
 ..F
 
 Failures:
@@ -103,7 +101,7 @@ Finished in 0.02256 seconds (files took 0.15578 seconds to load)
 
 Failed examples:
 
-rspec ./spec/fuubar_spec.rb:63 # Fuubar when it is created does not start the bar until the formatter is started</pre>
+rspec ./spec/fuubar_spec.rb:63 # Fuubar when it is created does not start the bar until the formatter is started</pre></div>
 <div class="paragraph">
 <p>The <code>--fail-fast</code> option was <a href="http://blog.davidchelimsky.net/blog/2010/11/07/rspec-21-is-released/">released</a> yesterday as a part of RSpec 2.1, so don’t forget to update.</p>
 </div>

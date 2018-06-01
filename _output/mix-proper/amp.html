@@ -32,7 +32,7 @@
   "headline": "Property-based testing in Elixir using PropEr",
   "image": ["https://jeffkreeftmeijer.com/mix-proper/mix_proper.png"],
   "datePublished": "2017-08-22",
-  "dateModified": "2017-10-22T04:44:14Z",
+  "dateModified": "2018-05-31T07:28:10Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -78,8 +78,7 @@ task.</p>
 example from PropEr testing</a>. A property of a function named <code>biggest/1</code> is
 that the returned value is equal to the biggest value in the passed list.</p>
 </div>
-
-<pre class="highlight"><code class="erlang language-erlang"># test/prop_biggest.erl
+<div class="listing-block"><pre class="highlight"><code class="language-erlang" data-lang="erlang"># test/prop_biggest.erl
 -module(prop_biggest).
 -include_lib("proper/include/proper.hrl").
 
@@ -87,8 +86,7 @@ prop_biggest() -&gt;
     ?FORALL(List, non_empty(list(integer())),              # ➊
         begin
             biggest(List) =:= lists:last(lists:sort(List)) # ➋
-        end).</code></pre>
-<div class="colist arabic">
+        end).</code></pre><div class="colist arabic">
 <ol>
 <li>
 <p><code>?FORALL</code> is a macro around <code>proper:forall/2</code>. It takes a variable name, a generator, and a property. In this case, the generator returns a random, non-empty list of integers and puts it in the <code>List</code> variable for every run.</p>
@@ -97,12 +95,11 @@ prop_biggest() -&gt;
 <p>The property itself is a function that uses the random variable to assert the result from <code>biggest/1</code> matches the biggest value in the list.</p>
 </li>
 </ol>
-</div>
+</div></div>
 <div class="paragraph">
 <p>Converting it to Elixir, this property looks a bit different.</p>
 </div>
-
-<pre class="highlight"><code class="elixir language-elixir"># test/biggest_prop.exs
+<div class="listing-block"><pre class="highlight"><code class="language-elixir" data-lang="elixir"># test/biggest_prop.exs
 defmodule BiggestProp do
   # ➊
   import :proper
@@ -115,8 +112,7 @@ defmodule BiggestProp do
   end
 
   # ...
-end</code></pre>
-<div class="colist arabic">
+end</code></pre><div class="colist arabic">
 <ol>
 <li>
 <p>The <code>BiggestProp</code> module imports <code>:proper</code> and <code>:proper_types</code> manually instead of including the <code>proper.hrl</code> header file.</p>
@@ -128,7 +124,7 @@ end</code></pre>
 <p>Although Erlang&#8217;s <code>lists</code> module would work, it uses <code>Enum.sort/1</code> and <code>List.last/1</code> as trusted functions to test the implementation.</p>
 </li>
 </ol>
-</div>
+</div></div>
 <div class="paragraph">
 <p>With a
 <a href="https://github.com/jeffkreeftmeijer/mix_proper_example/blob/a09d6ac1bc800ae3f77a105c76f8db44d9b8d5ce/test/biggest_prop.exs#L19-L27:">working
@@ -167,8 +163,7 @@ OK: Passed 100 test(s).
 with "prop_" and running them through <code>proper:quickcheck/1</code>. That would work in
 Elixir by adding a Mix task that uses the same approach.</p>
 </div>
-
-<pre class="highlight"><code class="elixir language-elixir">defmodule Mix.Tasks.Proper do
+<div class="listing-block"><pre class="highlight"><code class="language-elixir" data-lang="elixir">defmodule Mix.Tasks.Proper do
   use Mix.Task
 
   def run([]) do
@@ -179,7 +174,7 @@ Elixir by adding a Mix task that uses the same approach.</p>
   end
 
   # ...
-end</code></pre>
+end</code></pre></div>
 <div class="paragraph">
 <p>Using &#8220;test/**/*_prop.exs&#8221; as a wildcard pattern, the task finds the paths
 for all property-based testing files in the test directory. Being .exs files,
@@ -189,8 +184,7 @@ own test task uses <code>Kernel.ParallelRequire.files/1-2</code></a>, which take
 filenames, includes the modules in the files and returns the names of the newly
 included modules.</p>
 </div>
-
-<pre class="highlight"><code class="elixir language-elixir">defmodule Mix.Tasks.Proper do
+<div class="listing-block"><pre class="highlight"><code class="language-elixir" data-lang="elixir">defmodule Mix.Tasks.Proper do
   use Mix.Task
 
   def run([]) do
@@ -207,7 +201,7 @@ included modules.</p>
   end
 
   # ...
-end</code></pre>
+end</code></pre></div>
 <div class="paragraph">
 <p>The task uses the list of included modules to find their properties using the
 <code>__info__/1</code> function. Functions without the proper name or an arity other

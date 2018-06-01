@@ -70,9 +70,8 @@ different format and replace them all at once.</p>
 a <code>&lt;time&gt;</code> tag with a value and a datetime attribute to show the publication
 date.</p>
 </div>
-
-<small>The input file</small>
-<pre class="highlight"><code class="html language-html">&lt;article&gt;
+<figure class="listing-block"><figcaption>The input file</figcaption>
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;article&gt;
   &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
   &lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;
 &lt;/article&gt;
@@ -87,15 +86,14 @@ date.</p>
   &lt;time datetime="2015-10-01"&gt;2015-10-01&lt;/time&gt;
 &lt;/article&gt;
 
-...</code></pre>
+...</code></pre></figure>
 <div class="paragraph">
 <p>We need to convert the dates&#8217; values to a friendlier format that
 includes the full month name (&#8220;September 19, 2017&#8221;), while keeping the
 datetime attributes in their current format.</p>
 </div>
-
-<small>The result: articles with reformatted dates</small>
-<pre class="highlight"><code class="html language-html">&lt;article&gt;
+<figure class="listing-block"><figcaption>The result: articles with reformatted dates</figcaption>
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;article&gt;
   &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
   &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;/time&gt;
 &lt;/article&gt;
@@ -110,7 +108,7 @@ datetime attributes in their current format.</p>
   &lt;time datetime="2015-10-01"&gt;October 01, 2015&lt;/time&gt;
 &lt;/article&gt;
 
-...</code></pre>
+...</code></pre></figure>
 <div class="paragraph">
 <p>The input file has more than forty articles, so replacing them all by hand
 would be a lot of error-prone work. Instead, we write a substitution that
@@ -144,8 +142,7 @@ occurrences of "2017" in a file.</p>
 pattern&#8217;s results will include all matching dates in the file, including the
 ones in the <code>&lt;time&gt;</code> tags&#8217; datetime attributes.</p>
 </div>
-
-<pre class="highlight"><code class="html language-html">&lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;</code></pre>
+<div class="listing-block"><pre class="highlight"><code class="language-html" data-lang="html">&lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;</code></pre></div>
 <div class="paragraph">
 <p>In the input file, all <code>&lt;time&gt;</code> values are immediately followed by the
 less-than sign from the closing <code>&lt;/time&gt;</code> tag. To prevent the datetimes from
@@ -269,21 +266,10 @@ is <code>November</code> and the <em>substitute string</em> is <code>October</co
 </div>
 
 <pre>:%s/November/October/gc</pre>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">ℹ️</div>
-</td>
-<td class="content">
-Options can be passed after the last slash. In this case, we use
+<aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">ℹ️: </span></h6><p>Options can be passed after the last slash. In this case, we use
 <code>g[lobal]</code> to make the substitution <em>global</em>, meaning it will replace all
 occurrences of the pattern in the file. The second option is <code>c[onfirm]</code>, which
-will ask for confirmation before executing each substitution.
-</td>
-</tr>
-</table>
-</div>
+will ask for confirmation before executing each substitution.</p></aside>
 </aside>
 <div id="hardcoded-substitution" class="paragraph">
 <p>Using the search pattern we prepared earlier, we can find and replace all date
@@ -370,20 +356,9 @@ the search pattern&#8217;s matches.</p>
 </dd>
 </dl>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">⚠️</div>
-</td>
-<td class="content">
-This substitution produces a newline in the <code>&lt;time&gt;</code> tag, because the
+<section class="admonition-block warning" role="doc-notice"><h6 class="block-title label-only"><span class="title-label">⚠️: </span></h6><p>This substitution produces a newline in the <code>&lt;time&gt;</code> tag, because the
          <code>date</code> utility appends one to its output. We&#8217;ll remove these later
-         while discussing <a href="#nested-substitutions">nested substitutions</a>.
-</td>
-</tr>
-</table>
-</div>
+         while discussing <a href="#nested-substitutions">nested substitutions</a>.</p></section>
 <div class="paragraph">
 <p>The replacement value is still hardcoded (&#8220;1991-11-02&#8221;), so this substitution
 will overwrite all date values in the file to a date in 1991. To put the
@@ -417,15 +392,14 @@ hardcoded date with a call to <code>submatch(0)</code> to insert the whole match
 our desired format, but it beaks the closing <code>&lt;/time&gt;</code> tag with an extra
 newline.</p>
 </div>
-
-<small>The current result, with an added newline that breaks the closing <code>&lt;/time&gt;</code> tag</small>
-<pre class="highlight"><code class="html language-html">&lt;article&gt;
+<figure class="listing-block"><figcaption>The current result, with an added newline that breaks the closing <code>&lt;/time&gt;</code> tag</figcaption>
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;article&gt;
   &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
   &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;
 /time&gt;
 &lt;/article&gt;
 
-...</code></pre>
+...</code></pre></figure>
 </div>
 </div>
 <div class="sect1">
@@ -507,8 +481,7 @@ replaces it with an empty string.</p>
 <p>Now our substitution will turn the <code>&lt;time&gt;</code> tags into the correct format,
 without adding that extra newline.</p>
 </div>
-
-<small>The result</small>
+<figure class="listing-block"><figcaption>The result</figcaption>
 <pre>&lt;article&gt;
   &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
   &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;/time&gt;
@@ -524,7 +497,7 @@ without adding that extra newline.</p>
   &lt;time datetime="2015-10-01"&gt;October 01, 2015&lt;/time&gt;
 &lt;/article&gt;
 
-...</pre>
+...</pre></figure>
 </div>
 </div>
 

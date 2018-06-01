@@ -71,10 +71,9 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 
 <amp-video layout="responsive" src="https://jeffkreeftmeijer.com/vim-number/absolute.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/absolute.gif" autoplay muted loop>
 </amp-video>
-
-<pre class="highlight"><code>:set number
+<div class="listing-block"><pre class="highlight"><code>:set number
 :set nonumber  " turn line numbers off
-:set number!   " toggle line numbers</code></pre>
+:set number!   " toggle line numbers</code></pre></div>
 <div class="paragraph">
 <p>Besides being useful for finding a line from a stacktrace or a test result, you can use line numbers to help you quickly jump around. For example, if you want to go to the tenth line in your file, you&#8217;d type <kbd>esc</kbd> if you&#8217;re in insert mode and then <code>:10</code> to move to the correct line.</p>
 </div>
@@ -89,10 +88,9 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 
 <amp-video layout="responsive" src="https://jeffkreeftmeijer.com/vim-number/relative.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/relative.gif" autoplay muted loop>
 </amp-video>
-
-<pre class="highlight"><code>:set relativenumber
+<div class="listing-block"><pre class="highlight"><code>:set relativenumber
 :set norelativenumber  " turn relative line numbers off
-:set relativenumber!   " toggle relative line numbers</code></pre>
+:set relativenumber!   " toggle relative line numbers</code></pre></div>
 <div class="paragraph">
 <p>Like any any command in Vim, the <kbd>j</kbd> and <kbd>k</kbd> (or <kbd>↑</kbd> and <kbd>↓</kbd>) keys can be prefixed with a number. Typing <kbd>5</kbd><kbd>j</kbd> will move the cursor five lines down, for example. If you want to remove seven lines, you can use <kbd>d</kbd><kbd>7</kbd><kbd>d</kbd> without having to switch to visual mode to select the lines first.</p>
 </div>
@@ -113,10 +111,9 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 
 <amp-video layout="responsive" src="https://jeffkreeftmeijer.com/vim-number/hybrid.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/hybrid.gif" autoplay muted loop>
 </amp-video>
-
-<pre class="highlight"><code>:set number relativenumber
+<div class="listing-block"><pre class="highlight"><code>:set number relativenumber
 :set nonumber norelativenumber  " turn hybrid line numbers off
-:set !number !relativenumber    " toggle hybrid line numbers</code></pre>
+:set !number !relativenumber    " toggle hybrid line numbers</code></pre></div>
 <div class="paragraph">
 <p>While not strictly relative, hybrid line numbers are what relative line numbers should have been. Instead of having a useless zero on the current line, it uses that space to give you an idea of where you are in the file.<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></p>
 </div>
@@ -134,14 +131,13 @@ By <a href="/" rel="author">Jeff Kreeftmeijer</a>
 
 <amp-video layout="responsive" src="https://jeffkreeftmeijer.com/vim-number/toggle.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/toggle.gif" autoplay muted loop>
 </amp-video>
-
-<pre class="highlight"><code>:set number relativenumber
+<div class="listing-block"><pre class="highlight"><code>:set number relativenumber
 
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END</code></pre>
+:augroup END</code></pre></div>
 <div class="paragraph">
 <p>In this example, both absolute and relative line numbers are enabled by default, which produces “hybrid” line numbers. When entering insert mode, relative line numbers are turned off, leaving absolute line numbers turned on. This also happens when the buffer loses focus, so you can glance back at it to see which absolute line you were working on, if you need to.</p>
 </div>
