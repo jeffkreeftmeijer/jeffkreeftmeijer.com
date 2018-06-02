@@ -8,6 +8,7 @@ task :build do
     '_articles/git-flow/git-flow.adoc' => '_output/git-flow/',
     '_articles/rspec-fail-fast/rspec-fail-fast.adoc' => '_output/rspec-fail-fast/',
     '_articles/git-rebase/git-rebase.adoc' => '_output/git-rebase/',
+    '_articles/ruby-compare-images/ruby-compare-images.adoc' => '_output/ruby-compare-images/',
     '_articles/vim-number/vim-number.adoc' => '_output/vim-number/',
     '_articles/mix-proper/mix-proper.adoc' => '_output/mix-proper/',
     '_articles/open-source-maintainability/index.adoc' => '_output/open-source-maintainability/',
