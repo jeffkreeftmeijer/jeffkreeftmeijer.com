@@ -33,7 +33,7 @@
   "headline": "Find, convert and replace dates with Vim substitutions",
   "image": ["https://jeffkreeftmeijer.com/vim-reformat-dates/substitute.png"],
   "datePublished": "2017-10-17",
-  "dateModified": "2018-05-29T21:16:33Z",
+  "dateModified": "2018-06-03T15:48:55Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -126,9 +126,14 @@ ones in the <code>&lt;time&gt;</code> tags&#8217; datetime attributes.</p>
 <div class="listing-block"><pre class="highlight"><code class="language-html" data-lang="html">&lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;</code></pre></div>
 <p>In the input file, all <code>&lt;time&gt;</code> values are immediately followed by the
 less-than sign from the closing <code>&lt;/time&gt;</code> tag. To prevent the datetimes from
-the attributes to be included in the results, we include the less-than sign in
-the search pattern.</p>
-<div class="literal-block"><pre>....-..-..&lt;</pre></div></section>
+the attributes to be included in the results, we could include the less-than
+sign in the search pattern and make sure to add it back when replacing.</p>
+<div class="literal-block"><pre>....-..-..&lt;</pre></div>
+<p>Hoever, Vim supports setting the start and end of the match in the search
+pattern using the <code>\zs</code> and <code>\ze</code> pattern atoms. By prefixing the <code>&lt;</code> in our
+search pattern with <code>\ze</code>, the pattern finds all dates followed by a less-than
+sign, but doesn&#8217;t include it in the match, meaning it won&#8217;t be replaced.</p>
+<div class="literal-block"><pre>....-..-..\ze&lt;</pre></div></section>
 <section class="doc-section level-1"><h2 id="reformatting-dates-from-the-command-line">Reformatting dates from the command line</h2><p>We need the month&#8217;s full name in the date replacements, so we can&#8217;t reorder the
 input value (&#8220;2017-09-19&#8221;) to get the result we want. Instead, we need to
 call out to an external utility that knows month names and can convert between
@@ -165,35 +170,32 @@ November 02, 1991</pre></div>
 November 02, 1991</pre></div>
 </aside>
 <p>We reformat each match of our search pattern to our desired format (&#8220;September
-19, 2017&#8221;) with the <code>date</code> utility. Because we include the trailing less-than
-sign in the search pattern, the dates we use for the conversion will end
-with one too (&#8220;2017-09-19&lt;&#8221;). We append the less-than sign to the input
-format to match the results from the search pattern (<code>"%Y-%m-%d&lt;"</code>).</p>
-<p>The output format is <code>"%B %d, %Y&lt;"</code> to produce the month&#8217;s name, the date&#8217;s
-number, a comma and the year number, followed by the less-than sign (<code>September
-19, 2017&lt;</code>) to keep the HTML intact.</p>
-<p>With these formats the <code>date</code> utility reformats <code>1992-11-02&lt;</code> to <code>November 02,
-1991&lt;</code>.</p>
-<div class="literal-block" id="date-command"><pre>$ date -jf "%Y-%m-%d&lt;" "1991-11-02&lt;" +"%B %d, %Y&lt;"
-November 02 1991&lt;</pre></div>
+19, 2017&#8221;) with the <code>date</code> utility. We use <code>"%Y-%m-%d"</code> as the <em>input format</em>
+to match the results from the search pattern. The <em>output format</em> is <code>"%B %d,
+%Y"</code> to produce the month&#8217;s full name, the date&#8217;s number, a comma and the year
+number.</p>
+<p>With these formats the <code>date</code> utility reformats <code>1991-11-02</code> to <code>November 02,
+1991</code>.</p>
+<div class="literal-block" id="date-command"><pre>$ date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"
+November 02 1991</pre></div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>-j</code></dt>
 <dd>
 <p>Don&#8217;t try to set the system date</p>
 </dd>
-<dt class="hdlist1"><code>-f "%Y-%m-%d&lt;"</code></dt>
+<dt class="hdlist1"><code>-f "%Y-%m-%d"</code></dt>
 <dd>
-<p>Use the passed input format instead of the default. In this case
-<code>"%Y-%m-%d&lt;"</code> to match the input format (<code>1991-11-02&lt;</code>).</p>
+<p>Use the passed input format instead of the default. In this case <code>"%Y-%m-%d"</code>
+to match the input format (<code>1991-11-02</code>).</p>
 </dd>
-<dt class="hdlist1"><code>"1991-11-02&lt;"</code></dt>
+<dt class="hdlist1"><code>"1991-11-02"</code></dt>
 <dd>
 <p>An example date to be parsed using the input format passed to <code>-f</code>.</p>
 </dd>
-<dt class="hdlist1"><code>+"%B %d, %Y&lt;"</code></dt>
+<dt class="hdlist1"><code>+"%B %d, %Y"</code></dt>
 <dd>
-<p>The output format, which produces <code>November 02, 1991&lt;</code>.</p>
+<p>The output format, which produces <code>November 02, 1991</code>.</p>
 </dd>
 </dl>
 </div></section>
@@ -215,14 +217,14 @@ will ask for confirmation before executing each substitution.</p></aside>
 <p id="hardcoded-substitution">Using the search pattern we prepared earlier, we can find and replace all date
 values from the input file with a substitution. For example, we could overwrite
 all dates with a hardcoded value:</p>
-<div class="literal-block"><pre>:%s/....-..-..&lt;/November 2, 1991&lt;/gc</pre></div>
+<div class="literal-block"><pre>:%s/....-..-..\ze&lt;/November 2, 1991/gc</pre></div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>....-..-..&lt;</code></dt>
+<dt class="hdlist1"><code>....-..-..</code></dt>
 <dd>
 <p>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</p>
 </dd>
-<dt class="hdlist1"><code>November 2, 1991&lt;</code></dt>
+<dt class="hdlist1"><code>November 2, 1991</code></dt>
 <dd>
 <p>The literal substitute string to replace the dates with a hardcoded one.</p>
 </dd>
@@ -261,10 +263,10 @@ random number, we call <code>echo -n $RANDOM</code> with the <code>system()</cod
 <code>date</code> utility. Sticking with hardcoded dates for now, we can use the utility
 to convert a date&#8217;s format from &#8220;1991-11-02&#8221; to &#8220;November 2, 1991&#8221; before
 inserting it into the file:</p>
-<div class="literal-block"><pre>:%s/....-..-..&lt;/\=system('date -jf "%Y-%m-%d&lt;" "1991-11-02&lt;" +"%B %d, %Y&lt;"')/gc</pre></div>
+<div class="literal-block"><pre>:%s/....-..-..\ze&lt;/\=system('date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"')/gc</pre></div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>....-..-..&lt;</code></dt>
+<dt class="hdlist1"><code>....-..-..\ze&lt;</code></dt>
 <dd>
 <p>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</p>
 </dd>
@@ -273,16 +275,16 @@ inserting it into the file:</p>
 <p>An expression that uses the <code>system()</code> function to execute an external
 command and returns its value as the substitute string.</p>
 </dd>
-<dt class="hdlist1"><code>'date -jf "%Y-%m-%d&lt;" "1991-11-02&lt;" +"%B %d, %Y&lt;"'</code></dt>
+<dt class="hdlist1"><code>'date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"'</code></dt>
 <dd>
 <p>The <a href="#date-command">date command</a> as a string, with a hardcoded date
-(<code>"1991-11-02&lt;"</code>) as its input date argument. This date matches the format of
+(<code>"1991-11-02"</code>) as its input date argument. This date matches the format of
 the search pattern&#8217;s matches.</p>
 </dd>
 </dl>
 </div>
-<section class="admonition-block warning" role="doc-notice"><h6 class="block-title label-only"><span class="title-label">⚠️: </span></h6><p>This substitution produces a newline in the <code>&lt;time&gt;</code> tag, because the
-         <code>date</code> utility appends one to its output. We&#8217;ll remove these later
+<section class="admonition-block warning" role="doc-notice"><h6 class="block-title label-only"><span class="title-label">⚠️: </span></h6><p>This substitution produces a newline before the <code>&lt;time&gt;</code> tag, because
+         the <code>date</code> utility appends one to its output. We&#8217;ll remove these later
          while discussing <a href="#nested-substitutions">nested substitutions</a>.</p></section>
 <p>The replacement value is still hardcoded (&#8220;1991-11-02&#8221;), so this substitution
 will overwrite all date values in the file to a date in 1991. To put the
@@ -300,15 +302,14 @@ substitute string.</p>
 <p>To pass the matched date to the call to <code>date</code> in our expression, we need to
 break out of the string passed to the <code>system()</code> function and replace the
 hardcoded date with a call to <code>submatch(0)</code> to insert the whole match.</p>
-<div class="literal-block"><pre>:%s/....-..-..&lt;/\=system('date -jf "%Y-%m-%d&lt;" "'.submatch(0).'" +"%B %d, %Y&lt;"')/gc</pre></div>
+<div class="literal-block"><pre>:%s/....-..-..\ze&lt;/\=system('date -jf "%Y-%m-%d" "'.submatch(0).'" +"%B %d, %Y"')/gc</pre></div>
 <p>Running this substitution will turn all <code>&lt;time&gt;</code> tags from the input file to
-our desired format, but it beaks the closing <code>&lt;/time&gt;</code> tag with an extra
-newline.</p>
-<figure class="listing-block"><figcaption>The current result, with an added newline that breaks the closing <code>&lt;/time&gt;</code> tag</figcaption>
+our desired format, but it puts a newline before the closing <code>&lt;/time&gt;</code> tag.</p>
+<figure class="listing-block"><figcaption>The current result, with an added newline before the closing <code>&lt;/time&gt;</code> tag</figcaption>
 <pre class="highlight"><code class="language-html" data-lang="html">&lt;article&gt;
   &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
-  &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;
-/time&gt;
+  &lt;time datetime="2017-09-19"&gt;September 19, 2017
+&lt;/time&gt;
 &lt;/article&gt;
 
 ...</code></pre></figure></section>
@@ -316,7 +317,7 @@ newline.</p>
 file after running the substitution. Since there&#8217;s no way to get the date
 command to omit the newline, we need to take it out ourselves.</p>
 <p>We can run a second substitution to remove them after running the first one:</p>
-<div class="literal-block"><pre>:%s/&lt;\n\/time&gt;/&lt;\/time&gt;/g</pre></div>
+<div class="literal-block"><pre>:%s/\n&lt;\/time&gt;/&lt;\/time&gt;/g</pre></div>
 <p>Another option is to use a <em>nested substitution</em> to keep the original
 substitution from adding newlines in the first place.</p>
 <aside class="sidebarblock">
@@ -363,7 +364,7 @@ function to take it out before the match is replaced.</p>
 <p>We wrap the call to the <code>date</code> utility in a nested substitution using the
 <code>substitute()</code> function. It takes the result, matches the newline (<code>"\n"</code>) and
 replaces it with an empty string.</p>
-<div class="literal-block"><pre>:%s/....-..-..&lt;/\=substitute(system('date -jf "%Y-%m-%d&lt;" "'.submatch(0).'" +"%B %d, %Y&lt;"'), "\n", "", "")/gc</pre></div>
+<div class="literal-block"><pre>:%s/....-..-..\ze&lt;/\=substitute(system('date -jf "%Y-%m-%d" "'.submatch(0).'" +"%B %d, %Y"'), "\n", "", "")/gc</pre></div>
 <p>Now our substitution will turn the <code>&lt;time&gt;</code> tags into the correct format,
 without adding that extra newline.</p>
 <figure class="listing-block"><figcaption>The result</figcaption>
