@@ -9,7 +9,8 @@ nav{
 figure{
   margin: 0;
 }
-figcaption{
+
+figcaption, .byline{
   font-size: smaller;
 }
 
