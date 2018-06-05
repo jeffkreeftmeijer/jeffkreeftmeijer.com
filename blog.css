@@ -10,7 +10,7 @@ figure{
   margin: 0;
 }
 
-figcaption, .byline{
+figcaption, .byline, .small{
   font-size: smaller;
 }
 
