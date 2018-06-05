@@ -29,7 +29,7 @@
   "headline": "Find, convert and replace dates with Vim substitutions",
   "image": ["https://jeffkreeftmeijer.com/vim-reformat-dates/substitute.png"],
   "datePublished": "2017-10-17",
-  "dateModified": "2018-06-03T15:48:55Z",
+  "dateModified": "2018-06-05T15:56:59Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -49,7 +49,7 @@
 <body>
 <h1>Find, convert and replace dates with Vim substitutions</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2017-10-17">2017-10-17 (last updated on <time datetime="2018-06-03T15:48:55Z">2018-06-03</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2017-10-17">2017-10-17 (last updated on <time datetime="2018-06-05T15:56:59Z">2018-06-05</time>)
 </p>
 
 <article>
@@ -316,8 +316,11 @@ file after running the substitution. Since there&#8217;s no way to get the date
 command to omit the newline, we need to take it out ourselves.</p>
 <p>We can run a second substitution to remove them after running the first one:</p>
 <div class="literal-block"><pre>:%s/\n&lt;\/time&gt;/&lt;\/time&gt;/g</pre></div>
-<p>Another option is to use a <em>nested substitution</em> to keep the original
-substitution from adding newlines in the first place.</p>
+<p>To keep the original substitution from adding newlines in the first place, we
+can pipe the result from the <code>date</code> command to <code>tr</code> to remove the newline with
+the <code>-d</code> argument:</p>
+<div class="literal-block"><pre>:%s/....-..-..\ze&lt;/\=system('date -jf "%Y-%m-%d" "'.submatch(0).'" +"%B %d, %Y" | tr -d "\n"')/gc</pre></div>
+<p>Another option is to take the newline out with a <em>nested substitution</em>.</p>
 <aside class="sidebarblock">
 <h3>The <code>substitute()</code> function</h3>
 <p>Vim&#8217;s <code>substitute()</code> function replaces strings and can be run from an
