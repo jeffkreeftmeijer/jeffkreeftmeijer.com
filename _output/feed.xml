@@ -3,7 +3,7 @@
   <title>Jeff Kreeftmeijer</title>
   <link href="https://jeffkreeftmeijer.com/feed.xml" rel="self"/>
   <link href="https://jeffkreeftmeijer.com/"/>
-  <updated>2017-09-19:00:00Z</updated>
+  <updated>2018-06-06T20:36:07+02:00</updated>
 
   <id>http://jeffkreeftmeijer.com/</id>
   <author>
@@ -14,28 +14,26 @@
     <title type="html">Find, convert and replace dates with Vim substitutions</title>
     <link href="https://jeffkreeftmeijer.com/vim-reformat-dates/"/>
     <id>https://jeffkreeftmeijer.com/vim-reformat-dates/</id>
-    <updated>2017-10-17:00:00Z</updated>
-    <summary>Vim’s substitution command is a powerful way to make changes to text files. Besides finding and replacing text using regular expressions, substitutions can call out to external programs for more complicated replacements. By using the date utility from a substitution, Vim can convert all dates in a file to a different format and replace them all at once.</summary>
+    <published>2017-10-17T00:00:00+00:00</published>
+    <updated>2018-06-05T18:32:09+02:00</updated>
+    <summary>By using the date utility from a substitution, Vim can convert all dates in a file to a different format and replace them all at once.</summary>
     <content type="html">
       <![CDATA[
-      <article>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Vim’s substitution command is a powerful way to make changes to text files.
+      <section id="preamble" aria-label="Preamble"><p>Vim&#8217;s substitution command is a powerful way to make changes to text files.
 Besides finding and replacing text using regular expressions, substitutions can
 call out to external programs for more complicated replacements. By using the
 <code>date</code> utility from a substitution, Vim can convert all dates in a file to a
 different format and replace them all at once.</p>
-</div>
 <div class="imageblock">
 <div class="content">
-<img src="https://jeffkreeftmeijer.com/vim-reformat-dates/substitute.png" alt="Finding" width="converting and replacing dates with Vim substitutions" height="1490">
+<img src="https://jeffkreeftmeijer.com/vim-reformat-dates/substitute.png" alt="Finding, converting and replacing dates with Vim substitutions" width="746" height="581">
 </div>
 </div>
-
-<small>The input file</small>
-<pre class="highlight"><code class="html language-html">&lt;article&gt;
+<p>The <em>input file</em> is an HTML page with a list of articles. Each article includes
+a <code>&lt;time&gt;</code> tag with a value and a datetime attribute to show the publication
+date.</p>
+<figure class="listing-block"><figcaption>The input file</figcaption>
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;article&gt;
   &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
   &lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;
 &lt;/article&gt;
@@ -50,17 +48,12 @@ different format and replace them all at once.</p>
   &lt;time datetime="2015-10-01"&gt;2015-10-01&lt;/time&gt;
 &lt;/article&gt;
 
-...</code></pre>
-<div class="paragraph">
-<p>The <em>input file</em> is an HTML page with a list of articles. Each article includes
-a <code>&lt;time&gt;</code> tag with a value and a datetime attribute to show the publication
-date. We need to convert the dates’ values to a friendlier format that
-includes the full month name (“September 19, 2017”), while keeping the
+...</code></pre></figure>
+<p>We need to convert the dates&#8217; values to a friendlier format that
+includes the full month name (&#8220;September 19, 2017&#8221;), while keeping the
 datetime attributes in their current format.</p>
-</div>
-
-<small>The result: articles with reformatted dates</small>
-<pre class="highlight"><code class="html language-html">&lt;article&gt;
+<figure class="listing-block"><figcaption>The result: articles with reformatted dates</figcaption>
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;article&gt;
   &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
   &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;/time&gt;
 &lt;/article&gt;
@@ -74,216 +67,142 @@ datetime attributes in their current format.</p>
   &lt;h1&gt;git is not a git command&lt;/h1&gt;
   &lt;time datetime="2015-10-01"&gt;October 01, 2015&lt;/time&gt;
 &lt;/article&gt;
-...</code></pre>
-<div class="paragraph">
-<p>The input file has more then forty articles, so replacing them all by hand
+
+...</code></pre></figure>
+<p>The input file has more than forty articles, so replacing them all by hand
 would be a lot of error-prone work. Instead, we write a substitution that
-finds all dates in the file and replaces them with a reformatted value.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="finding-the-dates">Finding the dates</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The first step in replacing the dates is finding where they are in the input
+finds all dates in the file and replaces them with a reformatted value.</p></section>
+<section class="doc-section level-1"><h2 id="finding-the-dates">Finding the dates</h2><p>The first step in replacing the dates is finding where they are in the input
 file and making sure not to match the ones in the datetime attributes.</p>
-</div>
 <aside class="sidebarblock">
 <h3>Finding patterns</h3>
-<div class="paragraph">
 <p>Vim searches for text by pressing <kbd>esc</kbd> to get to normal mode, then
 <kbd>/</kbd>, followed by a <em>search pattern</em>. Type <kbd>esc</kbd> <code>/2017</code> to find all
 occurrences of "2017" in a file.</p>
-</div>
-<div class="paragraph">
 <p>The dot (<code>.</code>) is a wildcard that matches any single character. Searching for
-<code>20..</code> (<kbd>esc</kbd> <code>/20..</code>) matches “2017”, but also “2015”, “2078”,
-“20a%”, and “20°c”.</p>
-</div>
+<code>20..</code> (<kbd>esc</kbd> <code>/20..</code>) matches &#8220;2017&#8221;, but also &#8220;2015&#8221;, &#8220;2078&#8221;,
+&#8220;20a%&#8221;, and &#8220;20°c&#8221;.</p>
 </aside>
-<div class="paragraph">
 <p>To find all dates in the file, we could use <code>....-..-..</code> (<kbd>esc</kbd>
 <code>/....-..-..</code>) as our search pattern to match the date format. However, this
-pattern’s results will include all matching dates in the file, including the
-ones in the <code>&lt;time&gt;</code> tags’ datetime attributes.</p>
-</div>
-
-<pre class="highlight"><code class="html language-html">&lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;</code></pre>
-<div class="paragraph">
+pattern&#8217;s results will include all matching dates in the file, including the
+ones in the <code>&lt;time&gt;</code> tags&#8217; datetime attributes.</p>
+<div class="listing-block"><pre class="highlight"><code class="language-html" data-lang="html">&lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;</code></pre></div>
 <p>In the input file, all <code>&lt;time&gt;</code> values are immediately followed by the
 less-than sign from the closing <code>&lt;/time&gt;</code> tag. To prevent the datetimes from
-the attributes to be included in the results, we include the less-than sign in
-the search pattern.</p>
-</div>
-
-<pre>....-..-..&lt;</pre>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reformatting-dates-from-the-command-line">Reformatting dates from the command line</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We need the month’s full name in the date replacements, so we can’t reorder the
-input value (“2017-09-19”) to get the result we want. Instead, we need to
+the attributes to be included in the results, we could include the less-than
+sign in the search pattern and make sure to add it back when replacing.</p>
+<div class="literal-block"><pre>....-..-..&lt;</pre></div>
+<p>Hoever, Vim supports setting the start and end of the match in the search
+pattern using the <code>\zs</code> and <code>\ze</code> pattern atoms. By prefixing the <code>&lt;</code> in our
+search pattern with <code>\ze</code>, the pattern finds all dates followed by a less-than
+sign, but doesn&#8217;t include it in the match, meaning it won&#8217;t be replaced.</p>
+<div class="literal-block"><pre>....-..-..\ze&lt;</pre></div></section>
+<section class="doc-section level-1"><h2 id="reformatting-dates-from-the-command-line">Reformatting dates from the command line</h2><p>We need the month&#8217;s full name in the date replacements, so we can&#8217;t reorder the
+input value (&#8220;2017-09-19&#8221;) to get the result we want. Instead, we need to
 call out to an external utility that knows month names and can convert between
 date formats.</p>
-</div>
 <aside class="sidebarblock">
 <h3>The <code>date</code> utility</h3>
-<div class="paragraph">
 <p>The <code>date</code> utility returns the current date and time. The desired <em>output
 format</em> is passed in through a trailing argument that starts with a plus sign.
 It needs to be wrapped in quotes if it contains any whitespace.</p>
-</div>
-
-<pre>$ date
+<div class="literal-block"><pre>$ date
 Thu Oct 17 09:41:10 CEST 2017
 $ date +%Y-%m-%d
 2017-10-17
 $ date +"%B %d, %Y"
-October 17, 2017</pre>
-<div class="paragraph">
+October 17, 2017</pre></div>
 <p>On macOS (or other derivatives of BSD) passing a date to the <code>date</code> utility
 overwrites the system date unless the <code>-j</code> flag is passed. With that flag, the
 utility allows passing a test date to be reformatted. The test date needs to be
 formatted as <code>[[[mm]dd]HH]MM[[cc]yy][.ss]</code> by default or we can pass a custom
 <em>input format</em> with <code>-f</code>.</p>
-</div>
-
-<pre>$ date -j110200361991.35
+<div class="literal-block"><pre>$ date -j110200361991.35
 Sat Nov  2 00:36:35 CET 1991
 $ date -jf %Y-%m-%d 1991-11-02
-Sat Nov  2 09:41:27 CET 1991</pre>
-<div class="paragraph">
+Sat Nov  2 09:41:27 CET 1991</pre></div>
 <p>GNU <code>date</code> uses the <code>--date</code> argument to pass in dates, and it figures out the
 input format on its own.</p>
-</div>
-
-<pre># date --date=1991-11-02
-Sat Nov  2 00:00:00 UTC 1991</pre>
-<div class="paragraph">
+<div class="literal-block"><pre># date --date=1991-11-02
+Sat Nov  2 00:00:00 UTC 1991</pre></div>
 <p>By setting the input and output format, we can use the <code>date</code> utility to
 reformat dates.</p>
-</div>
-
-<pre>$ date -jf %Y-%m-%d 1991-11-02 +"%B %d, %Y" # BSD
-November 02, 1991</pre>
-
-<pre># date --date=1991-11-02 +"%B %d, %Y" # GNU
-November 02, 1991</pre>
+<div class="literal-block"><pre>$ date -jf %Y-%m-%d 1991-11-02 +"%B %d, %Y" # BSD
+November 02, 1991</pre></div>
+<div class="literal-block"><pre># date --date=1991-11-02 +"%B %d, %Y" # GNU
+November 02, 1991</pre></div>
 </aside>
-<div class="paragraph">
-<p>We reformat each match of our search pattern to our desired format (“September
-19, 2017”) with the <code>date</code> utility. Because we include the trailing less-than
-sign in the search pattern, the dates we use for the conversion will end
-with one too (“2017-09-19&lt;”). We append the less-than sign to the input
-format to match the results from the search pattern (<code>"%Y-%m-%d&lt;"</code>).</p>
-</div>
-<div class="paragraph">
-<p>The output format is <code>"%B %d, %Y&lt;"</code> to produce the month’s name, the date’s
-number, a comma and the year number, followed by the less-than sign (<code>September
-19, 2017&lt;</code>) to keep the HTML intact.</p>
-</div>
-<div class="paragraph">
-<p>With these formats the <code>date</code> utility reformats <code>1992-11-02&lt;</code> to <code>November 02,
-1991&lt;</code>.</p>
-</div>
-
-<pre>$ date -jf "%Y-%m-%d&lt;" "1991-11-02&lt;" +"%B %d, %Y&lt;"
-November 02 1991&lt;</pre>
+<p>We reformat each match of our search pattern to our desired format (&#8220;September
+19, 2017&#8221;) with the <code>date</code> utility. We use <code>"%Y-%m-%d"</code> as the <em>input format</em>
+to match the results from the search pattern. The <em>output format</em> is <code>"%B %d,
+%Y"</code> to produce the month&#8217;s full name, the date&#8217;s number, a comma and the year
+number.</p>
+<p>With these formats the <code>date</code> utility reformats <code>1991-11-02</code> to <code>November 02,
+1991</code>.</p>
+<div class="literal-block" id="date-command"><pre>$ date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"
+November 02 1991</pre></div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>-j</code></dt>
 <dd>
-<p>Don’t try to set the system date</p>
+<p>Don&#8217;t try to set the system date</p>
 </dd>
-<dt class="hdlist1"><code>-f "%Y-%m-%d&lt;"</code></dt>
+<dt class="hdlist1"><code>-f "%Y-%m-%d"</code></dt>
 <dd>
-<p>Use the passed input format instead of the default. In this case
-<code>"%Y-%m-%d&lt;"</code> to match the input format (<code>1991-11-02&lt;</code>).</p>
+<p>Use the passed input format instead of the default. In this case <code>"%Y-%m-%d"</code>
+to match the input format (<code>1991-11-02</code>).</p>
 </dd>
-<dt class="hdlist1"><code>"1991-11-02&lt;"</code></dt>
+<dt class="hdlist1"><code>"1991-11-02"</code></dt>
 <dd>
 <p>An example date to be parsed using the input format passed to <code>-f</code>.</p>
 </dd>
-<dt class="hdlist1"><code>+"%B %d, %Y&lt;"</code></dt>
+<dt class="hdlist1"><code>+"%B %d, %Y"</code></dt>
 <dd>
-<p>The output format, which produces <code>November 02, 1991&lt;</code>.</p>
+<p>The output format, which produces <code>November 02, 1991</code>.</p>
 </dd>
 </dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="calling-out-to-external-utilities-from-substitutions">Calling out to external utilities from substitutions</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We know how to find all dates in the file, and how to convert a date to another
+</div></section>
+<section class="doc-section level-1"><h2 id="calling-out-to-external-utilities-from-substitutions">Calling out to external utilities from substitutions</h2><p>We know how to find all dates in the file, and how to convert a date to another
 format from the command line. To replace all found dates with a reformatted
 version from the <code>date</code> utility, we need to run an <em>expression</em> from a
 <em>substitution</em>.</p>
-</div>
 <aside id="substitutions" class="sidebarblock">
 <h3>Substitutions</h3>
-<div class="paragraph">
-<p>Vim’s substitutions can find and replace text. To replace “November” with
-“October” throughout a file, we execute a substitution where the pattern
+<p>Vim&#8217;s substitutions can find and replace text. To replace &#8220;November&#8221; with
+&#8220;October&#8221; throughout a file, we execute a substitution where the pattern
 is <code>November</code> and the <em>substitute string</em> is <code>October</code>.</p>
-</div>
-
-<pre>:%s/November/October/gc</pre>
-<div class="admonitionblock note">
-<table>
-<tbody><tr>
-<td class="icon">
-<div class="title">ℹ️</div>
-</td>
-<td class="content">
-Options can be passed after the last slash. In this case, we use
+<div class="literal-block"><pre>:%s/November/October/gc</pre></div>
+<aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">ℹ️: </span></h6><p>Options can be passed after the last slash. In this case, we use
 <code>g[lobal]</code> to make the substitution <em>global</em>, meaning it will replace all
 occurrences of the pattern in the file. The second option is <code>c[onfirm]</code>, which
-will ask for confirmation before executing each substitution.
-</td>
-</tr>
-</tbody></table>
-</div>
+will ask for confirmation before executing each substitution.</p></aside>
 </aside>
-<div id="hardcoded-substitution" class="paragraph">
-<p>Using the search pattern we prepared earlier, we can find and replace all date
+<p id="hardcoded-substitution">Using the search pattern we prepared earlier, we can find and replace all date
 values from the input file with a substitution. For example, we could overwrite
 all dates with a hardcoded value:</p>
-</div>
-
-<pre>:%s/....-..-..&lt;/November 2, 1991&lt;/gc</pre>
+<div class="literal-block"><pre>:%s/....-..-..\ze&lt;/November 2, 1991/gc</pre></div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>....-..-..&lt;</code></dt>
+<dt class="hdlist1"><code>....-..-..</code></dt>
 <dd>
 <p>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</p>
 </dd>
-<dt class="hdlist1"><code>November 2, 1991&lt;</code></dt>
+<dt class="hdlist1"><code>November 2, 1991</code></dt>
 <dd>
 <p>The literal substitute string to replace the dates with a hardcoded one.</p>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
 <p>Instead of inserting a hardcoded substitute string, we need to run an
 expression for each match to get its replacement.</p>
-</div>
 <aside class="sidebarblock">
 <h3>Expressions</h3>
-<div class="paragraph">
 <p>When a substitute string starts with <code>\=</code>, Vim evaluates it as an expression.</p>
-</div>
-<div class="paragraph">
-<p>We can call Vim’s built in functions from an expression. To replace all numbers
-in a file with the number of the line they’re on, we use the <code>line()</code> function
+<p>We can call Vim&#8217;s built in functions from an expression. To replace all numbers
+in a file with the number of the line they&#8217;re on, we use the <code>line()</code> function
 from an expression in the substitute string.</p>
-</div>
-
-<pre>%s/\d\+/\=line('.')/gc</pre>
+<div class="literal-block"><pre>%s/\d\+/\=line('.')/gc</pre></div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>\d\+</code></dt>
@@ -294,142 +213,94 @@ from an expression in the substitute string.</p>
 <dt class="hdlist1"><code>\=line('.')</code></dt>
 <dd>
 <p>The substitute string with an expression (<code>\=</code>) to call the <code>line()</code>
-function. Passing <code>'.'</code> as the function’s argument returns the current cursor
+function. Passing <code>'.'</code> as the function&#8217;s argument returns the current cursor
 position, which is used to replace the match.</p>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
 <p>Vim provides the <code>system()</code> function to call out to an external command and use
 the result as the replacement string. To replace all numbers in a file with a
 random number, we call <code>echo -n $RANDOM</code> with the <code>system()</code> function.</p>
-</div>
-
-<pre>:%s/\d\+/\=system('echo -n $RANDOM')/gc</pre>
+<div class="literal-block"><pre>:%s/\d\+/\=system('echo -n $RANDOM')/gc</pre></div>
 </aside>
-<div class="paragraph">
 <p>We use the <code>system()</code> function from an expression (<code>\=</code>) to call out to the
 <code>date</code> utility. Sticking with hardcoded dates for now, we can use the utility
-to convert a date’s format from “1991-11-02” to “November 2, 1991” before
+to convert a date&#8217;s format from &#8220;1991-11-02&#8221; to &#8220;November 2, 1991&#8221; before
 inserting it into the file:</p>
-</div>
-
-<pre>:%s/....-..-..&lt;/\=system('date -jf "%Y-%m-%d&lt;" "1991-11-02&lt;" +"%B %d, %Y&lt;"')/gc</pre>
+<div class="literal-block"><pre>:%s/....-..-..\ze&lt;/\=system('date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"')/gc</pre></div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>....-..-..&lt;</code></dt>
+<dt class="hdlist1"><code>....-..-..\ze&lt;</code></dt>
 <dd>
 <p>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</p>
 </dd>
-<dt class="hdlist1"><code>\=system('date …​')</code></dt>
+<dt class="hdlist1"><code>\=system('date &#8230;&#8203;')</code></dt>
 <dd>
 <p>An expression that uses the <code>system()</code> function to execute an external
 command and returns its value as the substitute string.</p>
 </dd>
-<dt class="hdlist1"><code>'date -jf "%Y-%m-%d&lt;" "1991-11-02&lt;" +"%B %d, %Y&lt;"'</code></dt>
+<dt class="hdlist1"><code>'date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"'</code></dt>
 <dd>
 <p>The <a href="#date-command">date command</a> as a string, with a hardcoded date
-(<code>"1991-11-02&lt;"</code>) as its input date argument. This date matches the format of
-the search pattern’s matches.</p>
+(<code>"1991-11-02"</code>) as its input date argument. This date matches the format of
+the search pattern&#8217;s matches.</p>
 </dd>
 </dl>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tbody><tr>
-<td class="icon">
-<div class="title">⚠️</div>
-</td>
-<td class="content">
-This substitution produces a newline in the <code>&lt;time&gt;</code> tag, because the
-         <code>date</code> utility appends one to its output. We’ll remove these later
-         while discussing <a href="#nested-substitutions">nested substitutions</a>.
-</td>
-</tr>
-</tbody></table>
-</div>
-<div class="paragraph">
-<p>The replacement value is still hardcoded (“1991-11-02”), so this substitution
+<section class="admonition-block warning" role="doc-notice"><h6 class="block-title label-only"><span class="title-label">⚠️: </span></h6><p>This substitution produces a newline before the <code>&lt;time&gt;</code> tag, because
+         the <code>date</code> utility appends one to its output. We&#8217;ll remove these later
+         while discussing <a href="#nested-substitutions">nested substitutions</a>.</p></section>
+<p>The replacement value is still hardcoded (&#8220;1991-11-02&#8221;), so this substitution
 will overwrite all date values in the file to a date in 1991. To put the
 matched date values back in the file, we need to pass them to the date command.</p>
-</div>
 <aside class="sidebarblock">
 <h3>Submatches</h3>
-<div class="paragraph">
-<p>Vim’s <code>submatch()</code> function returns matches from our pattern. If we call it
+<p>Vim&#8217;s <code>submatch()</code> function returns matches from our pattern. If we call it
 with <code>0</code> as its argument, it will return the whole match instead of a submatch.
-To wrap each occurrence of “October” in brackets, we use <code>[\0]</code> as the
+To wrap each occurrence of &#8220;October&#8221; in brackets, we use <code>[\0]</code> as the
 substitute string.</p>
-</div>
-
-<pre>:%s/October/[\0]/gc</pre>
-<div class="paragraph">
+<div class="literal-block"><pre>:%s/October/[\0]/gc</pre></div>
 <p>In an expression, submatches can be included using the <code>submatch()</code> function.</p>
-</div>
-
-<pre>:%s/October/\='['.submatch('0').']'/gc</pre>
+<div class="literal-block"><pre>:%s/October/\='['.submatch('0').']'/gc</pre></div>
 </aside>
-<div class="paragraph">
 <p>To pass the matched date to the call to <code>date</code> in our expression, we need to
 break out of the string passed to the <code>system()</code> function and replace the
 hardcoded date with a call to <code>submatch(0)</code> to insert the whole match.</p>
-</div>
-
-<pre>:%s/....-..-..&lt;/\=system('date -jf "%Y-%m-%d&lt;" "'.submatch(0).'" +"%B %d, %Y&lt;"')/gc</pre>
-<div class="paragraph">
+<div class="literal-block"><pre>:%s/....-..-..\ze&lt;/\=system('date -jf "%Y-%m-%d" "'.submatch(0).'" +"%B %d, %Y"')/gc</pre></div>
 <p>Running this substitution will turn all <code>&lt;time&gt;</code> tags from the input file to
-our desired format, but it beaks the closing <code>&lt;/time&gt;</code> tag with an extra
-newline.</p>
-</div>
-
-<small>The current result, with an added newline that breaks the closing <code>&lt;/time&gt;</code> tag</small>
-<pre class="highlight"><code class="html language-html">&lt;article&gt;
+our desired format, but it puts a newline before the closing <code>&lt;/time&gt;</code> tag.</p>
+<figure class="listing-block"><figcaption>The current result, with an added newline before the closing <code>&lt;/time&gt;</code> tag</figcaption>
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;article&gt;
   &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
-  &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;
-/time&gt;
+  &lt;time datetime="2017-09-19"&gt;September 19, 2017
+&lt;/time&gt;
 &lt;/article&gt;
 
-...</code></pre>
-</div>
-</div>
-<div class="sect1">
-<h2 id="nested-substitutions">Nested substitutions</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A newline is appended to the result of the <code>date</code> command, which ends up in the
-file after running the substitution. Since there’s no way to get the date
+...</code></pre></figure></section>
+<section class="doc-section level-1"><h2 id="nested-substitutions">Nested substitutions</h2><p>A newline is appended to the result of the <code>date</code> command, which ends up in the
+file after running the substitution. Since there&#8217;s no way to get the date
 command to omit the newline, we need to take it out ourselves.</p>
-</div>
-<div class="paragraph">
 <p>We can run a second substitution to remove them after running the first one:</p>
-</div>
-
-<pre>:%s/&lt;\n\/time&gt;/&lt;\/time&gt;/g</pre>
-<div class="paragraph">
-<p>Another option is to use a <em>nested substitution</em> to keep the original
-substitution from adding newlines in the first place.</p>
-</div>
+<div class="literal-block"><pre>:%s/\n&lt;\/time&gt;/&lt;\/time&gt;/g</pre></div>
+<p>To keep the original substitution from adding newlines in the first place, we
+can pipe the result from the <code>date</code> command to <code>tr</code> to remove the newline with
+the <code>-d</code> argument:</p>
+<div class="literal-block"><pre>:%s/....-..-..\ze&lt;/\=system('date -jf "%Y-%m-%d" "'.submatch(0).'" +"%B %d, %Y" | tr -d "\n"')/gc</pre></div>
+<p>Another option is to take the newline out with a <em>nested substitution</em>.</p>
 <aside class="sidebarblock">
 <h3>The <code>substitute()</code> function</h3>
-<div class="paragraph">
-<p>Vim’s <code>substitute()</code> function replaces strings and can be run from an
+<p>Vim&#8217;s <code>substitute()</code> function replaces strings and can be run from an
 expression in a substitution. Nested substitutions are useful for transforming
 the result of another function.</p>
-</div>
-<div class="paragraph">
 <p>The function (<code>substitute()</code>) works like the substitute command (<code>:s</code>), and
 takes the same arguments, so <code>substitute("input", "find", "replace", "g")</code> is
 equivalent to running <code>:%s/find/replace/g</code> in a file.</p>
-</div>
-<div class="paragraph">
 <p>The <code>substitute()</code> function works like the substitute command (<code>:s[ubstitute]</code>)
-in Vim’s command line and takes the same arguments. The first argument is the
+in Vim&#8217;s command line and takes the same arguments. The first argument is the
 input, then the search pattern, the substitute string, followed by optional
 options. <code>substitute("input", "find", "replace", "g")</code> is equivalent to running
 <code>:%s/find/replace/g</code> in a file.</p>
-</div>
-
-<pre>:echom substitute("October 02, 1991", "October", "November", "")</pre>
+<div class="literal-block"><pre>:echom substitute("October 02, 1991", "October", "November", "")</pre></div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>"October 02, 1991"</code></dt>
@@ -446,33 +317,24 @@ options. <code>substitute("input", "find", "replace", "g")</code> is equivalent 
 </dd>
 <dt class="hdlist1"><code>""</code></dt>
 <dd>
-<p><a href="#substitutions">Options</a>, like in a “regular” substitution. This example
-doesn’t use the <code>g</code> option because we’re sure there’s only one match in the
-input string, so it isn’t necessary.</p>
+<p><a href="#substitutions">Options</a>, like in a &#8220;regular&#8221; substitution. This example
+doesn&#8217;t use the <code>g</code> option because we&#8217;re sure there&#8217;s only one match in the
+input string, so it isn&#8217;t necessary.</p>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
 <p>If an external command called from a substitution returns a trailing newline
 (like <code>echo</code> would without the <code>-n</code> flag), we can use the <code>substitute()</code>
 function to take it out before the match is replaced.</p>
-</div>
-
-<pre>:%s/October/\=substitute(system('echo "November"'), "\n", "", "")/gc</pre>
+<div class="literal-block"><pre>:%s/October/\=substitute(system('echo "November"'), "\n", "", "")/gc</pre></div>
 </aside>
-<div class="paragraph">
 <p>We wrap the call to the <code>date</code> utility in a nested substitution using the
 <code>substitute()</code> function. It takes the result, matches the newline (<code>"\n"</code>) and
 replaces it with an empty string.</p>
-</div>
-
-<pre>:%s/....-..-..&lt;/\=substitute(system('date -jf "%Y-%m-%d&lt;" "'.submatch(0).'" +"%B %d, %Y&lt;"'), "\n", "", "")/gc</pre>
-<div class="paragraph">
+<div class="literal-block"><pre>:%s/....-..-..\ze&lt;/\=substitute(system('date -jf "%Y-%m-%d" "'.submatch(0).'" +"%B %d, %Y"'), "\n", "", "")/gc</pre></div>
 <p>Now our substitution will turn the <code>&lt;time&gt;</code> tags into the correct format,
 without adding that extra newline.</p>
-</div>
-
-<small>The result</small>
+<figure class="listing-block"><figcaption>The result</figcaption>
 <pre>&lt;article&gt;
   &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
   &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;/time&gt;
@@ -488,239 +350,10 @@ without adding that extra newline.</p>
   &lt;time datetime="2015-10-01"&gt;October 01, 2015&lt;/time&gt;
 &lt;/article&gt;
 
-...</pre>
-</div>
-</div>
-
-
-</article>
-      ]]>
-    </content>
-  </entry>
-
-  <entry>
-    <title type="html">Keeping open source software projects maintainable</title>
-    <link href="https://jeffkreeftmeijer.com/open-source-maintainability/"/>
-    <id>http://jeffkreeftmeijer.com/open-source-maintainability/</id>
-    <updated>2017-09-19:00:00Z</updated>
-    <summary>If your open source project gains popularity, it will stay included in other people’s projects and workflows for years. It’s impossible to predict if you’ll have time to maintain your work in the future, but there are ways to minimize the amount of maintenance your project requires to remain useful.</summary>
-    <content type="html">
-      <![CDATA[
-<p>If your open source project gains popularity, it will stay included in other
-people’s projects and workflows for years. It’s impossible to predict if you’ll
-have time to maintain your work in the future, but there are ways to minimize
-the amount of maintenance your project requires to remain useful.</p>
-<a id="dont-add-or-merge-features-you-wont-use-yourself"></a><h2>Don’t add or merge features you won’t use yourself</h2>
-<blockquote><p>It didn’t take long to add support for another database management
-system into your background job library. You spent an evening getting it to
-work, and fifteen minutes here and there in to fix some issues in the weeks
-after releasing it. You don’t use that database yourself, but you have some
-users who do, and it doesn’t take long to get it set up when somebody reports
-a bug.</p>
-<p>After a while, an issue comes up. Everything works for the database you use,
-but it’s affecting the one you added later. You don’t have a lot of time or
-motivation to fix it and setting up the database takes a while. The issue sits
-there for a couple of weeks until somebody else sends a pull request. You
-understand most of the fix, the code looks okay and you’re glad the bug is
-solved, so you merge it in.</p>
-<p>When another issue comes in months later, you have a bigger problem than
-before. You still don’t have a lot of time to work on it, and you have code in
-your project you didn’t completely understand back when you merged it in. Let
-alone now.</p>
-</blockquote>
-<p>Instead of merging new features or implementing them yourself, allow for easy
-extension. Consider separating your project’s database layer into an adapter
-that’s easy to swap out for something else. If somebody needs your library to
-run on MongoDB, for example, they can write an adapter themselves.</p>
-<p>Don’t be afraid to tell contributors to maintain their fork instead of merging
-their pull request. If a feature doesn’t help your own use case, it doesn’t
-need to be in your project. This can be difficult if your users are
-requesting a something you don’t need, but it’ll make your project easier to
-maintain in the long run.</p>
-<a id="drop-support-for-old-versions-of-your-dependencies"></a><h2>Drop support for old versions of your dependencies</h2>
-<blockquote><p>You wrote a plug-in for your favorite editor that adds some useful
-functionality. It’s a couple of lines, but wrapping it in a plug-in allows you
-and others to install it using a plug-in manager.</p>
-<p>A new version of the editor comes out, which adds some functionality that
-makes your plug-in even more useful. You update it to take advantage of that
-new feature and made sure not to break backward compatibility. It has a
-version check that loads the original implementation when running in an older
-version of the editor.</p>
-<p>After a couple of years, you’d like to change the plug-in to add a new feature
-or handle some use case better. When you open the code, you can’t find a way
-to get this new feature working for the older versions of the editor.</p>
-<p>You’re not sure if your changes will break anything, and you don’t have the
-ancient editor version running on your machine. Although your project is
-popular, you don’t know if anyone is still using the old version of the
-editor.</p>
-</blockquote>
-<p>Whenever you start using a new version of a dependency, consider dropping
-support for older versions and bumping your major version number. If your users
-are tied to a previous version of your dependency, they should lock to an older
-version of your project.  Dropping backward compatibility allows you to remove
-conditional code that’s difficult to develop on.</p>
-<p>Don’t backport new features. Since you have limited resources you want your
-users to switch to new versions as quickly as possible, even if that means
-they’ll have to spend time updating their dependencies.</p>
-<a id="hand-over-projects-if-you-cant-help-anymore"></a><h2>Hand over projects if you can’t help anymore</h2>
-<blockquote><p>You maintain an add-on for some kind of test framework, that’s specifically
-suited for a problem you have. Since others have the same problem, your
-project is used by hundreds of people. You haven’t implemented anything you
-don’t use yourself, and you quickly drop support for old versions of the test
-framework.</p>
-<p>After a while, you start using another test framework on a daily basis. Maybe
-because a new project at your job uses it, or your new situation doesn’t have
-that problem your add-on fixed. You stop using your add-on.</p>
-<p>Your project still provides value for its users, but you don’t have time to
-reproduce issues you haven’t run into yourself. There’s a handful of people
-excited about your project, so you usually receive a pull request when
-something breaks.</p>
-<p>After merging pull requests for a while, the code starts to lack structure
-because there’s nobody actively maintaining the project. The code becomes
-increasingly difficult to understand, and it’s becoming difficult to even
-press the merge button without breaking the build.</p>
-</blockquote>
-<p>If you stop using your own project, you’re not fit to maintain it anymore. You
-don’t have to do all the work, but you need to be among the first to know when
-something breaks. If you don’t, you’re hurting the project more than you’re
-helping.</p>
-<p>Hand the project over to somebody that actively uses your project and knows the
-code. If you can’t, open an issue in your tracker to announce you’re looking for
-a new maintainer. Explain that you can’t help anymore and mention that you won’t
-be answering issues or reviewing pull requests.</p>
-      ]]>
-    </content>
-  </entry>
-
-  <entry>
-    <title type="html">Property-based testing in Elixir using PropEr</title>
-    <link href="https://jeffkreeftmeijer.com/mix-proper/"/>
-    <id>http://jeffkreeftmeijer.com/mix-proper</id>
-    <updated>2017-08-22T00:00:00Z</updated>
-    <summary>While reading Fred Hébert’s PropEr testing, on property-based testing in Erlang, I set out write PropEr tests in Elixir, and run them with a Mix task.</summary>
-    <content type="html">
-      <![CDATA[
-<p>While reading <a href="http://ferd.ca" title="">Fred Hébert</a>’s <a href="http://propertesting.com" title="">PropEr testing</a>, on property-based testing in Erlang, I set out write <a href="http://proper.softlab.ntua.gr" title="">PropEr</a> tests in Elixir, and run them with a Mix task.<sup><a href="#fn:1" id="fnref:1" class="footnote" title="see footnote">1</a></sup></p>
-<p><img src="https://jeffkreeftmeijer.com/mix-proper/mix_proper.png" alt="mix_proper running property-based tests in an Elixir project"/></p>
-<h2>Writing PropEr tests in Elixir</h2>
-<p>To explain writing PropEr tests (named “properties”) in Elixir, let’s take <a href="http://propertesting.com/book_stateless_properties.html#_writing_properties" title="">an example from PropEr testing</a>. A property of a function named <code class="inline">biggest/1</code> is that the returned value is equal to the biggest value in the passed list.</p>
-<pre><code class="erlang"># test/prop_biggest.erl
--module(prop_biggest).
--include_lib(&quot;proper/include/proper.hrl&quot;).
-
-prop_biggest() -&gt;
-    ?FORALL(List, non_empty(list(integer())),              # ➊
-        begin
-            biggest(List) =:= lists:last(lists:sort(List)) # ➋
-        end).</code></pre>
-<ol>
-<li><p><code class="inline">?FORALL</code> is a macro around <code class="inline">proper:forall/2</code>.<sup><a href="#fn:2" id="fnref:2" class="footnote" title="see footnote">2</a></sup> It takes a variable name, a generator, and a property. In this case, the generator returns a random, non-empty list of integers and puts it in the <code class="inline">List</code> variable for every run.</p>
-</li>
-<li><p>The property itself is a function that uses the random variable to assert the result from <code class="inline">biggest/1</code> matches the biggest value in the list.</p>
-</li>
-</ol>
-<p>Converting it to Elixir, this property looks a bit different.</p>
-<pre><code class="elixir"># test/biggest_prop.exs
-defmodule BiggestProp do
-  # ➊
-  import :proper
-  import :proper_types
-
-  def prop_biggest do
-    forall(non_empty(list(integer())), fn(list) -&gt;    # ➋
-      biggest(list) == list |&gt; Enum.sort |&gt; List.last # ➌
-    end)
-  end
-
-  # ...
-end</code></pre>
-<ol>
-<li>The <code class="inline">:proper</code> and <code class="inline">:proper_types</code> modules are imported manually instead of including the <code class="inline">proper.hrl</code> header file, which is a mostly <a href="https://github.com/manopapad/proper/blob/master/include/proper.hrl" title="">a list of imports</a> itself.
-</li>
-<li>Elixir <a href="https://groups.google.com/forum/#!topic/elixir-lang-talk/VbGTz7rKebM" title="">doesn’t support Erlang’s macros</a>, so <code class="inline">:proper.forall/2</code> is called directly.
-</li>
-<li>Although Erlang’s <code class="inline">lists</code> module would work, <code class="inline">Enum.sort/1</code> and <code class="inline">List.last/1</code> are used as trusted functions to test the implementation.
-</li>
-</ol>
-<p>With a <a href="https://github.com/jeffkreeftmeijer/mix_proper_example/blob/a09d6ac1bc800ae3f77a105c76f8db44d9b8d5ce/test/biggest_prop.exs#L19-L27" title="">working implementation</a>, and <a href="https://hex.pm/packages/proper" title="">:proper</a> included in the project’s dependencies, the property can be run in IEx by requiring the test file manually and running the property through <code class="inline">:proper.quickcheck/1</code>.</p>
-<pre><code class="">$ iex -S mix
-iex(1)&gt; Kernel.ParallelRequire.files([&quot;test/biggest_prop.exs&quot;])
-[BiggestProp]
-iex(2)&gt; :proper.quickcheck(BiggestProp.prop_biggest())
-....................................................................................................
-OK: Passed 100 test(s).
-true</code></pre>
-<h2>rebar3_proper and mix_proper</h2>
-<p>Although that worked, it would be nice to have a command to quickly run all tests in a Mix project. For Erlang, there’s a library named <a href="https://github.com/ferd/rebar3_proper" title="">rebar3_proper</a> that does just that by adding the <code class="inline">rebar3 proper</code> command.</p>
-<pre><code class="">$ rebar3 proper
-===&gt; Testing prop_biggest:prop_biggest()
-....................................................................................................
-OK: Passed 100 test(s).
-===&gt;
-1/1 properties passed</code></pre>
-<p>rebar3_proper runs tests by finding functions and modules with names prefixed with “prop_” and running them through <code class="inline">proper:quickcheck/1</code>. That would work in Elixir by adding a Mix task that uses the same approach.<sup><a href="#fn:3" id="fnref:3" class="footnote" title="see footnote">3</a></sup></p>
-<pre><code class="elixir">defmodule Mix.Tasks.Proper do
-  use Mix.Task
-
-  def run([]) do
-    &quot;test/**/*_prop.exs&quot;
-    |&gt; Path.wildcard
-    |&gt; Kernel.ParallelRequire.files # =&gt; [BiggestProp]
-    # ...
-  end
-
-  # ...
-end</code></pre>
-<p>Using “test/**/*_prop.exs” as a wildcard pattern, the paths for all property-based testing files in the test directory are found. Being .exs files, they are not compiled, so they need to be required manually when they’re needed. <a href="https://github.com/elixir-lang/elixir/blob/df7e0ca55cd03e3d46f426c7cd02fd25dcf2df87/lib/mix/lib/mix/compilers/test.ex#L50" title="">Mix’s own test task uses <code class="inline">Kernel.ParallelRequire.files/1-2</code></a>, which takes a list of filenames, includes the modules in the files and returns the names of the newly included modules.</p>
-<pre><code class="elixir">defmodule Mix.Tasks.Proper do
-  use Mix.Task
-
-  def run([]) do
-    &quot;test/**/*_prop.exs&quot;
-    |&gt; Path.wildcard
-    |&gt; Kernel.ParallelRequire.files
-    |&gt; Enum.each(fn(module) -&gt;
-      module.__info__(:functions)
-      |&gt; Enum.filter(&amp;property?/1)
-      |&gt; Enum.map(fn({name, 0}) -&gt;
-        :proper.quickcheck(apply(module, name, []))
-      end)
-    end)
-  end
-
-  # ...
-end</code></pre>
-<p>Using the list of included modules, their property functions are found using the <code class="inline">__info__/1</code> function. Functions without the proper name or an arity other than 0 get <a href="https://github.com/jeffkreeftmeijer/mix_proper/blob/fda1e4b19c6aabdf856b7d4948102409e0a5c9fc/lib/mix/tasks/proper.ex#L30-L35" title="">filtered out</a>. The remaining functions in the list are called using <code class="inline">:erlang.apply/3</code>, and their results are passed to <code class="inline">:proper.quickcheck/1</code>, which runs the tests.</p>
-<pre><code class="">$ mix proper
-....................................................................................................
-OK: Passed 100 test(s).</code></pre>
-<p>That’s it. The proper Mix task finds property-based test files, includes them, and runs each of the properties in those files through PropEr. The code above is the basis of <a href="https://github.com/jeffkreeftmeijer/mix_proper" title="">mix_proper</a>, which can be used in your Elixir project by <a href="https://github.com/jeffkreeftmeijer/mix_proper_example/blob/master/mix.exs#L24" title="">adding it as a dependency</a>.<sup><a href="#fn:4" id="fnref:4" class="footnote" title="see footnote">4</a></sup></p>
-<div class="footnotes">
-<hr>
-<ol>
-<li id="fn:1"><p>Besides running PropEr, there are more ways to do property-based testing with Elixir.</p>
-<p><a href="https://github.com/whatyouhide/stream_data" title="">StreamData</a> and <a href="https://github.com/pragdave/quixir" title="">Quixir</a> are both pure-Elixir libraries. StreamData is a candidate to be included in Elixir itself. If you want to get into property-based testing, one of these is probably your best bet. <a href="https://github.com/parroty/excheck" title="">ExCheck</a> is a wrapper around <a href="https://github.com/krestenkrab/triq" title="">triq</a>, while <a href="https://github.com/alfert/propcheck" title="">PropCheck</a> wraps PropEr. All of them use ExUnit to run their tests.</p>
-<p>However, I was curious to see if I could get it to work without having to wrap a lot of PropEr’s functions by just importing its modules in Elixir and running its functions directly while learning some things about Erlang along the way.&nbsp;<a href="#fnref:1" title="return to article" class="reversefootnote">&#x21A9;</a></p>
-</li>
-<li id="fn:2"><p>Since <code class="inline">?FORALL</code> is a macro around <code class="inline">proper:forall/2</code>, this example can also be written without it, revealing the function call underneath.</p>
-<pre><code class=""># test/prop_biggest.erl
--module(prop_biggest).
--include_lib(&quot;proper/include/proper.hrl&quot;).
-
-prop_biggest() -&gt;
-    proper:forall(non_empty(list(integer())), fun(List) -&gt;
-        biggest(List) =:= lists:last(lists:sort(List))
-    end).</code></pre>
-<p><a href="#fnref:2" title="return to article" class="reversefootnote">&#x21A9;</a></p>
-</li>
-<li id="fn:3"><p>Instead of <em>prefixing</em> the names for modules with property-based tests with “”Prop” (like “PropBiggest”), I chose to add it as a suffix. By adding “Prop” to the end, the module names are in line with ExUnit’s, which suffixes its test case module names with “Test” (like “BiggestTest”, for example).</p>
-<p>The names for the properties themselves <em>are</em> prefixed with “prop_”, like in rebar3_proper, for now. I could do away with function name matching and use a macro to use for defining tests (like StreamData does, for example), but I like not having to import anything but PropEr’s modules.&nbsp;<a href="#fnref:3" title="return to article" class="reversefootnote">&#x21A9;</a></p>
-</li>
-<li id="fn:4"><p>mix_proper is still a proof of concept. Although running tests works, you could run into some problems with PropEr’s generators in Elixir. If you run into one, please don’t hesitate to open an <a href="https://github.com/jeffkreeftmeijer/mix_proper/issues" title="">issue</a>.&nbsp;<a href="#fnref:4" title="return to article" class="reversefootnote">&#x21A9;</a></p>
-</li>
-</ol>
-
-</div>
+...</pre></figure>
+<p><span class="small"><em>Thanks Wouter Vos and Rico Sta. Cruz for feedback on the substitution command
+styling, u/Vurpius for suggesting <code>\ze</code> and Ben Sinclair for suggesting piping
+through <code>tr</code>.</em></span></p></section>
       ]]>
     </content>
   </entry>

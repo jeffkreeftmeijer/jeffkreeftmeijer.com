@@ -1,5 +1,6 @@
 require 'asciidoctor'
 require 'asciidoctor-html5s'
+require 'erb'
 
 task :generate => [:bundle, :build]
 
@@ -17,7 +18,8 @@ task :build do
   }.each do |from, to|
     {
       'amp' => 'amp.html',
-      'html5' => 'index.html'
+      'html5' => 'index.html',
+      'atom' => 'atom.xml'
     }.each do |template, filename|
       Asciidoctor.convert_file(
         from,
@@ -45,4 +47,11 @@ end
 
 task :bundle do
   `cat enough.css/enough.min.css blog.css ad.css | csso -o style.css`
+end
+
+task :syndicate do
+  template = File.read("feed.xml.erb")
+  result = ERB.new(template).result()
+  file = File.new("_output/feed.xml", "w")
+  file.write(result)
 end

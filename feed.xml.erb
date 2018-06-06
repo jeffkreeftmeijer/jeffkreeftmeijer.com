@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jeff Kreeftmeijer</title>
+  <link href="https://jeffkreeftmeijer.com/feed.xml" rel="self"/>
+  <link href="https://jeffkreeftmeijer.com/"/>
+  <updated><%= DateTime.now.rfc3339 %></updated>
+
+  <id>http://jeffkreeftmeijer.com/</id>
+  <author>
+    <name>Jeff Kreeftmeijer</name>
+  </author>
+
+  <%= File.read("_output/vim-reformat-dates/atom.xml") %>
+</feed>

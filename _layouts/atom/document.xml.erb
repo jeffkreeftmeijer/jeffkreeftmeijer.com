@@ -1,0 +1,13 @@
+  <entry>
+    <title type="html"><%= doctitle %></title>
+    <link href="<%= attr(:url) %>"/>
+    <id><%= attr(:url) %></id>
+    <published><%= DateTime.parse(attr(:revdate)).rfc3339 %></published>
+    <updated><%= DateTime.parse(attr(:docdatetime)).rfc3339 %></updated>
+    <summary><%= attr(:description) %></summary>
+    <content type="html">
+      <![CDATA[
+      <%= content %>
+      ]]>
+    </content>
+  </entry>
