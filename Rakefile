@@ -25,7 +25,7 @@ task :build do
           backend: "html5s",
           mkdirs: true,
           to_file: "#{to}/#{filename}",
-          template_dir: "_layouts/#{template}",
+          template_dirs: ["_layouts/html5", "_layouts/#{template}"],
           safe: 0,
           header_footer: true,
           attributes: {
