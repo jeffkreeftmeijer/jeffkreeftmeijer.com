@@ -35,9 +35,6 @@ task :build do
             "experimental" => '',
             "idprefix" => '',
             "idseparator" => '-',
-            "tip-caption" => '💡',
-            "warning-caption" => '⚠️',
-            "note-caption" => 'ℹ️',
             "asset-dir-key" => "url"
           }
         }
