@@ -10,6 +10,7 @@ task :build do
     '_articles/rspec-fail-fast/rspec-fail-fast.adoc' => '_output/rspec-fail-fast/',
     '_articles/git-rebase/git-rebase.adoc' => '_output/git-rebase/',
     '_articles/ruby-method-chaining/ruby-method-chaining.adoc' => '_output/ruby-method-chaining/',
+    '_articles/fuubar-rspec-progress-bar-formatter/fuubar.adoc' => '_output/fuubar-rspec-progress-bar-formatter/',
     '_articles/ruby-compare-images/ruby-compare-images.adoc' => '_output/ruby-compare-images/',
     '_articles/vim-number/vim-number.adoc' => '_output/vim-number/',
     '_articles/git-git/git-git.adoc' => '_output/git-git/',
