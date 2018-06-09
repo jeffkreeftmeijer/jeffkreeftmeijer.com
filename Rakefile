@@ -12,6 +12,7 @@ task :build do
     '_articles/ruby-method-chaining/ruby-method-chaining.adoc' => '_output/ruby-method-chaining/',
     '_articles/ruby-compare-images/ruby-compare-images.adoc' => '_output/ruby-compare-images/',
     '_articles/vim-number/vim-number.adoc' => '_output/vim-number/',
+    '_articles/git-git/git-git.adoc' => '_output/git-git/',
     '_articles/mix-proper/mix-proper.adoc' => '_output/mix-proper/',
     '_articles/open-source-maintainability/index.adoc' => '_output/open-source-maintainability/',
     '_articles/vim-reformat-dates/vim-reformat-dates.adoc' => '_output/vim-reformat-dates/',
