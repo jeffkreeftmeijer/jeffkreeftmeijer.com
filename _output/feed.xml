@@ -3,7 +3,7 @@
   <title>Jeff Kreeftmeijer</title>
   <link href="https://jeffkreeftmeijer.com/feed.xml" rel="self"/>
   <link href="https://jeffkreeftmeijer.com/"/>
-  <updated>2018-06-06T20:36:07+02:00</updated>
+  <updated>2018-06-09T17:02:42+02:00</updated>
 
   <id>http://jeffkreeftmeijer.com/</id>
   <author>
@@ -173,7 +173,7 @@ version from the <code>date</code> utility, we need to run an <em>expression</em
 &#8220;October&#8221; throughout a file, we execute a substitution where the pattern
 is <code>November</code> and the <em>substitute string</em> is <code>October</code>.</p>
 <div class="literal-block"><pre>:%s/November/October/gc</pre></div>
-<aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">ℹ️: </span></h6><p>Options can be passed after the last slash. In this case, we use
+<aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>Options can be passed after the last slash. In this case, we use
 <code>g[lobal]</code> to make the substitution <em>global</em>, meaning it will replace all
 occurrences of the pattern in the file. The second option is <code>c[onfirm]</code>, which
 will ask for confirmation before executing each substitution.</p></aside>
@@ -247,7 +247,7 @@ the search pattern&#8217;s matches.</p>
 </dd>
 </dl>
 </div>
-<section class="admonition-block warning" role="doc-notice"><h6 class="block-title label-only"><span class="title-label">⚠️: </span></h6><p>This substitution produces a newline before the <code>&lt;time&gt;</code> tag, because
+<section class="admonition-block warning" role="doc-notice"><h6 class="block-title label-only"><span class="title-label">Warning: </span></h6><p>This substitution produces a newline before the <code>&lt;time&gt;</code> tag, because
          the <code>date</code> utility appends one to its output. We&#8217;ll remove these later
          while discussing <a href="#nested-substitutions">nested substitutions</a>.</p></section>
 <p>The replacement value is still hardcoded (&#8220;1991-11-02&#8221;), so this substitution
