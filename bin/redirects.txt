@@ -2,6 +2,7 @@
 2010/the-magical-and-not-harmful-rebase/index.html https://jeffkreeftmeijer.com/git-rebase/
 2010/why-arent-you-using-git-flow/index.html https://jeffkreeftmeijer.com/git-flow/
 2010/making-rspec-stop-operation-immediately-after-failing/index.html https://jeffkreeftmeijer.com/rspec-fail-fast/
+2010/fuubar-the-instafailing-rspec-progress-bar-formatter/index.html https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/
 2011/comparing-images-and-creating-image-diffs/index.html https://jeffkreeftmeijer.com/ruby-compare-images/
 2011/method-chaining-and-lazy-evaluation-in-ruby/index.html http://jeffkreeftmeijer.com/ruby-method-chaining/
 2012/relative-line-numbers-in-vim-for-super-fast-movement/index.html https://jeffkreeftmeijer.com/vim-number/#relative-line-numbers
