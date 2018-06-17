@@ -177,27 +177,8 @@ number.</p>
 1991</code>.</p>
 <div class="literal-block" id="date-command"><pre>$ date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"
 November 02 1991</pre></div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>-j</code></dt>
-<dd>
-<p>Don&#8217;t try to set the system date</p>
-</dd>
-<dt class="hdlist1"><code>-f "%Y-%m-%d"</code></dt>
-<dd>
-<p>Use the passed input format instead of the default. In this case <code>"%Y-%m-%d"</code>
-to match the input format (<code>1991-11-02</code>).</p>
-</dd>
-<dt class="hdlist1"><code>"1991-11-02"</code></dt>
-<dd>
-<p>An example date to be parsed using the input format passed to <code>-f</code>.</p>
-</dd>
-<dt class="hdlist1"><code>+"%B %d, %Y"</code></dt>
-<dd>
-<p>The output format, which produces <code>November 02, 1991</code>.</p>
-</dd>
-</dl>
-</div></section>
+<div class="dlist"><dl><dt><code>-j</code></dt><dd>Don&#8217;t try to set the system date</dd><dt><code>-f "%Y-%m-%d"</code></dt><dd>Use the passed input format instead of the default. In this case <code>"%Y-%m-%d"</code>
+to match the input format (<code>1991-11-02</code>).</dd><dt><code>"1991-11-02"</code></dt><dd>An example date to be parsed using the input format passed to <code>-f</code>.</dd><dt><code>+"%B %d, %Y"</code></dt><dd>The output format, which produces <code>November 02, 1991</code>.</dd></dl></div></section>
 <section class="doc-section level-1"><h2 id="calling-out-to-external-utilities-from-substitutions">Calling out to external utilities from substitutions</h2><p>We know how to find all dates in the file, and how to convert a date to another
 format from the command line. To replace all found dates with a reformatted
 version from the <code>date</code> utility, we need to run an <em>expression</em> from a
@@ -217,18 +198,7 @@ will ask for confirmation before executing each substitution.</p></aside>
 values from the input file with a substitution. For example, we could overwrite
 all dates with a hardcoded value:</p>
 <div class="literal-block"><pre>:%s/....-..-..\ze&lt;/November 2, 1991/gc</pre></div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>....-..-..</code></dt>
-<dd>
-<p>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</p>
-</dd>
-<dt class="hdlist1"><code>November 2, 1991</code></dt>
-<dd>
-<p>The literal substitute string to replace the dates with a hardcoded one.</p>
-</dd>
-</dl>
-</div>
+<div class="dlist"><dl><dt><code>....-..-..</code></dt><dd>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</dd><dt><code>November 2, 1991</code></dt><dd>The literal substitute string to replace the dates with a hardcoded one.</dd></dl></div>
 <p>Instead of inserting a hardcoded substitute string, we need to run an
 expression for each match to get its replacement.</p>
 <aside class="sidebarblock">
@@ -238,21 +208,10 @@ expression for each match to get its replacement.</p>
 in a file with the number of the line they&#8217;re on, we use the <code>line()</code> function
 from an expression in the substitute string.</p>
 <div class="literal-block"><pre>%s/\d\+/\=line('.')/gc</pre></div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>\d\+</code></dt>
-<dd>
-<p>The pattern to match all numbers (<code>\d</code>) in the file. Multi-digit numbers (42,
-785, 14281) are matched as one number by using <code>\+</code>.</p>
-</dd>
-<dt class="hdlist1"><code>\=line('.')</code></dt>
-<dd>
-<p>The substitute string with an expression (<code>\=</code>) to call the <code>line()</code>
+<div class="dlist"><dl><dt><code>\d\+</code></dt><dd>The pattern to match all numbers (<code>\d</code>) in the file. Multi-digit numbers (42,
+785, 14281) are matched as one number by using <code>\+</code>.</dd><dt><code>\=line('.')</code></dt><dd>The substitute string with an expression (<code>\=</code>) to call the <code>line()</code>
 function. Passing <code>'.'</code> as the function&#8217;s argument returns the current cursor
-position, which is used to replace the match.</p>
-</dd>
-</dl>
-</div>
+position, which is used to replace the match.</dd></dl></div>
 <p>Vim provides the <code>system()</code> function to call out to an external command and use
 the result as the replacement string. To replace all numbers in a file with a
 random number, we call <code>echo -n $RANDOM</code> with the <code>system()</code> function.</p>
@@ -263,25 +222,10 @@ random number, we call <code>echo -n $RANDOM</code> with the <code>system()</cod
 to convert a date&#8217;s format from &#8220;1991-11-02&#8221; to &#8220;November 2, 1991&#8221; before
 inserting it into the file:</p>
 <div class="literal-block"><pre>:%s/....-..-..\ze&lt;/\=system('date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"')/gc</pre></div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>....-..-..\ze&lt;</code></dt>
-<dd>
-<p>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</p>
-</dd>
-<dt class="hdlist1"><code>\=system('date &#8230;&#8203;')</code></dt>
-<dd>
-<p>An expression that uses the <code>system()</code> function to execute an external
-command and returns its value as the substitute string.</p>
-</dd>
-<dt class="hdlist1"><code>'date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"'</code></dt>
-<dd>
-<p>The <a href="#date-command">date command</a> as a string, with a hardcoded date
+<div class="dlist"><dl><dt><code>....-..-..\ze&lt;</code></dt><dd>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</dd><dt><code>\=system('date &#8230;&#8203;')</code></dt><dd>An expression that uses the <code>system()</code> function to execute an external
+command and returns its value as the substitute string.</dd><dt><code>'date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"'</code></dt><dd>The <a href="#date-command">date command</a> as a string, with a hardcoded date
 (<code>"1991-11-02"</code>) as its input date argument. This date matches the format of
-the search pattern&#8217;s matches.</p>
-</dd>
-</dl>
-</div>
+the search pattern&#8217;s matches.</dd></dl></div>
 <section class="admonition-block warning" role="doc-notice"><h6 class="block-title label-only"><span class="title-label">Warning: </span></h6><p>This substitution produces a newline before the <code>&lt;time&gt;</code> tag, because
          the <code>date</code> utility appends one to its output. We&#8217;ll remove these later
          while discussing <a href="#nested-substitutions">nested substitutions</a>.</p></section>
@@ -336,28 +280,9 @@ input, then the search pattern, the substitute string, followed by optional
 options. <code>substitute("input", "find", "replace", "g")</code> is equivalent to running
 <code>:%s/find/replace/g</code> in a file.</p>
 <div class="literal-block"><pre>:echom substitute("October 02, 1991", "October", "November", "")</pre></div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>"October 02, 1991"</code></dt>
-<dd>
-<p>The input string to run the substitution on.</p>
-</dd>
-<dt class="hdlist1"><code>"October"</code></dt>
-<dd>
-<p>The search pattern.</p>
-</dd>
-<dt class="hdlist1"><code>"November"</code></dt>
-<dd>
-<p>The substitute string.</p>
-</dd>
-<dt class="hdlist1"><code>""</code></dt>
-<dd>
-<p><a href="#substitutions">Options</a>, like in a &#8220;regular&#8221; substitution. This example
+<div class="dlist"><dl><dt><code>"October 02, 1991"</code></dt><dd>The input string to run the substitution on.</dd><dt><code>"October"</code></dt><dd>The search pattern.</dd><dt><code>"November"</code></dt><dd>The substitute string.</dd><dt><code>""</code></dt><dd><a href="#substitutions">Options</a>, like in a &#8220;regular&#8221; substitution. This example
 doesn&#8217;t use the <code>g</code> option because we&#8217;re sure there&#8217;s only one match in the
-input string, so it isn&#8217;t necessary.</p>
-</dd>
-</dl>
-</div>
+input string, so it isn&#8217;t necessary.</dd></dl></div>
 <p>If an external command called from a substitution returns a trailing newline
 (like <code>echo</code> would without the <code>-n</code> flag), we can use the <code>substitute()</code>
 function to take it out before the match is replaced.</p>
