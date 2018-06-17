@@ -18,6 +18,14 @@ figcaption, .byline, .small{
   font-size: smaller;
 }
 
+dt{
+  font-weight: 600;
+}
+
+dd{
+  margin-bottom: 1em;
+}
+
 .sidebarblock, .admonition-block{
   border: 1px solid lightgray;
   box-shadow: 3px 3px 0 0 whitesmoke;
