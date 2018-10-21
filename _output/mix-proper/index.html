@@ -62,7 +62,7 @@ task.</p>
 <img src="https://jeffkreeftmeijer.com/mix-proper/mix_proper.png" alt="mix_proper running property-based tests in an Elixir project" width="1321" height="719">
 </div>
 </div></section>
-<section class="doc-section level-1"><h2 id="writing-proper-tests-in-elixir">Writing PropEr tests in Elixir</h2><p>To explain writing PropEr tests (named &#8220;properties&#8221;) in Elixir, let&#8217;s take
+<section class="doc-section level-1"><h2 id="writing-proper-tests-in-elixir">Writing PropEr tests in Elixir</h2><p>To explain writing PropEr tests (named &#x201c;properties&#x201d;) in Elixir, let&#8217;s take
 <a href="http://propertesting.com/book_stateless_properties.html#_writing_properties:">an
 example from PropEr testing</a>. A property of a function named <code>biggest/1</code> is
 that the returned value is equal to the biggest value in the passed list.</p>
@@ -84,6 +84,7 @@ prop_biggest() -&gt;
 </li>
 </ol>
 </div></div>
+
 <p>Converting it to Elixir, this property looks a bit different.</p>
 <div class="listing-block"><pre class="highlight"><code class="language-elixir" data-lang="elixir"># test/biggest_prop.exs
 defmodule BiggestProp do
@@ -111,6 +112,7 @@ end</code></pre><div class="colist arabic">
 </li>
 </ol>
 </div></div>
+
 <p>With a
 <a href="https://github.com/jeffkreeftmeijer/mix_proper_example/blob/a09d6ac1bc800ae3f77a105c76f8db44d9b8d5ce/test/biggest_prop.exs#L19-L27:">working
 implementation</a>, and <a href="https://hex.pm/packages/proper:">:proper</a> included in the
@@ -148,7 +150,7 @@ Elixir by adding a Mix task that uses the same approach.</p>
 
   # ...
 end</code></pre></div>
-<p>Using &#8220;test/**/*_prop.exs&#8221; as a wildcard pattern, the task finds the paths
+<p>Using &#x201c;test/**/*_prop.exs&#x201d; as a wildcard pattern, the task finds the paths
 for all property-based testing files in the test directory. Being .exs files,
 they are not compiled, so they&#8217;re required manually when they&#8217;re needed.
 <a href="https://github.com/elixir-lang/elixir/blob/df7e0ca55cd03e3d46f426c7cd02fd25dcf2df87/lib/mix/lib/mix/compilers/test.ex#L50:">Mix&#8217;s

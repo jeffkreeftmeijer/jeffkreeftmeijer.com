@@ -62,7 +62,7 @@
 <p>Let’s say we’re working with a user collection and we want to be able to query it like this:</p>
 <div class="listing-block"><pre class="highlight"><code class="language-ruby" data-lang="ruby">User.where(:name =&gt; 'Jeff').limit(5)</code></pre></div>
 <p>We’ll create a <code>Criteria</code> class to build queries. It needs two instance methods named <code>where</code> and <code>limit</code>.</p>
-<p>When calling one of these methods, all our object needs to do is remember the criteria that were passed, so we’ll need to set up an instance variable&#8212;&#8203;named <code>@criteria</code>-–to store them in.</p>
+<p>When calling one of these methods, all our object needs to do is remember the criteria that were passed, so we’ll need to set up an instance variable&#8211;named <code>@criteria</code>-–to store them in.</p>
 <p>Our <code>where</code> method is used to specify conditions and we want it to return an empty array when none have been specified yet, so we’ll add an empty array to our criteria hash by default:</p>
 <div class="listing-block"><pre class="highlight"><code class="language-ruby" data-lang="ruby">class Criteria
   def criteria

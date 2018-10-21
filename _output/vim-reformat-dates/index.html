@@ -85,7 +85,7 @@ date.</p>
 
 ...</code></pre></figure>
 <p>We need to convert the dates&#8217; values to a friendlier format that
-includes the full month name (&#8220;September 19, 2017&#8221;), while keeping the
+includes the full month name (&#x201c;September 19, 2017&#x201d;), while keeping the
 datetime attributes in their current format.</p>
 <figure class="listing-block"><figcaption>The result: articles with reformatted dates</figcaption>
 <pre class="highlight"><code class="language-html" data-lang="html">&lt;article&gt;
@@ -115,8 +115,8 @@ file and making sure not to match the ones in the datetime attributes.</p>
 <kbd>/</kbd>, followed by a <em>search pattern</em>. Type <kbd>esc</kbd> <code>/2017</code> to find all
 occurrences of "2017" in a file.</p>
 <p>The dot (<code>.</code>) is a wildcard that matches any single character. Searching for
-<code>20..</code> (<kbd>esc</kbd> <code>/20..</code>) matches &#8220;2017&#8221;, but also &#8220;2015&#8221;, &#8220;2078&#8221;,
-&#8220;20a%&#8221;, and &#8220;20°c&#8221;.</p>
+<code>20..</code> (<kbd>esc</kbd> <code>/20..</code>) matches &#x201c;2017&#x201d;, but also &#x201c;2015&#x201d;, &#x201c;2078&#x201d;,
+&#x201c;20a%&#x201d;, and &#x201c;20°c&#x201d;.</p>
 </aside>
 <p>To find all dates in the file, we could use <code>....-..-..</code> (<kbd>esc</kbd>
 <code>/....-..-..</code>) as our search pattern to match the date format. However, this
@@ -134,7 +134,7 @@ search pattern with <code>\ze</code>, the pattern finds all dates followed by a 
 sign, but doesn&#8217;t include it in the match, meaning it won&#8217;t be replaced.</p>
 <div class="literal-block"><pre>....-..-..\ze&lt;</pre></div></section>
 <section class="doc-section level-1"><h2 id="reformatting-dates-from-the-command-line">Reformatting dates from the command line</h2><p>We need the month&#8217;s full name in the date replacements, so we can&#8217;t reorder the
-input value (&#8220;2017-09-19&#8221;) to get the result we want. Instead, we need to
+input value (&#x201c;2017-09-19&#x201d;) to get the result we want. Instead, we need to
 call out to an external utility that knows month names and can convert between
 date formats.</p>
 <aside class="sidebarblock">
@@ -168,8 +168,8 @@ November 02, 1991</pre></div>
 <div class="literal-block"><pre># date --date=1991-11-02 +"%B %d, %Y" # GNU
 November 02, 1991</pre></div>
 </aside>
-<p>We reformat each match of our search pattern to our desired format (&#8220;September
-19, 2017&#8221;) with the <code>date</code> utility. We use <code>"%Y-%m-%d"</code> as the <em>input format</em>
+<p>We reformat each match of our search pattern to our desired format (&#x201c;September
+19, 2017&#x201d;) with the <code>date</code> utility. We use <code>"%Y-%m-%d"</code> as the <em>input format</em>
 to match the results from the search pattern. The <em>output format</em> is <code>"%B %d,
 %Y"</code> to produce the month&#8217;s full name, the date&#8217;s number, a comma and the year
 number.</p>
@@ -185,8 +185,8 @@ version from the <code>date</code> utility, we need to run an <em>expression</em
 <em>substitution</em>.</p>
 <aside id="substitutions" class="sidebarblock">
 <h3>Substitutions</h3>
-<p>Vim&#8217;s substitutions can find and replace text. To replace &#8220;November&#8221; with
-&#8220;October&#8221; throughout a file, we execute a substitution where the pattern
+<p>Vim&#8217;s substitutions can find and replace text. To replace &#x201c;November&#x201d; with
+&#x201c;October&#x201d; throughout a file, we execute a substitution where the pattern
 is <code>November</code> and the <em>substitute string</em> is <code>October</code>.</p>
 <div class="literal-block"><pre>:%s/November/October/gc</pre></div>
 <aside class="admonition-block note" role="note"><h6 class="block-title label-only"><span class="title-label">Note: </span></h6><p>Options can be passed after the last slash. In this case, we use
@@ -219,7 +219,7 @@ random number, we call <code>echo -n $RANDOM</code> with the <code>system()</cod
 </aside>
 <p>We use the <code>system()</code> function from an expression (<code>\=</code>) to call out to the
 <code>date</code> utility. Sticking with hardcoded dates for now, we can use the utility
-to convert a date&#8217;s format from &#8220;1991-11-02&#8221; to &#8220;November 2, 1991&#8221; before
+to convert a date&#8217;s format from &#x201c;1991-11-02&#x201d; to &#x201c;November 2, 1991&#x201d; before
 inserting it into the file:</p>
 <div class="literal-block"><pre>:%s/....-..-..\ze&lt;/\=system('date -jf "%Y-%m-%d" "1991-11-02" +"%B %d, %Y"')/gc</pre></div>
 <div class="dlist"><dl><dt><code>....-..-..\ze&lt;</code></dt><dd>The <a href="#finding-the-dates">search pattern</a> to find all dates in the file.</dd><dt><code>\=system('date &#8230;&#8203;')</code></dt><dd>An expression that uses the <code>system()</code> function to execute an external
@@ -229,14 +229,14 @@ the search pattern&#8217;s matches.</dd></dl></div>
 <section class="admonition-block warning" role="doc-notice"><h6 class="block-title label-only"><span class="title-label">Warning: </span></h6><p>This substitution produces a newline before the <code>&lt;time&gt;</code> tag, because
          the <code>date</code> utility appends one to its output. We&#8217;ll remove these later
          while discussing <a href="#nested-substitutions">nested substitutions</a>.</p></section>
-<p>The replacement value is still hardcoded (&#8220;1991-11-02&#8221;), so this substitution
+<p>The replacement value is still hardcoded (&#x201c;1991-11-02&#x201d;), so this substitution
 will overwrite all date values in the file to a date in 1991. To put the
 matched date values back in the file, we need to pass them to the date command.</p>
 <aside class="sidebarblock">
 <h3>Submatches</h3>
 <p>Vim&#8217;s <code>submatch()</code> function returns matches from our pattern. If we call it
 with <code>0</code> as its argument, it will return the whole match instead of a submatch.
-To wrap each occurrence of &#8220;October&#8221; in brackets, we use <code>[\0]</code> as the
+To wrap each occurrence of &#x201c;October&#x201d; in brackets, we use <code>[\0]</code> as the
 substitute string.</p>
 <div class="literal-block"><pre>:%s/October/[\0]/gc</pre></div>
 <p>In an expression, submatches can be included using the <code>submatch()</code> function.</p>
@@ -280,7 +280,7 @@ input, then the search pattern, the substitute string, followed by optional
 options. <code>substitute("input", "find", "replace", "g")</code> is equivalent to running
 <code>:%s/find/replace/g</code> in a file.</p>
 <div class="literal-block"><pre>:echom substitute("October 02, 1991", "October", "November", "")</pre></div>
-<div class="dlist"><dl><dt><code>"October 02, 1991"</code></dt><dd>The input string to run the substitution on.</dd><dt><code>"October"</code></dt><dd>The search pattern.</dd><dt><code>"November"</code></dt><dd>The substitute string.</dd><dt><code>""</code></dt><dd><a href="#substitutions">Options</a>, like in a &#8220;regular&#8221; substitution. This example
+<div class="dlist"><dl><dt><code>"October 02, 1991"</code></dt><dd>The input string to run the substitution on.</dd><dt><code>"October"</code></dt><dd>The search pattern.</dd><dt><code>"November"</code></dt><dd>The substitute string.</dd><dt><code>""</code></dt><dd><a href="#substitutions">Options</a>, like in a &#x201c;regular&#x201d; substitution. This example
 doesn&#8217;t use the <code>g</code> option because we&#8217;re sure there&#8217;s only one match in the
 input string, so it isn&#8217;t necessary.</dd></dl></div>
 <p>If an external command called from a substitution returns a trailing newline
