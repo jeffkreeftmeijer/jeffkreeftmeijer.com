@@ -30,7 +30,7 @@
   "headline": "Using git-flow to automate your git branching workflow",
   "image": ["https://jeffkreeftmeijer.com/git-flow/git-flow.png"],
   "datePublished": "2010-08-19",
-  "dateModified": "2017-11-22T08:38:18Z",
+  "dateModified": "2018-10-21T09:54:51Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -50,14 +50,14 @@
 <body>
 <h1>Using git-flow to automate your git branching workflow</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-08-19">2010-08-19 (last updated on <time datetime="2017-11-22T08:38:18Z">2017-11-22</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-08-19">2010-08-19 (last updated on <time datetime="2018-10-21T09:54:51Z">2018-10-21</time>)
 </p>
 
 <article>
-<section id="preamble" aria-label="Preamble"><p><a href="http://nvie.com/posts/a-successful-git-branching-model/">Vincent Driessen&#8217;s branching model</a> is a git branching and release management strategy that helps developers keep track of features, hotfixes and releases in bigger software projects. This workflow has lot of commands to type and remember, so there&#8217;s also the <a href="https://github.com/nvie/gitflow">git-flow library of git subcommands</a> to help automate some parts of the flow to make working with it easier.</p>
+<section id="preamble" aria-label="Preamble"><p><a href="http://nvie.com/posts/a-successful-git-branching-model/">Vincent Driessen&#8217;s "git flow" branching model</a> is a git branching and release management workflow that helps developers keep track of features, hotfixes and releases in bigger software projects. This workflow has lot of commands to type and remember, so there&#8217;s also the <a href="https://github.com/nvie/gitflow">git-flow library of git subcommands</a> to help automate some parts of the flow to make working with it easier.</p>
 <div class="imageblock">
 <div class="content">
-<img src="https://jeffkreeftmeijer.com/git-flow/git-flow.png" alt="The git-flow branching model" width="1200" height="1600">
+<img src="https://jeffkreeftmeijer.com/git-flow/git-flow.png" alt="The "git flow" branching model" width="1200" height="1600">
 </div>
 </div>
 <p>After <a href="https://github.com/nvie/gitflow/wiki/Installation">installing git-flow</a> (<code>brew install git-flow</code>), you can start using git-flow in your repository by using it&#8217;s <code>init</code> command. You can use it in existing projects, but let&#8217;s start a new repository:</p>
@@ -73,7 +73,7 @@ Release branches? [release/]
 Hotfix branches? [hotfix/]
 Support branches? [support/]
 Version tag prefix? []</pre></div>
-<p>git-flow is just a wrapper around existing git commands, so the <code>init</code> command doesn&#8217;t change anything in your repository other than creating branches for you. If you don&#8217;t want to use git-flow anymore, there&#8217;s nothing to change or remove, you just stop using the git-flow commands.</p>
+<p>git-flow is a wrapper around existing git commands, so the <code>init</code> command doesn&#8217;t change anything in your repository other than creating branches for you. If you don&#8217;t want to use git-flow anymore, there&#8217;s nothing to change or remove, you just stop using the git-flow commands.</p>
 <p>If you run <code>git branch</code> after setting up, you&#8217;ll notice that you switched from the master branch to a new one named <code>develop</code>.</p>
 <div class="listing-block"><pre>$ git branch
 * develop
