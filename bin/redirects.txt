@@ -10,3 +10,4 @@ fuubar https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/
 2013/vims-new-hybrid-line-number-mode/index.html https://jeffkreeftmeijer.com/vim-number/#hybrid-line-numbers
 2014/using-test-fixtures-with-carrierwave/index.html https://jeffkreeftmeijer.com/carrierwave-rails-test-fixtures/
 contact/index.html https://jeffkreeftmeijer.com/
+archive/index.html https://jeffkreeftmeijer.com/
