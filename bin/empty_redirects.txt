@@ -5,3 +5,4 @@
 2010/why-arent-you-using-/index.html https://jeffkreeftmeijer.com/git-flow/
 2011/method-chaining-and-lazy-evaluation/index.html https://jeffkreeftmeijer.com/2011/method-chaining-and-lazy-evaluation-in-ruby/
 2012/relativelinenumersinvimforsuper/index.html https://jeffkreeftmeijer.com/vim-number/
+fuubar/index.html https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/
