@@ -50,18 +50,14 @@
 <body>
 <h1>Git rebase: reapply your changes onto another branch</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-10-11">2010-10-11 (last updated on <time datetime="2018-05-23T19:33:57Z">2018-05-23</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-10-11">2010-10-11 (last updated on <time datetime="2018-10-23T20:44:25Z">2018-10-23</time>)
 </p>
 
 <article>
 <section id="preamble" aria-label="Preamble"><p>Git&#8217;s rebase command reapplies your changes onto another branch. As opposed to merging, which pulls the differences from the other branch into yours, rebasing switches your branch&#8217;s base to the other branch&#8217;s position and walks through your commits one by one to apply them again.</p>
 <p>Let&#8217;s look at an example. While working on a branch named <code>login</code>, based on the <code>master</code> branch, one of your team members pushed some changes to <code>master</code>. You need these changes to finish the login feature in your branch.</p>
 <p><em>Merging</em> the <code>master</code> branch back into yours would result in a merge commit, which includes the changes between both branches and exists to show where a merge occured. We won&#8217;t need to know when we merged the <code>master</code> into the <code>login</code> branch in the future. Instead, we&#8217;d like to pretend that all commits on the <code>login</code> branch happened based on the new state of the <code>master</code> branch.</p>
-<div class="imageblock">
-<div class="content">
-<img src="https://jeffkreeftmeijer.com/git-rebase/git-rebase.png" alt="git rebase vs git merge" width="1800" height="1167">
-</div>
-</div>
+<div class="image-block"><img src="git-rebase.png" alt="git rebase vs git merge" width="1800" height="1167"></div>
 <p>Git&#8217;s rebase command temporarily rewinds the commits on your current branch, pulls in the commits from the other branch and reapplies the rewinded commits back on top. By switching the current This <em>bases</em> the current branch onto the other branch.</p>
 <div class="literal-block"><pre>$ git rebase master
 First, rewinding head to replay your work on top of it...
