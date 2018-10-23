@@ -10,87 +10,190 @@
 <style>body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em;padding:0 1em}img,video{max-width:100%;height:auto}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}code,kbd,pre{font-family:SF Mono,Monaco,monospace}pre{background-color:#f8f8ff;font-size:.9em;overflow-x:auto;padding:1em}table{border-collapse:collapse;width:100%}td,th{padding:.5em;border:1px solid}nav{display:flex;justify-content:space-between;margin:1em 0}body{-webkit-font-smoothing:antialiased}.admonition-block p,figure{margin:0}.byline,.small,figcaption{font-size:smaller}dt{font-weight:600}dd{margin-bottom:1em}.admonition-block,.sidebarblock{border:1px solid #d3d3d3;box-shadow:3px 3px 0 0 #f5f5f5;padding:1em;margin:1em 0}.admonition-block h6{float:left;height:1em;margin:0 .25em 0 0;font-size:1em}.sidebarblock>:first-child{margin-top:0}.sidebarblock>:last-child{margin-bottom:0}.warning{background-color:ivory}.caution,.important{background-color:#fff0f5}.note,.tip{background-color:#f0f8ff}.warning h6::before{content:"⚠️ "}.tip h6::before{content:"💡 "}.note h6::before{content:"ℹ️ "}aside.ad{position:absolute;top:1.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside.ad img{height:100px}aside.ad div#cf_ad{display:block;width:130px;margin-left:22em}aside.ad a{text-decoration:none;color:gray;font-size:small;display:block;margin-bottom:1em}.cf-powered-by{font-style:italic}</style>
 
 <style>
-  h1{
-    font-size: 1em;
+  ul{
+    padding-left: 0;
   }
-  article{
+
+  li{
     margin: 1em 0;
+    list-style: none;
   }
-  article h1, article time{
+
+  article time, article span{
     display: table-cell;
   }
+
   article time{
     width: 5em;
   }
+
+  article a{
+    font-weight: bold;
+  }
+
+  article small{
+    display: inline-block;
+  }
 </style>
-<article>
-  <time datetime="2017-10-17">Oct 2017</time>
-  <h1><a href="/vim-reformat-dates/">Find, convert and replace dates with Vim substitutions</a></h1>
-</article>
-<article>
-  <time datetime="2017-09-19">Sep 2017</time>
-  <h1><a href="/open-source-maintainability/">Keeping open source software projects maintainable</a></h1>
-</article>
-<article>
-  <time datetime="2017-08-22">Aug 2017</time>
-  <h1><a href="/mix-proper/">Property-based testing in Elixir using PropEr</a></h1>
-</article>
-<article>
-  <time datetime="2015-10-01">Oct 2015</time>
-  <h1><a href="/git-git/">“git is not a git command”</a></h1>
-</article>
-<article>
-  <time datetime="2014-09-11">Sep 2014</time>
-  <h1><a href="/activerecord-destroyed/">Checking if an ActiveRecord model instance was destroyed</a></h1>
-</article>
-<article>
-  <time datetime="2014-09-09">Sep 2014</time>
-  <h1><a href="/carrierwave-rails-test-fixtures/">Using Rails test fixtures with CarrierWave</a></h1>
-</article>
-<article>
-  <time datetime="2013-04-29">Apr 2013</time>
-  <h1><a href="/2013/on-the-death-of-ifs/">On the death of ifs</a></h1>
-</article>
-<article>
-  <time datetime="2012-06-11">Jun 2012</time>
-  <h1><a href="/2012/preloading-dependencies-for-faster-test-suite-start-up-times/">Preloading dependencies for faster test suite start-up times</a></h1>
-</article>
-<article>
-  <time datetime="2012-01-30">Jan 2012</time>
-  <h1><a href="/vim-number/">Vim’s absolute, relative and hybrid line numbers</a></h1>
-</article>
-<article>
-  <time datetime="2011-11-28">Nov 2011</time>
-  <h1><a href="/ruby-method-chaining/">Method chaining and lazy evaluation in Ruby</a></h1>
-</article>
-<article>
-  <time datetime="2011-10-03">Oct 2011</time>
-  <h1><a href="/2011/microgems-five-minute-rubygems/">MicroGems: five minute RubyGems</a></h1>
-</article>
-<article>
-  <time datetime="2011-07-25">Jul 2011</time>
-  <h1><a href="/2011/the-pain-of-json-api-testing/">The pain of JSON API testing</a></h1>
-</article>
-<article>
-  <time datetime="2011-04-18">Apr 2011</time>
-  <h1><a href="/ruby-compare-images/">Comparing images and creating image diffs in Ruby</a></h1>
-</article>
-<article>
-  <time datetime="2010-11-15">Nov 2010</time>
-  <h1><a href="/fuubar-rspec-progress-bar-formatter/">Fuubar: the instafailing RSpec progress bar formatter</a></h1>
-</article>
-<article>
-  <time datetime="2010-11-08">Nov 2010</time>
-  <h1><a href="/rspec-fail-fast/">Stop RSpec on the first failure with the --fail-fast command line option</a></h1>
-</article>
-<article>
-  <time datetime="2010-10-11">Oct 2010</time>
-  <h1><a href="/git-rebase/">Git rebase: reapply your changes onto another branch</a></h1>
-</article>
-<article>
-  <time datetime="2010-08-19">Aug 2010</time>
-  <h1><a href="/git-flow/">Using git-flow to automate your git branching workflow</a></h1>
-</article>
+
+<ul>
+  <li>
+    <article>
+      <time datetime="2018-10-16">Oct 2018</time>
+      <span><a href="https://blog.appsignal.com/2018/10/16/elixir-alchemy-hot-code-reloading-in-elixir.html">Hot code reloading in Elixir</a> <small>on Elixir Alchemy</small></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2018-09-18">Sep 2018</time>
+      <span><a href="https://blog.appsignal.com/2018/09/18/elixir-alchemy-how-otp-applications-are-structured.html">How OTP applications are structured</a> <small>on Elixir Alchemy</small></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2018-09-04">Sep 2018</time>
+      <span><a href="https://blog.appsignal.com/2018/09/04/ruby-magic-closures-in-ruby-blocks-procs-and-lambdas.html">Closures in Ruby: Blocks, procs and lambdas</a> <small>on Ruby Magic</small></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2018-07-10">Jul 2018</time>
+      <span><a href="https://blog.appsignal.com/2018/07/10/ruby-magic-slurping-and-streaming-files.html">“Slurping” and streaming files in Ruby</a> <small>on Ruby Magic</small></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2018-06-12">Jun 2018</time>
+      <span><a href="https://blog.appsignal.com/2018/06/12/elixir-alchemy-deconstructing-genservers.html">Deconstructing GenServers</a> <small>on Elixir Alchemy</small></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2018-05-29">May 2018</time>
+      <span><a href="https://blog.appsignal.com/2018/05/29/ruby-magic-enumerable-and-enumerator.html">Ruby's magical Enumerable module</a> <small>on Ruby Magic</small></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2017-10-17">Oct 2017</time>
+      <span><a href="/vim-reformat-dates/">Find, convert and replace dates with Vim substitutions</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2017-09-19">Sep 2017</time>
+      <span><a href="/open-source-maintainability/">Keeping open source software projects maintainable</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2017-08-22">Aug 2017</time>
+      <span><a href="/mix-proper/">Property-based testing in Elixir using PropEr</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2017-05-18">May 2017</time>
+      <span><a href="https://blog.appsignal.com/2017/05/18/elixir-alchemy-demystifying-processes-in-elixir.html">Demystifying processes in Elixir</a> <small>on Elixir Alchemy</small></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2017-01-24">Jan 2017</time>
+      <span><a href="https://blog.appsignal.com/2017/01/24/ruby-magic-building-a-ruby-http-server-part-2-running-a-rails-app.html">Building a Ruby HTTP server: Running Rails apps</a> <small>on Ruby Magic</small></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2016-11-23">Nov 2016</time>
+      <span><a href="https://blog.appsignal.com/2016/11/23/ruby-magic-building-a-30-line-http-server-in-ruby.html">Building a 30-line HTTP server in Ruby</a> <small>on Ruby Magic</small></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2015-10-01">Oct 2015</time>
+      <span><a href="/git-git/">“git is not a git command”</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2014-09-11">Sep 2014</time>
+      <span><a href="/activerecord-destroyed/">Checking if an ActiveRecord model instance was destroyed</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2014-09-09">Sep 2014</time>
+      <span><a href="/carrierwave-rails-test-fixtures/">Using Rails test fixtures with CarrierWave</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2013-04-29">Apr 2013</time>
+      <span><a href="/2013/on-the-death-of-ifs/">On the death of ifs</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2012-06-11">Jun 2012</time>
+      <span><a href="/2012/preloading-dependencies-for-faster-test-suite-start-up-times/">Preloading dependencies for faster test suite start-up times</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2012-01-30">Jan 2012</time>
+      <span><a href="/vim-number/">Vim’s absolute, relative and hybrid line numbers</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2011-11-28">Nov 2011</time>
+      <span><a href="/ruby-method-chaining/">Method chaining and lazy evaluation in Ruby</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2011-10-03">Oct 2011</time>
+      <span><a href="/2011/microgems-five-minute-rubygems/">MicroGems: five minute RubyGems</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2011-07-25">Jul 2011</time>
+      <span><a href="/2011/the-pain-of-json-api-testing/">The pain of JSON API testing</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2011-04-18">Apr 2011</time>
+      <span><a href="/ruby-compare-images/">Comparing images and creating image diffs in Ruby</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2010-11-15">Nov 2010</time>
+      <span><a href="/fuubar-rspec-progress-bar-formatter/">Fuubar: the instafailing RSpec progress bar formatter</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2010-11-08">Nov 2010</time>
+      <span><a href="/rspec-fail-fast/">Stop RSpec on the first failure with the --fail-fast command line option</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2010-10-11">Oct 2010</time>
+      <span><a href="/git-rebase/">Git rebase: reapply your changes onto another branch</a></span>
+    </article>
+  </li>
+  <li>
+    <article>
+      <time datetime="2010-08-19">Aug 2010</time>
+      <span><a href="/git-flow/">Using git-flow to automate your git branching workflow</a></span>
+    </article>
+  </li>
+</ul>
 
 <hr/>
 <nav>
