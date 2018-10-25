@@ -33,7 +33,7 @@
   "headline": "Fuubar: the instafailing RSpec progress bar formatter",
   "image": ["https://jeffkreeftmeijer.com/fuubar/fuubar.png"],
   "datePublished": "2010-11-15",
-  "dateModified": "2018-10-23T20:44:06Z",
+  "dateModified": "2018-10-25T20:09:38Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -53,7 +53,7 @@
 <body>
 <h1>Fuubar: the instafailing RSpec progress bar formatter</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-11-15">2010-11-15 (last updated on <time datetime="2018-10-23T20:44:06Z">2018-10-23</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-11-15">2010-11-15 (last updated on <time datetime="2018-10-25T20:09:38Z">2018-10-25</time>)
 </p>
 
 <article>
@@ -69,7 +69,8 @@
 <section class="doc-section level-1"><h2 id="fuubar">Fuubar</h2><p>After looking around for a bit, I found an article by <a href="http://twitter.com/nick_evans">@nick_evans</a> posted in 2008, in which he tried to fix some of the issues I’m having with a <a href="http://ekenosen.net/nick/devblog/2008/12/better-progress-bar-for-rspec">progress bar formatter</a>. Nick wrote a really nice solution for it using the <a href="http://rubygems.org/gems/progressbar">progressbar gem</a> by <a href="http://twitter.com/peleteiro">@peleteiro</a>.</p>
 <p>I decided to continue Nick’s work and got the formatter up to speed with RSpec 2, using rspec-instafail to handle the direct feedback after every failure.  I put the whole thing in a gem and <a href="http://twitter.com/josevalim">@josevalim</a> came up with the name: <a href="http://github.com/jeffkreeftmeijer/fuubar">Fuubar</a>.</p>
 <p>Here’s a <a href="http://vimeo.com/16845253">short video of Fuubar in action</a>:</p>
-<iframe src="https://player.vimeo.com/video/16845253" width="640" height="508" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<iframe width="640" height="508" src="//player.vimeo.com/video/16845253" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 <div class="literal-block"><pre>$ rspec --format Fuubar --color spec</pre></div>
 <p>If you want to use Fuubar as your default formatter, simply put the options in your <code>.rspec</code> file:</p>
 <div class="literal-block"><pre>--format Fuubar
