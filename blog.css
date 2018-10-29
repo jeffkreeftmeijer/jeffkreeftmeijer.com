@@ -62,3 +62,7 @@ dd{
 .note h6::before{
   content: "ℹ️ ";
 }
+
+.white{
+  color: white;
+}
