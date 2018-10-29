@@ -23,6 +23,7 @@ task :build do
     '_articles/mix-proper/mix-proper.adoc' => '_output/mix-proper/',
     '_articles/open-source-maintainability/index.adoc' => '_output/open-source-maintainability/',
     '_articles/vim-reformat-dates/vim-reformat-dates.adoc' => '_output/vim-reformat-dates/',
+    '_articles/sixteen-color-terminals/sixteen-color-terminals.adoc' => '_output/sixteen-color-terminals/',
   }.each do |from, to|
     {
       'amp' => 'amp.html',
