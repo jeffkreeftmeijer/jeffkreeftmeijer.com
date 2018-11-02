@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <title>Vim&#8217;s absolute, relative and hybrid line numbers</title>
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="description" content="Besides regular absolute line numbers, Vim has relative and “hybrid” modes to help navigate around files.">
+<meta name="description" content="Vim’s regular line numbers (`:set number`) number lines absolutely, relative numbers (`:set relativenumber`) are relative to the current line and “hybrid” numbers (`:set number selativenumber`) combine both. With the vim-numbertoggle plugin, it can even toggle modes automatically.">
 <meta name="author" content="Jeff Kreeftmeijer">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
@@ -16,7 +16,7 @@
 <meta name="twitter:site" content="@jkreeftmeijer">
 <meta name="twitter:creator" content="@jkreeftmeijer">
 <meta name="twitter:title" content="Vim&#8217;s absolute, relative and hybrid line numbers">
-<meta name="twitter:description" content="Besides regular absolute line numbers, Vim has relative and “hybrid” modes to help navigate around files.">
+<meta name="twitter:description" content="Vim’s regular line numbers (`:set number`) number lines absolutely, relative numbers (`:set relativenumber`) are relative to the current line and “hybrid” numbers (`:set number selativenumber`) combine both. With the vim-numbertoggle plugin, it can even toggle modes automatically.">
 <meta name="twitter:image" content="https://jeffkreeftmeijer.com/vim-number/toggle.gif">
 
 <script type="application/ld+json">
@@ -30,12 +30,12 @@
   "headline": "Vim&#8217;s absolute, relative and hybrid line numbers",
   "image": ["https://jeffkreeftmeijer.com/vim-number/toggle.gif", "https://jeffkreeftmeijer.com/vim-number/hybrid.gif", "https://jeffkreeftmeijer.com/vim-number/relative.gif", "https://jeffkreeftmeijer.com/vim-number/absolute.gif"],
   "datePublished": "2012-01-30",
-  "dateModified": "2018-06-11T16:52:07Z",
+  "dateModified": "2018-11-03T10:01:52Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
   },
-  "description": "Besides regular absolute line numbers, Vim has relative and “hybrid” modes to help navigate around files.",
+  "description": "Vim’s regular line numbers (`:set number`) number lines absolutely, relative numbers (`:set relativenumber`) are relative to the current line and “hybrid” numbers (`:set number selativenumber`) combine both. With the vim-numbertoggle plugin, it can even toggle modes automatically.",
   "publisher": {
     "@type": "Organization",
     "name": "jeffkreeftmeijer.com",
@@ -50,15 +50,16 @@
 <body>
 <h1>Vim&#8217;s absolute, relative and hybrid line numbers</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2012-01-30">2012-01-30 (last updated on <time datetime="2018-06-11T16:52:07Z">2018-06-11</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2012-01-30">2012-01-30 (last updated on <time datetime="2018-11-03T10:01:52Z">2018-11-03</time>)
 </p>
 
 <article>
 <section id="preamble" aria-label="Preamble"><p>Vim doesn&#8217;t show line numbers by default, but they can be turned on in your
 configuration. Besides regular absolute line numbers, Vim has relative and
-“hybrid” modes to help navigate around files. With some autocommands, it can
-even toggle between line number modes automatically when you switch files or
-enter insert mode.</p></section>
+“hybrid” modes to help navigate around files. With the
+<a href="https://github.com/jeffkreeftmeijer/vim-numbertoggle">vim-numbertoggle</a> plugin,
+it can even toggle between line number modes automatically when you switch
+files or enter insert mode.</p></section>
 <section class="doc-section level-1"><h2 id="absolute-line-numbers">Absolute line numbers</h2><p>Using the <code>number</code> option, Vim sets up absolute line numbers to show the line
 number for each line in the file you&#8217;re working on.</p>
 
