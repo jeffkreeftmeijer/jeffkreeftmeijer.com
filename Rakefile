@@ -2,6 +2,11 @@ require 'asciidoctor'
 require 'asciidoctor-html5s'
 require 'erb'
 
+def command(command)
+  puts command
+  puts `#{command}`
+end
+
 task :generate => [:bundle, :copy, :build]
 
 task :build do
@@ -58,4 +63,9 @@ end
 task :copy do
   `sips --cropToHeightWidth 1360 1440 _articles/vim-reformat-dates/substitute-dark.png --out _output/vim-reformat-dates/substitute-dark.png`
   `sips --resampleWidth 720 _output/vim-reformat-dates/substitute-dark.png --out _output/vim-reformat-dates/substitute-dark-720px.png`
+end
+
+task :optimize do
+  command("imageoptim _output/vim-reformat-dates/substitute-dark-720px.png")
+  command("imageoptim _output/vim-reformat-dates/substitute-dark.png")
 end
