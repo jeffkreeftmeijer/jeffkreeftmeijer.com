@@ -2,7 +2,7 @@ require 'asciidoctor'
 require 'asciidoctor-html5s'
 require 'erb'
 
-task :generate => [:bundle, :build]
+task :generate => [:bundle, :copy, :build]
 
 task :build do
   {
@@ -53,4 +53,9 @@ task :syndicate do
   result = ERB.new(template).result()
   file = File.new("_output/feed.xml", "w")
   file.write(result)
+end
+
+task :copy do
+  `sips --cropToHeightWidth 1360 1440 _articles/vim-reformat-dates/substitute-dark.png --out _output/vim-reformat-dates/substitute-dark.png`
+  `sips --resampleWidth 720 _output/vim-reformat-dates/substitute-dark.png --out _output/vim-reformat-dates/substitute-dark-720px.png`
 end
