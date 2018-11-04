@@ -61,8 +61,8 @@ task :syndicate do
 end
 
 task :copy do
-  `sips --cropToHeightWidth 1360 1440 _articles/vim-reformat-dates/substitute-dark.png --out _output/vim-reformat-dates/substitute-dark.png`
-  `sips --resampleWidth 720 _output/vim-reformat-dates/substitute-dark.png --out _output/vim-reformat-dates/substitute-dark-720px.png`
+  `cp _articles/vim-reformat-dates/substitute-dark.png _output/vim-reformat-dates/substitute-dark.png`
+  `cp _articles/vim-reformat-dates/substitute-dark-shadow.png _output/vim-reformat-dates/substitute-dark-shadow.png`
 end
 
 task :optimize do
