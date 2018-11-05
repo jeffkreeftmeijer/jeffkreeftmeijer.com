@@ -30,7 +30,7 @@
   "headline": "Comparing images and creating image diffs in Ruby",
   "image": ["https://jeffkreeftmeijer.com/ruby-compare-images/compare.png"],
   "datePublished": "2011-04-18",
-  "dateModified": "2018-06-08T22:50:28Z",
+  "dateModified": "2018-11-05T18:12:18Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -50,7 +50,7 @@
 <body>
 <h1>Comparing images and creating image diffs in Ruby</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2011-04-18">2011-04-18 (last updated on <time datetime="2018-06-08T22:50:28Z">2018-06-09</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2011-04-18">2011-04-18 (last updated on <time datetime="2018-11-05T18:12:18Z">2018-11-05</time>)
 </p>
 
 <article>
@@ -82,17 +82,17 @@ images.last.rect(x.min, y.min, x.max, y.max, ChunkyPNG::Color.rgb(0,255,0))
 images.last.save('diff.png')</code></pre></div>
 <p>Want the code? Here’s a <a href="https://gist.github.com/923894">Gist</a>.</p>
 <p>After loading in the two images, we’ll loop over the pixels of the first one. If the pixel is the same as the one in the second image, we’ll add it to the <code>diff</code> array. When we’re done, we’ll draw a bounding box around the area that contains the changes:</p>
-<p><img src="http://jeffkreeftmeijer.com/images/tapir.png" alt="tapir">
-<img src="http://jeffkreeftmeijer.com/images/tapir_hat.png" alt="tapir hat">
-<img src="http://jeffkreeftmeijer.com/images/tapir_diff_box.png" alt="tapir diff box"></p>
+<p><img src="http://jeffkreeftmeijer.com/images/tapir.png" alt="" width="130" height="130">
+<img src="http://jeffkreeftmeijer.com/images/tapir_hat.png" alt="" width="130" height="130">
+<img src="http://jeffkreeftmeijer.com/images/tapir_diff_box.png" alt="" width="130" height="130"></p>
 <p>It worked! The result image has a bounding box around the hat we added to the image and the output tells us that almost 9% of the pixels in the image changed, which seems about right.</p>
 <div class="literal-block"><pre>pixels (total):     16900
 pixels changed:     1502
 pixels changed (%): 8.887573964497042%</pre></div>
 <p>A problem with this approach is that it only <em>detects</em> change, without <em>measuring</em> it. It doesn&#8217;t care if the pixel it’s looking at is just a bit darker or a completely different color. If we use this code to compare one image to a slightly darker version of itself, the result will look like this:</p>
-<p><img src="http://jeffkreeftmeijer.com/images/tapir_hat.png" alt="tapir hat">
-<img src="http://jeffkreeftmeijer.com/images/tapir_hat_dark.png" alt="tapir hat dark">
-<img src="http://jeffkreeftmeijer.com/images/tapir_diff_dark_box.png" alt="tapir diff dark box"></p>
+<p><img src="http://jeffkreeftmeijer.com/images/tapir_hat.png" alt="" width="130" height="130">
+<img src="http://jeffkreeftmeijer.com/images/tapir_hat_dark.png" alt="" width="130" height="130">
+<img src="http://jeffkreeftmeijer.com/images/tapir_diff_dark_box.png" alt="" width="130" height="130"></p>
 <div class="literal-block"><pre>pixels (total):     16900
 pixels changed:     16900
 pixels changed (%): 100.0%</pre></div>
@@ -138,16 +138,16 @@ output.save('diff.png')</code></pre></div>
 pixels changed:    1502
 image changed (%): 2.882157784948056%</pre></div>
 <p>Again, a diff image is saved. This time, it shows the differences using shades of gray. Bigger changes are darker:</p>
-<p><img src="http://jeffkreeftmeijer.com/images/tapir.png" alt="tapir">
-<img src="http://jeffkreeftmeijer.com/images/tapir_hat.png" alt="tapir hat">
-<img src="http://jeffkreeftmeijer.com/images/tapir_diff_delta_e.png" alt="tapir diff delta e"></p>
+<p><img src="http://jeffkreeftmeijer.com/images/tapir.png" alt="" width="130" height="130">
+<img src="http://jeffkreeftmeijer.com/images/tapir_hat.png" alt="" width="130" height="130">
+<img src="http://jeffkreeftmeijer.com/images/tapir_diff_delta_e.png" alt="" width="130" height="130"></p>
 <p>Now, let’s try the two images where the second one is slightly darker:</p>
 <div class="literal-block"><pre>pixels (total):    16900
 pixels changed:    16900
 image changed (%): 5.4418255392228945%</pre></div>
-<p><img src="http://jeffkreeftmeijer.com/images/tapir_hat.png" alt="tapir hat">
-<img src="http://jeffkreeftmeijer.com/images/tapir_hat_dark.png" alt="tapir hat dark">
-<img src="http://jeffkreeftmeijer.com/images/tapir_diff_delta_e_dark.png" alt="tapir diff delta e dark"></p>
+<p><img src="http://jeffkreeftmeijer.com/images/tapir_hat.png" alt="" width="130" height="130">
+<img src="http://jeffkreeftmeijer.com/images/tapir_hat_dark.png" alt="" width="130" height="130">
+<img src="http://jeffkreeftmeijer.com/images/tapir_diff_delta_e_dark.png" alt="" width="130" height="130"></p>
 <p>Great. Now our code knows that the images are only darker, not completely different. If you look closely, you can see the difference in the result image.</p></section>
 <section class="doc-section level-1"><h2 id="what-about-github">What about Github?</h2><p>Github uses a <a href="http://en.wikipedia.org/wiki/Blend_modes#Difference">difference blend</a>, which might be familiar if you’ve worked with image-editing software like Photoshop before. We loop over every pixel in the two images and calculate their difference per RGB channel:</p>
 <div class="listing-block"><pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'chunky_png'
@@ -173,9 +173,9 @@ end
 images.last.save('diff.png')</code></pre></div>
 <p>Want the code? Here’s a <a href="https://gist.github.com/924996">Gist</a>.</p>
 <p>Using that, comparing the two images to the left would result in the diff-image on the right, nicely showing what changed:</p>
-<p><img src="http://jeffkreeftmeijer.com/images/tapir.png" alt="tapir">
-<img src="http://jeffkreeftmeijer.com/images/tapir_hat.png" alt="tapir hat">
-<img src="http://jeffkreeftmeijer.com/images/tapir_diff_blend.png" alt="tapir diff blend"></p>
+<p><img src="http://jeffkreeftmeijer.com/images/tapir.png" alt="" width="130" height="130">
+<img src="http://jeffkreeftmeijer.com/images/tapir_hat.png" alt="" width="130" height="130">
+<img src="http://jeffkreeftmeijer.com/images/tapir_diff_blend.png" alt="" width="130" height="130"></p>
 <p>Because the colors are compared by channel (R,G and B) instead of as one color, three scores are returned. This means the output image is in color, but comparing the channels separately can make the result less accurate.</p>
 <p>As always, if you used this idea to build something yourself, know of a way to improve the code or have some questions or tips, be sure to let me know. If you want to know more about something I talked about, be sure to suggest it as a next article.</p></section>
 
