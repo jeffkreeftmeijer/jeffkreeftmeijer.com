@@ -72,7 +72,10 @@ task :optimize do
 end
 
 task :sitemap do
-  articles = %w(vim-reformat-dates open-source-maintainability).map do |name|
+  articles = %w(
+    vim-reformat-dates open-source-maintainability mix-proper git-flow git-git
+
+  ).map do |name|
     filename = Dir.glob("_articles/#{name}/*.adoc").first
     [name, File.mtime(filename).to_date]
   end
@@ -94,27 +97,6 @@ task :sitemap do
     <priority>0.8</priority>
   </url>"
 end.join("\n\n")}
-
-  <url>
-    <loc>https://jeffkreeftmeijer.com/mix-proper/</loc>
-    <lastmod>2017-08-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://jeffkreeftmeijer.com/git-flow/</loc>
-    <lastmod>2017-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://jeffkreeftmeijer.com/git-git/</loc>
-    <lastmod>2017-09-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
   <url>
     <loc>https://jeffkreeftmeijer.com/carrierwave-rails-test-fixtures/</loc>
