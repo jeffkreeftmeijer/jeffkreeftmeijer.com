@@ -8,5 +8,7 @@
 2012/relative-line-numbers-in-vim-for-super-fast-movement/index.html https://jeffkreeftmeijer.com/vim-number/#relative-line-numbers
 2013/vims-new-hybrid-line-number-mode/index.html https://jeffkreeftmeijer.com/vim-number/#hybrid-line-numbers
 2014/using-test-fixtures-with-carrierwave/index.html https://jeffkreeftmeijer.com/carrierwave-rails-test-fixtures/
+fuubar/index.html https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/
+fuubar/amp.html https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/amp.html
 contact/index.html https://jeffkreeftmeijer.com/
 archive/index.html https://jeffkreeftmeijer.com/
