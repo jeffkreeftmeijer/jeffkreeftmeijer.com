@@ -6,3 +6,4 @@
 2011/method-chaining-and-lazy-evaluation/index.html https://jeffkreeftmeijer.com/2011/method-chaining-and-lazy-evaluation-in-ruby/
 2012/relativelinenumersinvimforsuper/index.html https://jeffkreeftmeijer.com/vim-number/
 fuubar/index.html https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/
+fuubar/amp.html https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/amp.html
