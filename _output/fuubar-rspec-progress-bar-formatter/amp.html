@@ -8,10 +8,10 @@
 <meta name="author" content="Jeff Kreeftmeijer">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
-<link rel="canonical" href="https://jeffkreeftmeijer.com/fuubar/">
+<link rel="canonical" href="https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/">
 <script async src="https://cdn.ampproject.org/v0.js"></script>
 <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
-<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script><script async custom-element="amp-vimeo" src="https://cdn.ampproject.org/v0/amp-vimeo-0.1.js"></script>
 <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 <style amp-custom>body{font:18px/1.4 system-ui,sans-serif;margin:auto;max-width:40em;padding:0 1em}img,video{max-width:100%;height:auto}@media (max-width:375px){body{font-size:.9em}}@media (max-width:320px){body{font-size:.8em}}code,kbd,pre{font-family:SF Mono,Monaco,monospace}pre{background-color:#f8f8ff;font-size:.9em;overflow-x:auto;padding:1em}table{border-collapse:collapse;width:100%}td,th{padding:.5em;border:1px solid}nav{display:flex;justify-content:space-between;margin:1em 0}body{-webkit-font-smoothing:antialiased}.admonition-block p,figure{margin:0}.byline,.small,figcaption{font-size:smaller}dt{font-weight:600}dd{margin-bottom:1em}.admonition-block,.sidebarblock{border:1px solid #d3d3d3;box-shadow:3px 3px 0 0 #f5f5f5;padding:1em;margin:1em 0}.admonition-block h6{float:left;height:1em;margin:0 .25em 0 0;font-size:1em}.sidebarblock>:first-child{margin-top:0}.sidebarblock>:last-child{margin-bottom:0}.warning{background-color:ivory}.caution,.important{background-color:#fff0f5}.note,.tip{background-color:#f0f8ff}.warning h6::before{content:"⚠️ "}.tip h6::before{content:"💡 "}.note h6::before{content:"ℹ️ "}aside.ad{position:absolute;top:1.34em;left:50%;width:50%;overflow:hidden;z-index:-100}aside.ad img{height:100px}aside.ad div#cf_ad{display:block;width:130px;margin-left:22em}aside.ad a{text-decoration:none;color:gray;font-size:small;display:block;margin-bottom:1em}.cf-powered-by{font-style:italic}</style>
 
@@ -20,7 +20,7 @@
 <meta name="twitter:creator" content="@jkreeftmeijer">
 <meta name="twitter:title" content="Fuubar: the instafailing RSpec progress bar formatter">
 <meta name="twitter:description" content="Combining the work of Nick Evans and Michael Grosser in an attempt to create a better RSpec formatter">
-<meta name="twitter:image" content="https://jeffkreeftmeijer.com/fuubar/fuubar.png">
+<meta name="twitter:image" content="https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/fuubar.png">
 
 <script type="application/ld+json">
 {
@@ -28,12 +28,12 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://jeffkreeftmeijer.com/fuubar/"
+    "@id": "https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/"
   },
   "headline": "Fuubar: the instafailing RSpec progress bar formatter",
-  "image": ["https://jeffkreeftmeijer.com/fuubar/fuubar.png"],
+  "image": ["https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/fuubar.png"],
   "datePublished": "2010-11-15",
-  "dateModified": "2018-11-06T07:11:35Z",
+  "dateModified": "2018-11-06T07:24:51Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -53,7 +53,7 @@
 <body>
 <h1>Fuubar: the instafailing RSpec progress bar formatter</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-11-15">2010-11-15 (last updated on <time datetime="2018-11-06T07:11:35Z">2018-11-06</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-11-15">2010-11-15 (last updated on <time datetime="2018-11-06T07:24:51Z">2018-11-06</time>)
 </p>
 
 <article>
@@ -70,7 +70,7 @@
 <p>I decided to continue Nick’s work and got the formatter up to speed with RSpec 2, using rspec-instafail to handle the direct feedback after every failure.  I put the whole thing in a gem and <a href="http://twitter.com/josevalim">@josevalim</a> came up with the name: <a href="http://github.com/jeffkreeftmeijer/fuubar">Fuubar</a>.</p>
 <p>Here’s a <a href="http://vimeo.com/16845253">short video of Fuubar in action</a>:</p>
 
-<iframe width="640" height="508" src="//player.vimeo.com/video/16845253" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<amp-vimeo data-videoid="16845253" layout="responsive" width="640" height="508"></amp-vimeo>
 <div class="literal-block"><pre>$ rspec --format Fuubar --color spec</pre></div>
 <p>If you want to use Fuubar as your default formatter, simply put the options in your <code>.rspec</code> file:</p>
 <div class="literal-block"><pre>--format Fuubar
