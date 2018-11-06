@@ -72,8 +72,9 @@ task :optimize do
 end
 
 task :sitemap do
-  articles = %w(vim-reformat-dates).map do |name|
-    [name, File.mtime("_articles/#{name}/#{name}.adoc").to_date]
+  articles = %w(vim-reformat-dates open-source-maintainability).map do |name|
+    filename = Dir.glob("_articles/#{name}/*.adoc").first
+    [name, File.mtime(filename).to_date]
   end
 
   contents = %(<?xml version="1.0" encoding="UTF-8"?>
@@ -85,21 +86,14 @@ task :sitemap do
     <priority>1</priority>
   </url>
 
-  #{articles.map do |name, mdate|
-  "<url>
+#{articles.map do |name, mdate|
+  "  <url>
     <loc>https://jeffkreeftmeijer.com/#{name}/</loc>
     <lastmod>#{mdate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>"
-  end.join}
-
-  <url>
-    <loc>https://jeffkreeftmeijer.com/open-source-maintainability/</loc>
-    <lastmod>2017-09-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+end.join("\n\n")}
 
   <url>
     <loc>https://jeffkreeftmeijer.com/mix-proper/</loc>
