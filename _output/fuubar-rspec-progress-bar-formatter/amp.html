@@ -33,7 +33,7 @@
   "headline": "Fuubar: the instafailing RSpec progress bar formatter",
   "image": ["https://jeffkreeftmeijer.com/fuubar/fuubar.png"],
   "datePublished": "2010-11-15",
-  "dateModified": "2018-10-25T20:09:38Z",
+  "dateModified": "2018-11-06T07:11:35Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -53,14 +53,14 @@
 <body>
 <h1>Fuubar: the instafailing RSpec progress bar formatter</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-11-15">2010-11-15 (last updated on <time datetime="2018-10-25T20:09:38Z">2018-10-25</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-11-15">2010-11-15 (last updated on <time datetime="2018-11-06T07:11:35Z">2018-11-06</time>)
 </p>
 
 <article>
 <section id="preamble" aria-label="Preamble"><p>As you might have noticed, I’ve been spending some time trying to get running test suites with <a href="https://github.com/rspec">RSpec</a> a bit better and faster over the last weeks. This week I looked into RSpec’s formatters.</p>
 <div class="imageblock">
 <div class="content">
-<amp-img layout="responsive" src="http://jeffkreeftmeijer.com/images/fuubar.png" alt="fuubar">
+<amp-img layout="responsive" src="http://jeffkreeftmeijer.com/images/fuubar.png" alt="Fuubar: the instafailing RSpec progress bar formatter" width="450" height="450">
 </div>
 </div>
 <p>Aside from the red “F” RSpec will output when a spec fails, there’s no direct feedback that allows you to go fix things immediately. You’ll simply have to wait until your whole suite is done running, or use <code>^C</code> to interrupt the run. Another thing you can do is use <a href="http://jeffkreeftmeijer.com/2010/making-rspec-stop-operation-immediately-after-failing">the <code>--fail-fast</code> option I wrote about last week</a> or check out <a href="https://github.com/grosser/rspec-instafail">rspec-instafail</a>, which will output the failure details while continuing to run the rest of your specs. Nice.</p>
