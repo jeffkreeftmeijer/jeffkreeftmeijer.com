@@ -1,6 +1,7 @@
 require 'asciidoctor'
 require 'asciidoctor-html5s'
 require 'erb'
+require 'date'
 
 def command(command)
   puts command
@@ -71,7 +72,11 @@ task :optimize do
 end
 
 task :sitemap do
-  contents = %s(<?xml version="1.0" encoding="UTF-8"?>
+  articles = %w(vim-reformat-dates).map do |name|
+    [name, File.mtime("_articles/#{name}/#{name}.adoc").to_date]
+  end
+
+  contents = %(<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jeffkreeftmeijer.com/</loc>
@@ -80,12 +85,14 @@ task :sitemap do
     <priority>1</priority>
   </url>
 
-  <url>
-    <loc>https://jeffkreeftmeijer.com/vim-reformat-dates/</loc>
-    <lastmod>2018-05-26</lastmod>
+  #{articles.map do |name, mdate|
+  "<url>
+    <loc>https://jeffkreeftmeijer.com/#{name}/</loc>
+    <lastmod>#{mdate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
+  </url>"
+  end.join}
 
   <url>
     <loc>https://jeffkreeftmeijer.com/open-source-maintainability/</loc>
