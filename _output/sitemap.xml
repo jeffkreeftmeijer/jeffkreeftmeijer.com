@@ -6,12 +6,6 @@
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
-  <url>
-    <loc>https://jeffkreeftmeijer.com/archive/</loc>
-    <lastmod>2017-09-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
 
   <url>
     <loc>https://jeffkreeftmeijer.com/vim-reformat-dates/</loc>
