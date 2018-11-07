@@ -74,9 +74,11 @@ end
 task :sitemap do
   articles = %w(
     vim-reformat-dates open-source-maintainability mix-proper git-flow git-git
-
+    carrierwave-rails-test-fixtures vim-number ruby-method-chaining
+    ruby-compare-images fuubar-rspec-progress-bar-formatter rspec-fail-fast
+    git-rebase
   ).map do |name|
-    filename = Dir.glob("_articles/#{name}/*.adoc").first
+    filename = Dir.glob("_articles/#{name}/*.{adoc,md}").first
     [name, File.mtime(filename).to_date]
   end
 
@@ -99,20 +101,6 @@ task :sitemap do
 end.join("\n\n")}
 
   <url>
-    <loc>https://jeffkreeftmeijer.com/carrierwave-rails-test-fixtures/</loc>
-    <lastmod>2017-09-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://jeffkreeftmeijer.com/2010/2014/using-test-fixtures-with-carrierwave/</loc>
-    <lastmod>2014-09-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://jeffkreeftmeijer.com/2013/on-the-death-of-ifs/</loc>
     <lastmod>2013-04-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -122,20 +110,6 @@ end.join("\n\n")}
   <url>
     <loc>https://jeffkreeftmeijer.com/2012/preloading-dependencies-for-faster-test-suite-start-up-times/</loc>
     <lastmod>2012-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://jeffkreeftmeijer.com/vim-number/</loc>
-    <lastmod>2017-09-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://jeffkreeftmeijer.com/2011/method-chaining-and-lazy-evaluation-in-ruby/</loc>
-    <lastmod>2011-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -199,13 +173,6 @@ end.join("\n\n")}
   <url>
     <loc>https://jeffkreeftmeijer.com/2011/introducing-tapir-simple-search-for-static-sites/</loc>
     <lastmod>2011-05-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://jeffkreeftmeijer.com/2011/comparing-images-and-creating-image-diffs/</loc>
-    <lastmod>2011-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -295,20 +262,6 @@ end.join("\n\n")}
   </url>
 
   <url>
-    <loc>https://jeffkreeftmeijer.com/fuubar-rspec-progress-bar-formatter/</loc>
-    <lastmod>2018-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://jeffkreeftmeijer.com/rspec-fail-fast/</loc>
-    <lastmod>2018-05-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://jeffkreeftmeijer.com/2010/giving-back-to-the-community-the-start-of-the-social-charity-collective/</loc>
     <lastmod>2010-11-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -332,13 +285,6 @@ end.join("\n\n")}
   <url>
     <loc>https://jeffkreeftmeijer.com/2010/be-awesome-write-your-gemspec-yourself/</loc>
     <lastmod>2010-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://jeffkreeftmeijer.com/git-rebase/</loc>
-    <lastmod>2018-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
