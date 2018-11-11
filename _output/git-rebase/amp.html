@@ -33,7 +33,7 @@
   "headline": "Git rebase: reapply your changes onto another branch",
   "image": ["https://jeffkreeftmeijer.com/git-rebase/git-rebase.png"],
   "datePublished": "2010-10-11",
-  "dateModified": "2018-05-23T19:33:57Z",
+  "dateModified": "2018-11-11T09:44:29Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -53,17 +53,31 @@
 <body>
 <h1>Git rebase: reapply your changes onto another branch</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-10-11">2010-10-11 (last updated on <time datetime="2018-05-23T19:33:57Z">2018-05-23</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2010-10-11">2010-10-11 (last updated on <time datetime="2018-11-11T09:44:29Z">2018-11-11</time>)
 </p>
 
 <article>
 <section id="preamble" aria-label="Preamble"><p>Git&#8217;s rebase command reapplies your changes onto another branch. As opposed to merging, which pulls the differences from the other branch into yours, rebasing switches your branch&#8217;s base to the other branch&#8217;s position and walks through your commits one by one to apply them again.</p>
 <p>Let&#8217;s look at an example. While working on a branch named <code>login</code>, based on the <code>master</code> branch, one of your team members pushed some changes to <code>master</code>. You need these changes to finish the login feature in your branch.</p>
-<p><em>Merging</em> the <code>master</code> branch back into yours would result in a merge commit, which includes the changes between both branches and exists to show where a merge occured. We won&#8217;t need to know when we merged the <code>master</code> into the <code>login</code> branch in the future. Instead, we&#8217;d like to pretend that all commits on the <code>login</code> branch happened based on the new state of the <code>master</code> branch.</p>
 <div class="imageblock">
 <div class="content">
-<amp-img layout="responsive" src="https://jeffkreeftmeijer.com/git-rebase/git-rebase.png" alt="git rebase vs git merge" width="1800" height="1167">
+<amp-img layout="responsive" src="https://jeffkreeftmeijer.com/git-rebase/branch.svg" alt="The new commits in the `master` branch (`E` and `F`), are needed to finish work in the `login` branch." width="720" height="236">
 </div>
+<div class="title">Figure 1. The new commits in the <code>master</code> branch (<code>E</code> and <code>F</code>), are needed to finish work in the <code>login</code> branch.</div>
+</div>
+<p><em>Merging</em> the <code>master</code> branch back into yours would result in a merge commit, which includes the changes between both branches and exists to show where a merge occured.</p>
+<div class="imageblock">
+<div class="content">
+<amp-img layout="responsive" src="https://jeffkreeftmeijer.com/git-rebase/merge.svg" alt="Merging the two branches results in a merge commit." width="720" height="236">
+</div>
+<div class="title">Figure 2. Merging the two branches results in a merge commit.</div>
+</div>
+<p>We won&#8217;t need to know when we merged the <code>master</code> into the <code>login</code> branch in the future. Instead, we&#8217;d like to pretend that all commits on the <code>login</code> branch happened based on the new state of the <code>master</code> branch.</p>
+<div class="imageblock">
+<div class="content">
+<amp-img layout="responsive" src="https://jeffkreeftmeijer.com/git-rebase/rebase.svg" alt="Rebasing applies the commits from the login branch on top of the master branch" width="720" height="236">
+</div>
+<div class="title">Figure 3. Rebasing applies the commits from the <code>login</code> branch on top of the <code>master</code> branch.</div>
 </div>
 <p>Git&#8217;s rebase command temporarily rewinds the commits on your current branch, pulls in the commits from the other branch and reapplies the rewinded commits back on top. By switching the current This <em>bases</em> the current branch onto the other branch.</p>
 <div class="literal-block"><pre>$ git rebase master

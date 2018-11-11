@@ -62,6 +62,7 @@ task :syndicate do
 end
 
 task :copy do
+  command("cp _articles/git-rebase/*.svg _output/git-rebase/")
   `cp _articles/vim-reformat-dates/substitute-dark.png _output/vim-reformat-dates/substitute-dark.png`
   `cp _articles/vim-reformat-dates/substitute-dark-shadow.png _output/vim-reformat-dates/substitute-dark-shadow.png`
 end

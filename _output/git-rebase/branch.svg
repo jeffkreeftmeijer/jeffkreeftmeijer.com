@@ -1,0 +1,37 @@
+<svg width="720" height="236" xmlns="http://www.w3.org/2000/svg" font-size="16" font-family="SF Mono, monospace">
+<g transform="translate(0, 18)">
+  <line x1="0" y1="100" x2="720" y2="100" stroke="gray" stroke-width="1" stroke-dasharray="10"></line>
+
+  <g text-anchor="middle">
+    <text x="20" y="18">A</text>
+    <text x="120" y="18">B</text>
+    <text x="220" y="194">C</text>
+    <text x="320" y="194">D</text>
+    <text x="420" y="18">E</text>
+    <text x="520" y="18">F</text>
+  </g>
+
+  <g stroke="black" stroke-width="5" stroke-linecap="round">
+    <line x1="20" y1="50" x2="520" y2="50"></line>
+    <line x1="220" y1="150" x2="320" y2="150"></line>
+    <line x1="120" y1="50" x2="220" y2="150"></line>
+
+    <g fill="#fde438">
+      <ellipse cx="20"   cy="50" rx="17.5" ry="17.5"></ellipse>
+      <ellipse cx="120" cy="50" rx="17.5" ry="17.5"></ellipse>
+      <ellipse cx="420" cy="50" rx="17.5" ry="17.5"></ellipse>
+      <ellipse cx="520" cy="50" rx="17.5" ry="17.5"></ellipse>
+    </g>
+
+    <g fill="#2fa1f4">
+      <ellipse cx="220" cy="150" rx="17.5" ry="17.5"></ellipse>
+      <ellipse cx="320" cy="150" rx="17.5" ry="17.5"></ellipse>
+    </g>
+  </g>
+
+  <g text-anchor="end" fill="gray">
+    <text x="720" y="54">master</text>
+    <text x="720" y="154">login</text>
+  </g>
+  </g>
+</svg>
