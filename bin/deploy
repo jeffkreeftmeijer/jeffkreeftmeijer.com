@@ -1,2 +1,3 @@
 aws s3 sync _output s3://jeffkreeftmeijer.com --acl public-read
 . $(dirname "$0")/redirect
+aws cloudfront create-invalidation --distribution-id E3NB3D974G1PHE --paths "/*"
