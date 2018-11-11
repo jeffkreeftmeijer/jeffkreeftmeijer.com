@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jeffkreeftmeijer.com/</loc>
-    <lastmod>2017-09-10</lastmod>
+    <lastmod><%= articles.map { |name, mtime| mtime }.max %></lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
