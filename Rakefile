@@ -8,7 +8,7 @@ def command(command)
   puts `#{command}`
 end
 
-task :generate => [:bundle, :copy, :build]
+task :generate => [:bundle, :copy, :build, :sitemap]
 
 task :build do
   {
