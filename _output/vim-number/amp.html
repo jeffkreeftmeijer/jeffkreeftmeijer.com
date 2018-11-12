@@ -33,7 +33,7 @@
   "headline": "Vim&#8217;s absolute, relative and hybrid line numbers",
   "image": ["https://jeffkreeftmeijer.com/vim-number/toggle.gif", "https://jeffkreeftmeijer.com/vim-number/hybrid.gif", "https://jeffkreeftmeijer.com/vim-number/relative.gif", "https://jeffkreeftmeijer.com/vim-number/absolute.gif"],
   "datePublished": "2012-01-30",
-  "dateModified": "2018-11-08T09:34:27Z",
+  "dateModified": "2018-11-12T22:47:44Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -53,7 +53,7 @@
 <body>
 <h1>Vim&#8217;s absolute, relative and hybrid line numbers</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2012-01-30">2012-01-30 (last updated on <time datetime="2018-11-08T09:34:27Z">2018-11-08</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2012-01-30">2012-01-30 (last updated on <time datetime="2018-11-12T22:47:44Z">2018-11-12</time>)
 </p>
 
 <article>
@@ -68,9 +68,17 @@ number for each line in the file you&#8217;re working on.</p>
 
 <amp-video layout="responsive" src="https://jeffkreeftmeijer.com/vim-number/absolute.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/absolute.gif" autoplay muted loop>
 </amp-video>
-<div class="listing-block"><pre class="highlight"><code>:set number
-:set nonumber " turn line numbers off
-:set number!  " toggle line numbers</code></pre></div>
+<div class="listing-block"><pre class="highlight"><code>" turn absolute line numbers on
+:set number
+:set nu
+
+" turn absolute line numbers off
+:set nonumber
+:set nonu
+
+" toggle absolute line numbers
+:set number!
+:set nu!</code></pre></div>
 <p>Besides being useful for finding a line from a stack trace or a test result, you
 can use line numbers to help you jump around the file. For example, if you want
 to go to the tenth line in your file, you&#8217;d type <kbd>esc</kbd> while in insert mode
@@ -81,9 +89,17 @@ current line is marked 0, the ones above and below it are marked 1, and so on.</
 
 <amp-video layout="responsive" src="https://jeffkreeftmeijer.com/vim-number/relative.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/relative.gif" autoplay muted loop>
 </amp-video>
-<div class="listing-block"><pre class="highlight"><code>:set relativenumber
-:set norelativenumber " turn relative line numbers off
-:set relativenumber!  " toggle relative line numbers</code></pre></div>
+<div class="listing-block"><pre class="highlight"><code>" turn relative line numbers on
+:set relativenumber
+:set rnu
+
+" turn relative line numbers off
+:set norelativenumber
+:set nornu
+
+" toggle relative line numbers
+:set relativenumber!
+:set rnu!</code></pre></div>
 <p>Like most commands in Vim, the <kbd>j</kbd> and <kbd>k</kbd> (or <kbd>↑</kbd> and <kbd>↓</kbd>)
 keys can be prefixed with a number. Typing <kbd>5</kbd><kbd>j</kbd> will move the cursor
 five lines down, for example. If you want to remove seven lines, you can use
@@ -101,9 +117,17 @@ for current line, which will show its absolute line number.</p>
 
 <amp-video layout="responsive" src="https://jeffkreeftmeijer.com/vim-number/hybrid.mp4" width="1490" height="1162" poster="https://jeffkreeftmeijer.com/vim-number/hybrid.gif" autoplay muted loop>
 </amp-video>
-<div class="listing-block"><pre class="highlight"><code>:set number relativenumber
-:set nonumber norelativenumber " turn hybrid line numbers off
-:set number! relativenumber!   " toggle hybrid line numbers</code></pre></div>
+<div class="listing-block"><pre class="highlight"><code>" turn hybrid line numbers on
+:set number relativenumber
+:set nu rnu
+
+" turn hybrid line numbers off
+:set nonumber norelativenumber
+:set nonu nornu
+
+" toggle hybrid line numbers
+:set number! relativenumber!
+:set nu! rnu!</code></pre></div>
 <p>Hybrid line numbers are what relative line numbers should have been. Instead of
 having a useless zero on the current line, it uses that space to give you an
 idea of where you are in the file.<a class="footnote-ref" id="_footnoteref_1" href="#_footnote_1" title="View footnote 1" role="doc-noteref">[1]</a></p></section>
