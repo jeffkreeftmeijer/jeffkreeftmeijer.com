@@ -58,12 +58,15 @@ dd{
 .note, .tip{
   background-color: aliceblue;
 }
+
 .warning h6::before{
   content: "⚠️ ";
 }
+
 .tip h6::before{
   content: "💡 ";
 }
+
 .note h6::before{
   content: "ℹ️ ";
 }
