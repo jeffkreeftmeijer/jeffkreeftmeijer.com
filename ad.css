@@ -1,4 +1,4 @@
-aside.ad{
+.ad{
   position: absolute;
   top: 1.34em;
   left: 50%;
@@ -7,17 +7,13 @@ aside.ad{
   z-index: -100;
 }
 
-aside.ad img{
-  height: 100px;
-}
-
-aside.ad div#cf_ad{
+.ad div{
   display: block;
   width: 130px;
   margin-left: 22em;
 }
 
-aside.ad a{
+.ad a{
   text-decoration: none;
   color: gray;
   font-size: small;
