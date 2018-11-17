@@ -51,7 +51,7 @@ task :build do
 end
 
 task :bundle do
-  `cat enough.css/enough.min.css blog.css ad.css | csso -o style.css`
+  `cat enough.css/enough.css enough.css/enough.media.css enough.css/enough.code.css enough.css/enough.table.css blog.css ad.css | node_modules/.bin/cssnano > style.css`
 end
 
 task :syndicate do

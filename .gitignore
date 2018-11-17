@@ -21,3 +21,7 @@ erl_crash.dump
 
 # Don't check in generated atom files
 _output/*/atom.xml
+
+# Don't check in node files
+node_modules
+package-lock.json
