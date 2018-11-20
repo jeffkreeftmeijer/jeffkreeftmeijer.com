@@ -33,7 +33,7 @@
   "headline": "Find, convert and replace dates with Vim substitutions",
   "image": ["https://jeffkreeftmeijer.com/vim-reformat-dates/substitute-dark-shadow.png"],
   "datePublished": "2017-10-17",
-  "dateModified": "2018-11-13T08:46:34Z",
+  "dateModified": "2018-11-20T20:56:12Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -53,7 +53,7 @@
 <body>
 <h1>Find, convert and replace dates with Vim substitutions</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2017-10-17">2017-10-17 (last updated on <time datetime="2018-11-13T08:46:34Z">2018-11-13</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2017-10-17">2017-10-17 (last updated on <time datetime="2018-11-20T20:56:12Z">2018-11-20</time>)
 </p>
 
 <article>
@@ -71,50 +71,50 @@ different format and replace them all at once.</p>
 a <code>&lt;time&gt;</code> tag with a value and a datetime attribute to show the publication
 date.</p>
 <figure class="listing-block"><figcaption>The input file</figcaption>
-<pre class="highlight"><code class="language-html" data-lang="html">&lt;ul&gt;
-  &lt;li&gt;
-    &lt;article&gt;
-      &lt;time datetime="2017-10-17"&gt;2017-10-17&lt;/time&gt;
-      &lt;span&gt;&lt;a href="/vim-reformat-dates/"&gt;Find, convert and replace dates with Vim substitutions&lt;/a&gt;&lt;/span&gt;
-    &lt;/article&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;article&gt;
-      &lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;
-      &lt;span&gt;&lt;a href="/open-source-maintainability/"&gt;Keeping open source software projects maintainable&lt;/a&gt;&lt;/span&gt;
-    &lt;/article&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;article&gt;
-      &lt;time datetime="2017-08-22"&gt;2017-08-22&lt;/time&gt;
-      &lt;span&gt;&lt;a href="/mix-proper/"&gt;Property-based testing in Elixir using PropEr&lt;/a&gt;&lt;/span&gt;
-    &lt;/article&gt;
-  &lt;/li&gt;
-  …</code></pre></figure>
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;li&gt;
+  &lt;article&gt;
+    &lt;time datetime="2017-10-17"&gt;2017-10-17&lt;/time&gt;
+    &lt;h1&gt;Find, convert and replace dates with Vim substitutions&lt;h1&gt;
+  &lt;/article&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;article&gt;
+    &lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;
+    &lt;h1&gt;Keeping open source software projects maintainable&lt;/h1&gt;
+  &lt;/article&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;article&gt;
+    &lt;time datetime="2017-08-22"&gt;2017-08-22&lt;/time&gt;
+    &lt;h1&gt;Property-based testing in Elixir using PropEr&lt;/h1&gt;
+  &lt;/article&gt;
+&lt;/li&gt;
+&lt;li&gt;
+…</code></pre></figure>
 <p>We need to convert the dates&#8217; values to a friendlier format that
 includes the full month name (&#x201c;September 19, 2017&#x201d;), while keeping the
 datetime attributes in their current format.</p>
 <figure class="listing-block"><figcaption>The result: articles with reformatted dates</figcaption>
-<pre class="highlight"><code class="language-html" data-lang="html">&lt;ul&gt;
-  &lt;li&gt;
-    &lt;article&gt;
-      &lt;time datetime="2017-10-17"&gt;October 17, 2017&lt;/time&gt;
-      &lt;span&gt;&lt;a href="/vim-reformat-dates/"&gt;Find, convert and replace dates with Vim substitutions&lt;/a&gt;&lt;/span&gt;
-    &lt;/article&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;article&gt;
-      &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;/time&gt;
-      &lt;span&gt;&lt;a href="/open-source-maintainability/"&gt;Keeping open source software projects maintainable&lt;/a&gt;&lt;/span&gt;
-    &lt;/article&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;article&gt;
-      &lt;time datetime="2017-08-22"&gt;August 22, 2017&lt;/time&gt;
-      &lt;span&gt;&lt;a href="/mix-proper/"&gt;Property-based testing in Elixir using PropEr&lt;/a&gt;&lt;/span&gt;
-    &lt;/article&gt;
-  &lt;/li&gt;
-  …</code></pre></figure>
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;li&gt;
+  &lt;article&gt;
+    &lt;time datetime="2017-10-17"&gt;October 17, 2017&lt;/time&gt;
+    &lt;h1&gt;Find, convert and replace dates with Vim substitutions&lt;/h1&gt;
+  &lt;/article&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;article&gt;
+    &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;/time&gt;
+    &lt;h1&gt;Keeping open source software projects maintainable&lt;/h1&gt;
+  &lt;/article&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;article&gt;
+    &lt;time datetime="2017-08-22"&gt;August 22, 2017&lt;/time&gt;
+    &lt;h1&gt;Property-based testing in Elixir using PropEr&lt;/h1&gt;
+  &lt;/article&gt;
+&lt;/li&gt;
+&lt;li&gt;
+…</code></pre></figure>
 <p>The input file has more than forty articles, so replacing them all by hand
 would be a lot of error-prone work. Instead, we write a substitution that
 finds all dates in the file and replaces them with a reformatted value.</p></section>
@@ -133,7 +133,7 @@ occurrences of "2017" in a file.</p>
 <code>/....-..-..</code>) as our search pattern to match the date format. However, this
 pattern&#8217;s results will include all matching dates in the file, including the
 ones in the <code>&lt;time&gt;</code> tags&#8217; datetime attributes.</p>
-<div class="listing-block"><pre class="highlight"><code class="language-html" data-lang="html">&lt;time datetime="2017-09-19"&gt;2017-09-19&lt;/time&gt;</code></pre></div>
+<div class="listing-block"><pre class="highlight"><code class="language-html" data-lang="html">&lt;time datetime="2017-10-17"&gt;2017-10-17&lt;/time&gt;</code></pre></div>
 <p>In the input file, all <code>&lt;time&gt;</code> values are immediately followed by the
 less-than sign from the closing <code>&lt;/time&gt;</code> tag. To prevent the datetimes from
 the attributes to be included in the results, we could include the less-than
@@ -145,7 +145,7 @@ search pattern with <code>\ze</code>, the pattern finds all dates followed by a 
 sign, but doesn&#8217;t include it in the match, meaning it won&#8217;t be replaced.</p>
 <div class="literal-block"><pre>....-..-..\ze&lt;</pre></div></section>
 <section class="doc-section level-1"><h2 id="reformatting-dates-from-the-command-line">Reformatting dates from the command line</h2><p>We need the month&#8217;s full name in the date replacements, so we can&#8217;t reorder the
-input value (&#x201c;2017-09-19&#x201d;) to get the result we want. Instead, we need to
+input value (&#x201c;2017-10-17&#x201d;) to get the result we want. Instead, we need to
 call out to an external utility that knows month names and can convert between
 date formats.</p>
 <aside class="sidebarblock">
@@ -260,13 +260,14 @@ hardcoded date with a call to <code>submatch(0)</code> to insert the whole match
 <p>Running this substitution will turn all <code>&lt;time&gt;</code> tags from the input file to
 our desired format, but it puts a newline before the closing <code>&lt;/time&gt;</code> tag.</p>
 <figure class="listing-block"><figcaption>The current result, with an added newline before the closing <code>&lt;/time&gt;</code> tag</figcaption>
-<pre class="highlight"><code class="language-html" data-lang="html">&lt;article&gt;
-  &lt;h1&gt;Keeping open source projects maintainable&lt;/h1&gt;
-  &lt;time datetime="2017-09-19"&gt;September 19, 2017
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;li&gt;
+  &lt;article&gt;
+    &lt;time datetime="2017-10-17"&gt;October 17, 2017
 &lt;/time&gt;
-&lt;/article&gt;
-
-...</code></pre></figure></section>
+    &lt;h1&gt;Find, convert and replace dates with Vim substitutions&lt;/h1&gt;
+  &lt;/article&gt;
+&lt;/li&gt;
+…</code></pre></figure></section>
 <section class="doc-section level-1"><h2 id="nested-substitutions">Nested substitutions</h2><p>A newline is appended to the result of the <code>date</code> command, which ends up in the
 file after running the substitution. Since there&#8217;s no way to get the date
 command to omit the newline, we need to take it out ourselves.</p>
@@ -306,26 +307,26 @@ replaces it with an empty string.</p>
 <p>Now our substitution will turn the <code>&lt;time&gt;</code> tags into the correct format,
 without adding that extra newline.</p>
 <figure class="listing-block"><figcaption>The result</figcaption>
-<pre>&lt;ul&gt;
-  &lt;li&gt;
-    &lt;article&gt;
-      &lt;time datetime="2017-10-17"&gt;October 17, 2017&lt;/time&gt;
-      &lt;span&gt;&lt;a href="/vim-reformat-dates/"&gt;Find, convert and replace dates with Vim substitutions&lt;/a&gt;&lt;/span&gt;
-    &lt;/article&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;article&gt;
-      &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;/time&gt;
-      &lt;span&gt;&lt;a href="/open-source-maintainability/"&gt;Keeping open source software projects maintainable&lt;/a&gt;&lt;/span&gt;
-    &lt;/article&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;article&gt;
-      &lt;time datetime="2017-08-22"&gt;August 22, 2017&lt;/time&gt;
-      &lt;span&gt;&lt;a href="/mix-proper/"&gt;Property-based testing in Elixir using PropEr&lt;/a&gt;&lt;/span&gt;
-    &lt;/article&gt;
-  &lt;/li&gt;
-  …</pre></figure>
+<pre>&lt;li&gt;
+  &lt;article&gt;
+    &lt;time datetime="2017-10-17"&gt;October 17, 2017&lt;/time&gt;
+    &lt;h1&gt;Find, convert and replace dates with Vim substitutions&lt;/h1&gt;
+  &lt;/article&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;article&gt;
+    &lt;time datetime="2017-09-19"&gt;September 19, 2017&lt;/time&gt;
+    &lt;h1&gt;Keeping open source software projects maintainable&lt;/h1&gt;
+  &lt;/article&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;article&gt;
+    &lt;time datetime="2017-08-22"&gt;August 22, 2017&lt;/time&gt;
+    &lt;h1&gt;Property-based testing in Elixir using PropEr&lt;/h1&gt;
+  &lt;/article&gt;
+&lt;/li&gt;
+&lt;li&gt;
+…</pre></figure>
 <p><span class="small"><em>Thanks Wouter Vos and Rico Sta. Cruz for feedback on the substitution command
 styling, u/Vurpius for suggesting <code>\ze</code> and Ben Sinclair for suggesting piping
 through <code>tr</code>.</em></span></p></section>
