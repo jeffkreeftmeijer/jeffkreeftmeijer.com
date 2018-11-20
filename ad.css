@@ -10,7 +10,7 @@
 .ad div{
   display: block;
   width: 130px;
-  margin-left: 22em;
+  margin-left: 18.5em;
 }
 
 .ad a{
@@ -23,4 +23,10 @@
 
 .cf-powered-by{
   font-style: italic;
+}
+
+@media (max-width:1118px){ /* (35 + 2) × 22 + (130 + 22) × 2 */
+  .ad{
+    display: none;
+  }
 }

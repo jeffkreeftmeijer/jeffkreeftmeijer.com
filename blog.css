@@ -22,6 +22,11 @@ dd{
   margin-bottom: 1em;
 }
 
+.image-block img{
+  display: block;
+  margin: auto;
+}
+
 .sidebarblock, .admonition-block{
   border: 1px outset;
   padding-left: 1em;
