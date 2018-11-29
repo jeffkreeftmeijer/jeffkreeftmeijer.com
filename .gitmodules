@@ -49,6 +49,6 @@
 [submodule "_articles/fuubar"]
 	path = _articles/fuubar-rspec-progress-bar-formatter
 	url = git@gist.github.com:8a01e6a292366e081bd57a683c66229f.git
-[submodule "_articles/sixteen-color-vim-schemes"]
-	path = _articles/sixteen-color-vim-schemes
+[submodule "_articles/vim-16-color"]
+	path = _articles/vim-16-color
 	url = git@gist.github.com:47b070cf141d7c9026b35690583be0e9.git

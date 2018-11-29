@@ -23,7 +23,7 @@ task :build do
     '_articles/mix-proper/mix-proper.adoc' => '_output/mix-proper/',
     '_articles/open-source-maintainability/index.adoc' => '_output/open-source-maintainability/',
     '_articles/vim-reformat-dates/vim-reformat-dates.adoc' => '_output/vim-reformat-dates/',
-    '_articles/sixteen-color-vim-schemes/sixteen-color-vim-schemes.adoc' => '_output/sixteen-color-vim-schemes/',
+    '_articles/vim-16-color/vim-16-color.adoc' => '_output/vim-16-color/',
   }.each do |from, to|
     {
       'amp' => 'amp.html',
@@ -66,18 +66,18 @@ task :copy do
   command("cp _articles/git-rebase/*.svg _output/git-rebase/")
   `cp _articles/vim-reformat-dates/substitute-dark.png _output/vim-reformat-dates/substitute-dark.png`
   `cp _articles/vim-reformat-dates/substitute-dark-shadow.png _output/vim-reformat-dates/substitute-dark-shadow.png`
-  command("cp _articles/sixteen-color-vim-schemes/*.png _output/sixteen-color-vim-schemes/")
+  command("cp _articles/vim-16-color/*.png _output/vim-16-color/")
 end
 
 task :optimize do
   command("imageoptim _output/vim-reformat-dates/substitute-dark-720px.png")
   command("imageoptim _output/vim-reformat-dates/substitute-dark.png")
-  command("imageoptim _output/sixteen-color-vim-schemes/*.png")
+  command("imageoptim _output/vim-16-color/*.png")
 end
 
 task :sitemap do
   articles = %w(
-    sixteen-color-vim-schemes vim-reformat-dates open-source-maintainability
+    vim-16-color vim-reformat-dates open-source-maintainability
     mix-proper git-flow git-git carrierwave-rails-test-fixtures vim-number
     ruby-method-chaining ruby-compare-images fuubar-rspec-progress-bar-formatter
     rspec-fail-fast git-rebase

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Consistent terminal colors with 16-ANSI-color Vim themes</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="description" content="Instead of configuring colors separately for both Vim and the rest of the terminal, limiting Vim’s color scheme to 16 ANSI colors allows setting all color preferences in the terminal’s theme.">
+<meta name="author" content="Jeff Kreeftmeijer">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+<link rel="alternate" type="application/atom+xml" href="/feed.xml">
+<link rel="canonical" href="">
+<link rel="amphtml" href="amp.html">
+<style>body{font:22px/1.6 system-ui,sans-serif;margin:auto;max-width:35em;padding:0 1em}img,video{max-width:100%;height:auto}@media (max-width:1140px){body{font-size:20px}}@media (max-width:740px){body{font-size:18px}}@media (max-width:466px){body{font-size:16px}}code,kbd,pre{font-family:SF Mono,Monaco,monospace}pre{background-color:#f8f8ff;font-size:smaller;overflow:auto;padding:1em}table{border-collapse:collapse;width:100%}td,th{padding:.5em;border:1px solid}nav{display:flex;justify-content:space-between;margin:1em 0}figure{margin:0}.byline,.small,figcaption{font-size:smaller}dt{font-weight:600}dd{margin-bottom:1em}.image-block img{display:block;margin:auto}.admonition-block,.sidebarblock{border:1px outset;padding-left:1em;padding-right:1em;margin:1em 0}.admonition-block h6{font-size:1em;margin:1em 0}.warning{background-color:ivory}.caution,.important{background-color:#fff0f5}.note,.tip{background-color:#f0f8ff}.warning h6:before{content:"⚠️ "}.tip h6:before{content:"💡 "}.note h6:before{content:"ℹ️ "}.white{color:#fff}.ad{position:absolute;top:1.34em;left:50%;width:50%;overflow:hidden;z-index:-100}.ad div{display:block;width:130px;margin-left:18.5em}.ad a{text-decoration:none;color:gray;font-size:small;display:block;margin-bottom:1em}.cf-powered-by{font-style:italic}@media (max-width:1040px){.ad{display:none}}</style>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@jkreeftmeijer">
+<meta name="twitter:creator" content="@jkreeftmeijer">
+<meta name="twitter:title" content="Consistent terminal colors with 16-ANSI-color Vim themes">
+<meta name="twitter:description" content="Instead of configuring colors separately for both Vim and the rest of the terminal, limiting Vim’s color scheme to 16 ANSI colors allows setting all color preferences in the terminal’s theme.">
+<meta name="twitter:image" content="twitter.png">
+
+
+</head>
+<body>
+<h1>Consistent terminal colors with 16-ANSI-color Vim themes</h1>
+<p class="byline">
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2018-11-29">2018-11-29 (last updated on <time datetime="2018-11-29T10:01:53Z">2018-11-29</time>)
+</p>
+
+<article>
+<section id="preamble" aria-label="Preamble"><p>Instead of configuring colors separately for both Vim and the rest of the terminal, limiting Vim’s color scheme to 16 ANSI colors allows setting all color preferences in the terminal’s theme. Doing so results in consistent colors among terminal utilities and a color theme that&#8217;s quick to swap out for another one.</p>
+<figure class="image-block"><img src="split.png" alt="Vim and git log in Terminal app, with Dim as the Vim colorscheme, appsignal.terminal as the terminal theme, and SF Mono 14pt (with a line spacing of 1.2) as the font." width="1382" height="800">
+<figcaption>Figure 1. Vim and a git log side by side in tmux in Terminal.app. By using <a href="https://github.com/jeffkreeftmeijer/vim-dim">Dim</a> as Vim’s color scheme, all color values are set by the <a href="https://github.com/jeffkreeftmeijer/appsignal.terminal">terminal theme</a> (showing both dark and light mode). The font is SF Mono, 14pt, with a line spacing of 1.2.</figcaption></figure>
+<p>I’ve been using <a href="https://github.com/jeffkreeftmeijer/vim-dim">a customized version of</a> Vim’s default color scheme for the last couple of years. Unlike Vim’s default, it exclusively uses 16 ANSI colors by setting each color to a value between 0 and 15. The terminal emulator’s theme sets the specific color values instead of hard coding them into the Vim color scheme and relying on true color support.</p>
+<p>By using the terminal theme exclusively, all utilities use the same color values. For example, I don’t configure tmux’s colors, as the green color the terminal theme uses is already a shade I like.</p></section>
+<section class="doc-section level-1"><h2 id="terminal-colors-and-ansi-escape-sequences">Terminal colors and ANSI escape sequences</h2><p>Terminal emulators use ANSI escape sequences to&#8211;amongst other things like controlling the cursor’s position&#8211;read the desired text and background color when printing output.</p>
+<div class="literal-block"><pre>$ echo -e "\033[31mred\033[m" # Prints “red” in red.</pre></div>
+<p>While most terminal emulators, including Apple’s Terminal.app, support true color now, most utilities use one of the main sixteen colors (black, red, green, yellow, blue, magenta, cyan, white, and a <em>high intensity</em> or <em>bright</em> version of each).</p>
+<p>For example, git shows diffs with additions in green and deletions in red, and most testing frameworks print green dots for passed tests and red <em>F</em>’s for failures.</p>
+<table class="tableblock frame-all grid-all" style="width: 100%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Normal</th>
+<th class="tableblock halign-left valign-top">Bright</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top">Black</th>
+<td class="tableblock halign-left valign-top" style="background-color: black;"><span class="white">0</span> </td>
+<td class="tableblock halign-left valign-top" style="background-color: gray;"><span class="white">8</span> </td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: ;">Red </th>
+<td class="tableblock halign-left valign-top" style="background-color: maroon;"><span class="white">1</span> </td>
+<td class="tableblock halign-left valign-top" style="background-color: red;">9 </td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: ;">Green </th>
+<td class="tableblock halign-left valign-top" style="background-color: green;"><span class="white">2</span> </td>
+<td class="tableblock halign-left valign-top" style="background-color: lime;">10 </td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: ;">Yellow </th>
+<td class="tableblock halign-left valign-top" style="background-color: olive;"><span class="white">3</span> </td>
+<td class="tableblock halign-left valign-top" style="background-color: yellow;">11 </td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: ;">Blue </th>
+<td class="tableblock halign-left valign-top" style="background-color: navy;"><span class="white">4</span> </td>
+<td class="tableblock halign-left valign-top" style="background-color: blue;">12 </td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: ;">Purple </th>
+<td class="tableblock halign-left valign-top" style="background-color: purple;"><span class="white">5</span> </td>
+<td class="tableblock halign-left valign-top" style="background-color: fuchsia;">13 </td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: ;">Cyan </th>
+<td class="tableblock halign-left valign-top" style="background-color: teal;"><span class="white">6</span> </td>
+<td class="tableblock halign-left valign-top" style="background-color: cyan;">14 </td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: ;">White </th>
+<td class="tableblock halign-left valign-top" style="background-color: silver;">7 </td>
+<td class="tableblock halign-left valign-top" style="background-color: white;">15 </td>
+</tr>
+</tbody>
+</table>
+<p>The terminal emulators we use today assign each of these <em>relative</em> named colors with a 24-bit color value. This separates the utility’s <em>intent</em> (“print this error in red”) from the terminal emulator’s <em>styling</em> (“#C31633 is a nice shade of red”). These colors are configurable in your terminal emulator’s settings, along with the used font and other options.</p>
+<aside class="sidebarblock">
+<h3>8-bit and 24-bit ANSI color</h3>
+<p>Beyond the first sixteen named colors numbered 1 through 16, we arrive in <em>absolute</em> color territory. The color codes from 16 to 255 are used to print 8-bit colors, from which 232 to 255 are grayscale values from black to white.</p>
+<div class="literal-block"><pre># prints “hotpink” in #205 (HEX: #f69, RGB: 255, 102, 153)
+$ echo -e "\033[38;5;205mhotpink\033[m"</pre></div>
+<p>Then, there’s 24-bit color, also named <em>true color</em>, which has 16.777.216 different color values.</p>
+<div class="literal-block"><pre># prints “giant goldfish” in 24-bit orange (HEX: #F38630, RGB: 243, 134, 48)
+$ echo -e "\033[38;2;243;134;48mgiant goldfish\033[0m"</pre></div>
+<p>Being absolute color values, they’re not configurable in the terminal emulator’s settings.</p>
+</aside></section>
+<section class="doc-section level-1"><h2 id="terminal-themes">Terminal themes</h2><p>By changing the terminal theme, using one like <a href="https://github.com/jeffkreeftmeijer/appsignal.terminal">appsignal.terminal</a> or any of the <a href="https://github.com/lysyi3m/osx-terminal-themes">hundreds</a> of other available themes, the terminal emulator can display the relative colors in any true color value you like. Using <code>#C31633</code> for red will color deletions in git’s diff output in that exact color, for example.</p>
+<div class="image-block"><img src="picker.png" alt="Changing the red color in a Terminal.app color theme" width="1382" height="800"></div>
+<aside class="admonition-block tip" role="doc-tip"><h6 class="block-title label-only"><span class="title-label">Tip: </span></h6><p>In Terminal.app, use <kbd class="keyseq"><kbd>⌘</kbd>+<kbd>I</kbd></kbd> to open the Inspector to change the current window’s theme without opening a new terminal window.</p></aside>
+<p>Setting the precise color values in the terminal emulator’s profile or using a terminal theme allows the utility to mark some output as “yellow”, without having to supply an exact shade. The shade is either up to the terminal or the user’s preferences.</p></section>
+<section class="doc-section level-1"><h2 id="vim-color-schemes">Vim color schemes</h2><p>Unlike other utilities, Vim uses 8-bit or 24-bit color schemes that use <em>absolute</em> colors for each highlight group in an attempt to make the colors look the same for every configuration. These schemes don‘t use any of the named colors, so the terminal’s color preferences don‘t affect them.</p>
+<p>When using Vim inside a terminal emulator, having consistent colors between Vim and the rest of the terminal requires duplicate color settings. First, the Vim color scheme uses an absolute color value for each highlight group. Then, the terminal emulator needs a theme that uses the same colors as the Vim scheme to customize the relative colors.</p>
+<p>If the Vim color scheme uses <code>#C31633</code> as a red color, the terminal theme needs to use that color as the “Red” ANSI color to use that same color in git’s diffs outside of Vim, for example.</p>
+<section class="doc-section level-2"><h3 id="dim-a-16-color-vim-color-scheme">Dim: a 16-color Vim color scheme</h3><p>To achieve consistent colors across all terminal utilities without requiring duplicate color settings, 4-bit Vim color schemes like <a href="https://github.com/noahfrederick/vim-noctu">Noctu</a> and <a href="https://github.com/jeffkreeftmeijer/vim-dim">Dim</a> exclusively use the first sixteen relative ANSI colors. This makes them compatible with 16-color terminals, but also results in consistent colors between terminal utilities.</p>
+<p>Dim is based on Vim’s default color scheme. Although Vim’s default mostly uses relative colors, it uses 8-bit absolute colors for some of its highlight groups. By default, it colors line numbers and statements brown, diffs lightblue and darkblue, completion menus pink, and comments ANSI blue.
+Because that’s distracting, Dim uses gray colors for each of these.</p>
+<figure class="image-block"><img src="compare.png" alt="Vim’s default color scheme compared to Dim" width="1447" height="800">
+<figcaption>Figure 2. Vim’s default color scheme (left) and Dim, both with appsignal.terminal as the terminal theme. Dim has dimmed colors for secondary features like completion menus, line numbers and folds.</figcaption></figure>
+<p>By keeping the intent separate from the styling and the specific color values in the terminal theme, every utility in the terminal uses consistent colors. This makes changing themes—like switching between dark and light versions of a theme—a matter of pressing <kbd class="keyseq"><kbd>⌘</kbd>+<kbd>I</kbd></kbd> and selecting another one, without having to find a matching color scheme for Vim.</p></section></section>
+
+
+</article>
+
+<hr/>
+<nav>
+  <a href="/" rel="author">Jeff Kreeftmeijer</a>
+  <a rel="nofollow" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#101;&#102;&#102;&#107;&#114;&#101;&#101;&#102;&#116;&#109;&#101;&#105;&#106;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">E-mail</a>
+  <a rel="me" href="https://twitter.com/jkreeftmeijer">Twitter</a>
+  <a rel="me" href="https://github.com/jeffkreeftmeijer">Github</a>
+  <a href="/feed.xml">RSS</a>
+</nav>
+
+<aside class="ad" id="codefund_ad">
+  <script async src="https://codefund.io/scripts/48fc837b-75ff-48f2-9cf2-3f52281d7721/embed.js"></script>
+  <script>window._codefund_theme = '';</script>
+</aside>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12888762-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
