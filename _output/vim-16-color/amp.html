@@ -8,7 +8,7 @@
 <meta name="author" content="Jeff Kreeftmeijer">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml">
-<link rel="canonical" href="">
+<link rel="canonical" href="https://jeffkreeftmeijer.com/vim-16-color/">
 <script async src="https://cdn.ampproject.org/v0.js"></script>
 <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
 <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
@@ -20,21 +20,47 @@
 <meta name="twitter:creator" content="@jkreeftmeijer">
 <meta name="twitter:title" content="Consistent terminal colors with 16-ANSI-color Vim themes">
 <meta name="twitter:description" content="Instead of configuring colors separately for both Vim and the rest of the terminal, limiting Vim’s color scheme to 16 ANSI colors allows setting all color preferences in the terminal’s theme.">
-<meta name="twitter:image" content="twitter.png">
+<meta name="twitter:image" content="https://jeffkreeftmeijer.com/vim-16-color/twitter.png">
 
-
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jeffkreeftmeijer.com/vim-16-color/"
+  },
+  "headline": "Consistent terminal colors with 16-ANSI-color Vim themes",
+  "image": ["https://jeffkreeftmeijer.com/vim-16-color/twitter.png"],
+  "datePublished": "2018-11-29",
+  "dateModified": "2018-11-29T15:10:28Z",
+  "author": {
+    "@type": "Person",
+    "name": "Jeff Kreeftmeijer"
+  },
+  "description": "Instead of configuring colors separately for both Vim and the rest of the terminal, limiting Vim’s color scheme to 16 ANSI colors allows setting all color preferences in the terminal’s theme.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "jeffkreeftmeijer.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jeffkreeftmeijer.com/logo.png"
+    }
+  }
+}
+</script>
 </head>
 <body>
 <h1>Consistent terminal colors with 16-ANSI-color Vim themes</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2018-11-29">2018-11-29 (last updated on <time datetime="2018-11-29T10:01:53Z">2018-11-29</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2018-11-29">2018-11-29</time>
 </p>
 
 <article>
 <section id="preamble" aria-label="Preamble"><p>Instead of configuring colors separately for both Vim and the rest of the terminal, limiting Vim’s color scheme to 16 ANSI colors allows setting all color preferences in the terminal’s theme. Doing so results in consistent colors among terminal utilities and a color theme that&#8217;s quick to swap out for another one.</p>
 <div class="imageblock">
 <div class="content">
-<amp-img layout="responsive" src="split.png" alt="Vim and git log in Terminal app, with Dim as the Vim colorscheme, appsignal.terminal as the terminal theme, and SF Mono 14pt (with a line spacing of 1.2) as the font." width="1382" height="800">
+<amp-img layout="responsive" src="https://jeffkreeftmeijer.com/vim-16-color/split.png" alt="Vim and git log in Terminal app, with Dim as the Vim colorscheme, appsignal.terminal as the terminal theme, and SF Mono 14pt (with a line spacing of 1.2) as the font." width="1382" height="800">
 </div>
 <div class="title">Figure 1. Vim and a git log side by side in tmux in Terminal.app. By using <a href="https://github.com/jeffkreeftmeijer/vim-dim">Dim</a> as Vim’s color scheme, all color values are set by the <a href="https://github.com/jeffkreeftmeijer/appsignal.terminal">terminal theme</a> (showing both dark and light mode). The font is SF Mono, 14pt, with a line spacing of 1.2.</div>
 </div>
@@ -114,7 +140,7 @@ $ echo -e "\033[38;2;243;134;48mgiant goldfish\033[0m"</pre></div>
 <section class="doc-section level-1"><h2 id="terminal-themes">Terminal themes</h2><p>By changing the terminal theme, using one like <a href="https://github.com/jeffkreeftmeijer/appsignal.terminal">appsignal.terminal</a> or any of the <a href="https://github.com/lysyi3m/osx-terminal-themes">hundreds</a> of other available themes, the terminal emulator can display the relative colors in any true color value you like. Using <code>#C31633</code> for red will color deletions in git’s diff output in that exact color, for example.</p>
 <div class="imageblock">
 <div class="content">
-<amp-img layout="responsive" src="picker.png" alt="Changing the red color in a Terminal.app color theme" width="1382" height="800">
+<amp-img layout="responsive" src="https://jeffkreeftmeijer.com/vim-16-color/picker.png" alt="Changing the red color in a Terminal.app color theme" width="1382" height="800">
 </div>
 </div>
 <aside class="admonition-block tip" role="doc-tip"><h6 class="block-title label-only"><span class="title-label">Tip: </span></h6><p>In Terminal.app, use <kbd class="keyseq"><kbd>⌘</kbd>+<kbd>I</kbd></kbd> to open the Inspector to change the current window’s theme without opening a new terminal window.</p></aside>
@@ -127,7 +153,7 @@ $ echo -e "\033[38;2;243;134;48mgiant goldfish\033[0m"</pre></div>
 Because that’s distracting, Dim uses gray colors for each of these.</p>
 <div class="imageblock">
 <div class="content">
-<amp-img layout="responsive" src="compare.png" alt="Vim’s default color scheme compared to Dim" width="1447" height="800">
+<amp-img layout="responsive" src="https://jeffkreeftmeijer.com/vim-16-color/compare.png" alt="Vim’s default color scheme compared to Dim" width="1447" height="800">
 </div>
 <div class="title">Figure 2. Vim’s default color scheme (left) and Dim, both with appsignal.terminal as the terminal theme. Dim has dimmed colors for secondary features like completion menus, line numbers and folds.</div>
 </div>
