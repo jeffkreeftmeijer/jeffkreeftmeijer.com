@@ -8,7 +8,7 @@ def command(command)
   puts `#{command}`
 end
 
-task :generate => [:bundle, :copy, :build, :sitemap]
+task :generate => [:bundle, :copy, :build, :sitemap, :resample]
 
 task :build do
   {
@@ -67,6 +67,12 @@ task :copy do
   `cp _articles/vim-reformat-dates/substitute-dark.png _output/vim-reformat-dates/substitute-dark.png`
   `cp _articles/vim-reformat-dates/substitute-dark-shadow.png _output/vim-reformat-dates/substitute-dark-shadow.png`
   command("cp _articles/vim-16-color/*.png _output/vim-16-color/")
+end
+
+task :resample do
+  command("sips --resampleWidth 1540 _output/vim-16-color/split.png")
+  command("sips --resampleWidth 1540 _output/vim-16-color/compare.png")
+  command("sips --resampleWidth 1540 _output/vim-16-color/picker.png")
 end
 
 task :optimize do
