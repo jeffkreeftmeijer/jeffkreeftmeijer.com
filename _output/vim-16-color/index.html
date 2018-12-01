@@ -30,7 +30,7 @@
   "headline": "Consistent terminal colors with 16-ANSI-color Vim themes",
   "image": ["https://jeffkreeftmeijer.com/vim-16-color/twitter.png"],
   "datePublished": "2018-11-29",
-  "dateModified": "2018-11-29T15:10:28Z",
+  "dateModified": "2018-12-01T09:08:44Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -50,7 +50,7 @@
 <body>
 <h1>Consistent terminal colors with 16-ANSI-color Vim themes</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2018-11-29">2018-11-29</time>
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2018-11-29">2018-11-29</time> (last updated on <time datetime="2018-12-01T09:08:44Z">2018-12-01</time>)
 </p>
 
 <article>
@@ -61,7 +61,7 @@
 <p>By using the terminal theme exclusively, all utilities use the same color values. For example, I don’t configure tmux’s colors, as the green color the terminal theme uses is already a shade I like.</p></section>
 <section class="doc-section level-1"><h2 id="terminal-colors-and-ansi-escape-sequences">Terminal colors and ANSI escape sequences</h2><p>Terminal emulators use ANSI escape sequences to&#8211;amongst other things like controlling the cursor’s position&#8211;read the desired text and background color when printing output.</p>
 <div class="literal-block"><pre>$ echo -e "\033[31mred\033[m" # Prints “red” in red.</pre></div>
-<p>While most terminal emulators, including Apple’s Terminal.app, support true color now, most utilities use one of the main sixteen colors (black, red, green, yellow, blue, magenta, cyan, white, and a <em>high intensity</em> or <em>bright</em> version of each).</p>
+<p>Although most terminal emulators support at least 256 colors, most utilities use one of the main sixteen colors (black, red, green, yellow, blue, magenta, cyan, white, and a <em>high intensity</em> or <em>bright</em> version of each).</p>
 <p>For example, git shows diffs with additions in green and deletions in red, and most testing frameworks print green dots for passed tests and red <em>F</em>’s for failures.</p>
 <table class="tableblock frame-all grid-all" style="width: 100%;">
 <colgroup>
@@ -142,7 +142,8 @@ $ echo -e "\033[38;2;243;134;48mgiant goldfish\033[0m"</pre></div>
 Because that’s distracting, Dim uses gray colors for each of these.</p>
 <figure class="image-block"><img src="compare.png" alt="Vim’s default color scheme compared to Dim" width="1447" height="800">
 <figcaption>Figure 2. Vim’s default color scheme (left) and Dim, both with appsignal.terminal as the terminal theme. Dim has dimmed colors for secondary features like completion menus, line numbers and folds.</figcaption></figure>
-<p>By keeping the intent separate from the styling and the specific color values in the terminal theme, every utility in the terminal uses consistent colors. This makes changing themes—like switching between dark and light versions of a theme—a matter of pressing <kbd class="keyseq"><kbd>⌘</kbd>+<kbd>I</kbd></kbd> and selecting another one, without having to find a matching color scheme for Vim.</p></section></section>
+<p>By keeping the intent separate from the styling and the specific color values in the terminal theme, every utility in the terminal uses consistent colors. This makes changing themes—like switching between dark and light versions of a theme—a matter of pressing <kbd class="keyseq"><kbd>⌘</kbd>+<kbd>I</kbd></kbd> and selecting another one, without having to find a matching color scheme for Vim.</p>
+<p><span class="small"><em>Thanks /u/Spikey8D for noting Terminal.app doesn&#8217;t support 24-bit color outside of its color profiles.</em></span></p></section></section>
 
 
 </article>

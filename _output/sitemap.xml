@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jeffkreeftmeijer.com/</loc>
-    <lastmod>2018-11-29</lastmod>
+    <lastmod>2018-12-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>https://jeffkreeftmeijer.com/vim-16-color/</loc>
-    <lastmod>2018-11-29</lastmod>
+    <lastmod>2018-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
