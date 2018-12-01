@@ -30,7 +30,7 @@
   "headline": "Consistent terminal colors with 16-ANSI-color Vim themes",
   "image": ["https://jeffkreeftmeijer.com/vim-16-color/twitter.png"],
   "datePublished": "2018-11-29",
-  "dateModified": "2018-12-01T09:08:44Z",
+  "dateModified": "2018-12-01T11:02:09Z",
   "author": {
     "@type": "Person",
     "name": "Jeff Kreeftmeijer"
@@ -50,7 +50,7 @@
 <body>
 <h1>Consistent terminal colors with 16-ANSI-color Vim themes</h1>
 <p class="byline">
-  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2018-11-29">2018-11-29</time> (last updated on <time datetime="2018-12-01T09:08:44Z">2018-12-01</time>)
+  By <a href="/" rel="author">Jeff Kreeftmeijer</a> on <time datetime="2018-11-29">2018-11-29</time> (last updated on <time datetime="2018-12-01T11:02:09Z">2018-12-01</time>)
 </p>
 
 <article>
@@ -128,7 +128,7 @@ $ echo -e "\033[38;5;205mhotpink\033[m"</pre></div>
 <p>Then, there’s 24-bit color, also named <em>true color</em>, which has 16.777.216 different color values.</p>
 <div class="literal-block"><pre># prints “giant goldfish” in 24-bit orange (HEX: #F38630, RGB: 243, 134, 48)
 $ echo -e "\033[38;2;243;134;48mgiant goldfish\033[0m"</pre></div>
-<p>Being absolute color values, they’re not configurable in the terminal emulator’s settings.</p>
+<p>Being absolute color values, they’re not configurable in the terminal emulator’s settings.<a class="footnote-ref" id="_footnoteref_1" href="#_footnote_1" title="View footnote 1" role="doc-noteref">[1]</a></p>
 </aside></section>
 <section class="doc-section level-1"><h2 id="terminal-themes">Terminal themes</h2><p>By changing the terminal theme, using one like <a href="https://github.com/jeffkreeftmeijer/appsignal.terminal">appsignal.terminal</a> or any of the <a href="https://github.com/lysyi3m/osx-terminal-themes">hundreds</a> of other available themes, the terminal emulator can display the relative colors in any true color value you like. Using <code>#C31633</code> for red will color deletions in git’s diff output in that exact color, for example.</p>
 <div class="image-block"><img src="picker.png" alt="Changing the red color in a Terminal.app color theme" width="1382" height="800"></div>
@@ -143,8 +143,17 @@ Because that’s distracting, Dim uses gray colors for each of these.</p>
 <figure class="image-block"><img src="compare.png" alt="Vim’s default color scheme compared to Dim" width="1447" height="800">
 <figcaption>Figure 2. Vim’s default color scheme (left) and Dim, both with appsignal.terminal as the terminal theme. Dim has dimmed colors for secondary features like completion menus, line numbers and folds.</figcaption></figure>
 <p>By keeping the intent separate from the styling and the specific color values in the terminal theme, every utility in the terminal uses consistent colors. This makes changing themes—like switching between dark and light versions of a theme—a matter of pressing <kbd class="keyseq"><kbd>⌘</kbd>+<kbd>I</kbd></kbd> and selecting another one, without having to find a matching color scheme for Vim.</p>
-<p><span class="small"><em>Thanks /u/Spikey8D for noting Terminal.app doesn&#8217;t support 24-bit color outside of its color profiles.</em></span></p></section></section>
+<p><span class="small"><em>Thanks /u/-romainl- for noting 256-color palettes can be customized in xterm, and /u/Spikey8D for noting Terminal.app doesn&#8217;t support 24-bit color outside of its color profiles.</em></span></p></section></section>
 
+
+  <div id="footnotes">
+    <hr>
+    
+      <div class="footnote" id="_footnote_1">
+        <a href="#_footnoteref_1">1</a>. In xterm, the 256 color palette can be customized using utilities like <a href="https://github.com/trapd00r/colorcoke">colorcoke</a>.
+      </div>
+    
+  </div>
 
 </article>
 
