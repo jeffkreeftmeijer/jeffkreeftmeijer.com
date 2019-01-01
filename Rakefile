@@ -20,7 +20,6 @@ task :build do
     '_articles/ruby-compare-images/ruby-compare-images.adoc' => '_output/ruby-compare-images/',
     '_articles/vim-number/vim-number.adoc' => '_output/vim-number/',
     '_articles/carrierwave-rails-test-fixtures/carrierwave-rails-test-fixtures.adoc' => '_output/carrierwave-rails-test-fixtures/',
-    '_articles/activerecord-destroyed.adoc' => '_output/activerecord-destroyed/',
     '_articles/activerecord-destroyed/activerecord-destroyed.adoc' => '_output/activerecord-destroyed/',
     '_articles/git-git/git-git.adoc' => '_output/git-git/',
     '_articles/mix-proper/mix-proper.adoc' => '_output/mix-proper/',
